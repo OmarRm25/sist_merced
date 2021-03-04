@@ -8,7 +8,7 @@
 
 <!--Insert Modal window-->
 <div class="modal fade" role="dialog"  id="agregar">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Agregar Programa</h5>
@@ -19,35 +19,56 @@
 
           <form action="/add" method="post">
             <div class="form-group">
-              <input type="text" name="program_code" placeholder="Clave" class="form-control" autofocus>
+              <label type="text">Clave</label>
+              <input type="text" name="program_code" placeholder="Ingresa aquí la clave de programa" class="form-control" autofocus>
             </div>
             <div class="form-group">
-              <input type="text" name="program_name" placeholder="Programa" class="form-control">
+              <label type="text">Programa</label>
+              <input type="text" name="program_name" placeholder="Ingresa aquí el nombre del Programa" class="form-control">
             </div>
             <div class="form-group">
-              <input type="text" name="coordination" placeholder="Coordinación" class="form-control">
+              <label type="text">Coordinación</label>
+              <select name="coordination" placeholder="Coordinación" class="form-control">
+                <option>Formación y Fortalecimiento</option>
+                <option>Inversión Social</option>
+                </select>
             </div>
             <div class="form-group">
+              <label type="text">Aliado Financiero</label>
               <input type="text" name="id_finantial_ally" placeholder="Aliado" class="form-control">
             </div>
             <div class="form-group">
-              <input type="text" name="in_account" placeholder="Cuenta de ingresos" class="form-control">
+              <label type="text">Cuenta de ingresos</label>
+              <input type="text" name="in_account" placeholder="Ingresa aquí la Cuenta de ingresos" class="form-control">
             </div>
             <div class="form-group">
-              <input type="text" name="out_account" placeholder="Cuenta de egresos" class="form-control">
+              <label type="text">Cuenta de egresos</label>
+              <input type="text" name="out_account" placeholder="Ingresa aquí la Cuenta de egresos" class="form-control">
             </div>
             <div class="form-group">
-              <input type="text" name="status" placeholder="Estatus" class="form-control" autofocus>
+              <label type="text">Estatus</label>
+              <select name="status" placeholder="Estatus" class="form-control">
+                <option>Activo</option>
+                <option>Finalizado</option>
+                <option>Cancelado</option>
+              </select>  
             </div>
             <div class="form-group">
-              <input type="text" name="end_date" placeholder="Fecha de término" class="form-control">
+              <label type="text">Fecha de término</label>
+              <input id="datepicker" width="415" />
+            <script>
+              $('#datepicker').datepicker({
+                  uiLibrary: 'bootstrap4',
+                  format: 'dd-mm-yyyy'
+              });
+            </script>
             </div>
             
           </form>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="submit" class="btn btn-info">Guardar</button>
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
       </div>
     </div>
@@ -55,9 +76,10 @@
 </div>
 <!--End of insert modal window-->
 
-<div class="container">
+<!--Body Table-->
+<!--<div class="container">
   <div class="row">
-    <div class="col-md-7"></div>
+    <div class="col-md-7">-->
       <table class="table table-active table-hover">
         <thead>
           <tr>
@@ -88,19 +110,106 @@
                 <td><%= data[i].end_date %></td>
                 
                 <td>
-                  <a href="/update/<%= data[i].id_program %>" class="btn-sm btn-info">Editar</a>
+                  <!--<a href="/update/<%= data[i].id_program %>" class="btn-sm btn-info">Editar</a>-->
+                  <button href="/update/<%= data[i].id_program %>" class="btn-sm btn-info" data-toggle="modal" data-target="#editar">Editar</button>
                 </td>
                 <td>  
-                  <a href="/delete/<%= data[i].id_program %>" class="btn-sm btn-danger">Eliminar</a>
+                  <button class="btn-sm btn-danger" data-toggle="modal" data-target="#eliminar">Eliminar</button>
                 </td>
               </tr>
+
+      <!--Delete modal window-->
+ <div class="modal" id="eliminar">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Eliminar Programa</h5>
+      </div>
+      <div class="modal-body">
+        <p>Realmente deseas eliminar este programa?</p>
+      </div>
+      <div class="modal-footer">
+        <a href="/delete/<%= data[i].id_program %>" class="btn btn-danger">Eliminar</a>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End of delete modal window-->
+
+<!--Update modal window-->
+<div class="modal" id="editar">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Editar Programa</h5>
+      </div>
+      <div class="modal-body">
+        <form action="/update/<%= data.id_program %>" method="POST">
+          <div class="form-group">
+            <label type="text">Clave</label>
+            <input type="text" name="program_code" value="<%= data.program_code %>" placeholder="Ingresa aquí la clave de programa" class="form-control" autofocus>
+          </div>
+          <div class="form-group">
+            <label type="text">Programa</label>
+            <input type="text" name="program_name" value="<%= data.program_name %>" placeholder="Ingresa aquí el nombre del Programa" class="form-control">
+          </div>
+          <div class="form-group">
+            <label type="text">Coordinación</label>
+            <select name="coordination" value="<%= data.coordination %>" placeholder="Coordinación" class="form-control">
+            <option>Formación y Fortalecimiento</option>
+            <option>Inversión Social</option>
+            </select>  
+          </div>
+          <div class="form-group">
+            <label type="text">Aliado Financiero</label>
+            <input type="text" name="id_finantial_ally" value="<%= data.id_finantial_ally %>" placeholder="Aliado" class="form-control">
+          </div>
+          <div class="form-group">
+            <label type="text">Cuenta de ingresos</label>
+            <input type="text" name="in_account" value="<%= data.in_account %>" placeholder="Ingresa aquí la Cuenta de ingresos" class="form-control">
+          </div>
+          <div class="form-group">
+            <label type="text">Cuenta de egresos</label>
+            <input type="text" name="out_account" value="<%= data.out_account %>" placeholder="Ingresa aquí la Cuenta de egresos" class="form-control">
+          </div>
+          <div class="form-group">
+            <label type="text">Estatus</label>
+            <input type="text" name="status" value="<%= data.status %>" placeholder="Estatus" class="form-control" >
+          </div>
+          <div class="form-group">
+            <label type="text">Fecha de término</label>
+            <input id="datepicker" width="415" value="<%= data.end_date %>" />
+          <script>
+            $('#datepicker').datepicker({
+                uiLibrary: 'bootstrap4',
+                format: 'dd-mm-yyyy',
+                
+            });
+          </script>
+          </div>      
+        </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-info">Guardar</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End of edit modal window-->
+
             <% } %>
           <% } %>
         </tbody>
       </table>
     </div>
+
+  
+ <!-- </div>
   </div>
-  </div>
-</div>
+</div> -->
+
+
+
 
 <%- include('partials/_footer'); -%>

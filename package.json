@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "bootstrap": "^4.6.0",
+    "bootstrap-icons": "^1.4.0",
     "bootswatch": "^4.6.0",
     "ejs": "^2.7.4",
     "express": "^4.17.1",

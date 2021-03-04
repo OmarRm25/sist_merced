@@ -15,11 +15,16 @@ controller.list = (req, res) => {
 
 controller.save = (req, res) => {
   const data = req.body;
-  //console.log(req.body);
+  console.log(req.body);
   req.getConnection((err, conn) => {
     conn.query('INSERT INTO program set ?', data, (err, programs) => {
-      //console.log(programs)
+      if(err){
+        console.log(err);
+        res.json(err);
+      }else{
+      console.log(programs)
       res.redirect('/');
+      }
     });
   })
 };
@@ -28,7 +33,7 @@ controller.edit = (req, res) => {
   const { id_program } = req.params;
   req.getConnection((err, conn) => {
     conn.query("SELECT * FROM program WHERE id_program = ?", id_program, (err, rows) => {
-      res.render('program_edit', {
+      res.render('program', {
         data: rows[0]
       })
     });
