@@ -27,7 +27,7 @@ controller.save = (req, res) => {
 controller.edit = (req, res) => {
   const { id_program } = req.params;
   req.getConnection((err, conn) => {
-    conn.query("SELECT * FROM program WHERE id_program = ?", [id_program], (err, rows) => {
+    conn.query("SELECT * FROM program WHERE id_program = ?", id_program, (err, rows) => {
       res.render('program_edit', {
         data: rows[0]
       })
@@ -40,8 +40,12 @@ controller.update = (req, res) => {
   const newProgram = req.body;
   req.getConnection((err, conn) => {
 
-  conn.query('UPDATE customer set ? where id = ?', [newProgram, id_program], (err, rows) => {
+  conn.query('UPDATE program set ? where id_program = ?', [newProgram, id_program], (err, rows) => {
+    if(err){
+      console.log(err);
+    }else{
     res.redirect('/');
+    }
   });
   });
 };
