@@ -1,0 +1,43 @@
+<%- include('partials/_header'); -%>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-5 offset-md-3 card">
+      <div class="card-body">
+        <form action="/update/<%= data.id_program %>" method="POST">
+          <div class="form-group">
+            <input type="text" name="program_code" value="<%= data.program_code %>" placeholder="Clave" class="form-control" autofocus>
+          </div>
+          <div class="form-group">
+            <input type="text" name="program_name" value="<%= data.program_name %>" placeholder="Programa" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="coordination" value="<%= data.coordination %>" placeholder="Coordinación" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="id_finantial_ally" value="<%= data.id_finantial_ally %>" placeholder="Aliado" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="in_account" value="<%= data.in_account %>" placeholder="Cuenta de ingresos" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="out_account" value="<%= data.out_account %>" placeholder="Cuenta de egresos" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="status" value="<%= data.status %>" placeholder="Estatus" class="form-control" >
+          </div>
+          <div class="form-group">
+            <input type="text" name="end_date" value="<%= data.end_date %>" placeholder="Fecha de término" class="form-control">
+          </div>
+          
+
+          <button type="submit" class="btn btn-primary">
+            Actualizar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/_footer'); -%>
