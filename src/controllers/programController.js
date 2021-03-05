@@ -33,7 +33,7 @@ controller.edit = (req, res) => {
   const { id_program } = req.params;
   req.getConnection((err, conn) => {
     conn.query("SELECT * FROM program WHERE id_program = ?", id_program, (err, rows) => {
-      res.render('program', {
+      res.render('program_edit', {
         data: rows[0]
       })
     });
