@@ -3,7 +3,7 @@
 <div class="container">
 <br />
 <!--Modal window trigger button -->
-<button type="button" class="btn btn-success margin-left-3" data-toggle="modal" data-target="#agregar" >Agregar programa</button>
+<button type="button" class="btn btn-success margin-left-3 rounded" data-toggle="modal" data-target="#agregar" >Agregar programa</button>
 <br /><br />
 
 <!--Insert Modal window-->
@@ -35,7 +35,14 @@
             </div>
             <div class="form-group">
               <label type="text">Aliado Financiero</label>
-              <input type="text" name="id_finantial_ally" placeholder="Aliado" class="form-control">
+              <select type="text" name="id_finantial_ally" placeholder="Aliado" class="form-control">
+                <% console.log(data); %>
+                <% if (data.allies) { %>
+                <% for(var i=0; i < data.allies.length; i++){ %>
+                  <option value="<%= data.allies[i].id_finantial_ally %>"> <%= data.allies[i].fa_name %></option>
+                 <% } %>
+                 <% } %>
+              </select>
             </div>
             <div class="form-group">
               <label type="text">Cuenta de ingresos</label>
@@ -47,7 +54,7 @@
             </div>
             <div class="form-group">
               <label type="text">Estatus</label>
-              <select name="status" placeholder="Estatus" class="form-control">
+              <select name="status" value="Elige el estatus del programa" class="form-control">
                 <option>Activo</option>
                 <option>Finalizado</option>
                 <option>Cancelado</option>
@@ -67,8 +74,8 @@
             
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-info">Guardar</button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-info rounded">Guardar</button>
+        <button type="button" class="btn btn-danger rounded" data-dismiss="modal">Cancelar</button>
       </div>
     </form>
 
@@ -96,36 +103,35 @@
           </tr>
         </thead>
         <tbody>
-          <% if (data) { %>
-            <% for(var i = 0; i < data.length; i++) { %>
+          <% if (data.data) { %>
+            <% for(var i = 0; i < data.data.length; i++) { %>
               <tr>
                 <td><%= (i + 1) %></td>
-                <td><%= data[i].program_code %></td>
-                <td><%= data[i].program_name %></td>
-                <td><%= data[i].coordination %></td>
-                <td><%= data[i].id_finantial_ally %></td>
-                <td><%= data[i].in_account %></td>
-                <td><%= data[i].out_account %></td>
-                <td><%= data[i].status %></td>
-                <td><%= data[i].end_date %></td>
+                <td><%= data.data[i].program_code %></td>
+                <td><%= data.data[i].program_name %></td>
+                <td><%= data.data[i].coordination %></td>
+                <td><%= data.data[i].fa_name %></td>
+                <td><%= data.data[i].in_account %></td>
+                <td><%= data.data[i].out_account %></td>
+                <td><%= data.data[i].status %></td>
+                <td><%= data.data[i].end_date %></td>
                 
                 <td>
-                  <!--<a href="/update/<%= data[i].id_program %>" class="btn-sm btn-info">Editar</a>-->
-                  <button href="/update/<%= data[i].id_program %>" class="btn-sm btn-info" data-toggle="modal" data-target="#editar">
+                  <a href="/update/<%= data.data[i].id_program %>" class="btn-sm btn-info rounded">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                       <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                       <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                     </svg>
-                  </button>
-                </td>
-                <td>  
-                  <button class="btn-sm btn-danger" data-toggle="modal" data-target="#eliminar">
+                  </a>
+                <br /> <br /> 
+                  <button class="btn-sm btn-danger rounded" data-toggle="modal" data-target="#eliminar">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                       <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                       <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                     </svg>
                   </button>
                 </td>
+            
               </tr>
 
       <!--Delete modal window-->
@@ -139,74 +145,13 @@
         <p>Realmente deseas eliminar este programa?</p>
       </div>
       <div class="modal-footer">
-        <a href="/delete/<%= data[i].id_program %>" class="btn btn-danger">Eliminar</a>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <a href="/delete/<%= data.data[i].id_program %>" class="btn btn-danger rounded">Eliminar</a>
+        <button type="button" class="btn btn-secondary rounded" data-dismiss="modal">Cancelar</button>
       </div>
     </div>
   </div>
 </div>
 <!--End of delete modal window-->
-
-<!--Update modal window-->
-<div class="modal" id="editar">
-  <div class="modal-dialog modal-dialog-scrollable" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Editar Programa</h5>
-      </div>
-      <div class="modal-body">
-        <form action="/update/<%= data.id_program %>" method="POST">
-          <div class="form-group">
-            <label type="text">Clave</label>
-            <input type="text" name="program_code" value="<%= data.program_code %>" placeholder="Ingresa aquí la clave de programa" class="form-control" autofocus>
-          </div>
-          <div class="form-group">
-            <label type="text">Programa</label>
-            <input type="text" name="program_name" value="<%= data.program_name %>" placeholder="Ingresa aquí el nombre del Programa" class="form-control">
-          </div>
-          <div class="form-group">
-            <label type="text">Coordinación</label>
-            <select name="coordination" value="<%= data.coordination %>" placeholder="Coordinación" class="form-control">
-            <option>Formación y Fortalecimiento</option>
-            <option>Inversión Social</option>
-            </select>  
-          </div>
-          <div class="form-group">
-            <label type="text">Aliado Financiero</label>
-            <input type="text" name="id_finantial_ally" value="<%= data.id_finantial_ally %>" placeholder="Aliado" class="form-control">
-          </div>
-          <div class="form-group">
-            <label type="text">Cuenta de ingresos</label>
-            <input type="text" name="in_account" value="<%= data.in_account %>" placeholder="Ingresa aquí la Cuenta de ingresos" class="form-control">
-          </div>
-          <div class="form-group">
-            <label type="text">Cuenta de egresos</label>
-            <input type="text" name="out_account" value="<%= data.out_account %>" placeholder="Ingresa aquí la Cuenta de egresos" class="form-control">
-          </div>
-          <div class="form-group">
-            <label type="text">Estatus</label>
-            <input type="text" name="status" value="<%= data.status %>" placeholder="Estatus" class="form-control" >
-          </div>
-          <div class="form-group">
-            <label type="text">Fecha de término</label>
-            <input name="end_date" id="datepicker" width="415" value="<%= data.end_date %>"/>
-          <script>
-            $('#datepicker').datepicker({
-                uiLibrary: 'bootstrap4',
-                format: 'dd/mm/yyyy'
-
-            });
-          </script>
-          </div>   
-        </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-info">Guardar</button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!--End of edit modal window-->
 
             <% } %>
           <% } %>

@@ -1,15 +1,29 @@
 const controller = {};
 
 controller.list = (req, res) => {
+  let info = {};
   req.getConnection((err, conn) => {
     conn.query('SELECT * FROM program', (err, programs) => {
      if (err) {
       res.json(err);
-     }
-     res.render('program', {
-        data: programs
-     });
+     }else{
+     info.data = programs
+    }
     });
+  });
+  req.getConnection((err, conn) => {
+    conn.query('SELECT * FROM finantial_ally', (err, allies) =>{
+      if (err) {
+        res.json(err);
+       }else{
+       info.allies = allies;
+       info.data.forEach((p) => {
+         p.fa_name = p.id_finantial_ally != undefined ? allies[p.id_finantial_ally -1].fa_name : null;
+       });
+       res.render('program', {data : info});
+       }
+    });
+    
   });
 };
 
@@ -54,6 +68,10 @@ controller.update = (req, res) => {
   });
   });
 };
+
+controller.cancel = (res) => {
+  res.redirect('/');
+}
 
 controller.delete = (req, res) => {
   const { id_program } = req.params;

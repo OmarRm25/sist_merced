@@ -7,6 +7,7 @@ router.post('/add', programController.save);
 router.get('/update/:id_program', programController.edit);
 router.post('/update/:id_program', programController.update);
 router.get('/delete/:id_program', programController.delete);
+router.get('/cancel', programController.cancel);
 
 module.exports = router;
 
