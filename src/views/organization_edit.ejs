@@ -1,0 +1,51 @@
+<%- include('partials/_header'); -%>
+
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-5 offset-md-3 card">
+        <div class="card-body">
+          <h5>Editar Organización</h5>
+  
+          <form action="/organization/update/<%= data.id_organization %>" method="POST">
+            <div class="form-group">
+              <label type="text">Organización</label>
+              <input type="text" name="org_name" value="<%= data.org_name %>" placeholder="Ingresa aquí el nombre de la Organización" class="form-control" autofocus>
+            </div>
+            <div class="form-group">
+              <label type="text">Área de intervención</label>
+              <input type="text" name="intervention_area" value="<%= data.intervention_area %>" placeholder="Ingresa aquí el área de intervención" class="form-control">
+            </div>
+            <div class="form-group">
+                <label type="text">RFC</label>
+                <input type="text" name="rfc" value="<%= data.rfc %>" placeholder="Ingresa aquí el RFC de la organización" class="form-control">
+              </div>
+    
+            <div class="form-group">
+                <label type="text">¿Cuenta con expediente adminstrativo?</label>
+                <select name="admon_file" value="<%= data.admon_file %>" class="form-control">
+                  <option>No</option>
+                  <option>Sí</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label type="text">¿Se encuentra en lista negra?</label>
+                <select name="blacklist" value="<%= data.blacklist %>" class="form-control">
+                  <option>No</option>
+                  <option>Sí</option>
+                </select>
+            </div>
+  
+            <button type="submit" class="btn btn-info rounded">
+              Actualizar
+            </button>
+              
+            <a href="/organization" class="btn btn-danger rounded">
+              Cancelar
+            </a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+<%- include('partials/_footer'); -%>

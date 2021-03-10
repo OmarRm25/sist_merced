@@ -9,6 +9,8 @@ const app = express();
 // importing routes
 const dashboardRoutes = require('./routes/dashboard');
 const programRoutes = require('./routes/program');
+const organizationRoutes = require('./routes/organization');
+const contactRoutes = require('./routes/contact');
 
 // settings
 app.set('port', process.env.PORT || 3001);
@@ -29,8 +31,8 @@ app.use(express.urlencoded({extended: false}));
 // routes
 app.use('/dashboard', dashboardRoutes);
 app.use('/program', programRoutes);
-
-
+app.use('/organization', organizationRoutes);
+app.use('/contact', contactRoutes);
 
 // static files
 app.use(express.static(path.join(__dirname, 'public')));
