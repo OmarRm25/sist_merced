@@ -1,9 +1,11 @@
 const controller = {};
 
-controller.start = (req, res) =>{
-    res.redirect('/program');
+controller.home = (req, res) =>{
+ res.render('dashboard');
 }
 
 controller.program = (req, res) => {
-    res.redirect('program');
+    res.redirect('/program');
 }
+
+module.exports = controller;

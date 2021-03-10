@@ -37,7 +37,7 @@ controller.save = (req, res) => {
         res.json(err);
       }else{
       console.log(programs)
-      res.redirect('/');
+      res.redirect('/program');
       }
     });
   })
@@ -63,7 +63,7 @@ controller.update = (req, res) => {
     if(err){
       console.log(err);
     }else{
-    res.redirect('/');
+    res.redirect('/program');
     }
   });
   });
@@ -77,7 +77,7 @@ controller.delete = (req, res) => {
   const { id_program } = req.params;
   req.getConnection((err, conn) => {
     conn.query('DELETE FROM program WHERE id_program = ?', [id_program], (err, rows) => {
-      res.redirect('/');
+      res.redirect('/program');
     });
   });
 }

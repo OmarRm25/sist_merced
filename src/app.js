@@ -7,7 +7,7 @@ const express = require('express'),
 const app = express();
 
 // importing routes
-//const dashboardRoutes = require('./routes/dashboard');
+const dashboardRoutes = require('./routes/dashboard');
 const programRoutes = require('./routes/program');
 
 // settings
@@ -27,8 +27,8 @@ app.use(myConnection(mysql, {
 app.use(express.urlencoded({extended: false}));
 
 // routes
-//app.use('/dashboard', dashboardRoutes);
-app.use('/', programRoutes);
+app.use('/dashboard', dashboardRoutes);
+app.use('/program', programRoutes);
 
 
 

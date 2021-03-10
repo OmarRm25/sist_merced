@@ -6,7 +6,7 @@
       <div class="card-body">
         <h5>Editar programa</h5>
 
-        <form action="/update/<%= data.id_program %>" method="POST">
+        <form action="/program/update/<%= data.id_program %>" method="POST">
           <div class="form-group">
             <label type="text">Clave</label>
             <input type="text" name="program_code" value="<%= data.program_code %>" placeholder="Ingresa aquí la clave de programa" class="form-control" autofocus>
@@ -23,15 +23,8 @@
               </select>            </div>
               <div class="form-group">
                 <label type="text">Aliado Financiero</label>
-                <select type="text" name="id_finantial_ally" placeholder="Aliado" class="form-control">
-                  <% console.log(data); %>
-                  <% if (data.allies) { %>
-                  <% for(var i=0; i < data.allies.length; i++){ %>
-                    <option value="<%= data.allies[i].id_finantial_ally %>"> <%= data.allies[i].fa_name %></option>
-                   <% } %>
-                   <% } %>
-                </select>
-                </div>
+                <input type="text" name="id_finantial_ally" value="<%= data.id_finantial_ally %>" placeholder="Aliado Financiero" class="form-control">
+              </div>
           <div class="form-group">
             <label type="text">Cuenta de ingresos</label>
             <input type="text" name="in_account" value="<%= data.in_account %>" placeholder="Cuenta de ingresos" class="form-control">
@@ -65,7 +58,7 @@
             Actualizar
           </button>
             
-          <a href="/" class="btn btn-danger rounded">
+          <a href="/program" class="btn btn-danger rounded">
             Cancelar
           </a>
         </form>
