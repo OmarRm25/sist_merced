@@ -1,0 +1,56 @@
+<%- include('partials/_header'); -%>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-5 offset-md-3 card">
+      <div class="card-body">
+        <h5>Editar Contacto</h5>
+
+        <form action="/contact/update/<%= data.id_contact %>" method="POST">
+          <div class="form-group">
+            <label type="text">Nombre</label>
+            <input type="text" name="first_name" value="<%= data.first_name %>" placeholder="Ingresa aquí el nombre del contacto" class="form-control" autofocus>
+          </div>
+          <div class="form-group">
+            <label type="text">Primer apellido</label>
+            <input type="text" name="middle_name" value="<%= data.middle_name %>" placeholder="Ingresa aquí el primer apellido" class="form-control">
+          </div>
+          <div class="form-group">
+            <label type="text">Segundo apellido</label>
+            <input type="text" name="last_name" value="<%= data.last_name %>" placeholder="Ingresa aquí el segundo apellido" class="form-control">
+          </div>
+          <div class="form-group">
+            <label type="text">Puesto</label>
+            <select name="position" value="<%= data.position %>" placeholder="puesto" class="form-control">
+                <option>Directivo</option>
+                <option>Administrativo</option>
+                <option>Líder de proyecto</option>
+              </select>          
+              </div>
+              <div class="form-group">
+                <label type="text">Teléfono</label>
+                <input type="text" name="phone_number" value="<%= data.phone_number %>" placeholder="Ingresa aquí el número telefónico" class="form-control">
+              </div>
+          <div class="form-group">
+            <label type="text">Correo electrónico</label>
+            <input type="text" name="email" value="<%= data.email %>" placeholder="Ingresa aquí el correo electrónico" class="form-control">
+          </div>
+          <div class="form-group">
+            <label type="text">Organización a la que pertenece</label>
+            <input type="text" name="id_organization" value="<%= data.id_organization %>" placeholder="Organización" class="form-control">
+          </div>
+          
+          <button type="submit" class="btn btn-info rounded">
+            Actualizar
+          </button>
+            
+          <a href="/contact" class="btn btn-danger rounded">
+            Cancelar
+          </a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/_footer'); -%>

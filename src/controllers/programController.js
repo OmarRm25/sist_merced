@@ -12,13 +12,13 @@ controller.list = (req, res) => {
     });
   });
   req.getConnection((err, conn) => {
-    conn.query('SELECT * FROM finantial_ally', (err, allies) =>{
+    conn.query('SELECT * FROM organization', (err, allies) =>{
       if (err) {
         res.json(err);
        }else{
        info.allies = allies;
        info.data.forEach((p) => {
-         p.fa_name = p.id_finantial_ally != undefined ? allies[p.id_finantial_ally -1].fa_name : null;
+         p.org_name = p.id_organization != undefined ? allies[p.id_organization -1].org_name : null;
        });
        res.render('program', {data : info});
        }
@@ -76,7 +76,8 @@ controller.cancel = (res) => {
 controller.delete = (req, res) => {
   const { id_program } = req.params;
   req.getConnection((err, conn) => {
-    conn.query('DELETE FROM program WHERE id_program = ?', [id_program], (err, rows) => {
+    conn.query('DELETE FROM program WHERE id_program = ?', id_program, (err, rows) => {
+      console.log(rows);
       res.redirect('/program');
     });
   });

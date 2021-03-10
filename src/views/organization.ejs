@@ -1,0 +1,139 @@
+<%- include('partials/_header'); -%>
+
+<div class="container">
+    <br />
+    <!--Modal window trigger button -->
+    <button type="button" class="btn btn-success margin-left-3 rounded" data-toggle="modal" data-target="#agregar" >
+        Agregar Organización
+    </button>
+    <br /><br />
+    
+    <!--Insert Modal window-->
+    <div class="modal fade" role="dialog"  id="agregar">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Agregar Organización</h5>
+            
+          </div>
+    
+          <div class="modal-body">
+          
+            <form action="/organization/add" method="post">
+                <div class="form-group">
+                  <label type="text">Organización</label>
+                  <input type="text" name="org_name" placeholder="Ingresa aquí el nombre de la Organización" class="form-control" autofocus>
+                </div>
+                <div class="form-group">
+                  <label type="text">Área de intervención</label>
+                  <input type="text" name="intervention_area" placeholder="Ingresa aquí el área de intervención" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label type="text">RFC</label>
+                  <input type="text" name="rfc" placeholder="Ingresa aquí el RFC de la organización" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                      <label type="text">¿Cuenta con expediente adminstrativo?</label>
+                      <select name="admon_file" value="Elige una opción" class="form-control">
+                        <option>No</option>
+                        <option>Sí</option>
+                      </select>  
+                    </div>
+
+                
+
+                 <div class="form-group">
+                      <label type="text">¿Se encuentra en lista negra?</label>
+                      <select name="blacklist" value="Elige una opción" class="form-control">
+                        <option>No</option>
+                        <option>Sí</option>
+                    </select>
+                 </div>
+
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-info rounded">Guardar</button>
+            <button type="button" class="btn btn-danger rounded" data-dismiss="modal">Cancelar</button>
+          </div>
+        </form>
+    
+        </div>
+      </div>
+    </div>
+    </div>
+    <!--End of insert modal window-->
+    
+    <!--Body Table-->
+    <div class="card-body">
+      <div class="table-responsive-md">
+          <table class="table table-sm table-active table-striped table-hover">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Organización</th>
+                <th>Área de intervención</th>
+                <th>RFC</th>
+                <th>¿Tiene expediente adminstrativo?</th>
+                <th>¿Lista negra?</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if (data) { %>
+                <% for(var i = 0; i < data.length; i++) { %>
+                  <tr>
+                    <td><%= (i + 1) %></td>
+                    <td><%= data[i].org_name %></td>
+                    <td><%= data[i].intervention_area %></td>
+                    <td><%= data[i].rfc %></td>
+                    <td><%= data[i].admon_file %></td>
+                    <td><%= data[i].blacklist %></td>
+                    
+                    <td>
+                      <a href="organization/update/<%= data[i].id_organization %>" class="btn-sm btn-info rounded">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                          <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                          <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                        </svg>
+                      </a>
+                    <br /> <br /> 
+                      <button class="btn-sm btn-danger rounded" data-toggle="modal" data-target="#eliminar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                          <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                        </svg>
+                      </button>
+                    </td>
+                
+                  </tr>
+    
+          <!--Delete modal window-->
+     <div class="modal" id="eliminar">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Eliminar Organización</h5>
+          </div>
+          <div class="modal-body">
+            <p>¿Realmente deseas eliminar esta organización?</p>
+          </div>
+          <div class="modal-footer">
+            <a href="organization/delete/<%= data[i].id_organization %>" class="btn btn-danger rounded">Eliminar</a>
+            <button type="button" class="btn btn-secondary rounded" data-dismiss="modal">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--End of delete modal window-->
+    
+                <% } %>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+     
+    </div> 
+
+<%- include('partials/_footer'); -%>

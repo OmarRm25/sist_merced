@@ -4,7 +4,7 @@
 
 <br />
 <!--Modal window trigger button -->
-<button type="button" class="btn btn-success margin-left-3 rounded" data-toggle="modal" data-target="#agregar" >Agregar programa</button>
+<button type="button" class="btn btn-success margin-left-3 rounded" data-toggle="modal" data-target="#agregar" >Agregar contacto</button>
 <br /><br />
 
 <!--Insert Modal window-->
@@ -12,68 +12,54 @@
   <div class="modal-dialog modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Agregar Programa</h5>
+        <h5 class="modal-title">Agregar Contacto</h5>
         
       </div>
 
       <div class="modal-body">
       
-        <form action="/program/add" method="post">
+        <form action="/contact/add" method="post">
             <div class="form-group">
-              <label type="text">Clave</label>
-              <input type="text" name="program_code" placeholder="Ingresa aquí la clave de programa" class="form-control" autofocus>
+              <label type="text">Nombre</label>
+              <input type="text" name="first_name" placeholder="Ingresa aquí el nombre del contacto" class="form-control" autofocus>
             </div>
             <div class="form-group">
-              <label type="text">Programa</label>
-              <input type="text" name="program_name" placeholder="Ingresa aquí el nombre del Programa" class="form-control">
+              <label type="text">Primer apellido</label>
+              <input type="text" name="middle_name" placeholder="Ingresa aquí el primer apellido" class="form-control">
             </div>
             <div class="form-group">
-              <label type="text">Coordinación</label>
-              <select name="coordination" placeholder="Coordinación" class="form-control">
-                <option>Formación y Fortalecimiento</option>
-                <option>Inversión Social</option>
-                </select>
+              <label type="text">Segundo apellido</label>
+              <input type="text" name="last_name" placeholder="Ingresa aquí el segundo apellido" class="form-control">
             </div>
             <div class="form-group">
-              <label type="text">Aliado Financiero</label>
-              <select type="text" name="id_organization" placeholder="Aliado" class="form-control">
+                <label type="text">Puesto</label>
+                <select name="position" value="Elige el puesto del contacto" class="form-control">
+                  <option>Directivo</option>
+                  <option>Administrativo</option>
+                  <option>Líder de proyecto</option>
+                </select>  
+              </div>
+              <div class="form-group">
+                <label type="text">Teléfono</label>
+                <input type="text" name="phone_number" placeholder="Ingresa aquí el número telefónico" class="form-control">
+              </div>
+              <div class="form-group">
+                <label type="text">Correo electrónico</label>
+                <input type="text" name="email" placeholder="Ingresa aquí el correo electrónico" class="form-control">
+              </div>  
+            <div class="form-group">
+              <label type="text">Organización a la que pertenece</label>
+              <select type="text" name="id_organization" placeholder="contacto" class="form-control">
                 <% console.log(data); %>
-                <% if (data.allies) { %>
-                <% for(var i=0; i < data.allies.length; i++){ %>
-                  <option value="<%= data.allies[i].id_organization %>"> <%= data.allies[i].org_name %></option>
+                <% if (data.orgs) { %>
+                <% for(var i=0; i < data.orgs.length; i++){ %>
+                  <option value="<%= data.orgs[i].id_organization %>"> <%= data.orgs[i].org_name %></option>
                  <% } %>
                  <% } %>
               </select>
             </div>
-            <div class="form-group">
-              <label type="text">Cuenta de ingresos</label>
-              <input type="text" name="in_account" placeholder="Ingresa aquí la Cuenta de ingresos" class="form-control">
-            </div>
-            <div class="form-group">
-              <label type="text">Cuenta de egresos</label>
-              <input type="text" name="out_account" placeholder="Ingresa aquí la Cuenta de egresos" class="form-control">
-            </div>
-            <div class="form-group">
-              <label type="text">Estatus</label>
-              <select name="status" value="Elige el estatus del programa" class="form-control">
-                <option>Activo</option>
-                <option>Finalizado</option>
-                <option>Cancelado</option>
-              </select>  
-            </div>
-            <div class="form-group">
-              <label type="text">Fecha de término</label>
-              <input name="end_date" id="datepicker" width="415" value="N/A"/>
-            <script>
-              $('#datepicker').datepicker({
-                  uiLibrary: 'bootstrap4',
-                  format: 'dd/mm/yyyy'
+         </div>
 
-              });
-            </script>
-            </div>
-            
-      </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-info rounded">Guardar</button>
         <button type="button" class="btn btn-danger rounded" data-dismiss="modal">Cancelar</button>
@@ -92,15 +78,14 @@
         <thead>
           <tr>
             <th>#</th>
-            <th>Clave</th>
-            <th>Programa</th>
-            <th>Coordinación</th>
-            <th>Aliado Financiero</th>
-            <th>Cuenta de ingresos</th>
-            <th>Cuenta de egresos</th>
-            <th>Estatus</th>
-            <th>Fecha de término</th>
-            <th>Acciones</th>
+            <th>Nombre</th>
+            <th>Primer apellido</th>
+            <th>Segundo apellido</th>
+            <th>Puesto</th>
+            <th>Teléfono</th>
+            <th>Correo electrónico</th>
+            <th>Organización</th>
+            
           </tr>
         </thead>
         <tbody>
@@ -108,17 +93,16 @@
             <% for(var i = 0; i < data.data.length; i++) { %>
               <tr>
                 <td><%= (i + 1) %></td>
-                <td><%= data.data[i].program_code %></td>
-                <td><%= data.data[i].program_name %></td>
-                <td><%= data.data[i].coordination %></td>
+                <td><%= data.data[i].first_name %></td>
+                <td><%= data.data[i].middle_name %></td>
+                <td><%= data.data[i].last_name %></td>
+                <td><%= data.data[i].position %></td>
+                <td><%= data.data[i].phone_number %></td>
+                <td><%= data.data[i].email %></td>
                 <td><%= data.data[i].org_name %></td>
-                <td><%= data.data[i].in_account %></td>
-                <td><%= data.data[i].out_account %></td>
-                <td><%= data.data[i].status %></td>
-                <td><%= data.data[i].end_date %></td>
                 
                 <td>
-                  <a href="program/update/<%= data.data[i].id_program %>" class="btn-sm btn-info rounded">
+                  <a href="contact/update/<%= data.data[i].id_contact %>" class="btn-sm btn-info rounded">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                       <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                       <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
@@ -146,7 +130,7 @@
         <p>Realmente deseas eliminar este programa?</p>
       </div>
       <div class="modal-footer">
-        <a href="/program/delete/<%= data.data[i].id_program %>" class="btn btn-danger rounded">Eliminar</a>
+        <a href="/contact/delete/<%= data.data[i].id_contact %>" class="btn btn-danger rounded">Eliminar</a>
         <button type="button" class="btn btn-secondary rounded" data-dismiss="modal">Cancelar</button>
       </div>
     </div>
