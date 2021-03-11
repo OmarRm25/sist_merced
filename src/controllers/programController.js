@@ -76,7 +76,7 @@ controller.cancel = (res) => {
 controller.delete = (req, res) => {
   const { id_program } = req.params;
   req.getConnection((err, conn) => {
-    conn.query('DELETE FROM program WHERE id_program = ?', id_program, (err, rows) => {
+    conn.query('DELETE FROM program WHERE id_program = ?', [id_program] , (err, rows) => {
       console.log(rows);
       res.redirect('/program');
     });
