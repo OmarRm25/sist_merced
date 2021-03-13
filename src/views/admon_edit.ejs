@@ -1,0 +1,121 @@
+<%- include('partials/_header'); -%>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-5 offset-md-3 card">
+      <div class="card-body">
+        <h5>Editar expediente <%=data.org_name %></h5>
+
+        <form action="/admon/update/<%= data.id_admon %>" method="POST">
+            <div class="form-group">
+                <label type="text">Nombre</label>
+                <input type="text" value="<%= data.id_organization %>" class="form-control" disabled>
+              </div>
+              <div class="form-group">
+                <label type="text">Acta constitutiva</label>
+                <select name="constitutive_act" placeholder="Acta constitutiva" value="<%= data.constitutive_act %>" class="form-control">
+                  <option>No aplica</option>
+                  <option>Sí</option>
+                  <option>No</option>
+                  
+                  </select>
+              </div>
+              <div class="form-group">
+                  <label type="text">Constancia de situación fiscal</label>
+                  <select name="fiscal_constance" placeholder="Constancia de situación fiscal" value="<%= data.fiscal_constance %>" class="form-control">
+                    <option>No aplica</option>
+                    <option>Sí</option>
+                    <option>No</option>
+                    </select>
+                </div>
+              
+                <div class="form-group">
+                  <label type="text">Opinión de cumplimiento</label>
+                  <select name="compliance_opinion" placeholder="Opinión de cumplimiento" value="<%=data.compliance_opinion %>" class="form-control">
+                    <option>No aplica</option>
+                    <option>Sí</option>
+                    <option>No</option>
+                    
+                    </select>
+                </div>
+                <div class="form-group">
+                  <label type="text">CURP</label>
+                  <select name="curp" placeholder="CURP" value="<%= data.curp %>" class="form-control">
+                      <option>No aplica</option>
+                      <option>Sí</option>
+                      <option>No</option>
+                    
+                    </select>
+                </div>
+                <div class="form-group">
+                  <label type="text">RFC</label>
+                  <select name="rfc" placeholder="RFC" value="<%= data.rfc %>" class="form-control">
+                      <option>No aplica</option>
+                      <option>Sí</option>
+                      <option>No</option>
+                    
+                    </select>
+                </div>
+                <div class="form-group">
+                  <label type="text">Comprobante de domicilio</label>
+                  <select name="address_voucher" placeholder="Comprobante de domicilio" value="<%= data.address_voucher %>" class="form-control">
+                      <option>No aplica</option>
+                      <option>Sí</option>
+                      <option>No</option>
+                    
+                    </select>
+                </div>
+                <div class="form-group">
+                  <label type="text">Cáratula de estado de cuenta</label>
+                  <select name="account_status" placeholder="Cáratula del estado de cuenta" value="<%= data.account_status %>" class="form-control">
+                      <option>No aplica</option>
+                      <option>Sí</option>
+                      <option>No</option>
+                    
+                    </select>
+                </div>
+                <div class="form-group">
+                  <label type="text">Identificación oficial</label>
+                  <select name="official_id" placeholder="Identificación oficial" value="<%= data.official_id %>" class="form-control">
+                      <option>No aplica</option>
+                      <option>Sí</option>
+                      <option>No</option>
+                    
+                    </select>
+                </div>
+                <div class="form-group">
+                  <label type="text">Poder legal</label>
+                  <select name="legal_power" placeholder="Poder legal" value="<%= data.legal_power %>" class="form-control">
+                      <option>No aplica</option>
+                      <option>Sí</option>
+                      <option>No</option>
+                    
+                    </select>
+                </div>
+              <div class="form-group">
+                <label type="text">Fecha de actualización</label>
+                <input name="update_date" id="datepicker" width="415" value="<%= data.update_date %>" class="form-control"/>
+              <script>
+                $('#datepicker').datepicker({
+                    uiLibrary: 'bootstrap4',
+                    format: 'dd/mm/yyyy'
+  
+                });
+              </script>
+              </div>
+          
+
+          <button type="submit" class="btn btn-info rounded">
+            Actualizar
+          </button>
+            
+          <a href="/admon" class="btn btn-danger rounded">
+            Cancelar
+          </a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/_footer'); -%>

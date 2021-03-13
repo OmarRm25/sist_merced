@@ -13,21 +13,69 @@
             </div>
             <div class="form-group">
               <label type="text">Área de intervención</label>
-              <input type="text" name="intervention_area" value="<%= data.intervention_area %>" placeholder="Ingresa aquí el área de intervención" class="form-control">
+              <select name="intervention_area" value="<%= data.intervention_area %>" placeholder="Ingresa aquí el área de intervención" class="form-control">
+                    <option>01.Fin de la pobreza</option>
+                    <option>02.Hambre cero</option>
+                    <option>03.Salud y bienestar</option>
+                    <option>04.Educación de calidad</option>
+                    <option>05.Igualdad de género</option>
+                    <option>06.Agua limpia y saneamiento</option>
+                    <option>07.Energía asequible y no contaminante</option>
+                    <option>08.Trabajo decente y crecimiento económico</option>
+                    <option>09.Industria, innovación e infraestructura</option>
+                    <option>10.Reducción de las desigualdades</option>
+                    <option>11.Ciudades y comunidades sostenibles</option>
+                    <option>12.Producción y consumo responsables</option>
+                    <option>13.Acción por el clima</option>
+                    <option>14.Vida submarina</option>
+                    <option>15.Vida de ecosistemas terrestres</option>
+                    <option>16.Paz, justicia e instituciones sólidas</option>
+                    <option>17.Alianzas para lograr los objetivos</option>
+              </select>  
             </div>
             <div class="form-group">
                 <label type="text">RFC</label>
                 <input type="text" name="rfc" value="<%= data.rfc %>" placeholder="Ingresa aquí el RFC de la organización" class="form-control">
               </div>
-    
-            <div class="form-group">
-                <label type="text">¿Cuenta con expediente adminstrativo?</label>
-                <select name="admon_file" value="<%= data.admon_file %>" class="form-control">
-                  <option>No</option>
-                  <option>Sí</option>
-                </select>
-            </div>
             
+              <div class="form-group">
+                <label type="text">Entidad Federativa</label>
+                <select name="state" value="<%=data.state %>" class="form-control">
+                      <option>Aguascalientes</option>
+                      <option>Baja California</option>
+                      <option>Baja California Sur</option>
+                      <option>Campeche</option>
+                      <option>Chiapas</option>
+                      <option>Chihuahua</option>
+                      <option>Ciudad de México</option>
+                      <option>Coahuila</option>
+                      <option>Colima</option>
+                      <option>Durango</option>
+                      <option>Estado de México</option> 
+                      <option>Guanajuato</option> 
+                      <option>Guerrero</option> 
+                      <option>Hidalgo</option> 
+                      <option>Jalisco</option> 
+                      <option>Michoacán</option> 
+                      <option>Morelos</option> 
+                      <option>Nayarit</option> 
+                      <option>Nuevo León</option> 
+                      <option>Oaxaca</option> 
+                      <option>Puebla</option> 
+                      <option>Querétaro</option> 
+                      <option>Quintana Roo</option> 
+                      <option>San Luis Potosí</option> 
+                      <option>Sinaloa</option> 
+                      <option>Sonora</option> 
+                      <option>Tabasco</option> 
+                      <option>Tamaulipas</option> 
+                      <option>Tlaxcala</option> 
+                      <option>Veracruz</option> 
+                      <option>Yucatán</option> 
+                      <option>Zacatecas</option>   
+                </select>
+              </div>    
+
             <div class="form-group">
                 <label type="text">¿Se encuentra en lista negra?</label>
                 <select name="blacklist" value="<%= data.blacklist %>" class="form-control">

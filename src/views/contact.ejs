@@ -32,12 +32,8 @@
               <input type="text" name="last_name" placeholder="Ingresa aquí el segundo apellido" class="form-control">
             </div>
             <div class="form-group">
-                <label type="text">Puesto</label>
-                <select name="position" value="Elige el puesto del contacto" class="form-control">
-                  <option>Directivo</option>
-                  <option>Administrativo</option>
-                  <option>Líder de proyecto</option>
-                </select>  
+                <label type="text">Cargo</label>
+                <input type="text" name="position" placeholder="Ingresa el cargo del contacto" class="form-control">     
               </div>
               <div class="form-group">
                 <label type="text">Teléfono</label>
@@ -81,7 +77,7 @@
             <th>Nombre</th>
             <th>Primer apellido</th>
             <th>Segundo apellido</th>
-            <th>Puesto</th>
+            <th>Cargo</th>
             <th>Teléfono</th>
             <th>Correo electrónico</th>
             <th>Organización</th>
@@ -124,10 +120,10 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Eliminar Programa</h5>
+        <h5 class="modal-title">Eliminar Contacto</h5>
       </div>
       <div class="modal-body">
-        <p>Realmente deseas eliminar este programa?</p>
+        <p>Realmente deseas eliminar este contacto?</p>
       </div>
       <div class="modal-footer">
         <a href="/contact/delete/<%= data.data[i].id_contact %>" class="btn btn-danger rounded">Eliminar</a>

@@ -26,23 +26,69 @@
                 </div>
                 <div class="form-group">
                   <label type="text">Área de intervención</label>
-                  <input type="text" name="intervention_area" placeholder="Ingresa aquí el área de intervención" class="form-control">
-                </div>
+                  <select name="intervention_area" placeholder="Ingresa aquí el área de intervención" class="form-control">
+                    <option>01.Fin de la pobreza</option>
+                    <option>02.Hambre cero</option>
+                    <option>03.Salud y bienestar</option>
+                    <option>04.Educación de calidad</option>
+                    <option>05.Igualdad de género</option>
+                    <option>06.Agua limpia y saneamiento</option>
+                    <option>07.Energía asequible y no contaminante</option>
+                    <option>08.Trabajo decente y crecimiento económico</option>
+                    <option>09.Industria, innovación e infraestructura</option>
+                    <option>10.Reducción de las desigualdades</option>
+                    <option>11.Ciudades y comunidades sostenibles</option>
+                    <option>12.Producción y consumo responsables</option>
+                    <option>13.Acción por el clima</option>
+                    <option>14.Vida submarina</option>
+                    <option>15.Vida de ecosistemas terrestres</option>
+                    <option>16.Paz, justicia e instituciones sólidas</option>
+                    <option>17.Alianzas para lograr los objetivos</option>
+                  </select>  
+                  </div>
                 <div class="form-group">
                   <label type="text">RFC</label>
                   <input type="text" name="rfc" placeholder="Ingresa aquí el RFC de la organización" class="form-control">
                 </div>
-                
+
                 <div class="form-group">
-                      <label type="text">¿Cuenta con expediente adminstrativo?</label>
-                      <select name="admon_file" value="Elige una opción" class="form-control">
-                        <option>No</option>
-                        <option>Sí</option>
-                      </select>  
-                    </div>
-
+                  <label type="text">Entidad Federativa</label>
+                  <select name="state" value="Elige una opción" class="form-control">
+                        <option>Aguascalientes</option>
+                        <option>Baja California</option>
+                        <option>Baja California Sur</option>
+                        <option>Campeche</option>
+                        <option>Chiapas</option>
+                        <option>Chihuahua</option>
+                        <option>Ciudad de México</option>
+                        <option>Coahuila</option>
+                        <option>Colima</option>
+                        <option>Durango</option>
+                        <option>Estado de México</option> 
+                        <option>Guanajuato</option> 
+                        <option>Guerrero</option> 
+                        <option>Hidalgo</option> 
+                        <option>Jalisco</option> 
+                        <option>Michoacán</option> 
+                        <option>Morelos</option> 
+                        <option>Nayarit</option> 
+                        <option>Nuevo León</option> 
+                        <option>Oaxaca</option> 
+                        <option>Puebla</option> 
+                        <option>Querétaro</option> 
+                        <option>Quintana Roo</option> 
+                        <option>San Luis Potosí</option> 
+                        <option>Sinaloa</option> 
+                        <option>Sonora</option> 
+                        <option>Tabasco</option> 
+                        <option>Tamaulipas</option> 
+                        <option>Tlaxcala</option> 
+                        <option>Veracruz</option> 
+                        <option>Yucatán</option> 
+                        <option>Zacatecas</option>   
+                  </select>
+                </div>
                 
-
                  <div class="form-group">
                       <label type="text">¿Se encuentra en lista negra?</label>
                       <select name="blacklist" value="Elige una opción" class="form-control">
@@ -73,7 +119,7 @@
                 <th>Organización</th>
                 <th>Área de intervención</th>
                 <th>RFC</th>
-                <th>¿Tiene expediente adminstrativo?</th>
+                <th>Entidad Federativa</th>
                 <th>¿Lista negra?</th>
                 <th>Acciones</th>
               </tr>
@@ -86,10 +132,11 @@
                     <td><%= data[i].org_name %></td>
                     <td><%= data[i].intervention_area %></td>
                     <td><%= data[i].rfc %></td>
-                    <td><%= data[i].admon_file %></td>
+                    <td><%=data[i].state %></td>
                     <td><%= data[i].blacklist %></td>
                     
                     <td>
+                      <br>
                       <a href="organization/update/<%= data[i].id_organization %>" class="btn-sm btn-info rounded">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                           <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -97,17 +144,17 @@
                         </svg>
                       </a>
                     <br /> <br /> 
-                      <button class="btn-sm btn-danger rounded" data-toggle="modal" data-target="#eliminar">
+                     <!-- <button class="btn-sm btn-danger rounded" data-toggle="modal" data-target="#eliminar">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                           <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                           <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                         </svg>
-                      </button>
+                      </button>-->
                     </td>
                 
                   </tr>
     
-          <!--Delete modal window-->
+          <!--Delete modal window
      <div class="modal" id="eliminar">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -124,7 +171,7 @@
         </div>
       </div>
     </div>
-    <!--End of delete modal window-->
+    End of delete modal window-->
     
                 <% } %>
               <% } %>
