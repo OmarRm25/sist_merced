@@ -4,9 +4,9 @@
   <div class="row">
     <div class="col-md-5 offset-md-3 card">
       <div class="card-body"></div>
-        <h5>Editar programa</h5>
+        <h5>Editar participación</h5>
 
-        <form action="/program/update/<%= data.id_program %>" method="POST">
+        <form action="/participation/update/<%= data.id_part %>" method="POST">
           <div class="form-group">
             <label type="text">Clave</label>
             <input type="text" name="program_code" value="<%= data.program_code %>" placeholder="Ingresa aquí la clave de programa" class="form-control" autofocus>

@@ -12,6 +12,7 @@ const programRoutes = require('./routes/program');
 const organizationRoutes = require('./routes/organization');
 const contactRoutes = require('./routes/contact');
 const admonRoutes= require('./routes/admon');
+const participationRoutes = require('./routes/participation');
 
 // settings
 app.set('port', process.env.PORT || 3001);
@@ -35,6 +36,7 @@ app.use('/program', programRoutes);
 app.use('/organization', organizationRoutes);
 app.use('/contact', contactRoutes);
 app.use('/admon', admonRoutes);
+app.use('/participation', participationRoutes);
 
 // static files
 app.use(express.static(path.join(__dirname, 'public')));

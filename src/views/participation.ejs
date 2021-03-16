@@ -4,7 +4,7 @@
 
 <br />
 <!--Modal window trigger button -->
-<button type="button" class="btn btn-success margin-left-3 rounded" data-toggle="modal" data-target="#agregar" >Agregar programa</button>
+<button type="button" class="btn btn-success margin-left-3 rounded" data-toggle="modal" data-target="#agregar" >Agregar participación</button>
 <br /><br />
 
 <!--Insert Modal window-->
@@ -12,71 +12,77 @@
   <div class="modal-dialog modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Agregar Programa</h5>
+        <h5 class="modal-title">Agregar participación</h5>
         
       </div>
 
       <div class="modal-body">
       
-        <form action="/program/add" method="post">
+        <form action="/participation/add" method="post">
             <div class="form-group">
-              <label type="text">Clave</label>
-              <input type="text" name="program_code" placeholder="Ingresa aquí la clave de programa" class="form-control" autofocus>
+                <label type="text">Organización</label>
+                <select type="text" name="id_organization" placeholder="participante" class="form-control">
+                  <% console.log(data); %>
+                  <% if (data.orgs) { %>
+                  <% for(var i=0; i < data.orgs.length; i++){ %>
+                    <option value="<%= data.orgs[i].id_organization %>"> <%= data.orgs[i].org_name %></option>
+                   <% } %>
+                   <% } %>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label type="text">Programa</label>
+                <select type="text" name="program_code" placeholder="Aliado" class="form-control">
+                  <% console.log(data); %>
+                  <% if (data.programs) { %>
+                  <% for(var i=0; i < data.programs.length; i++){ %>
+                    <option value="<%= data.programs[i].program_code %>"> <%= data.programs[i].program_name %></option>
+                   <% } %>
+                   <% } %>
+                </select>
+              </div>
+
+            <div class="form-group"> 
+                <label type="text">Año</label>
+                <br>
+                <input name="year" id="datepicker" width="415" value="N/A"/>
+            <script>
+              $('#datepicker').datepicker({
+                  uiLibrary: 'bootstrap4',
+                  format: 'yyyy'
+              });
+            </script> 
             </div>
             <div class="form-group">
-              <label type="text">Nombre</label>
-              <input type="text" name="program_name" placeholder="Ingresa aquí el nombre del Programa" class="form-control">
+              <label type="text">Tema</label>
+              <input type="text" name="theme" placeholder="Ingresa aquí el tema" class="form-control">
             </div>
+            
             <div class="form-group">
-              <label type="text">Aliado Financiero</label>
-              <select type="text" name="id_organization" placeholder="Aliado" class="form-control">
-                <% console.log(data); %>
-                <% if (data.allies) { %>
-                <% for(var i=0; i < data.allies.length; i++){ %>
-                  <option value="<%= data.allies[i].id_organization %>"> <%= data.allies[i].org_name %></option>
-                 <% } %>
-                 <% } %>
-              </select>
-            </div>
-            <div class="form-group">
-              <label type="text">Coordinación</label>
-              <select name="coordination" placeholder="Coordinación" class="form-control">
-                <option>Formación y Fortalecimiento</option>
-                <option>Inversión Social</option>
+              <label type="text">Recursos</label>
+              <select name="resources" placeholder="Recursos" class="form-control">
+                <option>Propios</option>
+                <option>Aliado Financiero</option>
                 </select>
             </div>
             <div class="form-group">
-              <label type="text">Cuenta Bancaria de ingresos</label>
-              <select name="in_account" placeholder="Ingresa aquí la Cuenta de ingresos" class="form-control">
-                <option>FMBANORTE0384</option>
-                <option>FMBANORTE8355</option>  
-                <option>FMBANORTE8891</option>
-                <option>FMBANORTE8903</option>
-                <option>FMBBVA6048</option>
-                <option>FMBNMX9071</option>
-                <option>FMSANT4991</option>
-              </select>  
+              <label type="text">Consultor/es</label>
+              <input name="consultor" placeholder="Ingresa aquí el nombre del o los consultores" class="form-control"> 
             </div>
             
             <div class="form-group">
               <label type="text">Estatus</label>
-              <select name="status" value="Elige el estatus del programa" class="form-control">
+              <select name="status" value="Elige el estatus de la convocatoria" class="form-control">
                 <option>Activo</option>
                 <option>Finalizado</option>
+                <option>Rechazado</option>
                 <option>Cancelado</option>
               </select>  
             </div>
             <div class="form-group">
               <label type="text">Fecha de término</label>
-              <input name="end_date" id="datepicker" width="415" value="N/A"/>
-            <script>
-              $('.datepicker').datepicker({
-                  uiLibrary: 'bootstrap4',
-                  format: 'dd/mm/yyyy',
-                  language: 'ES'
-
-              });
-            </script>
+              <input name="comments" type="text" placeholder="Máximo 100 caracteres" class="form-control"> 
             </div>
             
       </div>
@@ -98,13 +104,14 @@
         <thead>
           <tr>
             <th>#</th>
-            <th>Clave</th>
-            <th>Nombre</th>
-            <th>Aliado Financiero</th>
-            <th>Coordinación</th>
-            <th>Cuenta Bancaria de ingresos</th>
+            <th>Organización</th>
+            <th>Programa</th>
+            <th>Año</th>
+            <th>Tema</th>
+            <th>Recursos</th>
+            <th>Consultor/es</th>
             <th>Estatus</th>
-            <th>Fecha de término</th>
+            <th>Comentarios</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -113,23 +120,24 @@
             <% for(var i = 0; i < data.data.length; i++) { %>
               <tr>
                 <td><%= (i + 1) %></td>
-                <td><%= data.data[i].program_code %></td>
-                <td><%= data.data[i].program_name %></td>
                 <td><%= data.data[i].org_name %></td>
-                <td><%= data.data[i].coordination %></td>
-                <td><%= data.data[i].in_account %></td>
+                <td><%= data.data[i].program_name %></td>
+                <td><%= data.data[i].year %></td>
+                <td><%= data.data[i].theme %></td>
+                <td><%= data.data[i].resources %></td>
+                <td><%= data.data[i].consultor %></td>
                 <td><%= data.data[i].status %></td>
-                <td><%= data.data[i].end_date %></td>
+                <td><%= data.data[i].comments %></td>
                 
                 <td>
-                  <a href="program/update/<%= data.data[i].id_program %>" class="btn-sm btn-info rounded">
+                  <a href="participation/update/<%= data.data[i].id_part %>" class="btn-sm btn-info rounded">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                       <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                       <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                     </svg>
                   </a>
                 <br /> <br /> 
-                  <button class="btn-sm btn-danger rounded" data-toggle="modal" data-target="#eliminar<%= data.data[i].id_program %>">
+                  <button class="btn-sm btn-danger rounded" data-toggle="modal" data-target="#eliminar<%= data.data[i].id_part %>">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                       <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                       <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
@@ -140,20 +148,17 @@
               </tr>
 
       <!--Delete modal window-->
- <div class="modal" id="eliminar<%= data.data[i].id_program %>">
+ <div class="modal" id="eliminar<%= data.data[i].id_part %>">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Eliminar Programa</h5>
+        <h5 class="modal-title">Eliminar participación</h5>
       </div>
       <div class="modal-body">
-        <p>Realmente deseas eliminar este programa?</p>
+        <p>Realmente deseas eliminar esta participación?</p>
       </div>
       <div class="modal-footer">
-        <!--<form action="/program/delete/<%= data.data[i].id_program %>" method="GET">
-        <button type="submit" class="btn btn-danger rounded">Eliminar</button>
-        </form>-->
-        <a href="/program/delete/<%= data.data[i].id_program %>" class="btn btn-danger rounded">Eliminar</a>
+        <a href="/participation/delete/<%= data.data[i].id_part %>" class="btn btn-danger rounded">Eliminar</a>
         <button type="button" class="btn btn-secondary rounded" data-dismiss="modal">Cancelar</button>
       </div>
     </div>
