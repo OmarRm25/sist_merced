@@ -21,35 +21,31 @@
         <form action="/contact/add" method="post">
             <div class="form-group">
               <label type="text">Nombre</label>
-              <input type="text" name="first_name" placeholder="Ingresa aquí el nombre del contacto" class="form-control" autofocus>
+              <input type="text" name="first_name" placeholder="Ingresa aquí el nombre del contacto" class="form-control rounded" autofocus>
             </div>
             <div class="form-group">
               <label type="text">Primer apellido</label>
-              <input type="text" name="middle_name" placeholder="Ingresa aquí el primer apellido" class="form-control">
+              <input type="text" name="middle_name" placeholder="Ingresa aquí el primer apellido" class="form-control rounded">
             </div>
             <div class="form-group">
               <label type="text">Segundo apellido</label>
-              <input type="text" name="last_name" placeholder="Ingresa aquí el segundo apellido" class="form-control">
+              <input type="text" name="last_name" placeholder="Ingresa aquí el segundo apellido" class="form-control rounded">
             </div>
             <div class="form-group">
-                <label type="text">Puesto</label>
-                <select name="position" value="Elige el puesto del contacto" class="form-control">
-                  <option>Directivo</option>
-                  <option>Administrativo</option>
-                  <option>Líder de proyecto</option>
-                </select>  
+                <label type="text">Cargo</label>
+                <input type="text" name="position" placeholder="Ingresa el cargo del contacto" class="form-control rounded">     
               </div>
               <div class="form-group">
                 <label type="text">Teléfono</label>
-                <input type="text" name="phone_number" placeholder="Ingresa aquí el número telefónico" class="form-control">
+                <input type="text" name="phone_number" placeholder="Ingresa aquí el número telefónico" class="form-control rounded">
               </div>
               <div class="form-group">
                 <label type="text">Correo electrónico</label>
-                <input type="text" name="email" placeholder="Ingresa aquí el correo electrónico" class="form-control">
+                <input type="text" name="email" placeholder="Ingresa aquí el correo electrónico" class="form-control rounded">
               </div>  
             <div class="form-group">
               <label type="text">Organización a la que pertenece</label>
-              <select type="text" name="id_organization" placeholder="contacto" class="form-control">
+              <select type="text" name="id_organization" placeholder="contacto" class="form-control rounded">
                 <% console.log(data); %>
                 <% if (data.orgs) { %>
                 <% for(var i=0; i < data.orgs.length; i++){ %>
@@ -81,7 +77,7 @@
             <th>Nombre</th>
             <th>Primer apellido</th>
             <th>Segundo apellido</th>
-            <th>Puesto</th>
+            <th>Cargo</th>
             <th>Teléfono</th>
             <th>Correo electrónico</th>
             <th>Organización</th>
@@ -124,10 +120,10 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Eliminar Programa</h5>
+        <h5 class="modal-title">Eliminar Contacto</h5>
       </div>
       <div class="modal-body">
-        <p>Realmente deseas eliminar este programa?</p>
+        <p>Realmente deseas eliminar este contacto?</p>
       </div>
       <div class="modal-footer">
         <a href="/contact/delete/<%= data.data[i].id_contact %>" class="btn btn-danger rounded">Eliminar</a>

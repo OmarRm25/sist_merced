@@ -21,22 +21,15 @@
         <form action="/program/add" method="post">
             <div class="form-group">
               <label type="text">Clave</label>
-              <input type="text" name="program_code" placeholder="Ingresa aquí la clave de programa" class="form-control" autofocus>
+              <input type="text" name="program_code" placeholder="Ingresa aquí la clave de programa" class="form-control rounded" autofocus>
             </div>
             <div class="form-group">
-              <label type="text">Programa</label>
-              <input type="text" name="program_name" placeholder="Ingresa aquí el nombre del Programa" class="form-control">
-            </div>
-            <div class="form-group">
-              <label type="text">Coordinación</label>
-              <select name="coordination" placeholder="Coordinación" class="form-control">
-                <option>Formación y Fortalecimiento</option>
-                <option>Inversión Social</option>
-                </select>
+              <label type="text">Nombre</label>
+              <input type="text" name="program_name" placeholder="Ingresa aquí el nombre del Programa" class="form-control rounded">
             </div>
             <div class="form-group">
               <label type="text">Aliado Financiero</label>
-              <select type="text" name="id_organization" placeholder="Aliado" class="form-control">
+              <select type="text" name="id_organization" placeholder="Aliado" class="form-control rounded">
                 <% console.log(data); %>
                 <% if (data.allies) { %>
                 <% for(var i=0; i < data.allies.length; i++){ %>
@@ -46,16 +39,28 @@
               </select>
             </div>
             <div class="form-group">
-              <label type="text">Cuenta de ingresos</label>
-              <input type="text" name="in_account" placeholder="Ingresa aquí la Cuenta de ingresos" class="form-control">
+              <label type="text">Coordinación</label>
+              <select name="coordination" placeholder="Coordinación" class="form-control rounded">
+                <option>Formación y Fortalecimiento</option>
+                <option>Inversión Social</option>
+                </select>
             </div>
             <div class="form-group">
-              <label type="text">Cuenta de egresos</label>
-              <input type="text" name="out_account" placeholder="Ingresa aquí la Cuenta de egresos" class="form-control">
+              <label type="text">Cuenta Bancaria de ingresos</label>
+              <select name="in_account" placeholder="Ingresa aquí la Cuenta de ingresos" class="form-control rounded">
+                <option>FMBANORTE0384</option>
+                <option>FMBANORTE8355</option>  
+                <option>FMBANORTE8891</option>
+                <option>FMBANORTE8903</option>
+                <option>FMBBVA6048</option>
+                <option>FMBNMX9071</option>
+                <option>FMSANT4991</option>
+              </select>  
             </div>
+            
             <div class="form-group">
               <label type="text">Estatus</label>
-              <select name="status" value="Elige el estatus del programa" class="form-control">
+              <select name="status" value="Elige el estatus del programa" class="form-control rounded">
                 <option>Activo</option>
                 <option>Finalizado</option>
                 <option>Cancelado</option>
@@ -63,12 +68,12 @@
             </div>
             <div class="form-group">
               <label type="text">Fecha de término</label>
-              <input name="end_date" id="datepicker" width="415" value="N/A"/>
+              <input name="end_date" id="datepicker" width="415" value="N/A" class="form-control rounded"/>
             <script>
               $('#datepicker').datepicker({
                   uiLibrary: 'bootstrap4',
-                  format: 'dd/mm/yyyy'
-
+                  format: 'dd/mm/yyyy',
+                  width: 415,
               });
             </script>
             </div>
@@ -87,17 +92,16 @@
 
 <!--Body Table-->
 <div class="card-body">
-  <div class="table-responsive-md">
+  <div class="table-responsive">
       <table class="table table-sm table-active table-striped table-hover">
         <thead>
           <tr>
             <th>#</th>
             <th>Clave</th>
-            <th>Programa</th>
-            <th>Coordinación</th>
+            <th>Nombre</th>
             <th>Aliado Financiero</th>
-            <th>Cuenta de ingresos</th>
-            <th>Cuenta de egresos</th>
+            <th>Coordinación</th>
+            <th>Cuenta Bancaria de ingresos</th>
             <th>Estatus</th>
             <th>Fecha de término</th>
             <th>Acciones</th>
@@ -110,10 +114,9 @@
                 <td><%= (i + 1) %></td>
                 <td><%= data.data[i].program_code %></td>
                 <td><%= data.data[i].program_name %></td>
-                <td><%= data.data[i].coordination %></td>
                 <td><%= data.data[i].org_name %></td>
+                <td><%= data.data[i].coordination %></td>
                 <td><%= data.data[i].in_account %></td>
-                <td><%= data.data[i].out_account %></td>
                 <td><%= data.data[i].status %></td>
                 <td><%= data.data[i].end_date %></td>
                 
