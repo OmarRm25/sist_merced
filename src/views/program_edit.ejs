@@ -9,27 +9,27 @@
         <form action="/program/update/<%= data.id_program %>" method="POST">
           <div class="form-group">
             <label type="text">Clave</label>
-            <input type="text" name="program_code" value="<%= data.program_code %>" placeholder="Ingresa aquí la clave de programa" class="form-control" autofocus>
+            <input type="text" name="program_code" value="<%= data.program_code %>" placeholder="Ingresa aquí la clave de programa" class="form-control rounded" autofocus>
           </div>
           <div class="form-group">
             <label type="text">Nombre</label>
-            <input type="text" name="program_name" value="<%= data.program_name %>" placeholder="Ingresa aquí el nombre del Programa" class="form-control">
+            <input type="text" name="program_name" value="<%= data.program_name %>" placeholder="Ingresa aquí el nombre del Programa" class="form-control rounded">
           </div>
           
               <div class="form-group">
                 <label type="text">Aliado Financiero</label>
-                <input type="text" name="id_organization" value="<%= data.id_organization %>" placeholder="Aliado Financiero" class="form-control" disabled>
+                <input type="text" name="id_organization" value="<%= data.id_organization %>" placeholder="Aliado Financiero" class="form-control rounded" disabled>
               </div>
               <div class="form-group">
                 <label type="text">Coordinación</label>
-                <select name="coordination" value="<%= data.coordination %>" placeholder="Coordinación" class="form-control">
+                <select name="coordination" value="<%= data.coordination %>" placeholder="Coordinación" class="form-control rounded">
                   <option>Formación y Fortalecimiento</option>
                   <option>Inversión Social</option>
                   </select>           
                  </div>
           <div class="form-group">
             <label type="text">Cuenta Bancaria de ingresos</label>
-            <select name="in_account" value="<%= data.in_account %>" placeholder="Cuenta de ingresos" class="form-control">
+            <select name="in_account" value="<%= data.in_account %>" placeholder="Cuenta de ingresos" class="form-control rounded">
               <option>FMBANORTE0384</option>
               <option>FMBANORTE8355</option>  
               <option>FMBANORTE8891</option>
@@ -42,7 +42,7 @@
           
           <div class="form-group">
             <label type="text">Estatus</label>
-              <select name="status" value="<%= data.status %>" placeholder="Estatus" class="form-control">
+              <select name="status" value="<%= data.status %>" placeholder="Estatus" class="form-control rounded">
                 <option>Activo</option>
                 <option>Finalizado</option>
                 <option>Cancelado</option>
@@ -50,7 +50,7 @@
           </div>
           <div class="form-group">
             <label type="text">Fecha de término</label>
-            <input name="end_date" id="datepicker" width="415" value="<%= data.end_date %>"/>
+            <input name="end_date" id="datepicker" width="415" value="<%= data.end_date %>" class="form-control rounded"/>
           <script>
             $('#datepicker').datepicker({
                 uiLibrary: 'bootstrap4',

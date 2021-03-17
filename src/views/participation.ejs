@@ -1,5 +1,8 @@
 <%- include('partials/_header'); -%>
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+
 <div class="container">
 
 <br />
@@ -21,7 +24,7 @@
         <form action="/participation/add" method="post">
             <div class="form-group">
                 <label type="text">Organización</label>
-                <select type="text" name="id_organization" placeholder="participante" class="form-control">
+                <select type="text" name="id_organization" placeholder="participante" class="form-control rounded">
                   <% console.log(data); %>
                   <% if (data.orgs) { %>
                   <% for(var i=0; i < data.orgs.length; i++){ %>
@@ -33,11 +36,11 @@
 
               <div class="form-group">
                 <label type="text">Programa</label>
-                <select type="text" name="program_code" placeholder="Aliado" class="form-control">
+                <select type="text" name="id_program" placeholder="programa" class="form-control rounded">
                   <% console.log(data); %>
                   <% if (data.programs) { %>
                   <% for(var i=0; i < data.programs.length; i++){ %>
-                    <option value="<%= data.programs[i].program_code %>"> <%= data.programs[i].program_name %></option>
+                    <option value="<%= data.programs[i].id_program %>"> <%= data.programs[i].program_name %></option>
                    <% } %>
                    <% } %>
                 </select>
@@ -46,34 +49,37 @@
             <div class="form-group"> 
                 <label type="text">Año</label>
                 <br>
-                <input name="year" id="datepicker" width="415" value="N/A"/>
+                <input type="text" style="background-color: whitesmoke" class="form_control rounded text-center" name="year" id="datepicker" placeholder="Selecciona el año" width="430"/>
             <script>
               $('#datepicker').datepicker({
                   uiLibrary: 'bootstrap4',
-                  format: 'yyyy'
+                  viewMode: "years",
+                  format: 'yyyy',
+                  minViewMode: "years",
+                  width: 430
               });
             </script> 
             </div>
             <div class="form-group">
               <label type="text">Tema</label>
-              <input type="text" name="theme" placeholder="Ingresa aquí el tema" class="form-control">
+              <input type="text" name="theme" placeholder="Ingresa aquí el tema" class="form-control rounded">
             </div>
             
             <div class="form-group">
               <label type="text">Recursos</label>
-              <select name="resources" placeholder="Recursos" class="form-control">
+              <select name="resources" placeholder="Recursos" class="form-control rounded">
                 <option>Propios</option>
                 <option>Aliado Financiero</option>
                 </select>
             </div>
             <div class="form-group">
               <label type="text">Consultor/es</label>
-              <input name="consultor" placeholder="Ingresa aquí el nombre del o los consultores" class="form-control"> 
+              <input name="consultor" placeholder="Ingresa aquí el nombre del o los consultores" class="form-control rounded"> 
             </div>
             
             <div class="form-group">
               <label type="text">Estatus</label>
-              <select name="status" value="Elige el estatus de la convocatoria" class="form-control">
+              <select name="status" value="Elige el estatus de la convocatoria" class="form-control rounded">
                 <option>Activo</option>
                 <option>Finalizado</option>
                 <option>Rechazado</option>
@@ -81,8 +87,8 @@
               </select>  
             </div>
             <div class="form-group">
-              <label type="text">Fecha de término</label>
-              <input name="comments" type="text" placeholder="Máximo 100 caracteres" class="form-control"> 
+              <label type="text">Comentarios</label>
+              <input name="comments" type="text" placeholder="Máximo 100 caracteres" class="form-control rounded"> 
             </div>
             
       </div>

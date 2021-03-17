@@ -1,0 +1,84 @@
+<%- include('partials/_header'); -%>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-5 offset-md-3 card">
+      <div class="card-body"></div>
+        <h5>Editar participación</h5>
+
+        <form action="/participation/update/<%= data.id_part %>" method="POST">
+          <div class="form-group">
+            <label type="text">Organización</label>
+            <input type="text" name="id_organization" value="<%= data.id_organization %>" placeholder="Selecciona la Organización" class="form-control rounded" disabled>
+          </div>
+          <div class="form-group">
+            <label type="text">Programa</label>
+            <input type="text" name="id_program" value="<%= data.id_program %>" placeholder="Selecciona el nombre del Programa" class="form-control rounded" disabled>
+          </div>
+          
+          <div class="form-group"> 
+            <label type="text">Año</label>
+            <br>
+            <input type="text" style="background-color: whitesmoke" value="<%= data.year %>"
+            class="form_control rounded text-center" name="year" id="datepicker" placeholder="Selecciona el año" width="430"/>
+        <script>
+          $('#datepicker').datepicker({
+              uiLibrary: 'bootstrap4',
+              viewMode: "years",
+              format: 'yyyy',
+              minViewMode: "years",
+              width: 430
+          });
+        </script> 
+        </div>
+              <div class="form-group">
+                <label type="text">Tema</label>
+                <input name="theme" value="<%= data.theme %>" placeholder="Ingresa el tema" class="form-control rounded">          
+                 </div>
+          <div class="form-group">
+              <label type="text">Recursos</label>
+              <select name="resources" placeholder="Recursos" value="<%= data.resources %>" class="form-control rounded">
+                <option>Propios</option>
+                <option>Aliado Financiero</option>
+                </select>
+            </div>
+          
+            <div class="form-group">
+              <label type="text">Consultor/es</label>
+              <input name="consultor" placeholder="Ingresa aquí el nombre del o los consultores"
+              value="<%= data.consultor %>" class="form-control rounded"> 
+            </div>
+            
+            <div class="form-group">
+              <label type="text">Estatus</label>
+              <select name="status" value="Elige el estatus de la convocatoria" 
+              value="<%= data.status %>" class="form-control rounded">
+                <option>Activo</option>
+                <option>Finalizado</option>
+                <option>Rechazado</option>
+                <option>Cancelado</option>
+              </select>  
+            </div>
+            <div class="form-group">
+              <label type="text">Comentarios</label>
+              <input name="comments" type="text" value="<%= data.comments %>" placeholder="Máximo 100 caracteres" class="form-control rounded"> 
+            </div>
+          
+
+          <button type="submit" class="btn btn-info rounded">
+            Actualizar
+          </button>
+            
+          <a href="/participation" class="btn btn-danger rounded">
+            Cancelar
+          </a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/_footer'); -%>

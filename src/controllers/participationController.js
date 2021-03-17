@@ -20,9 +20,9 @@ controller.list = (req, res) => {
        info.data.forEach((p) => {
          p.org_name = p.id_organization != undefined ? orgs[p.id_organization -1].org_name : null;
        });
-       res.render('participation', {data : info});
        }
     });
+  });
     req.getConnection((err, conn) => {
         conn.query('SELECT * FROM program', (err, programs) =>{
           if (err) {
@@ -30,16 +30,14 @@ controller.list = (req, res) => {
            }else{
            info.programs = programs;
            info.data.forEach((p) => {
-             p.program_name = p.program_code != undefined ? programs[p.program_code -1].program_name : null;
+             p.program_name = p.id_program != undefined ? programs[p.id_program -1].program_name : null;
            });
            res.render('participation', {data : info});
            }
         });
         
       });
-  });
-  
-};
+}
 
 controller.save = (req, res) => {
   const data = req.body;
