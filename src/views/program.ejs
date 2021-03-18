@@ -93,7 +93,7 @@
 <!--Body Table-->
 <div class="card-body">
   <div class="table-responsive">
-      <table class="table table-sm table-active table-striped table-hover">
+      <table id="table" class="table table-sm table-active table-striped table-hover">
         <thead>
           <tr>
             <th>#</th>
@@ -104,7 +104,7 @@
             <th>Cuenta Bancaria de ingresos</th>
             <th>Estatus</th>
             <th>Fecha de término</th>
-            <th>Acciones</th>
+            <td>Acciones</td>
           </tr>
         </thead>
         <tbody>
@@ -149,9 +149,7 @@
         <p>Realmente deseas eliminar este programa?</p>
       </div>
       <div class="modal-footer">
-        <!--<form action="/program/delete/<%= data.data[i].id_program %>" method="GET">
-        <button type="submit" class="btn btn-danger rounded">Eliminar</button>
-        </form>-->
+        
         <a href="/program/delete/<%= data.data[i].id_program %>" class="btn btn-danger rounded">Eliminar</a>
         <button type="button" class="btn btn-secondary rounded" data-dismiss="modal">Cancelar</button>
       </div>
@@ -163,6 +161,7 @@
             <% } %>
           <% } %>
         </tbody>
+        
       </table>
     </div>
   </div>
