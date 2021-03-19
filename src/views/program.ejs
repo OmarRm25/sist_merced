@@ -33,7 +33,7 @@
                 <% console.log(data); %>
                 <% if (data.allies) { %>
                 <% for(var i=0; i < data.allies.length; i++){ %>
-                  <option value="<%= data.allies[i].id_organization %>"> <%= data.allies[i].org_name %></option>
+                  <option value="<%= data.allies[i].id_organization %>"><%= data.allies[i].org_name %></option>
                  <% } %>
                  <% } %>
               </select>
@@ -91,8 +91,8 @@
 <!--End of insert modal window-->
 
 <!--Body Table-->
-<div class="card-body">
-  <div class="table-responsive">
+
+  <div class="table-responsive" >
       <table id="table" class="table table-sm table-active table-striped table-hover">
         <thead>
           <tr>
@@ -107,6 +107,7 @@
             <td>Acciones</td>
           </tr>
         </thead>
+
         <tbody>
           <% if (data.data) { %>
             <% for(var i = 0; i < data.data.length; i++) { %>
@@ -137,7 +138,8 @@
                 </td>
             
               </tr>
-
+           
+    
       <!--Delete modal window-->
  <div class="modal" id="eliminar<%= data.data[i].id_program %>">
   <div class="modal-dialog" role="document">
@@ -146,7 +148,7 @@
         <h5 class="modal-title">Eliminar Programa</h5>
       </div>
       <div class="modal-body">
-        <p>Realmente deseas eliminar este programa?</p>
+        <p>¿Realmente deseas eliminar este programa?</p>
       </div>
       <div class="modal-footer">
         
@@ -158,14 +160,11 @@
 </div>
 <!--End of delete modal window-->
 
-            <% } %>
+          <% } %>
           <% } %>
         </tbody>
-        
       </table>
     </div>
-  </div>
-  
  
 </div> 
 
