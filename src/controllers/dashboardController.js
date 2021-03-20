@@ -16,4 +16,8 @@ controller.contact = (req, res) => {
     res.redirect('/contact');
 }
 
+controller.admon = (req, res) => {
+    res.redirect('/admon');
+}
+
 module.exports = controller;

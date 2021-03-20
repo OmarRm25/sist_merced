@@ -8,7 +8,7 @@ const express = require('express'),
 const app = express();
 
 // importing routes
-//const signinRoutes = require('./routes/signin');
+const signinRoutes = require('./routes/signin');
 
 const dashboardRoutes = require('./routes/dashboard');
 const programRoutes = require('./routes/program');
@@ -39,7 +39,7 @@ app.use(session({
 app.use(express.urlencoded({extended: false}));
 
 // routes
-//app.use('/', signinRoutes);
+app.use('/', signinRoutes);
 
 app.use('/dashboard', dashboardRoutes);
 app.use('/program', programRoutes);
