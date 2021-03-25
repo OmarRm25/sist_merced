@@ -46,6 +46,18 @@
                 </select>
               </div>
 
+              <div class="form-group">
+                <label type="text">Consultor</label>
+                <select type="text" name="id_consultor" placeholder="consultor" class="form-control rounded">
+                  <% console.log(data); %>
+                  <% if (data.consultor) { %>
+                  <% for(var i=0; i < data.consultor.length; i++){ %>
+                    <option value="<%= data.consultor[i].id_consultor %>"> <%= data.consultor[i].full_name %></option>
+                   <% } %>
+                   <% } %>
+                </select>              
+              </div>
+
             <div class="form-group"> 
                 <label type="text">Año</label>
                 <br>
@@ -72,23 +84,10 @@
                 <option>Aliado Financiero</option>
                 </select>
             </div>
-            <div class="form-group">
-              <label type="text">Consultor/es</label>
-              <input name="consultor" placeholder="Ingresa aquí el nombre del o los consultores" class="form-control rounded"> 
-            </div>
             
             <div class="form-group">
-              <label type="text">Estatus</label>
-              <select name="status" value="Elige el estatus de la convocatoria" class="form-control rounded">
-                <option>Activo</option>
-                <option>Finalizado</option>
-                <option>Rechazado</option>
-                <option>Cancelado</option>
-              </select>  
-            </div>
-            <div class="form-group">
               <label type="text">Comentarios</label>
-              <input name="comments" type="text" placeholder="Máximo 100 caracteres" class="form-control rounded"> 
+              <input name="comments" type="text" placeholder="Máximo 300 caracteres" maxlength="300" class="form-control rounded"> 
             </div>
             
       </div>
@@ -111,11 +110,11 @@
             <th>#</th>
             <th>Organización</th>
             <th>Programa</th>
+            <th>Consultor</th>
             <th>Año</th>
             <th>Tema</th>
             <th>Recursos</th>
-            <th>Consultor/es</th>
-            <th>Estatus</th>
+            <th>Aliado Financiero</th>
             <th>Comentarios</th>
             <td>Acciones</td>
           </tr>
@@ -127,11 +126,11 @@
                 <td><%= (i + 1) %></td>
                 <td><%= data.data[i].org_name %></td>
                 <td><%= data.data[i].program_name %></td>
+                <td><%= data.data[i].consultor %></td>
                 <td><%= data.data[i].year %></td>
                 <td><%= data.data[i].theme %></td>
                 <td><%= data.data[i].resources %></td>
-                <td><%= data.data[i].consultor %></td>
-                <td><%= data.data[i].status %></td>
+                <td><%= data.data[i].org_name %></td> <!--proveedor de recursos-->
                 <td><%= data.data[i].comments %></td>
                 
                 <td>
@@ -152,7 +151,7 @@
             
               </tr>
 
-      <!--Delete modal window-->
+      <!--Delete modal window
  <div class="modal" id="eliminar<%= data.data[i].id_part %>">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -169,7 +168,7 @@
     </div>
   </div>
 </div>
-<!--End of delete modal window-->
+End of delete modal window-->
 
             <% } %>
           <% } %>

@@ -1,0 +1,38 @@
+<%- include('partials/_header'); -%>
+
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-5 offset-md-3 card">
+        <div class="card-body">
+          <h5>Editar Consultor</h5>
+  
+          <form action="/consultor/update/<%= data.id_consultor %>" method="POST">
+            <div class="form-group">
+                <label type="text">Nombre Completo/Razón Social</label>
+                <input type="text" name="full_name" value="<%= data.full_name %>" placeholder="Ingresa aquí el nombre completo o Razón Social del consultor" class="form-control rounded" autofocus>
+              </div>
+              
+              <div class="form-group">
+                <label type="text">Teléfono</label>
+                <input type="text" name="phone" value="<%= data.phone %>" placeholder="Ingresa aquí el teléfono del consultor" class="form-control rounded" maxlength="10" maxlength="10">
+              </div>
+
+               <div class="form-group">
+                    <label type="text">Correo Electrónico</label>
+                    <input type="email" name="email" value="<%= data.email %>" value="Ingresa el correo electrónico del consultor" class="form-control rounded">
+                      
+               </div>
+  
+            <button type="submit" class="btn btn-info rounded">
+              Actualizar
+            </button>
+              
+            <a href="/consultor" class="btn btn-danger rounded">
+              Cancelar
+            </a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+<%- include('partials/_footer'); -%>

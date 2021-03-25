@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS `Merced_DB`.`organization` (
   `rfc` VARCHAR(13) NOT NULL,
   `state` VARCHAR(45) NOT NULL,
   `blacklist` TEXT(2) NOT NULL,
+  `org_type` VARCHAR(25) NOT NULL,
   PRIMARY KEY (`id_organization`),
   UNIQUE INDEX `id_organizacion_UNIQUE` (`id_organization` ASC));
 
@@ -40,7 +41,8 @@ CREATE TABLE IF NOT EXISTS `Merced_DB`.`program` (
   `program_code` VARCHAR(45) NOT NULL,
   `program_name` VARCHAR(45) NOT NULL,
   `id_organization` INT UNSIGNED NOT NULL,
-  `coordination` VARCHAR(45) NOT NULL,
+  `strategy_line` VARCHAR(45) NOT NULL,
+  `strategy_line2` VARCHAR(45) NOT NULL,
   `in_account` VARCHAR(30) NOT NULL,
   `status` VARCHAR(30) NOT NULL,
   `end_date` VARCHAR(30),
@@ -86,7 +88,20 @@ CREATE TABLE IF NOT EXISTS `Merced_DB`.`employee` (
   `email` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_employee`),
-  UNIQUE INDEX `id_leader_UNIQUE` (`id_employee` ASC);
+  UNIQUE INDEX `id_leader_UNIQUE` (`id_employee` ASC));
+
+  -- -----------------------------------------------------
+-- Table `Merced_DB`.`consultor`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `Merced_DB`.`consultor` ;
+
+CREATE TABLE IF NOT EXISTS `Merced_DB`.`consultor` (
+  `id_consultor` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `full_name` VARCHAR(45) NOT NULL,
+  `phone` VARCHAR(10) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_consultor`),
+  UNIQUE INDEX `id_consultor_UNIQUE` (`id_consultor` ASC));
 
 -- -----------------------------------------------------
 -- Table `Merced_DB`.`program_organization`
@@ -94,18 +109,24 @@ CREATE TABLE IF NOT EXISTS `Merced_DB`.`employee` (
 DROP TABLE IF EXISTS `Merced_DB`.`program_organization` ;
 
 CREATE TABLE IF NOT EXISTS `Merced_DB`.`program_organization` (
-  `id_part` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id_part` INT UNSIGNED NOT NULL,
   `id_organization` INT UNSIGNED NOT NULL,
   `id_program` INT UNSIGNED NOT NULL,
+  `id_consultor` INT UNSIGNED NOT NULL,
+  `consultor2` VARCHAR(45) NOT NULL,
+  `consultor3` VARCHAR(45) NOT NULL,
+  `consultor4` VARCHAR(45) NOT NULL,
+  `consultor5` VARCHAR(45) NOT NULL,
+  `consultor6` VARCHAR(45) NOT NULL,
+  `consultor7` VARCHAR(45) NOT NULL,
   `year` YEAR(4) NOT NULL,
   `theme` VARCHAR(45) NOT NULL,
   `resources` VARCHAR(20) NOT NULL,
-  `consultor` VARCHAR(45) NOT NULL,
-  `status` VARCHAR(15) NOT NULL,
-  `comments` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`id_part`,`id_organization`, `id_program`),
+  `comments` VARCHAR(300) NOT NULL,
+  PRIMARY KEY (`id_part`, `id_organization`),
   INDEX `fk_program_has_organization_organization1_idx` (`id_organization` ASC),
   INDEX `fk_program_organization_program1_idx` (`id_program` ASC),
+  INDEX `fk_program_organization_consultor1_idx` (`id_consultor` ASC),
   CONSTRAINT `fk_program_has_organization_organization1`
     FOREIGN KEY (`id_organization`)
     REFERENCES `Merced_DB`.`organization` (`id_organization`)
@@ -114,6 +135,11 @@ CREATE TABLE IF NOT EXISTS `Merced_DB`.`program_organization` (
   CONSTRAINT `fk_program_organization_program1`
     FOREIGN KEY (`id_program`)
     REFERENCES `Merced_DB`.`program` (`id_program`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_program_organization_consultor1`
+    FOREIGN KEY (`id_consultor`)
+    REFERENCES `Merced_DB`.`consultor` (`id_consultor`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 

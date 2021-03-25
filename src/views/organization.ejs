@@ -27,23 +27,23 @@
                 <div class="form-group">
                   <label type="text">Área de intervención</label>
                   <select name="intervention_area" placeholder="Ingresa aquí el área de intervención" class="form-control rounded">
-                    <option>01.Fin de la pobreza</option>
-                    <option>02.Hambre cero</option>
-                    <option>03.Salud y bienestar</option>
-                    <option>04.Educación de calidad</option>
-                    <option>05.Igualdad de género</option>
-                    <option>06.Agua limpia y saneamiento</option>
-                    <option>07.Energía asequible y no contaminante</option>
-                    <option>08.Trabajo decente y crecimiento económico</option>
-                    <option>09.Industria, innovación e infraestructura</option>
-                    <option>10.Reducción de las desigualdades</option>
-                    <option>11.Ciudades y comunidades sostenibles</option>
-                    <option>12.Producción y consumo responsables</option>
-                    <option>13.Acción por el clima</option>
-                    <option>14.Vida submarina</option>
-                    <option>15.Vida de ecosistemas terrestres</option>
-                    <option>16.Paz, justicia e instituciones sólidas</option>
-                    <option>17.Alianzas para lograr los objetivos</option>
+                    <option>Acción por el clima</option>
+                    <option>Agua limpia y saneamiento</option>
+                    <option>Alianzas para lograr los objetivos</option>
+                    <option>Ciudades y comunidades sostenibles</option>
+                    <option>Educación de calidad</option>
+                    <option>Energía asequible y no contaminante</option>
+                    <option>Fin de la pobreza</option>
+                    <option>Hambre cero</option>
+                    <option>Igualdad de género</option>
+                    <option>Industria, innovación e infraestructura</option>
+                    <option>Paz, justicia e instituciones sólidas</option>
+                    <option>Producción y consumo responsables</option>
+                    <option>Reducción de las desigualdades</option>
+                    <option>Salud y bienestar</option>
+                    <option>Trabajo decente y crecimiento económico</option>
+                    <option>Vida de ecosistemas terrestres</option>
+                    <option>Vida submarina</option>
                   </select>  
                   </div>
                 <div class="form-group">
@@ -97,6 +97,14 @@
                     </select>
                  </div>
 
+                 <div class="form-group">
+                  <label type="text">Tipo de organización</label>
+                  <select name="org_type" value="Elige una opción" class="form-control rounded">
+                    <option>Donataria</option>
+                    <option>Aliado Financiero</option>
+                </select>
+             </div>
+
           <div class="modal-footer">
             <button type="submit" class="btn btn-info rounded">Guardar</button>
             <button type="button" class="btn btn-danger rounded" data-dismiss="modal">Cancelar</button>
@@ -121,6 +129,7 @@
                 <th>RFC</th>
                 <th>Entidad Federativa</th>
                 <th>¿Lista negra?</th>
+                <th>Tipo de organización</th>
                 <td>Acciones</td>
               </tr>
             </thead>
@@ -134,6 +143,7 @@
                     <td><%= data[i].rfc %></td>
                     <td><%=data[i].state %></td>
                     <td><%= data[i].blacklist %></td>
+                    <td><%= data[i].org_type %></td>
                     
                     <td>
                       <br>

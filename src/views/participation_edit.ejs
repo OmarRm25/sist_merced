@@ -18,6 +18,12 @@
             <label type="text">Programa</label>
             <input type="text" name="id_program" value="<%= data.id_program %>" placeholder="Selecciona el nombre del Programa" class="form-control rounded" disabled>
           </div>
+
+          <div class="form-group">
+            <label type="text">Consultor/es</label>
+            <input name="full_name" placeholder="Ingresa aquí el nombre del o los consultores"
+            value="<%= data.full_name %>" class="form-control rounded"> 
+          </div>
           
           <div class="form-group"> 
             <label type="text">Año</label>
@@ -45,26 +51,10 @@
                 <option>Aliado Financiero</option>
                 </select>
             </div>
-          
-            <div class="form-group">
-              <label type="text">Consultor/es</label>
-              <input name="consultor" placeholder="Ingresa aquí el nombre del o los consultores"
-              value="<%= data.consultor %>" class="form-control rounded"> 
-            </div>
             
             <div class="form-group">
-              <label type="text">Estatus</label>
-              <select name="status" value="Elige el estatus de la convocatoria" 
-              value="<%= data.status %>" class="form-control rounded">
-                <option>Activo</option>
-                <option>Finalizado</option>
-                <option>Rechazado</option>
-                <option>Cancelado</option>
-              </select>  
-            </div>
-            <div class="form-group">
               <label type="text">Comentarios</label>
-              <input name="comments" type="text" value="<%= data.comments %>" placeholder="Máximo 100 caracteres" class="form-control rounded"> 
+              <input name="comments" type="text" value="<%= data.comments %>" placeholder="Máximo 300 caracteres" maxlength="300" class="form-control rounded"> 
             </div>
           
 
