@@ -24,9 +24,7 @@ controller.auth = (req, res) => {
           req.session.email = email;
           res.redirect("/dashboard/init");
         } else {
-            res.send(
-                "contraseña o correo invalidos"
-            );
+            res.render("signin_error");
         }
       }
     );
@@ -42,7 +40,7 @@ controller.home = (req, res) => {
   }
 };
 
-//session killed
+//session killer
 controller.die = (req, res) => {
     req.session.destroy((err) => {
       if (err) {

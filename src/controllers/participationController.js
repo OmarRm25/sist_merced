@@ -12,7 +12,7 @@ controller.list = (req, res) => {
     });
   });
   req.getConnection((err, conn) => {
-    conn.query('SELECT * FROM organization ORDER BY org_name ASC', (err, orgs) =>{
+    conn.query('SELECT * FROM organization', (err, orgs) =>{
       if (err) {
         res.json(err);
        }else{
@@ -24,7 +24,7 @@ controller.list = (req, res) => {
     });
   });
   req.getConnection((err, conn) => {
-    conn.query('SELECT * FROM consultor ORDER BY full_name ASC', (err, consultor) =>{
+    conn.query('SELECT * FROM consultor', (err, consultor) =>{
       if (err) {
         res.json(err);
        }else{
@@ -36,7 +36,7 @@ controller.list = (req, res) => {
     });
   });
     req.getConnection((err, conn) => {
-        conn.query('SELECT * FROM program ORDER BY program_name ASC', (err, programs) =>{
+        conn.query('SELECT * FROM program', (err, programs) =>{
           if (err) {
             res.json(err);
            }else{

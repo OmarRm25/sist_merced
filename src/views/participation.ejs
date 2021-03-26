@@ -52,11 +52,113 @@
                   <% console.log(data); %>
                   <% if (data.consultor) { %>
                   <% for(var i=0; i < data.consultor.length; i++){ %>
-                    <option value="<%= data.consultor[i].id_consultor %>"> <%= data.consultor[i].full_name %></option>
+                   <option value="<%= data.consultor[i].id_consultor %>"> <%= data.consultor[i].full_name %></option>
                    <% } %>
                    <% } %>
                 </select>              
               </div>
+
+              <div class="form-group">
+                <div class="custom-control custom-switch">
+                  <input type="checkbox" class="custom-control-input" id="check" value="1" onchange="javascript:showContent()">
+                  <label class="custom-control-label" for="check">Agregar más consultores</label>
+                </div>
+              </div>
+
+              <div id="content" style="display: none;">
+
+              <div class="form-group">
+                <label type="text">Consultor 2</label>
+                <select type="text" name="consultor2" placeholder="consultor" class="form-control rounded">
+                  <option>No aplica</option>
+                  <% console.log(data); %>
+                  <% if (data.consultor) { %>
+                  <% for(var i=0; i < data.consultor.length; i++){ %>
+                    <option value="<%= data.consultor[i].full_name %>"><%= data.consultor[i].full_name %></option>
+                   <% } %>
+                   <% } %>
+                </select>              
+              </div>
+
+              <div class="form-group">
+                <label type="text">Consultor 3</label>
+                <select type="text" name="consultor3" placeholder="consultor" class="form-control rounded">
+                  <option>No aplica</option>
+                  <% console.log(data); %>
+                  <% if (data.consultor) { %>
+                  <% for(var i=0; i < data.consultor.length; i++){ %>
+                    <option value="<%= data.consultor[i].full_name %>"> <%= data.consultor[i].full_name %></option>
+                   <% } %>
+                   <% } %>
+                </select>              
+              </div>
+
+              <div class="form-group">
+                <label type="text">Consultor 4</label>
+                <select type="text" name="consultor4" placeholder="consultor" class="form-control rounded">
+                  <option>No aplica</option>
+                  <% console.log(data); %>
+                  <% if (data.consultor) { %>
+                  <% for(var i=0; i < data.consultor.length; i++){ %>
+                    <option value="<%= data.consultor[i].full_name %>"> <%= data.consultor[i].full_name %></option>
+                   <% } %>
+                   <% } %>
+                </select>              
+              </div>
+
+              <div class="form-group">
+                <label type="text">Consultor 5</label>
+                <select type="text" name="consultor5" placeholder="consultor" class="form-control rounded">
+                  <option>No aplica</option>
+                  <% console.log(data); %>
+                  <% if (data.consultor) { %>
+                  <% for(var i=0; i < data.consultor.length; i++){ %>
+                    <option value="<%= data.consultor[i].full_name %>"> <%= data.consultor[i].full_name %></option>
+                   <% } %>
+                   <% } %>
+                </select>              
+              </div>
+
+              <div class="form-group">
+                <label type="text">Consultor 6</label>
+                <select type="text" name="consultor6" placeholder="consultor" class="form-control rounded">
+                  <option>No aplica</option>
+                  <% console.log(data); %>
+                  <% if (data.consultor) { %>
+                  <% for(var i=0; i < data.consultor.length; i++){ %>
+                    <option value="<%= data.consultor[i].full_name %>"> <%= data.consultor[i].full_name %></option>
+                   <% } %>
+                   <% } %>
+                </select>              
+              </div>
+
+              <div class="form-group">
+                <label type="text">Consultor 7</label>
+                <select type="text" name="consultor7" placeholder="consultor" class="form-control rounded">
+                  <option>No aplica</option>
+                  <% console.log(data); %>
+                  <% if (data.consultor) { %>
+                  <% for(var i=0; i < data.consultor.length; i++){ %>
+                    <option value="<%= data.consultor[i].full_name %>"> <%= data.consultor[i].full_name %></option>
+                   <% } %>
+                   <% } %>
+                </select>              
+              </div>
+
+              <div class="form-group">
+                <label type="text">Consultor 8</label>
+                <select type="text" name="consultor8" placeholder="consultor" class="form-control rounded">
+                  <option>No aplica</option>
+                  <% console.log(data); %>
+                  <% if (data.consultor) { %>
+                  <% for(var i=0; i < data.consultor.length; i++){ %>
+                    <option value="<%= data.consultor[i].full_name %>"> <%= data.consultor[i].full_name %></option>
+                   <% } %>
+                   <% } %>
+                </select>              
+              </div>
+
+            </div>
 
             <div class="form-group"> 
                 <label type="text">Año</label>
@@ -78,13 +180,26 @@
             </div>
             
             <div class="form-group">
-              <label type="text">Recursos</label>
-              <select name="resources" placeholder="Recursos" class="form-control rounded">
-                <option>Propios</option>
-                <option>Aliado Financiero</option>
-                </select>
+              <label for="seeAnotherField" type="text">Recursos</label>
+              <select name="resources" id="seeAnotherField" class="form-control rounded">
+                <option value="Propios">Propios</option>
+                <option value="Aliado Financiero">Aliado Financiero</option>
+              </select> 
             </div>
             
+            <div class="form-group" id="otherFieldDiv">
+              <label for="otherField" type="text">¿Quién fue el aliado financiero?</label>
+              <select type="text" name="ally_name" placeholder="Aliado" class="form-control rounded" id="otherField">
+                <option>No aplica</option>
+                <% console.log(data); %>
+                <% if (data.orgs) { %>
+                <% for(var i=0; i < data.orgs.length; i++){ %>
+                  <option value="<%= data.orgs[i].org_name %>"> <%= data.orgs[i].org_name %></option>
+                 <% } %>
+                 <% } %>
+              </select>
+            </div>  
+
             <div class="form-group">
               <label type="text">Comentarios</label>
               <input name="comments" type="text" placeholder="Máximo 300 caracteres" maxlength="300" class="form-control rounded"> 
@@ -111,6 +226,13 @@
             <th>Organización</th>
             <th>Programa</th>
             <th>Consultor</th>
+            <th>Consultor 2</th>
+            <th>Consultor 3</th>
+            <th>Consultor 4</th>
+            <th>Consultor 5</th>
+            <th>Consultor 6</th>
+            <th>Consultor 7</th>
+            <th>Consultor 8</th>
             <th>Año</th>
             <th>Tema</th>
             <th>Recursos</th>
@@ -126,11 +248,18 @@
                 <td><%= (i + 1) %></td>
                 <td><%= data.data[i].org_name %></td>
                 <td><%= data.data[i].program_name %></td>
-                <td><%= data.data[i].consultor %></td>
+                <td><%= data.data[i].full_name %></td>
+                <td><%= data.data[i].consultor2 %></td>
+                <td><%= data.data[i].consultor3 %></td>
+                <td><%= data.data[i].consultor4 %></td>
+                <td><%= data.data[i].consultor5 %></td>
+                <td><%= data.data[i].consultor6 %></td>
+                <td><%= data.data[i].consultor7 %></td>
+                <td><%= data.data[i].consultor8 %></td>
                 <td><%= data.data[i].year %></td>
                 <td><%= data.data[i].theme %></td>
                 <td><%= data.data[i].resources %></td>
-                <td><%= data.data[i].org_name %></td> <!--proveedor de recursos-->
+                <td><%= data.data[i].ally_name %></td> <!--proveedor de recursos-->
                 <td><%= data.data[i].comments %></td>
                 
                 <td>
@@ -141,12 +270,12 @@
                     </svg>
                   </a>
                 <br /> <br /> 
-                  <button class="btn-sm btn-danger rounded" data-toggle="modal" data-target="#eliminar<%= data.data[i].id_part %>">
+                  <!--<button class="btn-sm btn-danger rounded" data-toggle="modal" data-target="#eliminar<%= data.data[i].id_part %>">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                       <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                       <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                     </svg>
-                  </button>
+                  </button>-->
                 </td>
             
               </tr>
@@ -178,7 +307,30 @@ End of delete modal window-->
   
 </div> 
 
+<script>
+  $("#seeAnotherField").change(function () {
+  if ($(this).val() == "Aliado Financiero") {
+    $("#otherFieldDiv").show();
+    $("#otherField").attr("required", "");
+    $("#otherField").attr("data-error", "This field is required.");
+  } else {
+    $("#otherFieldDiv").hide();
+    $("#otherField").removeAttr("required");
+    $("#otherField").removeAttr("data-error");
+  }
+});
+$("#seeAnotherField").trigger("change");
 
+function showContent() {
+  element = document.getElementById("content");
+  check = document.getElementById("check");
+  if (check.checked) {
+    element.style.display = "block";
+  } else {
+    element.style.display = "none";
+  }
+}
 
+</script>
 
 <%- include('partials/_footer'); -%>

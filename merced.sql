@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `Merced_DB`.`consultor` (
 DROP TABLE IF EXISTS `Merced_DB`.`program_organization` ;
 
 CREATE TABLE IF NOT EXISTS `Merced_DB`.`program_organization` (
-  `id_part` INT UNSIGNED NOT NULL,
+  `id_part` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `id_organization` INT UNSIGNED NOT NULL,
   `id_program` INT UNSIGNED NOT NULL,
   `id_consultor` INT UNSIGNED NOT NULL,
@@ -119,9 +119,11 @@ CREATE TABLE IF NOT EXISTS `Merced_DB`.`program_organization` (
   `consultor5` VARCHAR(45) NOT NULL,
   `consultor6` VARCHAR(45) NOT NULL,
   `consultor7` VARCHAR(45) NOT NULL,
+  `consultor8` VARCHAR(45) NOT NULL,
   `year` YEAR(4) NOT NULL,
   `theme` VARCHAR(45) NOT NULL,
   `resources` VARCHAR(20) NOT NULL,
+  `ally_name` VARCHAR(45) NOT NULL,
   `comments` VARCHAR(300) NOT NULL,
   PRIMARY KEY (`id_part`, `id_organization`),
   INDEX `fk_program_has_organization_organization1_idx` (`id_organization` ASC),
