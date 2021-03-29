@@ -1,4 +1,5 @@
 const express = require('express'),
+      session =require('express-session'),
       path = require('path'),
       morgan = require('morgan'),
       mysql = require('mysql'),
@@ -7,12 +8,14 @@ const express = require('express'),
 const app = express();
 
 // importing routes
+const signinRoutes = require('./routes/signin');
 const dashboardRoutes = require('./routes/dashboard');
 const programRoutes = require('./routes/program');
 const organizationRoutes = require('./routes/organization');
 const contactRoutes = require('./routes/contact');
 const admonRoutes= require('./routes/admon');
 const participationRoutes = require('./routes/participation');
+const consultorRoutes = require('./routes/consultor');
 
 // settings
 app.set('port', process.env.PORT || 3001);
@@ -28,15 +31,22 @@ app.use(myConnection(mysql, {
   port: 3306,
   database: 'Merced_DB'
 }, 'single'));
+app.use(session({
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true
+}));
 app.use(express.urlencoded({extended: false}));
 
 // routes
+app.use('/', signinRoutes);
 app.use('/dashboard', dashboardRoutes);
 app.use('/program', programRoutes);
 app.use('/organization', organizationRoutes);
 app.use('/contact', contactRoutes);
 app.use('/admon', admonRoutes);
 app.use('/participation', participationRoutes);
+app.use('/consultor', consultorRoutes);
 
 // static files
 app.use(express.static(path.join(__dirname, 'public')));

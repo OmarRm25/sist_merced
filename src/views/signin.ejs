@@ -1,0 +1,40 @@
+<%- include('partials/_headerSign'); -%> <br /><br />
+
+<div class="container">
+  <div class="col-md-4 mx-auto">
+    <div class="card text-center shadow-lg">
+      <img
+        src="https://media-exp1.licdn.com/dms/image/C4E0BAQEnfklGO1h7lA/company-logo_200_200/0/1554825400404?e=2159024400&v=beta&t=RupsKoMCuJIAWjQerkzFhsTsRjeLZ6EoR1hnLKo7KFg"
+        alt="Logo Merced"
+        class="card-img-top mx-auto m-2 rounded-circle w-50"
+      />
+      
+      <div class="card-body">
+        <form action="/auth" method="POST">
+          <div class="form-group">
+            <input
+              type="email"
+              name="email"
+              placeholder="Correo Electrónico"
+              class="form-control rounded"
+              autofocus
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="password"
+              name="password"
+              placeholder="Contraseña"
+              class="form-control rounded"
+            />
+          </div>
+          <button type="submit" class="btn btn-info btn-block rounded">
+            Iniciar sesión
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/_footer'); -%>

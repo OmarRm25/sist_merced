@@ -23,6 +23,18 @@ controller.list = (req, res) => {
        }
     });
   });
+  req.getConnection((err, conn) => {
+    conn.query('SELECT * FROM consultor', (err, consultor) =>{
+      if (err) {
+        res.json(err);
+       }else{
+       info.consultor = consultor;
+       info.data.forEach((p) => {
+         p.full_name = p.id_consultor != undefined ? consultor[p.id_consultor -1].full_name : null;
+       });
+       }
+    });
+  });
     req.getConnection((err, conn) => {
         conn.query('SELECT * FROM program', (err, programs) =>{
           if (err) {

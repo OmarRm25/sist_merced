@@ -20,13 +20,28 @@
                 <label type="text">Aliado Financiero</label>
                 <input type="text" name="id_organization" value="<%= data.id_organization %>" placeholder="Aliado Financiero" class="form-control rounded" disabled>
               </div>
-              <div class="form-group">
-                <label type="text">Coordinación</label>
-                <select name="coordination" value="<%= data.coordination %>" placeholder="Coordinación" class="form-control rounded">
-                  <option>Formación y Fortalecimiento</option>
-                  <option>Inversión Social</option>
+
+              <div class="row">
+              <div class="form-group col">
+                <label type="text">Línea estratégica</label>
+                <select name="strategy_line" value="<%= data.strategy_line %>" placeholder="Línea estratégica" class="form-control rounded">
+                <option>Formación</option>
+                <option>Fortalecimiento</option>
+                <option>Inversión Social</option>
                   </select>           
                  </div>
+                 
+                 <div class="form-group col">
+                  <label type="text">Línea estratégica secundaria</label>
+                  <select name="strategy_line2" value="<%= data.strategy_line2 %>" placeholder="Línea estratégica" class="form-control rounded">
+                  <option>No aplica</option>
+                  <option>Formación</option>
+                  <option>Fortalecimiento</option>
+                  <option>Inversión Social</option>
+                    </select>           
+                   </div> 
+                  </div>  
+
           <div class="form-group">
             <label type="text">Cuenta Bancaria de ingresos</label>
             <select name="in_account" value="<%= data.in_account %>" placeholder="Cuenta de ingresos" class="form-control rounded">

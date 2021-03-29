@@ -33,18 +33,31 @@
                 <% console.log(data); %>
                 <% if (data.allies) { %>
                 <% for(var i=0; i < data.allies.length; i++){ %>
-                  <option value="<%= data.allies[i].id_organization %>"> <%= data.allies[i].org_name %></option>
+                  <option value="<%= data.allies[i].id_organization %>"><%= data.allies[i].org_name %></option>
                  <% } %>
                  <% } %>
               </select>
             </div>
-            <div class="form-group">
-              <label type="text">Coordinación</label>
-              <select name="coordination" placeholder="Coordinación" class="form-control rounded">
-                <option>Formación y Fortalecimiento</option>
+            <div class="row">
+            <div class="form-group col">
+              <label type="text">Línea estratégica</label>
+              <select name="strategy_line" placeholder="Línea estratégica" value="N/A" class="form-control rounded">
+                <option>Formación</option>
+                <option>Fortalecimiento</option>
                 <option>Inversión Social</option>
                 </select>
             </div>
+
+            <div class="form-group col">
+              <label type="text">Línea estratégica secundaria</label>
+              <select name="strategy_line2" placeholder="Línea estratégica" value="N/A" class="form-control rounded">
+                <option>No aplica</option>
+                <option>Formación</option>
+                <option>Fortalecimiento</option>
+                <option>Inversión Social</option>
+                </select>
+            </div>
+          </div>   
             <div class="form-group">
               <label type="text">Cuenta Bancaria de ingresos</label>
               <select name="in_account" placeholder="Ingresa aquí la Cuenta de ingresos" class="form-control rounded">
@@ -91,22 +104,24 @@
 <!--End of insert modal window-->
 
 <!--Body Table-->
-<div class="card-body">
-  <div class="table-responsive">
-      <table class="table table-sm table-active table-striped table-hover">
+
+  <div class="table-responsive" >
+      <table id="table" class="table table-sm table-active table-striped table-hover">
         <thead>
           <tr>
             <th>#</th>
             <th>Clave</th>
             <th>Nombre</th>
             <th>Aliado Financiero</th>
-            <th>Coordinación</th>
+            <th>Línea estratégica</th>
+            <th>Línea estratégica secundaria</th>
             <th>Cuenta Bancaria de ingresos</th>
             <th>Estatus</th>
             <th>Fecha de término</th>
-            <th>Acciones</th>
+            <td>Acciones</td>
           </tr>
         </thead>
+
         <tbody>
           <% if (data.data) { %>
             <% for(var i = 0; i < data.data.length; i++) { %>
@@ -115,7 +130,8 @@
                 <td><%= data.data[i].program_code %></td>
                 <td><%= data.data[i].program_name %></td>
                 <td><%= data.data[i].org_name %></td>
-                <td><%= data.data[i].coordination %></td>
+                <td><%= data.data[i].strategy_line %></td>
+                <td><%= data.data[i].strategy_line2 %></td>
                 <td><%= data.data[i].in_account %></td>
                 <td><%= data.data[i].status %></td>
                 <td><%= data.data[i].end_date %></td>
@@ -128,17 +144,18 @@
                     </svg>
                   </a>
                 <br /> <br /> 
-                  <button class="btn-sm btn-danger rounded" data-toggle="modal" data-target="#eliminar<%= data.data[i].id_program %>">
+                  <!--<button class="btn-sm btn-danger rounded" data-toggle="modal" data-target="#eliminar<%= data.data[i].id_program %>">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                       <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                       <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                     </svg>
-                  </button>
+                  </button>-->
                 </td>
             
               </tr>
-
-      <!--Delete modal window-->
+           
+          
+      <!--Delete modal window
  <div class="modal" id="eliminar<%= data.data[i].id_program %>">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -146,27 +163,23 @@
         <h5 class="modal-title">Eliminar Programa</h5>
       </div>
       <div class="modal-body">
-        <p>Realmente deseas eliminar este programa?</p>
+        <p>¿Realmente deseas eliminar este programa?</p>
       </div>
       <div class="modal-footer">
-        <!--<form action="/program/delete/<%= data.data[i].id_program %>" method="GET">
-        <button type="submit" class="btn btn-danger rounded">Eliminar</button>
-        </form>-->
+        
         <a href="/program/delete/<%= data.data[i].id_program %>" class="btn btn-danger rounded">Eliminar</a>
         <button type="button" class="btn btn-secondary rounded" data-dismiss="modal">Cancelar</button>
       </div>
     </div>
   </div>
 </div>
-<!--End of delete modal window-->
+End of delete modal window-->
 
-            <% } %>
+          <% } %>
           <% } %>
         </tbody>
       </table>
     </div>
-  </div>
-  
  
 </div> 
 
