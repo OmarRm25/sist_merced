@@ -13,7 +13,8 @@
               </div>
               <div class="form-group">
                 <label type="text">Acta constitutiva</label>
-                <select name="constitutive_act" placeholder="Acta constitutiva" value="<%= data.constitutive_act %>" class="form-control rounded">
+                <select name="constitutive_act" value="<%= data.constitutive_act %>" class="form-control rounded" required>
+                  <option disabled selected>Selecciona una opción</option>
                   <option>No aplica</option>
                   <option>Sí</option>
                   <option>No</option>
@@ -22,7 +23,8 @@
               </div>
               <div class="form-group">
                   <label type="text">Constancia de situación fiscal</label>
-                  <select name="fiscal_constance" placeholder="Constancia de situación fiscal" value="<%= data.fiscal_constance %>" class="form-control rounded">
+                  <select name="fiscal_constance" value="<%= data.fiscal_constance %>" class="form-control rounded" required>
+                    <option disabled selected>Selecciona una opción</option>
                     <option>No aplica</option>
                     <option>Sí</option>
                     <option>No</option>
@@ -31,7 +33,8 @@
               
                 <div class="form-group">
                   <label type="text">Opinión de cumplimiento</label>
-                  <select name="compliance_opinion" placeholder="Opinión de cumplimiento" value="<%=data.compliance_opinion %>" class="form-control rounded">
+                  <select name="compliance_opinion" value="<%=data.compliance_opinion %>" class="form-control rounded" required>
+                    <option disabled selected>Selecciona una opción</option>
                     <option>No aplica</option>
                     <option>Sí</option>
                     <option>No</option>
@@ -40,7 +43,8 @@
                 </div>
                 <div class="form-group">
                   <label type="text">CURP</label>
-                  <select name="curp" placeholder="CURP" value="<%= data.curp %>" class="form-control rounded">
+                  <select name="curp" value="<%= data.curp %>" class="form-control rounded" required>
+                      <option disabled selected>Selecciona una opción</option>
                       <option>No aplica</option>
                       <option>Sí</option>
                       <option>No</option>
@@ -49,7 +53,8 @@
                 </div>
                 <div class="form-group">
                   <label type="text">RFC</label>
-                  <select name="rfc" placeholder="RFC" value="<%= data.rfc %>" class="form-control rounded">
+                  <select name="rfc" value="<%= data.rfc %>" class="form-control rounded" required>
+                      <option disabled selected>Selecciona una opción</option>
                       <option>No aplica</option>
                       <option>Sí</option>
                       <option>No</option>
@@ -58,7 +63,8 @@
                 </div>
                 <div class="form-group">
                   <label type="text">Comprobante de domicilio</label>
-                  <select name="address_voucher" placeholder="Comprobante de domicilio" value="<%= data.address_voucher %>" class="form-control rounded">
+                  <select name="address_voucher" value="<%= data.address_voucher %>" class="form-control rounded" required>
+                      <option disabled selected>Selecciona una opción</option>
                       <option>No aplica</option>
                       <option>Sí</option>
                       <option>No</option>
@@ -67,7 +73,8 @@
                 </div>
                 <div class="form-group">
                   <label type="text">Cáratula de estado de cuenta</label>
-                  <select name="account_status" placeholder="Cáratula del estado de cuenta" value="<%= data.account_status %>" class="form-control rounded">
+                  <select name="account_status" value="<%= data.account_status %>" class="form-control rounded" required>
+                      <option disabled selected>Selecciona una opción</option>
                       <option>No aplica</option>
                       <option>Sí</option>
                       <option>No</option>
@@ -76,16 +83,18 @@
                 </div>
                 <div class="form-group">
                   <label type="text">Identificación oficial</label>
-                  <select name="official_id" placeholder="Identificación oficial" value="<%= data.official_id %>" class="form-control rounded">
+                  <select name="official_id" value="<%= data.official_id %>" class="form-control rounded" required>
+                      <option disabled selected>Selecciona una opción</option>
                       <option>No aplica</option>
                       <option>Sí</option>
                       <option>No</option>
-                    
                     </select>
                 </div>
+
                 <div class="form-group">
                   <label type="text">Poder legal</label>
-                  <select name="legal_power" placeholder="Poder legal" value="<%= data.legal_power %>" class="form-control rounded">
+                  <select name="legal_power" value="<%= data.legal_power %>" class="form-control rounded" required>
+                      <option disabled selected>Selecciona una opción</option>
                       <option>No aplica</option>
                       <option>Sí</option>
                       <option>No</option>
@@ -94,7 +103,7 @@
                 </div>
               <div class="form-group">
                 <label type="text">Fecha de actualización</label>
-                <input name="update_date" id="datepicker" width="415" value="<%= data.update_date %>" class="form-control rounded"/>
+                <input name="update_date" id="datepicker" width="415" value="<%= data.update_date %>" class="form-control rounded" required/>
               <script>
                 $('#datepicker').datepicker({
                     uiLibrary: 'bootstrap4',

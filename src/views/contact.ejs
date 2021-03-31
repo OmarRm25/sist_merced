@@ -21,31 +21,32 @@
         <form action="/contact/add" method="post">
             <div class="form-group">
               <label type="text">Nombre</label>
-              <input type="text" name="first_name" placeholder="Ingresa aquí el nombre del contacto" class="form-control rounded" autofocus>
+              <input type="text" name="first_name" placeholder="Ingresa aquí el nombre del contacto" class="form-control rounded" autofocus required>
             </div>
             <div class="form-group">
               <label type="text">Primer apellido</label>
-              <input type="text" name="middle_name" placeholder="Ingresa aquí el primer apellido" class="form-control rounded">
+              <input type="text" name="middle_name" placeholder="Ingresa aquí el primer apellido" class="form-control rounded" required>
             </div>
             <div class="form-group">
               <label type="text">Segundo apellido</label>
-              <input type="text" name="last_name" placeholder="Ingresa aquí el segundo apellido" class="form-control rounded">
+              <input type="text" name="last_name" placeholder="Ingresa aquí el segundo apellido" class="form-control rounded" required>
             </div>
             <div class="form-group">
                 <label type="text">Cargo</label>
-                <input type="text" name="position" placeholder="Ingresa el cargo del contacto" class="form-control rounded">     
+                <input type="text" name="position" placeholder="Ingresa el cargo del contacto" class="form-control rounded" required>     
               </div>
               <div class="form-group">
                 <label type="text">Teléfono</label>
-                <input type="text" name="phone_number" placeholder="Ingresa aquí el número telefónico" class="form-control rounded" minlength="10" maxlength="10">
+                <input type="text" name="phone_number" placeholder="Ingresa aquí el número telefónico" class="form-control rounded" minlength="10" maxlength="10" required>
               </div>
               <div class="form-group">
                 <label type="text">Correo electrónico</label>
-                <input type="email" name="email" placeholder="Ingresa aquí el correo electrónico" class="form-control rounded">
+                <input type="email" name="email" placeholder="Ingresa aquí el correo electrónico" class="form-control rounded" required>
               </div>  
             <div class="form-group">
               <label type="text">Organización a la que pertenece</label>
-              <select type="text" name="id_organization" placeholder="contacto" class="form-control rounded">
+              <select type="text" name="id_organization" placeholder="contacto" class="form-control rounded" required>
+                <option disabled selected>Selecciona una opción</option>
                 <% console.log(data); %>
                 <% if (data.orgs) { %>
                 <% for(var i=0; i < data.orgs.length; i++){ %>

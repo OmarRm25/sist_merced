@@ -21,15 +21,16 @@
         <form action="/program/add" method="post">
             <div class="form-group">
               <label type="text">Clave</label>
-              <input type="text" name="program_code" placeholder="Ingresa aquí la clave de programa" class="form-control rounded" autofocus>
+              <input type="text" name="program_code" placeholder="Ingresa aquí la clave de programa" class="form-control rounded" autofocus required>
             </div>
             <div class="form-group">
               <label type="text">Nombre</label>
-              <input type="text" name="program_name" placeholder="Ingresa aquí el nombre del Programa" class="form-control rounded">
+              <input type="text" name="program_name" placeholder="Ingresa aquí el nombre del Programa" class="form-control rounded" required>
             </div>
             <div class="form-group">
               <label type="text">Aliado Financiero</label>
-              <select type="text" name="id_organization" placeholder="Aliado" class="form-control rounded">
+              <select type="text" name="id_organization" class="form-control rounded" required>
+                <option disabled selected>Selecciona una opción</option>
                 <% console.log(data); %>
                 <% if (data.allies) { %>
                 <% for(var i=0; i < data.allies.length; i++){ %>
@@ -41,7 +42,8 @@
             <div class="row">
             <div class="form-group col">
               <label type="text">Línea estratégica</label>
-              <select name="strategy_line" placeholder="Línea estratégica" value="N/A" class="form-control rounded">
+              <select name="strategy_line" value="N/A" class="form-control rounded" required>
+                <option disabled selected>Selecciona una opción</option>
                 <option>Formación</option>
                 <option>Fortalecimiento</option>
                 <option>Inversión Social</option>
@@ -50,7 +52,7 @@
 
             <div class="form-group col">
               <label type="text">Línea estratégica secundaria</label>
-              <select name="strategy_line2" placeholder="Línea estratégica" value="N/A" class="form-control rounded">
+              <select name="strategy_line2" value="N/A" class="form-control rounded">
                 <option>No aplica</option>
                 <option>Formación</option>
                 <option>Fortalecimiento</option>
@@ -60,7 +62,8 @@
           </div>   
             <div class="form-group">
               <label type="text">Cuenta Bancaria de ingresos</label>
-              <select name="in_account" placeholder="Ingresa aquí la Cuenta de ingresos" class="form-control rounded">
+              <select name="in_account" class="form-control rounded" required>
+                <option disabled selected>Selecciona una opción</option>
                 <option>FMBANORTE0384</option>
                 <option>FMBANORTE8355</option>  
                 <option>FMBANORTE8891</option>
@@ -73,7 +76,8 @@
             
             <div class="form-group">
               <label type="text">Estatus</label>
-              <select name="status" value="Elige el estatus del programa" class="form-control rounded">
+              <select name="status" class="form-control rounded" required>
+                <option disabled selected>Selecciona una opción</option>
                 <option>Activo</option>
                 <option>Finalizado</option>
                 <option>Cancelado</option>
@@ -81,7 +85,7 @@
             </div>
             <div class="form-group">
               <label type="text">Fecha de término</label>
-              <input name="end_date" id="datepicker" width="415" value="N/A" class="form-control rounded"/>
+              <input name="end_date" id="datepicker" width="415" value="N/A" class="form-control rounded" required/>
             <script>
               $('#datepicker').datepicker({
                   uiLibrary: 'bootstrap4',
