@@ -22,7 +22,8 @@
             
             <div class="form-group">
               <label type="text">Nombre</label>
-              <select type="text" name="id_organization" placeholder="Aliado" class="form-control rounded">
+              <select type="text" name="id_organization" class="form-control rounded" required>
+                <option disabled selected>Selecciona una opción</option>
                 <% console.log(data); %>
                 <% if (data.orgs) { %>
                 <% for(var i=0; i < data.orgs.length; i++){ %>
@@ -33,7 +34,8 @@
             </div>
             <div class="form-group">
               <label type="text">Acta constitutiva</label>
-              <select name="constitutive_act" placeholder="Acta constitutiva" class="form-control rounded">
+              <select name="constitutive_act" class="form-control rounded" required>
+                <option disabled selected>Selecciona una opción</option>
                 <option>No aplica</option>
                 <option>Sí</option>
                 <option>No</option>
@@ -41,7 +43,8 @@
             </div>
             <div class="form-group">
                 <label type="text">Constancia de situación fiscal</label>
-                <select name="fiscal_constance" placeholder="Constancia de situación fiscal" class="form-control rounded">
+                <select name="fiscal_constance" class="form-control rounded" required>
+                  <option disabled selected>Selecciona una opción</option>
                   <option>No aplica</option>
                   <option>Sí</option>
                   <option>No</option>
@@ -50,7 +53,8 @@
             
               <div class="form-group">
                 <label type="text">Opinión de cumplimiento</label>
-                <select name="compliance_opinion" placeholder="Opinión de cumplimiento" class="form-control rounded">
+                <select name="compliance_opinion" class="form-control rounded" required>
+                  <option disabled selected>Selecciona una opción</option>
                   <option>No aplica</option>
                   <option>Sí</option>
                   <option>No</option>
@@ -59,7 +63,8 @@
               </div>
               <div class="form-group">
                 <label type="text">CURP</label>
-                <select name="curp" placeholder="CURP" class="form-control rounded">
+                <select name="curp" class="form-control rounded" required>
+                    <option disabled selected>Selecciona una opción</option>
                     <option>No aplica</option>
                     <option>Sí</option>
                     <option>No</option>
@@ -68,7 +73,8 @@
               </div>
               <div class="form-group">
                 <label type="text">RFC</label>
-                <select name="rfc" placeholder="RFC" class="form-control rounded">
+                <select name="rfc" class="form-control rounded" required>
+                    <option disabled selected>Selecciona una opción</option>
                     <option>No aplica</option>
                     <option>Sí</option>
                     <option>No</option>
@@ -77,7 +83,8 @@
               </div>
               <div class="form-group">
                 <label type="text">Comprobante de domicilio</label>
-                <select name="address_voucher" placeholder="Comprobante de domicilio" class="form-control rounded">
+                <select name="address_voucher" class="form-control rounded" required>
+                    <option disabled selected>Selecciona una opción</option>
                     <option>No aplica</option>
                     <option>Sí</option>
                     <option>No</option>
@@ -86,7 +93,8 @@
               </div>
               <div class="form-group">
                 <label type="text">Cáratula de estado de cuenta</label>
-                <select name="account_status" placeholder="Cáratula del estado de cuenta" class="form-control rounded">
+                <select name="account_status" class="form-control rounded" required>
+                    <option disabled selected>Selecciona una opción</option>
                     <option>No aplica</option>
                     <option>Sí</option>
                     <option>No</option>
@@ -95,7 +103,8 @@
               </div>
               <div class="form-group">
                 <label type="text">Identificación oficial</label>
-                <select name="official_id" placeholder="Identificación oficial" class="form-control rounded">
+                <select name="official_id" class="form-control rounded" required>
+                    <option disabled selected>Selecciona una opción</option>
                     <option>No aplica</option>
                     <option>Sí</option>
                     <option>No</option>
@@ -104,7 +113,8 @@
               </div>
               <div class="form-group">
                 <label type="text">Poder legal</label>
-                <select name="legal_power" placeholder="Poder legal" class="form-control rounded">
+                <select name="legal_power" class="form-control rounded" required>
+                    <option disabled selected>Selecciona una opción</option>
                     <option>No aplica</option>
                     <option>Sí</option>
                     <option>No</option>
@@ -113,7 +123,7 @@
               </div>
             <div class="form-group">
               <label type="text">Fecha de actualización</label>
-              <input name="update_date" id="datepicker" width="415" value="N/A" class="form-control rounded"/>
+              <input name="update_date" id="datepicker" width="415" value="N/A" class="form-control rounded" required/>
             <script>
               $('#datepicker').datepicker({
                   uiLibrary: 'bootstrap4',

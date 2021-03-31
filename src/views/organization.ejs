@@ -22,11 +22,12 @@
             <form action="/organization/add" method="post">
                 <div class="form-group">
                   <label type="text">Organización</label>
-                  <input type="text" name="org_name" placeholder="Ingresa aquí el nombre de la Organización" class="form-control rounded" autofocus>
+                  <input type="text" name="org_name" placeholder="Ingresa aquí el nombre de la Organización" class="form-control rounded" autofocus required>
                 </div>
                 <div class="form-group">
                   <label type="text">Área de intervención</label>
-                  <select name="intervention_area" placeholder="Ingresa aquí el área de intervención" class="form-control rounded">
+                  <select name="intervention_area" class="form-control rounded" required>
+                    <option disabled selected>Selecciona una opción</option>
                     <option>Acción por el clima</option>
                     <option>Agua limpia y saneamiento</option>
                     <option>Alianzas para lograr los objetivos</option>
@@ -48,12 +49,13 @@
                   </div>
                 <div class="form-group">
                   <label type="text">RFC</label>
-                  <input type="text" name="rfc" placeholder="Ingresa aquí el RFC de la organización" class="form-control rounded" minlength="13" maxlength="13">
+                  <input type="text" name="rfc" placeholder="Ingresa aquí el RFC de la organización" class="form-control rounded" minlength="12" maxlength="13" required>
                 </div>
 
                 <div class="form-group">
                   <label type="text">Entidad Federativa</label>
-                  <select name="state" value="Elige una opción" class="form-control rounded">
+                  <select name="state" class="form-control rounded" required>
+                        <option disabled selected>Selecciona una opción</option>    
                         <option>Aguascalientes</option>
                         <option>Baja California</option>
                         <option>Baja California Sur</option>
@@ -91,7 +93,8 @@
                 
                  <div class="form-group">
                       <label type="text">¿Se encuentra en lista negra?</label>
-                      <select name="blacklist" value="Elige una opción" class="form-control rounded">
+                      <select name="blacklist" class="form-control rounded" required>
+                        <option disabled selected>Selecciona una opción</option>
                         <option>No</option>
                         <option>Sí</option>
                     </select>
@@ -99,7 +102,8 @@
 
                  <div class="form-group">
                   <label type="text">Tipo de organización</label>
-                  <select name="org_type" value="Elige una opción" class="form-control rounded">
+                  <select name="org_type" class="form-control rounded" required>
+                    <option disabled selected>Selecciona una opción</option>
                     <option>Donataria</option>
                     <option>Aliado Financiero</option>
                 </select>

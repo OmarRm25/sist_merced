@@ -24,7 +24,8 @@
         <form action="/participation/add" method="post">
             <div class="form-group">
                 <label type="text">Organización</label>
-                <select type="text" name="id_organization" placeholder="participante" class="form-control rounded">
+                <select type="text" name="id_organization" placeholder="participante" class="form-control rounded" required>
+                  <option disabled selected>Selecciona una opción</option>
                   <% console.log(data); %>
                   <% if (data.orgs) { %>
                   <% for(var i=0; i < data.orgs.length; i++){ %>
@@ -36,7 +37,8 @@
 
               <div class="form-group">
                 <label type="text">Programa</label>
-                <select type="text" name="id_program" placeholder="programa" class="form-control rounded">
+                <select type="text" name="id_program" class="form-control rounded" required>
+                  <option disabled selected>Selecciona una opción</option>
                   <% console.log(data); %>
                   <% if (data.programs) { %>
                   <% for(var i=0; i < data.programs.length; i++){ %>
@@ -48,7 +50,8 @@
 
               <div class="form-group">
                 <label type="text">Consultor</label>
-                <select type="text" name="id_consultor" placeholder="consultor" class="form-control rounded">
+                <select type="text" name="id_consultor" class="form-control rounded" required>
+                  <option disabled selected>Selecciona una opción</option>
                   <% console.log(data); %>
                   <% if (data.consultor) { %>
                   <% for(var i=0; i < data.consultor.length; i++){ %>
@@ -163,7 +166,7 @@
             <div class="form-group"> 
                 <label type="text">Año</label>
                 <br>
-                <input type="text" style="background-color: whitesmoke" class="form_control rounded text-center" name="year" id="datepicker" placeholder="Selecciona el año" width="430"/>
+                <input type="text" style="background-color: whitesmoke" class="form_control rounded text-center" name="year" id="datepicker" width="430" required/>
             <script>
               $('#datepicker').datepicker({
                   uiLibrary: 'bootstrap4',
@@ -174,14 +177,33 @@
               });
             </script> 
             </div>
+
             <div class="form-group">
               <label type="text">Tema</label>
-              <input type="text" name="theme" placeholder="Ingresa aquí el tema" class="form-control rounded">
+              <select type="text" name="theme"  aria-placeholder="Selecciona una opción" class="form-control rounded" required> 
+                <option disabled selected>Selecciona una opción</option>
+                <option>No aplica</option>
+                <option>Alianzas y vinculación</option>
+                <option>Asesoría legal y fiscal</option>
+                <option>Comunicación externa (Marketing social)</option>
+                <option>Comunicación interna</option>
+                <option>Diagnóstico de Madurez Institucional en Línea</option>
+                <option>Diagnóstico de Madurez Institucional Presencial</option>
+                <option>Estructura organizacional y administración</option>
+                <option>Fortalecimiento Equipo Operativo</option>    
+                <option>Modelo de Intervención</option>
+                <option>Monitoreo y Evaluación de proyectos</option>
+                <option>Órgano de Gobierno</option>
+                <option>Planeación estratégica</option>
+                <option>Sostenibilidad financiera</option>
+                <option>Teoría de cambio</option>
+              </select>
             </div>
             
             <div class="form-group">
               <label for="seeAnotherField" type="text">Recursos</label>
-              <select name="resources" id="seeAnotherField" class="form-control rounded">
+              <select name="resources" id="seeAnotherField" class="form-control rounded" required>
+                <option disabled selected>Selecciona una opción</option>
                 <option value="Propios">Propios</option>
                 <option value="Aliado Financiero">Aliado Financiero</option>
               </select> 

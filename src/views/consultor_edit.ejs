@@ -9,17 +9,17 @@
           <form action="/consultor/update/<%= data.id_consultor %>" method="POST">
             <div class="form-group">
                 <label type="text">Nombre Completo/Razón Social</label>
-                <input type="text" name="full_name" value="<%= data.full_name %>" placeholder="Ingresa aquí el nombre completo o Razón Social del consultor" class="form-control rounded" autofocus>
+                <input type="text" name="full_name" value="<%= data.full_name %>" placeholder="Ingresa aquí el nombre completo o Razón Social del consultor" class="form-control rounded" autofocus required>
               </div>
               
               <div class="form-group">
                 <label type="text">Teléfono</label>
-                <input type="text" name="phone" value="<%= data.phone %>" placeholder="Ingresa aquí el teléfono del consultor" class="form-control rounded" maxlength="10" maxlength="10">
+                <input type="text" name="phone" value="<%= data.phone %>" placeholder="Ingresa aquí el teléfono del consultor" class="form-control rounded" maxlength="10" maxlength="10" required>
               </div>
 
                <div class="form-group">
                     <label type="text">Correo Electrónico</label>
-                    <input type="email" name="email" value="<%= data.email %>" value="Ingresa el correo electrónico del consultor" class="form-control rounded">
+                    <input type="email" name="email" value="<%= data.email %>" value="Ingresa el correo electrónico del consultor" class="form-control rounded" required>
                       
                </div>
   
