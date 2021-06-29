@@ -15,13 +15,13 @@
   <div class="modal-dialog modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Agregar participación de Fortalecimento</h5>
+        <h5 class="modal-title">Agregar participación</h5>
         
       </div>
 
       <div class="modal-body">
       
-        <form action="/participation/add" method="post">
+        <form action="/invParticipation/add" method="post">
             <div class="form-group">
                 <label type="text">Organización</label>
                 <select type="text" name="id_organization" placeholder="participante" class="form-control rounded" required>
@@ -110,15 +110,6 @@
               </div>
 
               <div class="form-group">
-                <div class="custom-control custom-switch">
-                  <input type="checkbox" class="custom-control-input" id="check2" value="1" onchange="javascript:showContent2()">
-                  <label class="custom-control-label" for="check2">Agregar más consultores</label>
-                </div>
-              </div>
-
-              <div id="content2" style="display: none;">
-
-              <div class="form-group">
                 <label type="text">Consultor 5</label>
                 <select type="text" name="consultor5" placeholder="consultor" class="form-control rounded">
                   <option>No aplica</option>
@@ -169,10 +160,23 @@
                    <% } %>
                 </select>              
               </div>
-              </div> <!--cierre del switch agregar más consultores 2-->
-            </div> <!--cierre del switch agregar más consultores 1-->
 
-            
+            </div>
+
+            <div class="form-group"> 
+                <label type="text">Año</label>
+                <br>
+                <input type="text" style="background-color: whitesmoke" class="form_control rounded text-center" name="year" id="datepicker" width="430" required/>
+            <script>
+              $('#datepicker').datepicker({
+                  uiLibrary: 'bootstrap4',
+                  viewMode: "years",
+                  format: 'yyyy',
+                  minViewMode: "years",
+                  width: 430
+              });
+            </script> 
+            </div>
 
             <div class="form-group">
               <label type="text">Tema</label>
@@ -197,9 +201,18 @@
             </div>
             
             <div class="form-group">
-              <label for="otherField" type="text">¿Quién fue el aliado financiero?</label>
-              <select type="text" name="ally_name" placeholder="Aliado" class="form-control rounded" >
+              <label for="seeAnotherField" type="text">Recursos</label>
+              <select name="resources" id="seeAnotherField" class="form-control rounded" required>
                 <option disabled selected>Selecciona una opción</option>
+                <option value="Propios">Propios</option>
+                <option value="Aliado Financiero">Aliado Financiero</option>
+              </select> 
+            </div>
+            
+            <div class="form-group" id="otherFieldDiv">
+              <label for="otherField" type="text">¿Quién fue el aliado financiero?</label>
+              <select type="text" name="ally_name" placeholder="Aliado" class="form-control rounded" id="otherField">
+                <option>No aplica</option>
                 <% console.log(data); %>
                 <% if (data.orgs) { %>
                 <% for(var i=0; i < data.orgs.length; i++){ %>
@@ -210,146 +223,10 @@
             </div>  
 
             <div class="form-group">
-              <label type="text">Nombre del proyecto</label>
-              <input name="project_name" type="text" placeholder="Ingresa aquí el nombre del proyecto" class="form-control rounded" required>
+              <label type="text">Comentarios</label>
+              <input name="comments" type="text" placeholder="Máximo 300 caracteres" maxlength="300" class="form-control rounded"> 
             </div>
-
-            <div class="form-group">
-              <label type="text">Objetivo del proyecto</label>
-              <input name="project_objective" type="text" placeholder="Ingresa aquí el objetivo del proyecto" class="form-control rounded" required>
-            </div>
-
-            <div class="row">
-
-            <div class="col">  
-            <div class="form-group">
-              <label type="text">Beneficiarios</label>
-              <input name="male_beneficiaries" type="number" placeholder="Ingresa aquí el número de beneficiarios del proyecto" class="form-control rounded" required>
-            </div>
-          </div>
-
-           <div class="col">
-            <div class="form-group">
-              <label type="text">Beneficiarias</label>
-              <input name="female_beneficiaries" type="number" placeholder="Ingresa aquí el número de beneficiarias del proyecto" class="form-control rounded" required>
-            </div>
-          </div> 
-          
-      </div>
-
-            <div class="form-group">
-              <label type="text">Tipo de población</label>
-              <select type="text" name="population_type"  aria-placeholder="Selecciona una opción" class="form-control rounded" required> 
-                <option disabled selected>Selecciona una opción</option>
-                <option>Primera infancia (0-5 años)</option>
-                <option>Infancia (6-11 años)</option>
-                <option>Adolescencia (12-18 años)</option>
-                <option>Adultez (27-59 años)</option>
-                <option>Persona mayor (60 años o más)</option>
-              </select> 
-            </div>  
-              
-            <div class="row">
-              <div class="col">
-              <div class="form-group">
-                <label type="text">Fecha de inicio</label>
-                <input name="start_date" id="datepicker" width="415" value="N/A" class="form-control rounded" required/>
-              <script>
-                $('#datepicker').datepicker({
-                    uiLibrary: 'bootstrap4',
-                    format: 'dd/mm/yyyy',
-                    width: 415,
-                });
-              </script>
-              </div>
-            </div>
-              
-              <div class="col">
-              <div class="form-group">
-                <label type="text">Fecha de término</label>
-                <input name="end_date" id="datepicker2" width="415" value="N/A" class="form-control rounded" required/>
-              <script>
-                $('#datepicker2').datepicker({
-                    uiLibrary: 'bootstrap4',
-                    format: 'dd/mm/yyyy',
-                    width: 415
-                });
-              </script>
-              </div>
-            </div>
-            </div>
-
-              <div class="form-group">
-                <label type="text">Logros</label>
-                <input name="achievments" type="text" placeholder="Ingresa aquí los logros del proyecto" maxlength="100" class="form-control rounded" required>
-              </div>
-
-
-            <div class="row">
-              <div class="col">
-              <div class="form-group">
-                <label type="text">Estado de incidencia</label>
-                <select name="application_state" class="form-control rounded" required>
-                  <option disabled selected>Selecciona una opción</option>    
-                  <option>Aguascalientes</option>
-                  <option>Baja California</option>
-                  <option>Baja California Sur</option>
-                  <option>Campeche</option>
-                  <option>Chiapas</option>
-                  <option>Chihuahua</option>
-                  <option>Ciudad de México</option>
-                  <option>Coahuila</option>
-                  <option>Colima</option>
-                  <option>Durango</option>
-                  <option>Estado de México</option> 
-                  <option>Guanajuato</option> 
-                  <option>Guerrero</option> 
-                  <option>Hidalgo</option> 
-                  <option>Jalisco</option> 
-                  <option>Michoacán</option> 
-                  <option>Morelos</option> 
-                  <option>Nayarit</option> 
-                  <option>Nuevo León</option> 
-                  <option>Oaxaca</option> 
-                  <option>Puebla</option> 
-                  <option>Querétaro</option> 
-                  <option>Quintana Roo</option> 
-                  <option>San Luis Potosí</option> 
-                  <option>Sinaloa</option> 
-                  <option>Sonora</option> 
-                  <option>Tabasco</option> 
-                  <option>Tamaulipas</option> 
-                  <option>Tlaxcala</option> 
-                  <option>Veracruz</option> 
-                  <option>Yucatán</option> 
-                  <option>Zacatecas</option>   
-                </select>
-              </div>
-              </div>
-
-              <div class="col">
-              <div class="form-group">
-                <label type="text">Municipio</label>
-                <input name="municipality" type="text" placeholder="Ingresa aquí el municipio de incidencia del proyecto" maxlength="50" class="form-control rounded" required>
-              </div>
-              </div>
-              </div>
-
-              <div class="form-group">
-                <label type="text">Comunidad de incidencia</label>
-                <input name="application_community" type="text" placeholder="Ingresa aquí la comunidad de incidencia del proyecto" maxlength="50" class="form-control rounded" required>
-              </div>
-
-              <div class="form-group">
-                <label type="text">Recursos invertidos</label>
-                <input name="resources_invested" type="number" placeholder="Ingresa aquí los recursos invertidos en el proyecto" class="form-control rounded" required>
-              </div>
-
-              <div class="form-group">
-                <label type="text">Comentarios</label>
-                <input name="comments" type="text" placeholder="Máximo 300 caracteres" maxlength="300" class="form-control rounded"> 
-              </div>
-
+            
       </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-info rounded">Guardar</button>
@@ -366,7 +243,7 @@
   <div class="table-responsive">
       <table id="table" class="table table-sm table-active table-striped table-hover">
         <thead>
-          <tr class="text-center">
+          <tr>
             <th>#</th>
             <th>Organización</th>
             <th>Programa</th>
@@ -378,20 +255,10 @@
             <th>Consultor 6</th>
             <th>Consultor 7</th>
             <th>Consultor 8</th>
+            <th>Año</th>
             <th>Tema</th>
+            <th>Recursos</th>
             <th>Aliado Financiero</th>
-            <th>Nombre de proyecto</th>
-            <th>Objetivo</th>
-            <th>Beneficiarios</th>
-            <th>Beneficiarias</th>
-            <th>Tipo de población</th>
-            <th>Fecha de inicio</th>
-            <th>Fecha de término</th>
-            <th>Logros</th>
-            <th>Estado de incidencia</th>
-            <th>Municipio</th>
-            <th>Comunidad</th>
-            <th>Recursos invertidos</th>
             <th>Comentarios</th>
             <td>Acciones</td>
           </tr>
@@ -399,7 +266,7 @@
         <tbody>
           <% if (data.data) { %>
             <% for(var i = 0; i < data.data.length; i++) { %>
-              <tr class="text-center">
+              <tr>
                 <td><%= (i + 1) %></td>
                 <td><%= data.data[i].org_name %></td>
                 <td><%= data.data[i].program_name %></td>
@@ -411,24 +278,14 @@
                 <td><%= data.data[i].consultor6 %></td>
                 <td><%= data.data[i].consultor7 %></td>
                 <td><%= data.data[i].consultor8 %></td>
+                <td><%= data.data[i].year %></td>
                 <td><%= data.data[i].theme %></td>
+                <td><%= data.data[i].resources %></td>
                 <td><%= data.data[i].ally_name %></td> <!--proveedor de recursos-->
-                <td><%= data.data[i].project_name %></td>
-                <td><%= data.data[i].project_objective %></td>
-                <td><%= data.data[i].male_beneficiaries %></td>
-                <td><%= data.data[i].female_beneficiaries %></td>
-                <td><%= data.data[i].population_type %></td>
-                <td><%= data.data[i].start_date %></td>
-                <td><%= data.data[i].end_date %></td>
-                <td><%= data.data[i].achievments %></td>
-                <td><%= data.data[i].application_state %></td>
-                <td><%= data.data[i].municipality %></td>
-                <td><%= data.data[i].application_community %></td>
-                <td><%= data.data[i].resources_invested %></td>
                 <td><%= data.data[i].comments %></td>
                 
                 <td>
-                  <a href="participation/update/<%= data.data[i].id_part %>" class="btn-sm btn-info rounded">
+                  <a href="invParticipation/update/<%= data.data[i].id_part %>" class="btn-sm btn-info rounded">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                       <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                       <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
@@ -456,7 +313,7 @@
         <p>Realmente deseas eliminar esta participación?</p>
       </div>
       <div class="modal-footer">
-        <a href="/participation/delete/<%= data.data[i].id_part %>" class="btn btn-danger rounded">Eliminar</a>
+        <a href="/invParticipation/delete/<%= data.data[i].id_part %>" class="btn btn-danger rounded">Eliminar</a>
         <button type="button" class="btn btn-secondary rounded" data-dismiss="modal">Cancelar</button>
       </div>
     </div>
@@ -473,21 +330,23 @@ End of delete modal window-->
 </div> 
 
 <script>
- 
+  $("#seeAnotherField").change(function () {
+  if ($(this).val() == "Aliado Financiero") {
+    $("#otherFieldDiv").show();
+    $("#otherField").attr("required", "");
+    $("#otherField").attr("data-error", "This field is required.");
+  } else {
+    $("#otherFieldDiv").hide();
+    $("#otherField").removeAttr("required");
+    $("#otherField").removeAttr("data-error");
+  }
+});
+$("#seeAnotherField").trigger("change");
+
 function showContent() {
   element = document.getElementById("content");
   check = document.getElementById("check");
   if (check.checked) {
-    element.style.display = "block";
-  } else {
-    element.style.display = "none";
-  }
-}
-
-function showContent2() {
-  element = document.getElementById("content2");
-  check2 = document.getElementById("check2");
-  if (check2.checked) {
     element.style.display = "block";
   } else {
     element.style.display = "none";

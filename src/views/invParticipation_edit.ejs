@@ -1,0 +1,232 @@
+<%- include('partials/_header'); -%>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-5 offset-md-3 card">
+      <div class="card-body"></div>
+        <h5>Editar participación</h5>
+
+        <form action="/invParticipation/update/<%= data.id_part %>" method="POST">
+          <div class="form-group">
+            <label type="text">Organización</label>
+            <input type="text" name="id_organization" value="<%= data.id_organization %>" placeholder="Selecciona la Organización" class="form-control rounded" disabled>
+          </div>
+          <div class="form-group">
+            <label type="text">Programa</label>
+            <input type="text" name="id_program" value="<%= data.id_program %>" placeholder="Selecciona el nombre del Programa" class="form-control rounded" disabled>
+          </div>
+
+          <div class="form-group">
+            <label type="text">Consultor</label>
+            <input type="text" name="id_consultor" value="<%= data.id_consultor %>" placeholder="consultor" class="form-control rounded" disabled>              
+          </div>
+
+          <div class="form-group">
+            <div class="custom-control custom-switch">
+              <input type="checkbox" class="custom-control-input" id="check" value="1" onchange="javascript:showContent()">
+              <label class="custom-control-label" for="check">Agregar más consultores</label>
+            </div>
+          </div>
+
+          <div id="content" style="display: none;">
+
+          <div class="form-group">
+            <label type="text">Consultor 2</label>
+            <select type="text" name="consultor2" value="<%= data.consultor2 %>" placeholder="consultor" class="form-control rounded">
+              <option>No aplica</option>
+              <% console.log(data); %>
+              <% if (data.consultor) { %>
+              <% for(var i=0; i < data.consultor.length; i++){ %>
+                <option value="<%= data.consultor[i].full_name %>"><%= data.consultor[i].full_name %></option>
+               <% } %>
+               <% } %>
+            </select>              
+          </div>
+
+          <div class="form-group">
+            <label type="text">Consultor 3</label>
+            <select type="text" name="consultor3" value="<%= data.consultor3 %>" placeholder="consultor" class="form-control rounded">
+              <option>No aplica</option>
+              <% console.log(data); %>
+              <% if (data.consultor) { %>
+              <% for(var i=0; i < data.consultor.length; i++){ %>
+                <option value="<%= data.consultor[i].full_name %>"> <%= data.consultor[i].full_name %></option>
+               <% } %>
+               <% } %>
+            </select>              
+          </div>
+
+          <div class="form-group">
+            <label type="text">Consultor 4</label>
+            <select type="text" name="consultor4" value="<%= data.consultor4 %>" placeholder="consultor" class="form-control rounded">
+              <option>No aplica</option>
+              <% console.log(data); %>
+              <% if (data.consultor) { %>
+              <% for(var i=0; i < data.consultor.length; i++){ %>
+                <option value="<%= data.consultor[i].full_name %>"> <%= data.consultor[i].full_name %></option>
+               <% } %>
+               <% } %>
+            </select>              
+          </div>
+
+          <div class="form-group">
+            <label type="text">Consultor 5</label>
+            <select type="text" name="consultor5" value="<%= data.consultor5 %>" placeholder="consultor" class="form-control rounded">
+              <option>No aplica</option>
+              <% console.log(data); %>
+              <% if (data.consultor) { %>
+              <% for(var i=0; i < data.consultor.length; i++){ %>
+                <option value="<%= data.consultor[i].full_name %>"> <%= data.consultor[i].full_name %></option>
+               <% } %>
+               <% } %>
+            </select>              
+          </div>
+
+          <div class="form-group">
+            <label type="text">Consultor 6</label>
+            <select type="text" name="consultor6" value="<%= data.consultor6 %>" placeholder="consultor" class="form-control rounded">
+              <option>No aplica</option>
+              <% console.log(data); %>
+              <% if (data.consultor) { %>
+              <% for(var i=0; i < data.consultor.length; i++){ %>
+                <option value="<%= data.consultor[i].full_name %>"> <%= data.consultor[i].full_name %></option>
+               <% } %>
+               <% } %>
+            </select>              
+          </div>
+
+          <div class="form-group">
+            <label type="text">Consultor 7</label>
+            <select type="text" name="consultor7" value="<%= data.consultor7 %>" placeholder="consultor" class="form-control rounded">
+              <option>No aplica</option>
+              <% console.log(data); %>
+              <% if (data.consultor) { %>
+              <% for(var i=0; i < data.consultor.length; i++){ %>
+                <option value="<%= data.consultor[i].full_name %>"> <%= data.consultor[i].full_name %></option>
+               <% } %>
+               <% } %>
+            </select>              
+          </div>
+
+          <div class="form-group">
+            <label type="text">Consultor 8</label>
+            <select type="text" name="consultor8" value="<%= data.consultor8 %>" placeholder="consultor" class="form-control rounded">
+              <option>No aplica</option>
+              <% console.log(data); %>
+              <% if (data.consultor) { %>
+              <% for(var i=0; i < data.consultor.length; i++){ %>
+                <option value="<%= data.consultor[i].full_name %>"> <%= data.consultor[i].full_name %></option>
+               <% } %>
+               <% } %>
+            </select>              
+          </div>
+
+        </div>
+
+        <div class="form-group"> 
+            <label type="text">Año</label>
+            <br>
+            <input type="text" style="background-color: whitesmoke" class="form_control rounded text-center" value="<%= data.year %>" name="year" id="datepicker" width="430" required/>
+        <script>
+          $('#datepicker').datepicker({
+              uiLibrary: 'bootstrap4',
+              viewMode: "years",
+              format: 'yyyy',
+              minViewMode: "years",
+              width: 430
+          });
+        </script> 
+        
+        </div>
+        <div class="form-group">
+          <label type="text">Tema</label>
+          <select type="text" name="theme" value="<%= data.theme %>" class="form-control rounded" required>
+            <option disabled selected>Selecciona una opción</option>
+            <option>No aplica</option>
+            <option>Alianzas y vinculación</option>
+            <option>Asesoría legal y fiscal</option>
+            <option>Comunicación externa (Marketing social)</option>
+            <option>Comunicación interna</option>
+            <option>Diagnóstico de Madurez Institucional en Línea</option>
+            <option>Diagnóstico de Madurez Institucional Presencial</option>
+            <option>Estructura organizacional y administración</option>
+            <option>Fortalecimiento Equipo Operativo</option>    
+            <option>Modelo de Intervención</option>
+            <option>Monitoreo y Evaluación de proyectos</option>
+            <option>Órgano de Gobierno</option>
+            <option>Planeación estratégica</option>
+            <option>Sostenibilidad financiera</option>
+            <option>Teoría de cambio</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="seeAnotherField" type="text">Recursos</label>
+          <select name="resources" value="<%= data.resources %>" id="seeAnotherField" class="form-control rounded" required>
+            <option disabled selected>Selecciona una opción</option>
+            <option value="Propios">Propios</option>
+            <option value="Aliado Financiero">Aliado Financiero</option>
+          </select> 
+        </div>
+        
+        <div class="form-group" id="otherFieldDiv">
+          <label for="otherField" type="text">¿Quién fue el aliado financiero?</label>
+          <select type="text" name="ally_name" value="<%= data.ally_name %>" placeholder="Aliado" class="form-control rounded" id="otherField">
+            <option>No aplica</option>
+            <% console.log(data); %>
+            <% if (data.orgs) { %>
+            <% for(var i=0; i < data.orgs.length; i++){ %>
+              <option value="<%= data.orgs[i].org_name %>"> <%= data.orgs[i].org_name %></option>
+             <% } %>
+             <% } %>
+          </select>
+        </div>         
+        
+        <div class="form-group">
+          <label type="text">Comentarios</label>
+          <input name="comments" type="text" value="<%= data.comments %>" placeholder="Máximo 300 caracteres" maxlength="300" class="form-control rounded"> 
+        </div>
+
+          <button type="submit" class="btn btn-info rounded">
+            Actualizar
+          </button>
+            
+          <a href="/invParticipation" class="btn btn-danger rounded">
+            Cancelar
+          </a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script> 
+$("#seeAnotherField").change(function () {
+  if ($(this).val() == "Aliado Financiero") {
+    $("#otherFieldDiv").show();
+    $("#otherField").attr("required", "");
+    $("#otherField").attr("data-error", "This field is required.");
+  } else {
+    $("#otherFieldDiv").hide();
+    $("#otherField").removeAttr("required");
+    $("#otherField").removeAttr("data-error");
+  }
+});
+$("#seeAnotherField").trigger("change");
+
+function showContent() {
+  element = document.getElementById("content");
+  check = document.getElementById("check");
+  if (check.checked) {
+    element.style.display = "block";
+  } else {
+    element.style.display = "none";
+  }
+}
+
+</script>
+
+<%- include('partials/_footer'); -%>

@@ -3,11 +3,11 @@ const controller = {};
 controller.list = (req, res) => {
   let info = {};
   req.getConnection((err, conn) => {
-    conn.query('SELECT * FROM fort_participation', (err, participations) => {
+    conn.query('SELECT * FROM invsoc_participation', (err, invParticipations) => {
      if (err) {
       res.json(err);
      }else{
-     info.data = participations
+     info.data = invParticipations
     }
     });
   });
@@ -44,7 +44,7 @@ controller.list = (req, res) => {
            info.data.forEach((p) => {
              p.program_name = p.id_program != undefined ? programs[p.id_program -1].program_name : null;
            });
-           res.render('participation', {data : info});
+           res.render('invParticipation', {data : info});
            }
         });
         
@@ -55,23 +55,23 @@ controller.save = (req, res) => {
   const data = req.body;
   console.log(req.body);
   req.getConnection((err, conn) => {
-    conn.query('INSERT INTO fort_participation set ?', data, (err, participations) => {
+    conn.query('INSERT INTO invsoc_participation set ?', data, (err, participations) => {
       if(err){
         console.log(err);
         res.json(err);
       }else{
       console.log(participations)
-      res.redirect('/participation');
+      res.redirect('/invParticipation');
       }
     });
   })
 };
 
 controller.edit = (req, res) => {
-  const { id_part } = req.params;
+  const { id_partIS } = req.params;
   req.getConnection((err, conn) => {
-    conn.query("SELECT * FROM fort_participation WHERE id_part = ?", id_part, (err, rows) => {
-      res.render('participation_edit', {
+    conn.query("SELECT * FROM invsoc_participation WHERE id_part = ?", id_part, (err, rows) => {
+      res.render('invParticipation_edit', {
         data: rows[0]
       })
     });
@@ -79,15 +79,15 @@ controller.edit = (req, res) => {
 };
 
 controller.update = (req, res) => {
-  const { id_part } = req.params;
+  const { id_partIS } = req.params;
   const newParticipation = req.body;
   req.getConnection((err, conn) => {
 
-  conn.query('UPDATE fort_participation set ? where id_part = ?', [newParticipation, id_part], (err, rows) => {
+  conn.query('UPDATE invsoc_participation set ? where id_part = ?', [newParticipation, id_partIS], (err, rows) => {
     if(err){
       console.log(err);
     }else{
-    res.redirect('/participation');
+    res.redirect('/invParticipation');
     }
   });
   });
@@ -98,11 +98,11 @@ controller.cancel = (res) => {
 }
 
 controller.delete = (req, res) => {
-  const { id_part } = req.params;
+  const { id_partIS } = req.params;
   req.getConnection((err, conn) => {
-    conn.query('DELETE FROM fort_participation WHERE id_part = ?', [id_part] , (err, rows) => {
+    conn.query('DELETE FROM invsoc_participation WHERE id_part = ?', [id_partIS] , (err, rows) => {
       console.log(rows);
-      res.redirect('/participation');
+      res.redirect('/invParticipation');
     });
   });
 }

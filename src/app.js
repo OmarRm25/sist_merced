@@ -15,6 +15,7 @@ const organizationRoutes = require('./routes/organization');
 const contactRoutes = require('./routes/contact');
 const admonRoutes= require('./routes/admon');
 const participationRoutes = require('./routes/participation');
+const invParticipationRoutes = require('./routes/invParticipation');
 const consultorRoutes = require('./routes/consultor');
 
 // settings
@@ -46,6 +47,7 @@ app.use('/organization', organizationRoutes);
 app.use('/contact', contactRoutes);
 app.use('/admon', admonRoutes);
 app.use('/participation', participationRoutes);
+app.use('/invParticipation', invParticipationRoutes);
 app.use('/consultor', consultorRoutes);
 
 // static files

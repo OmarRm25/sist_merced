@@ -13,14 +13,28 @@
               </div>
               
               <div class="form-group">
+                <label type="text">RFC</label>
+                <input type="text" name="rfc" value="<%= data.rfc %>" placeholder="Ingresa aquí el RFC del consultor" class="form-control rounded" maxlength="13" minlength="12" required>
+              </div>
+
+              <div class="form-group">
                 <label type="text">Teléfono</label>
-                <input type="text" name="phone" value="<%= data.phone %>" placeholder="Ingresa aquí el teléfono del consultor" class="form-control rounded" maxlength="10" maxlength="10" required>
+                <input type="text" name="phone" value="<%= data.phone %>" placeholder="Ingresa aquí el teléfono del consultor" class="form-control rounded" minlength="10" maxlength="10" required>
+              </div>
+
+              <div class="form-group">
+                <label type="text">Teléfono 2</label>
+                <input type="text" name="phone2" value="<%= data.phone2 %>" placeholder="Ingresa aquí el teléfono 2 del consultor (opcional)" class="form-control rounded"  maxlength="10">
               </div>
 
                <div class="form-group">
                     <label type="text">Correo Electrónico</label>
-                    <input type="email" name="email" value="<%= data.email %>" value="Ingresa el correo electrónico del consultor" class="form-control rounded" required>
-                      
+                    <input type="email" name="email" value="<%= data.email %>" placeholder="Ingresa el correo electrónico del consultor" class="form-control rounded" required>
+               </div>
+
+               <div class="form-group">
+                    <label type="text">Código postal</label>
+                    <input type="text" name="postal_code" value="<%= data.postal_code %>" placeholder="Ingresa el código postal del consultor" class="form-control rounded" required> 
                </div>
   
             <button type="submit" class="btn btn-info rounded">
