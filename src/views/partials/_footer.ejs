@@ -43,8 +43,62 @@
             } );
         } );   
     });
+ 
+    //switches de consultores
+    function showContent() {
+      element = document.getElementById("content");
+      check = document.getElementById("check");
+      if (check.checked) {
+        element.style.display = "block";
+      } else {
+        element.style.display = "none";
+      }
+    }
+    
+    function showContent2() {
+      element = document.getElementById("content2");
+      check2 = document.getElementById("check2");
+      if (check2.checked) {
+        element.style.display = "block";
+      } else {
+        element.style.display = "none";
+      }
+    }
+
+    //habilitar campos no visibles
+
+    $("#otherField3").change(function () {
+  if ($(this).val() == "Aliado Financiero") {
+    $("#otherFieldDiv").show();
+    $("#otherField").attr("required", "");
+    $("#otherField").attr("data-error", "This field is required.");
+  } else {
+    $("#otherFieldDiv").hide();
+    $("#otherField").removeAttr("required");
+    $("#otherField").removeAttr("data-error");
+  }
+});
+$("#otherField3").trigger("change");
+
+$("#seeAnotherFieldGroup").change(function() {
+  if ($(this).val() == "Seleccionado") {
+    $('#otherFieldGroupDiv').show();
+    $('#otherField1').attr('required', '');
+    $('#otherField1').attr('data-error', 'This field is required.');
+    $('#otherField2').attr('required', '');
+    $('#otherField2').attr('data-error', 'This field is required.');
+  } else {
+    $('#otherFieldGroupDiv').hide();
+    $('#otherField1').removeAttr('required');
+    $('#otherField1').removeAttr('data-error');
+    $('#otherField2').removeAttr('required');
+    $('#otherField2').removeAttr('data-error');
+  }
+});
+$("#seeAnotherFieldGroup").trigger("change");
     
     </script>
+    
 
 </body>
 </html>

@@ -42,7 +42,7 @@ controller.list = (req, res) => {
            }else{
            info.programs = programs;
            info.data.forEach((p) => {
-             p.program_name = p.id_program != undefined ? programs[p.id_program -1].program_name : null;
+             p.program_code = p.id_program != undefined ? programs[p.id_program -1].program_code : null;
            });
            res.render('participation', {data : info});
            }
@@ -69,13 +69,34 @@ controller.save = (req, res) => {
 
 controller.edit = (req, res) => {
   const { id_part } = req.params;
+  let info = {};
   req.getConnection((err, conn) => {
     conn.query("SELECT * FROM fort_participation WHERE id_part = ?", id_part, (err, rows) => {
-      res.render('participation_edit', {
-        data: rows[0]
-      })
+      info = rows[0];
+      console.log(rows);
     });
   });
+  req.getConnection((err, conn) => {
+    conn.query('SELECT * FROM organization', (err, orgs) =>{
+      if (err) {
+        res.json(err);
+       }else{
+       info.orgs = orgs;
+       info.org_name = info.id_organization != undefined ? orgs[info.id_organization -1].org_name : null;
+       }
+    });
+  });
+  req.getConnection((err, conn) => {
+    conn.query('SELECT * FROM consultor', (err, consultor) =>{
+      if (err) {
+        res.json(err);
+       }else{
+       info.consultor = consultor;
+       info.full_name = info.id_consultor != undefined ? consultor[info.id_consultor -1].full_name : null;
+       res.render('participation_edit', {data:info});
+       }
+    });
+  }); 
 };
 
 controller.update = (req, res) => {

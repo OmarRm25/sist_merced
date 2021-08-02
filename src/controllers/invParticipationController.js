@@ -42,7 +42,7 @@ controller.list = (req, res) => {
            }else{
            info.programs = programs;
            info.data.forEach((p) => {
-             p.program_name = p.id_program != undefined ? programs[p.id_program -1].program_name : null;
+             p.program_code = p.id_program != undefined ? programs[p.id_program -1].program_code : null;
            });
            res.render('invParticipation', {data : info});
            }
@@ -69,13 +69,34 @@ controller.save = (req, res) => {
 
 controller.edit = (req, res) => {
   const { id_partIS } = req.params;
+  let info = {};
   req.getConnection((err, conn) => {
-    conn.query("SELECT * FROM invsoc_participation WHERE id_part = ?", id_part, (err, rows) => {
-      res.render('invParticipation_edit', {
-        data: rows[0]
-      })
+    conn.query("SELECT * FROM invsoc_participation WHERE id_partIS = ?", id_partIS, (err, rows) => {
+      info = rows[0];
+      console.log(rows);
     });
   });
+  req.getConnection((err, conn) => {
+    conn.query('SELECT * FROM organization', (err, orgs) =>{
+      if (err) {
+        res.json(err);
+       }else{
+       info.orgs = orgs;
+       info.org_name = info.id_organization != undefined ? orgs[info.id_organization -1].org_name : null;
+       }
+    });
+  });
+  req.getConnection((err, conn) => {
+    conn.query('SELECT * FROM consultor', (err, consultor) =>{
+      if (err) {
+        res.json(err);
+       }else{
+       info.consultor = consultor;
+       info.full_name = info.id_consultor != undefined ? consultor[info.id_consultor -1].full_name : null;
+       res.render('invParticipation_edit', {data:info});
+       }
+    });
+  }); 
 };
 
 controller.update = (req, res) => {
@@ -83,7 +104,7 @@ controller.update = (req, res) => {
   const newParticipation = req.body;
   req.getConnection((err, conn) => {
 
-  conn.query('UPDATE invsoc_participation set ? where id_part = ?', [newParticipation, id_partIS], (err, rows) => {
+  conn.query('UPDATE invsoc_participation set ? where id_partIS = ?', [newParticipation, id_partIS], (err, rows) => {
     if(err){
       console.log(err);
     }else{
@@ -100,7 +121,7 @@ controller.cancel = (res) => {
 controller.delete = (req, res) => {
   const { id_partIS } = req.params;
   req.getConnection((err, conn) => {
-    conn.query('DELETE FROM invsoc_participation WHERE id_part = ?', [id_partIS] , (err, rows) => {
+    conn.query('DELETE FROM invsoc_participation WHERE id_partIS = ?', [id_partIS] , (err, rows) => {
       console.log(rows);
       res.redirect('/invParticipation');
     });

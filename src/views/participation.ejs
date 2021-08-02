@@ -42,7 +42,7 @@
                   <% console.log(data); %>
                   <% if (data.programs) { %>
                   <% for(var i=0; i < data.programs.length; i++){ %>
-                    <option value="<%= data.programs[i].id_program %>"> <%= data.programs[i].program_name %></option>
+                    <option value="<%= data.programs[i].id_program %>"> <%= data.programs[i].program_code %></option>
                    <% } %>
                    <% } %>
                 </select>
@@ -186,7 +186,8 @@
                 <option>Diagnóstico de Madurez Institucional en Línea</option>
                 <option>Diagnóstico de Madurez Institucional Presencial</option>
                 <option>Estructura organizacional y administración</option>
-                <option>Fortalecimiento Equipo Operativo</option>    
+                <option>Fortalecimiento Equipo Operativo</option> 
+                <option>Fortalecimiento Institucional</option>   
                 <option>Modelo de Intervención</option>
                 <option>Monitoreo y Evaluación de proyectos</option>
                 <option>Órgano de Gobierno</option>
@@ -237,15 +238,21 @@
           
       </div>
 
+      <div class="form-group">
+        <label type="text">Instituciones beneficiadas</label>
+        <input name="org_beneficiaries" type="number" placeholder="Ingresa aquí el número de Instituciones beneficiadas del proyecto" class="form-control rounded" required>
+      </div>
+
             <div class="form-group">
               <label type="text">Tipo de población</label>
-              <select type="text" name="population_type"  aria-placeholder="Selecciona una opción" class="form-control rounded" required> 
+              <select type="text" multiple name="population_type" id="population_type" class="form-control rounded" required> 
                 <option disabled selected>Selecciona una opción</option>
                 <option>Primera infancia (0-5 años)</option>
                 <option>Infancia (6-11 años)</option>
                 <option>Adolescencia (12-18 años)</option>
                 <option>Adultez (27-59 años)</option>
                 <option>Persona mayor (60 años o más)</option>
+                <option>Organizaciones de la Sociedad Civil</option>
               </select> 
             </div>  
               
@@ -267,7 +274,7 @@
               <div class="col">
               <div class="form-group">
                 <label type="text">Fecha de término</label>
-                <input name="end_date" id="datepicker2" width="415" value="N/A" class="form-control rounded" required/>
+                <input name="end_date" id="datepicker2" width="415" value="N/A" class="form-control rounded" />
               <script>
                 $('#datepicker2').datepicker({
                     uiLibrary: 'bootstrap4',
@@ -322,7 +329,8 @@
                   <option>Tlaxcala</option> 
                   <option>Veracruz</option> 
                   <option>Yucatán</option> 
-                  <option>Zacatecas</option>   
+                  <option>Zacatecas</option>  
+                  <option>Todos los estados</option> 
                 </select>
               </div>
               </div>
@@ -333,11 +341,6 @@
                 <input name="municipality" type="text" placeholder="Ingresa aquí el municipio de incidencia del proyecto" maxlength="50" class="form-control rounded" required>
               </div>
               </div>
-              </div>
-
-              <div class="form-group">
-                <label type="text">Comunidad de incidencia</label>
-                <input name="application_community" type="text" placeholder="Ingresa aquí la comunidad de incidencia del proyecto" maxlength="50" class="form-control rounded" required>
               </div>
 
               <div class="form-group">
@@ -384,13 +387,13 @@
             <th>Objetivo</th>
             <th>Beneficiarios</th>
             <th>Beneficiarias</th>
+            <th>Instituciones beneficiadas</th>
             <th>Tipo de población</th>
             <th>Fecha de inicio</th>
             <th>Fecha de término</th>
             <th>Logros</th>
             <th>Estado de incidencia</th>
             <th>Municipio</th>
-            <th>Comunidad</th>
             <th>Recursos invertidos</th>
             <th>Comentarios</th>
             <td>Acciones</td>
@@ -402,7 +405,7 @@
               <tr class="text-center">
                 <td><%= (i + 1) %></td>
                 <td><%= data.data[i].org_name %></td>
-                <td><%= data.data[i].program_name %></td>
+                <td><%= data.data[i].program_code %></td>
                 <td><%= data.data[i].full_name %></td>
                 <td><%= data.data[i].consultor2 %></td>
                 <td><%= data.data[i].consultor3 %></td>
@@ -417,13 +420,13 @@
                 <td><%= data.data[i].project_objective %></td>
                 <td><%= data.data[i].male_beneficiaries %></td>
                 <td><%= data.data[i].female_beneficiaries %></td>
+                <td><%= data.data[i].org_beneficiaries %></td>
                 <td><%= data.data[i].population_type %></td>
                 <td><%= data.data[i].start_date %></td>
                 <td><%= data.data[i].end_date %></td>
                 <td><%= data.data[i].achievments %></td>
                 <td><%= data.data[i].application_state %></td>
                 <td><%= data.data[i].municipality %></td>
-                <td><%= data.data[i].application_community %></td>
                 <td><%= data.data[i].resources_invested %></td>
                 <td><%= data.data[i].comments %></td>
                 
@@ -472,28 +475,5 @@ End of delete modal window-->
   
 </div> 
 
-<script>
- 
-function showContent() {
-  element = document.getElementById("content");
-  check = document.getElementById("check");
-  if (check.checked) {
-    element.style.display = "block";
-  } else {
-    element.style.display = "none";
-  }
-}
-
-function showContent2() {
-  element = document.getElementById("content2");
-  check2 = document.getElementById("check2");
-  if (check2.checked) {
-    element.style.display = "block";
-  } else {
-    element.style.display = "none";
-  }
-}
-
-</script>
 
 <%- include('partials/_footer'); -%>
