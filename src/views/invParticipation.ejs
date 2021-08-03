@@ -301,8 +301,8 @@
 
             <div class="col">
             <div class="form-group">
-              <label for="otherField6" type="text">Municipio</label>
-              <input id="otherField6" name="municipality" type="text" placeholder="Ingresa aquí el municipio de incidencia del proyecto" maxlength="50" class="form-control rounded">
+              <label for="otherField6" type="text">Municipio o Alcaldía</label>
+              <input id="otherField6" name="municipality" type="text" placeholder="Ingresa aquí el municipio o alcaldía de incidencia del proyecto" maxlength="50" class="form-control rounded">
             </div>
             </div>
             </div>
@@ -333,11 +333,25 @@
 
               </div>
 
-            <div class="row">
+              <div class="form-group">
+                <label for="otherField10" type="text">Formato de formación</label>
+                <select name="formation_format" id="otherField10" class="form-control rounded">
+                  <option disabled selected>Selecciona una opción</option>
+                  <option value="Diplomado">Diplomado</option>
+                  <option value="Curso">Curso</option>
+                  <option value="Taller">Taller</option>
+                  <option value="Webinar">Webinar</option>
+                  <option>Sin formación</option>
+                </select>
+              </div>
+
+              
+        <div class="form-group" id="otherFieldGroupDiv2">    
+          <div class="row">  
               <div class="col">
             <div class="form-group">
-              <label for="otherField10" type="text">Tema de formación</label>
-              <select name="formation_theme" id="otherField10" class="form-control rounded">
+              <label for="otherField1" type="text">Tema de formación</label>
+              <select name="formation_theme" id="otherField1" class="form-control rounded">
                 <option disabled selected>Selecciona una opción</option>
                 <option>Modelo de intervención</option>
                 <option>Gobernanza</option>
@@ -355,17 +369,19 @@
 
               <div class="col">
               <div class="form-group">
-                <label for="otherField11" type="text">No. de sesiones Formación</label>
-                <input id="otherField11" name="num_sessions" type="number" value="0" placeholder="Ingresa aquí el número de sesiones de formación" class="form-control rounded">
+                <label for="otherField2" type="text">No. de sesiones Formación</label>
+                <input id="otherField2" name="num_sessions" type="number" value="0" placeholder="Ingresa aquí el número de sesiones de formación" class="form-control rounded">
               </div> 
               </div> 
               </div>  
-              
+        </div>
+        
+        
               <div class="row">
                 <div class="col">
               <div class="form-group">
-                <label for="otherField12" type="text">Tema <br> de fortalecimento</label>
-                <select name="fort_theme" id="otherField12" class="form-control rounded">
+                <label for="otherField11" type="text">Tema <br> de fortalecimento</label>
+                <select name="fort_theme" id="otherField11" class="form-control rounded">
                   <option disabled selected>Selecciona una opción</option>
                   <option>Alianzas y vinculación</option>
                   <option>Asesoría legal y fiscal</option>
@@ -388,8 +404,8 @@
   
               <div class="col">
                 <div class="form-group">
-                  <label for="otherField13" type="text">No. de sesiones Fortalecimento</label>
-                  <input id="otherField13" name="num_sessions_fort" type="number" value="0" placeholder="Ingresa aquí el número de sesiones de fortalecimento" class="form-control rounded">
+                  <label for="otherField12" type="text">No. de sesiones Fortalecimento</label>
+                  <input id="otherField12" name="num_sessions_fort" type="number" value="0" placeholder="Ingresa aquí el número de sesiones de fortalecimento" class="form-control rounded">
                 </div> 
                 </div>
                 </div>
@@ -439,10 +455,11 @@
             <th>Aliado Financiero</th>
             <th>Logros</th>
             <th>Entidad de incidencia</th>
-            <th>Municipio</th>
+            <th>Municipio/Alcaldía</th>
             <th>Donativo otorgado</th>
             <th>Donativo otorgado 2</th>
             <th>Donativo otorgado 3</th>
+            <th>Formato de formación</th>
             <th>Tema de formación</th>
             <th># de sesiones formación</th>
             <th>Tema de fortalecimento</th>
@@ -480,6 +497,7 @@
                 <td><%= data.data[i].donative %></td> 
                 <td><%= data.data[i].donative2 %></td> 
                 <td><%= data.data[i].donative3 %></td> 
+                <td><%= data.data[i].formation_format %></td>
                 <td><%= data.data[i].formation_theme %></td> 
                 <td><%= data.data[i].num_sessions %></td> 
                 <td><%= data.data[i].fort_theme %></td> 

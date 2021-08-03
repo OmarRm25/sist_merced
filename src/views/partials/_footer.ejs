@@ -44,7 +44,7 @@
         } );   
     });
  
-    //switches de consultores
+    //switches for consultor
     function showContent() {
       element = document.getElementById("content");
       check = document.getElementById("check");
@@ -65,7 +65,7 @@
       }
     }
 
-    //habilitar campos no visibles
+    //show hidden fields
 
     $("#otherField3").change(function () {
   if ($(this).val() == "Aliado Financiero") {
@@ -96,6 +96,25 @@ $("#seeAnotherFieldGroup").change(function() {
   }
 });
 $("#seeAnotherFieldGroup").trigger("change");
+
+
+$("#otherField10").change(function() {
+  if ($(this).val() == "Diplomado" || $(this).val() == "Curso" || $(this).val() == "Taller" 
+  || $(this).val() == "Webinar" ) {
+    $('#otherFieldGroupDiv2').show();
+    $('#otherField1').attr('required', '');
+    $('#otherField1').attr('data-error', 'This field is required.');
+    $('#otherField2').attr('required', '');
+    $('#otherField2').attr('data-error', 'This field is required.');
+  } else {
+    $('#otherFieldGroupDiv2').hide();
+    $('#otherField1').removeAttr('required');
+    $('#otherField1').removeAttr('data-error');
+    $('#otherField2').removeAttr('required');
+    $('#otherField2').removeAttr('data-error');
+  }
+});
+$("#otherField10").trigger("change");
     
     </script>
     

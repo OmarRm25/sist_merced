@@ -263,8 +263,8 @@
 
       <div class="col">
       <div class="form-group">
-        <label for="otherField6" type="text">Municipio</label>
-        <input id="otherField6" name="municipality" value="<%= data.municipality %>" type="text" placeholder="Ingresa aquí el municipio de incidencia del proyecto" maxlength="50" class="form-control rounded">
+        <label for="otherField6" type="text">Municipio o Alcaldía</label>
+        <input id="otherField6" name="municipality" value="<%= data.municipality %>" type="text" placeholder="Ingresa aquí el municipio o alcaldía de incidencia del proyecto" maxlength="50" class="form-control rounded">
       </div>
       </div>
       </div>
@@ -295,11 +295,27 @@
 
         </div>
 
+
+        <div class="form-group">
+          <label for="otherField10" type="text">Formato de formación</label>
+          <select name="formation_format" id="otherField10" value="<%= data.formation_format %>" class="form-control rounded">
+            <option disabled selected>Selecciona una opción</option>
+            <option value="Diplomado">Diplomado</option>
+            <option value="Curso">Curso</option>
+            <option value="Taller">Taller</option>
+            <option value="Webinar">Webinar</option>
+            <option>Sin formación</option>
+          </select>
+        </div>
+
+        
+  <div class="form-group" id="otherFieldGroupDiv2"> 
+
       <div class="row">
         <div class="col">  
       <div class="form-group">
-        <label for="otherField10" type="text">Tema de formación</label>
-        <select name="formation_theme" value="<%= data.formation_theme %>" id="otherField10" class="form-control rounded">
+        <label for="otherField1" type="text">Tema de formación</label>
+        <select name="formation_theme" value="<%= data.formation_theme %>" id="otherField1" class="form-control rounded">
           <option disabled selected>Selecciona una opción</option>
           <option>Modelo de intervención</option>
           <option>Gobernanza</option>
@@ -317,17 +333,18 @@
 
         <div class="col"> 
         <div class="form-group">
-          <label for="otherField11" type="text">No. de sesiones Formación</label>
-          <input id="otherField11" name="num_sessions" value="<%= data.num_sessions %>" type="number" placeholder="Ingresa aquí el número de sesiones de formación" class="form-control rounded">
+          <label for="otherField2" type="text">No. de sesiones Formación</label>
+          <input id="otherField2" name="num_sessions" value="<%= data.num_sessions %>" type="number" placeholder="Ingresa aquí el número de sesiones de formación" class="form-control rounded">
         </div>    
         </div>
         </div>
+      </div>  
 
       <div class="row">
       <div class="col">
         <div class="form-group">
-          <label for="otherField12" type="text">Tema <br> de fortalecimento</label>
-          <select name="fort_theme" value="<%= data.fort_theme %>" id="otherField12" class="form-control rounded">
+          <label for="otherField11" type="text">Tema <br> de fortalecimento</label>
+          <select name="fort_theme" value="<%= data.fort_theme %>" id="otherField11" class="form-control rounded">
             <option disabled selected>Selecciona una opción</option>
             <option>Alianzas y vinculación</option>
             <option>Asesoría legal y fiscal</option>
@@ -350,8 +367,8 @@
 
        <div class="col">
           <div class="form-group">
-            <label for="otherField13" type="text">No. de sesiones Fortalecimento</label>
-            <input id="otherField13" name="num_sessions_fort" value="<%= data.num_sessions_fort %>" type="number" placeholder="Ingresa aquí el número de sesiones de fortalecimento" class="form-control rounded">
+            <label for="otherField12" type="text">No. de sesiones Fortalecimento</label>
+            <input id="otherField12" name="num_sessions_fort" value="<%= data.num_sessions_fort %>" type="number" placeholder="Ingresa aquí el número de sesiones de fortalecimento" class="form-control rounded">
           </div> 
         </div>
       </div>
