@@ -53,15 +53,16 @@ controller.list = (req, res) => {
 
 controller.save = (req, res) => {
   const data = req.body;
+  data.population_type = `|${data.population_type.join(",")}|`;
+  data.application_state = `|${data.application_state.join(",")}|`;
+  
   console.log(req.body);
   req.getConnection((err, conn) => {
     conn.query('INSERT INTO invsoc_participation set ?', data, (err, participations) => {
       if(err){
-        console.log(err);
         res.json(err);
       }else{
-      console.log(participations)
-      res.redirect('/invParticipation');
+        res.redirect('/invParticipation');
       }
     });
   })
@@ -102,6 +103,10 @@ controller.edit = (req, res) => {
 controller.update = (req, res) => {
   const { id_partIS } = req.params;
   const newParticipation = req.body;
+
+  newParticipation.population_type = `|${newParticipation.population_type.join(",")}|`;
+  newParticipation.application_state = `|${newParticipation.application_state.join(",")}|`;
+
   req.getConnection((err, conn) => {
 
   conn.query('UPDATE invsoc_participation set ? where id_partIS = ?', [newParticipation, id_partIS], (err, rows) => {

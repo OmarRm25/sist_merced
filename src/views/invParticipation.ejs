@@ -1,5 +1,4 @@
 <%- include('partials/_header'); -%>
-
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 
@@ -154,8 +153,8 @@
 
             <div class="form-group">
               <label type="text">Tipo de población</label>
-              <select type="text" name="population_type" class="form-control rounded" required> 
-                <option disabled selected>Selecciona una opción</option>
+              <select id="my-select" name="population_type" title="Nada seleccionado" class="selectpicker form-control rounded" multiple required> 
+                <option disabled>Selecciona una o más opciones</option>
                 <option>Primera infancia (0-5 años)</option>
                 <option>Infancia (6-11 años)</option>
                 <option>Adolescencia (12-18 años)</option>
@@ -164,7 +163,7 @@
                 <option>Organizaciones de la Sociedad Civil</option>
               </select> 
             </div>
-            
+             
             <div class="row">
 
               <div class="col">  
@@ -260,8 +259,8 @@
             <div class="col">
             <div class="form-group">
               <label for="otherField5" type="text">Estado de incidencia</label>
-              <select id="otherField5" name="application_state" class="form-control rounded">
-                <option disabled selected>Selecciona una opción</option>    
+              <select id="otherField5" name="application_state" title="Nada seleccionado" class="selectpicker form-control rounded" multiple>
+                <option disabled>Selecciona una o más opciones</option>    
                 <option>Aguascalientes</option>
                 <option>Baja California</option>
                 <option>Baja California Sur</option>
@@ -419,7 +418,7 @@
             
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-info rounded">Guardar</button>
+        <button id="btn_submit" type="submit" class="btn btn-info rounded">Guardar</button>
         <button type="button" class="btn btn-danger rounded" data-dismiss="modal">Cancelar</button>
       </div>
     </form>
@@ -548,5 +547,6 @@ End of delete modal window-->
     </div>
   
 </div> 
+
 
 <%- include('partials/_footer'); -%>

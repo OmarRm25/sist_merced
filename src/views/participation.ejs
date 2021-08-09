@@ -220,6 +220,19 @@
               <input name="project_objective" type="text" placeholder="Ingresa aquí el objetivo del proyecto" class="form-control rounded" required>
             </div>
 
+            <div class="form-group">
+              <label type="text">Tipo de población</label>
+              <select type="text" id="my-select" name="population_type" title="Nada seleccionado" class="selectpicker form-control rounded" multiple required> 
+                <option disabled>Selecciona una o más opciones</option>
+                <option>Primera infancia (0-5 años)</option>
+                <option>Infancia (6-11 años)</option>
+                <option>Adolescencia (12-18 años)</option>
+                <option>Adultez (27-59 años)</option>
+                <option>Persona mayor (60 años o más)</option>
+                <option>Organizaciones de la Sociedad Civil</option>
+              </select> 
+            </div>  
+
             <div class="row">
 
             <div class="col">  
@@ -241,20 +254,7 @@
       <div class="form-group">
         <label type="text">Instituciones beneficiadas</label>
         <input name="org_beneficiaries" type="number" placeholder="Ingresa aquí el número de Instituciones beneficiadas del proyecto" class="form-control rounded" required>
-      </div>
-
-            <div class="form-group">
-              <label type="text">Tipo de población</label>
-              <select type="text" multiple name="population_type" id="population_type" class="form-control rounded" required> 
-                <option disabled selected>Selecciona una opción</option>
-                <option>Primera infancia (0-5 años)</option>
-                <option>Infancia (6-11 años)</option>
-                <option>Adolescencia (12-18 años)</option>
-                <option>Adultez (27-59 años)</option>
-                <option>Persona mayor (60 años o más)</option>
-                <option>Organizaciones de la Sociedad Civil</option>
-              </select> 
-            </div>  
+      </div> 
               
             <div class="row">
               <div class="col">
@@ -296,8 +296,8 @@
               <div class="col">
               <div class="form-group">
                 <label type="text">Estado de incidencia</label>
-                <select name="application_state" class="form-control rounded" required>
-                  <option disabled selected>Selecciona una opción</option>    
+                <select id="otherField5" name="application_state" title="Nada seleccionado" class="selectpicker form-control rounded" multiple required>
+                  <option disabled>Selecciona una o más opciones</option>    
                   <option>Aguascalientes</option>
                   <option>Baja California</option>
                   <option>Baja California Sur</option>
@@ -385,10 +385,10 @@
             <th>Aliado Financiero</th>
             <th>Nombre de proyecto</th>
             <th>Objetivo</th>
+            <th>Tipo de población</th>
             <th>Beneficiarios</th>
             <th>Beneficiarias</th>
             <th>Instituciones beneficiadas</th>
-            <th>Tipo de población</th>
             <th>Fecha de inicio</th>
             <th>Fecha de término</th>
             <th>Logros</th>
@@ -418,10 +418,10 @@
                 <td><%= data.data[i].ally_name %></td> <!--proveedor de recursos-->
                 <td><%= data.data[i].project_name %></td>
                 <td><%= data.data[i].project_objective %></td>
+                <td><%= data.data[i].population_type %></td>
                 <td><%= data.data[i].male_beneficiaries %></td>
                 <td><%= data.data[i].female_beneficiaries %></td>
                 <td><%= data.data[i].org_beneficiaries %></td>
-                <td><%= data.data[i].population_type %></td>
                 <td><%= data.data[i].start_date %></td>
                 <td><%= data.data[i].end_date %></td>
                 <td><%= data.data[i].achievments %></td>
