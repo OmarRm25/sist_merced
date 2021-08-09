@@ -20,33 +20,34 @@
           <div class="modal-body">
           
             <form action="/organization/add" method="post">
-                <div class="form-group">
+                
+              <div class="form-group">
                   <label type="text">Organización</label>
                   <input type="text" name="org_name" placeholder="Ingresa aquí el nombre de la Organización" class="form-control rounded" autofocus required>
                 </div>
+
                 <div class="form-group">
-                  <label type="text">Área de intervención</label>
+                  <label type="text">Área de intervención prioritaria</label>
                   <select name="intervention_area" class="form-control rounded" required>
                     <option disabled selected>Selecciona una opción</option>
-                    <option>Acción por el clima</option>
-                    <option>Agua limpia y saneamiento</option>
-                    <option>Alianzas para lograr los objetivos</option>
-                    <option>Ciudades y comunidades sostenibles</option>
-                    <option>Educación de calidad</option>
-                    <option>Energía asequible y no contaminante</option>
-                    <option>Fin de la pobreza</option>
-                    <option>Hambre cero</option>
-                    <option>Igualdad de género</option>
-                    <option>Industria, innovación e infraestructura</option>
-                    <option>Paz, justicia e instituciones sólidas</option>
-                    <option>Producción y consumo responsables</option>
-                    <option>Reducción de las desigualdades</option>
-                    <option>Salud y bienestar</option>
-                    <option>Trabajo decente y crecimiento económico</option>
-                    <option>Vida de ecosistemas terrestres</option>
-                    <option>Vida submarina</option>
+                    <option>Asistencia social</option>
+                    <option>Derechos humanos</option>
+                    <option>Desarrollo comunitario</option>
+                    <option>Desarrollo social</option>
+                    <option>Educación</option>
+                    <option>Medio Ambiente</option>
+                    <option>Agua, saneamiento e higiene</option>
+                    <option>Salud</option>
+                    <option>Seguridad Vial</option>
+                    <option>Otra</option>
                   </select>  
                   </div>
+
+                <div class="form-group">
+                  <label type="text">En caso de elegir otra, especifique</label>
+                  <input type="text" name="other" class="form-control rounded">
+                </div>  
+
                 <div class="form-group">
                   <label type="text">RFC</label>
                   <input type="text" name="rfc" placeholder="Ingresa aquí el RFC de la organización" class="form-control rounded" minlength="12" maxlength="13" required>
@@ -92,6 +93,11 @@
                 </div>
                 
                  <div class="form-group">
+                   <label type="text">Municipio o Alcaldía</label>
+                   <input type="text" name="municipality" placeholder="Ingresa aquí el municipio o alcaldía de la organización" class="form-control rounded" required>
+                 </div>   
+
+                 <div class="form-group">
                       <label type="text">¿Se encuentra en lista negra?</label>
                       <select name="blacklist" class="form-control rounded" required>
                         <option disabled selected>Selecciona una opción</option>
@@ -101,13 +107,19 @@
                  </div>
 
                  <div class="form-group">
-                  <label type="text">Tipo de organización</label>
-                  <select name="org_type" class="form-control rounded" required>
-                    <option disabled selected>Selecciona una opción</option>
-                    <option>Donataria</option>
-                    <option>Aliado Financiero</option>
-                </select>
-             </div>
+                  <label type="text">Dirección</label>
+                  <input type="text" name="address" placeholder="Calle, Número exterior, Número interior" class="form-control rounded" required> 
+                 </div>
+
+                 <div class="form-group">
+                  <label type="text">Código postal</label>
+                  <input type="text" name="postal_code" placeholder="Ingresa aquí el código postal" class="form-control rounded" required> 
+                 </div>
+
+                 <div class="form-group">
+                  <label type="text">Sitio web</label>
+                  <input type="text" name="website" placeholder="Ingresa aquí el sitio web de la organización (opcional)" class="form-control rounded"> 
+                 </div>
 
           <div class="modal-footer">
             <button type="submit" class="btn btn-info rounded">Guardar</button>
@@ -126,28 +138,34 @@
       <div class="table-responsive">
           <table id="table" class="table table-sm table-active table-striped table-hover">
             <thead>
-              <tr>
+              <tr class="text-center">
                 <th>#</th>
                 <th>Organización</th>
-                <th>Área de intervención</th>
+                <th>Área de intervención <br> prioritaria</th>
                 <th>RFC</th>
                 <th>Entidad Federativa</th>
+                <th>Municipio</th>
                 <th>¿Lista negra?</th>
-                <th>Tipo de organización</th>
+                <th>Dirección</th>
+                <th>Código postal</th>
+                <th>Sitio web</th>
                 <td>Acciones</td>
               </tr>
             </thead>
             <tbody>
               <% if (data) { %>
                 <% for(var i = 0; i < data.length; i++) { %>
-                  <tr>
+                  <tr class="text-center">
                     <td><%= (i + 1) %></td>
                     <td><%= data[i].org_name %></td>
                     <td><%= data[i].intervention_area %></td>
                     <td><%= data[i].rfc %></td>
-                    <td><%=data[i].state %></td>
+                    <td><%= data[i].state %></td>
+                    <td><%= data[i].municipality %></td>
                     <td><%= data[i].blacklist %></td>
-                    <td><%= data[i].org_type %></td>
+                    <td><%= data[i].address %></td>
+                    <td><%= data[i].postal_code %></td>
+                    <td><%= data[i].website %></td>
                     
                     <td>
                       <br>

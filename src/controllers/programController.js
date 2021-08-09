@@ -12,7 +12,7 @@ controller.list = (req, res) => {
     });
   });
   req.getConnection((err, conn) => {
-    conn.query('SELECT * FROM organization ORDER BY org_name ASC', (err, allies) =>{
+    conn.query('SELECT * FROM organization', (err, allies) =>{
       if (err) {
         res.json(err);
        }else{

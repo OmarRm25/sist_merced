@@ -3,7 +3,7 @@ const controller = {};
 controller.list = (req, res) => {
   let info = {};
   req.getConnection((err, conn) => {
-    conn.query('SELECT * FROM program_organization', (err, participations) => {
+    conn.query('SELECT * FROM fort_participation', (err, participations) => {
      if (err) {
       res.json(err);
      }else{
@@ -42,7 +42,7 @@ controller.list = (req, res) => {
            }else{
            info.programs = programs;
            info.data.forEach((p) => {
-             p.program_name = p.id_program != undefined ? programs[p.id_program -1].program_name : null;
+             p.program_code = p.id_program != undefined ? programs[p.id_program -1].program_code : null;
            });
            res.render('participation', {data : info});
            }
@@ -53,9 +53,11 @@ controller.list = (req, res) => {
 
 controller.save = (req, res) => {
   const data = req.body;
+  data.population_type = `|${data.population_type.join(",")}|`;
+  data.application_state = `|${data.application_state.join(",")}|`;
   console.log(req.body);
   req.getConnection((err, conn) => {
-    conn.query('INSERT INTO program_organization set ?', data, (err, participations) => {
+    conn.query('INSERT INTO fort_participation set ?', data, (err, participations) => {
       if(err){
         console.log(err);
         res.json(err);
@@ -69,21 +71,46 @@ controller.save = (req, res) => {
 
 controller.edit = (req, res) => {
   const { id_part } = req.params;
+  let info = {};
   req.getConnection((err, conn) => {
-    conn.query("SELECT * FROM program_organization WHERE id_part = ?", id_part, (err, rows) => {
-      res.render('participation_edit', {
-        data: rows[0]
-      })
+    conn.query("SELECT * FROM fort_participation WHERE id_part = ?", id_part, (err, rows) => {
+      info = rows[0];
+      console.log(rows);
     });
   });
+  req.getConnection((err, conn) => {
+    conn.query('SELECT * FROM organization', (err, orgs) =>{
+      if (err) {
+        res.json(err);
+       }else{
+       info.orgs = orgs;
+       info.org_name = info.id_organization != undefined ? orgs[info.id_organization -1].org_name : null;
+       }
+    });
+  });
+  req.getConnection((err, conn) => {
+    conn.query('SELECT * FROM consultor', (err, consultor) =>{
+      if (err) {
+        res.json(err);
+       }else{
+       info.consultor = consultor;
+       info.full_name = info.id_consultor != undefined ? consultor[info.id_consultor -1].full_name : null;
+       res.render('participation_edit', {data:info});
+       }
+    });
+  }); 
 };
 
 controller.update = (req, res) => {
   const { id_part } = req.params;
   const newParticipation = req.body;
+
+  newParticipation.population_type = `|${newParticipation.population_type.join(",")}|`;
+  newParticipation.application_state = `|${newParticipation.application_state.join(",")}|`;
+
   req.getConnection((err, conn) => {
 
-  conn.query('UPDATE program_organization set ? where id_part = ?', [newParticipation, id_part], (err, rows) => {
+  conn.query('UPDATE fort_participation set ? where id_part = ?', [newParticipation, id_part], (err, rows) => {
     if(err){
       console.log(err);
     }else{
@@ -100,7 +127,7 @@ controller.cancel = (res) => {
 controller.delete = (req, res) => {
   const { id_part } = req.params;
   req.getConnection((err, conn) => {
-    conn.query('DELETE FROM program_organization WHERE id_part = ?', [id_part] , (err, rows) => {
+    conn.query('DELETE FROM fort_participation WHERE id_part = ?', [id_part] , (err, rows) => {
       console.log(rows);
       res.redirect('/participation');
     });

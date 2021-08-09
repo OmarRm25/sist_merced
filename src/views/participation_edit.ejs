@@ -33,44 +33,53 @@
 
           <div id="content" style="display: none;">
 
+            <div class="form-group">
+              <label type="text">Consultor 2</label>
+              <select type="text" name="consultor2" value="<%= data.consultor2 %>" placeholder="consultor" class="form-control rounded">
+                <option>No aplica</option>
+                <% console.log(data); %>
+                <% if (data.consultor) { %>
+                <% for(var i=0; i < data.consultor.length; i++){ %>
+                  <option value="<%= data.consultor[i].full_name %>"><%= data.consultor[i].full_name %></option>
+                 <% } %>
+                 <% } %>
+              </select>              
+            </div>
+  
+            <div class="form-group">
+              <label type="text">Consultor 3</label>
+              <select type="text" name="consultor3" value="<%= data.consultor3 %>" placeholder="consultor" class="form-control rounded">
+                <option>No aplica</option>
+                <% console.log(data); %>
+                <% if (data.consultor) { %>
+                <% for(var i=0; i < data.consultor.length; i++){ %>
+                  <option value="<%= data.consultor[i].full_name %>"> <%= data.consultor[i].full_name %></option>
+                 <% } %>
+                 <% } %>
+              </select>              
+            </div>
+  
+            <div class="form-group">
+              <label type="text">Consultor 4</label>
+              <select type="text" name="consultor4" value="<%= data.consultor4 %>" placeholder="consultor" class="form-control rounded">
+                <option>No aplica</option>
+                <% console.log(data); %>
+                <% if (data.consultor) { %>
+                <% for(var i=0; i < data.consultor.length; i++){ %>
+                  <option value="<%= data.consultor[i].full_name %>"> <%= data.consultor[i].full_name %></option>
+                 <% } %>
+                 <% } %>
+              </select>              
+            </div>
+  
           <div class="form-group">
-            <label type="text">Consultor 2</label>
-            <select type="text" name="consultor2" value="<%= data.consultor2 %>" placeholder="consultor" class="form-control rounded">
-              <option>No aplica</option>
-              <% console.log(data); %>
-              <% if (data.consultor) { %>
-              <% for(var i=0; i < data.consultor.length; i++){ %>
-                <option value="<%= data.consultor[i].full_name %>"><%= data.consultor[i].full_name %></option>
-               <% } %>
-               <% } %>
-            </select>              
+            <div class="custom-control custom-switch">
+              <input type="checkbox" class="custom-control-input" id="check2" value="1" onchange="javascript:showContent2()">
+              <label class="custom-control-label" for="check2">Agregar más consultores</label>
+            </div>
           </div>
 
-          <div class="form-group">
-            <label type="text">Consultor 3</label>
-            <select type="text" name="consultor3" value="<%= data.consultor3 %>" placeholder="consultor" class="form-control rounded">
-              <option>No aplica</option>
-              <% console.log(data); %>
-              <% if (data.consultor) { %>
-              <% for(var i=0; i < data.consultor.length; i++){ %>
-                <option value="<%= data.consultor[i].full_name %>"> <%= data.consultor[i].full_name %></option>
-               <% } %>
-               <% } %>
-            </select>              
-          </div>
-
-          <div class="form-group">
-            <label type="text">Consultor 4</label>
-            <select type="text" name="consultor4" value="<%= data.consultor4 %>" placeholder="consultor" class="form-control rounded">
-              <option>No aplica</option>
-              <% console.log(data); %>
-              <% if (data.consultor) { %>
-              <% for(var i=0; i < data.consultor.length; i++){ %>
-                <option value="<%= data.consultor[i].full_name %>"> <%= data.consultor[i].full_name %></option>
-               <% } %>
-               <% } %>
-            </select>              
-          </div>
+          <div id="content2" style="display: none;">
 
           <div class="form-group">
             <label type="text">Consultor 5</label>
@@ -123,24 +132,9 @@
                <% } %>
             </select>              
           </div>
-
+          </div>
         </div>
 
-        <div class="form-group"> 
-            <label type="text">Año</label>
-            <br>
-            <input type="text" style="background-color: whitesmoke" class="form_control rounded text-center" value="<%= data.year %>" name="year" id="datepicker" width="430" required/>
-        <script>
-          $('#datepicker').datepicker({
-              uiLibrary: 'bootstrap4',
-              viewMode: "years",
-              format: 'yyyy',
-              minViewMode: "years",
-              width: 430
-          });
-        </script> 
-        
-        </div>
         <div class="form-group">
           <label type="text">Tema</label>
           <select type="text" name="theme" value="<%= data.theme %>" class="form-control rounded" required>
@@ -153,7 +147,8 @@
             <option>Diagnóstico de Madurez Institucional en Línea</option>
             <option>Diagnóstico de Madurez Institucional Presencial</option>
             <option>Estructura organizacional y administración</option>
-            <option>Fortalecimiento Equipo Operativo</option>    
+            <option>Fortalecimiento Equipo Operativo</option>   
+            <option>Fortalecimiento Institucional</option>   
             <option>Modelo de Intervención</option>
             <option>Monitoreo y Evaluación de proyectos</option>
             <option>Órgano de Gobierno</option>
@@ -162,33 +157,164 @@
             <option>Teoría de cambio</option>
           </select>
         </div>
-        
+
         <div class="form-group">
-          <label for="seeAnotherField" type="text">Recursos</label>
-          <select name="resources" value="<%= data.resources %>" id="seeAnotherField" class="form-control rounded" required>
+          <label type="text">¿Quién fue el aliado financiero?</label>
+          <select type="text" name="ally_name" value="<%= data.ally_name %>" placeholder="Aliado" class="form-control rounded">
             <option disabled selected>Selecciona una opción</option>
-            <option value="Propios">Propios</option>
-            <option value="Aliado Financiero">Aliado Financiero</option>
-          </select> 
-        </div>
-        
-        <div class="form-group" id="otherFieldDiv">
-          <label for="otherField" type="text">¿Quién fue el aliado financiero?</label>
-          <select type="text" name="ally_name" value="<%= data.ally_name %>" placeholder="Aliado" class="form-control rounded" id="otherField">
-            <option>No aplica</option>
             <% console.log(data); %>
             <% if (data.orgs) { %>
             <% for(var i=0; i < data.orgs.length; i++){ %>
+              <% console.log(data.orgs[i].org_name) %>
               <option value="<%= data.orgs[i].org_name %>"> <%= data.orgs[i].org_name %></option>
              <% } %>
              <% } %>
           </select>
-        </div>         
+        </div>  
         
         <div class="form-group">
-          <label type="text">Comentarios</label>
-          <input name="comments" type="text" value="<%= data.comments %>" placeholder="Máximo 300 caracteres" maxlength="300" class="form-control rounded"> 
+          <label type="text">Nombre del proyecto</label>
+          <input name="project_name" type="text" value="<%= data.project_name %>"  placeholder="Ingresa aquí el nombre del proyecto" class="form-control rounded" required>
         </div>
+
+        <div class="form-group">
+          <label type="text">Objetivo del proyecto</label>
+          <input name="project_objective" type="text" value="<%= data.project_objective %>"  placeholder="Ingresa aquí el objetivo del proyecto" class="form-control rounded" required>
+        </div>
+
+        <div class="form-group">
+          <label type="text">Tipo de población</label>
+          <select id="my-select" type="text" name="population_type" title="<%= data.population_type %>"  class="selectpicker form-control rounded" multiple required> 
+            <option disabled>Selecciona una opción</option>
+            <option>Primera infancia (0-5 años)</option>
+            <option>Infancia (6-11 años)</option>
+            <option>Adolescencia (12-18 años)</option>
+            <option>Adultez (27-59 años)</option>
+            <option>Persona mayor (60 años o más)</option>
+            <option>Organizaciones de la Sociedad Civil</option>
+          </select> 
+        </div>  
+
+        <div class="row">
+
+        <div class="col">  
+        <div class="form-group">
+          <label type="text">Beneficiarios</label>
+          <input name="male_beneficiaries" type="number" value="<%= data.male_beneficiaries %>"  placeholder="Ingresa aquí el número de beneficiarios del proyecto" class="form-control rounded" required>
+        </div>
+      </div>
+
+       <div class="col">
+        <div class="form-group">
+          <label type="text">Beneficiarias</label>
+          <input name="female_beneficiaries" type="number" value="<%= data.female_beneficiaries %>"  placeholder="Ingresa aquí el número de beneficiarias del proyecto" class="form-control rounded" required>
+        </div>
+      </div> 
+      
+  </div>
+
+        <div class="form-group">
+          <label type="text">Instituciones beneficiadas</label>
+          <input name="org_beneficiaries" type="number" value="<%= data.org_beneficiaries %>" placeholder="Ingresa aquí el número de Instituciones beneficiadas del proyecto" class="form-control rounded" required>
+        </div>
+          
+        <div class="row">
+          <div class="col">
+          <div class="form-group">
+            <label type="text">Fecha de inicio</label>
+            <input name="start_date" id="datepicker" width="415" value="<%= data.start_date %>" class="form-control rounded" required/>
+          <script>
+            $('#datepicker').datepicker({
+                uiLibrary: 'bootstrap4',
+                format: 'dd/mm/yyyy',
+                width: 415,
+            });
+          </script>
+          </div>
+        </div>
+          
+          <div class="col">
+          <div class="form-group">
+            <label type="text">Fecha de término</label>
+            <input name="end_date" id="datepicker2" width="415" value="<%= data.end_date %>"  class="form-control rounded" />
+          <script>
+            $('#datepicker2').datepicker({
+                uiLibrary: 'bootstrap4',
+                format: 'dd/mm/yyyy',
+                width: 415
+            });
+          </script>
+          </div>
+        </div>
+      </div>  
+      <!-- cierre de row-->
+
+          <div class="form-group">
+            <label type="text">Logros</label>
+            <input name="achievments" type="text" value="<%= data.achievments %>" placeholder="Ingresa aquí los logros del proyecto" maxlength="100" class="form-control rounded" required>
+          </div>
+
+
+        <div class="row">
+          <div class="col">
+          <div class="form-group">
+            <label type="text">Estado de incidencia</label>
+            <select id="otherField5" name="application_state" title="<%= data.application_state %>"  class="selectpicker form-control rounded" multiple required>
+              <option disabled>Selecciona una o más opciones</option>    
+              <option>Aguascalientes</option>
+              <option>Baja California</option>
+              <option>Baja California Sur</option>
+              <option>Campeche</option>
+              <option>Chiapas</option>
+              <option>Chihuahua</option>
+              <option>Ciudad de México</option>
+              <option>Coahuila</option>
+              <option>Colima</option>
+              <option>Durango</option>
+              <option>Estado de México</option> 
+              <option>Guanajuato</option> 
+              <option>Guerrero</option> 
+              <option>Hidalgo</option> 
+              <option>Jalisco</option> 
+              <option>Michoacán</option> 
+              <option>Morelos</option> 
+              <option>Nayarit</option> 
+              <option>Nuevo León</option> 
+              <option>Oaxaca</option> 
+              <option>Puebla</option> 
+              <option>Querétaro</option> 
+              <option>Quintana Roo</option> 
+              <option>San Luis Potosí</option> 
+              <option>Sinaloa</option> 
+              <option>Sonora</option> 
+              <option>Tabasco</option> 
+              <option>Tamaulipas</option> 
+              <option>Tlaxcala</option> 
+              <option>Veracruz</option> 
+              <option>Yucatán</option> 
+              <option>Zacatecas</option>   
+              <option>Todos los estados</option>
+            </select>
+          </div>
+          </div>
+
+          <div class="col">
+          <div class="form-group">
+            <label type="text">Municipio o Alcaldía</label>
+            <input name="municipality" type="text" value="<%= data.municipality %>"  placeholder="Ingresa aquí el municipio o alcaldía de incidencia del proyecto" maxlength="50" class="form-control rounded" required>
+          </div>
+          </div>
+          </div>
+
+          <div class="form-group">
+            <label type="text">Recursos invertidos</label>
+            <input name="resources_invested" type="number" value="<%= data.resources_invested %>"  placeholder="Ingresa aquí los recursos invertidos en el proyecto" class="form-control rounded" required>
+          </div>
+
+          <div class="form-group">
+            <label type="text">Comentarios</label>
+            <input name="comments" type="text" value="<%= data.comments %>"  placeholder="Máximo 300 caracteres" maxlength="300" class="form-control rounded"> 
+          </div>
 
           <button type="submit" class="btn btn-info rounded">
             Actualizar
@@ -202,31 +328,5 @@
     </div>
   </div>
 </div>
-
-<script> 
-$("#seeAnotherField").change(function () {
-  if ($(this).val() == "Aliado Financiero") {
-    $("#otherFieldDiv").show();
-    $("#otherField").attr("required", "");
-    $("#otherField").attr("data-error", "This field is required.");
-  } else {
-    $("#otherFieldDiv").hide();
-    $("#otherField").removeAttr("required");
-    $("#otherField").removeAttr("data-error");
-  }
-});
-$("#seeAnotherField").trigger("change");
-
-function showContent() {
-  element = document.getElementById("content");
-  check = document.getElementById("check");
-  if (check.checked) {
-    element.style.display = "block";
-  } else {
-    element.style.display = "none";
-  }
-}
-
-</script>
 
 <%- include('partials/_footer'); -%>

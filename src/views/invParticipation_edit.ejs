@@ -1,0 +1,400 @@
+<%- include('partials/_header'); -%>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-5 offset-md-3 card">
+      <div class="card-body"></div>
+        <h5>Editar participación</h5>
+
+        <form action="/invParticipation/update/<%= data.id_partIS %>" method="POST">
+          <div class="form-group">
+            <label type="text">Organización</label>
+            <input type="text" name="id_organization" value="<%= data.id_organization %>" placeholder="Selecciona la Organización" class="form-control rounded" disabled>
+          </div>
+          <div class="form-group">
+            <label type="text">Programa</label>
+            <input type="text" name="id_program" value="<%= data.id_program %>" placeholder="Selecciona el nombre del Programa" class="form-control rounded" disabled>
+          </div>
+
+          <div class="form-group">
+            <label type="text">Asesor</label>
+            <input type="text" name="id_consultor" value="<%= data.id_consultor %>" placeholder="consultor" class="form-control rounded" disabled>              
+          </div>
+
+          <div class="form-group">
+            <div class="custom-control custom-switch">
+              <input type="checkbox" class="custom-control-input" id="check" value="1" onchange="javascript:showContent()">
+              <label class="custom-control-label" for="check">Agregar más asesore</label>
+            </div>
+          </div>
+
+          <div id="content" style="display: none;">
+
+          <div class="form-group">
+            <label type="text">Asesor 2</label>
+            <select type="text" name="consultor2" value="<%= data.consultor2 %>" placeholder="consultor" class="form-control rounded">
+              <option>No aplica</option>
+              <% console.log(data); %>
+              <% if (data.consultor) { %>
+              <% for(var i=0; i < data.consultor.length; i++){ %>
+                <option value="<%= data.consultor[i].full_name %>"><%= data.consultor[i].full_name %></option>
+               <% } %>
+               <% } %>
+            </select>              
+          </div>
+
+          <div class="form-group">
+            <label type="text">Asesor 3</label>
+            <select type="text" name="consultor3" value="<%= data.consultor3 %>" placeholder="consultor" class="form-control rounded">
+              <option>No aplica</option>
+              <% console.log(data); %>
+              <% if (data.consultor) { %>
+              <% for(var i=0; i < data.consultor.length; i++){ %>
+                <option value="<%= data.consultor[i].full_name %>"> <%= data.consultor[i].full_name %></option>
+               <% } %>
+               <% } %>
+            </select>              
+          </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+          <div class="form-group">
+            <label type="text">Tema</label>
+            <select type="text" name="theme" value="<%= data.theme %>" aria-placeholder="Selecciona una opción" class="form-control rounded" required> 
+              <option disabled selected>Selecciona una opción</option>
+              <option>Agua, saneamiento e higiene</option>
+              <option>Cultura</option>
+              <option>Educación</option>
+              <option>Emprendimiento social</option>
+              <option>Identidad cultural</option>
+              <option>Igualdad de género</option>
+              <option>Institucionalidad</option>
+              <option>Juventudes</option>
+              <option>Medio ambiente</option>
+              <option>Participación ciudadana</option>
+              <option>Proyectos productivos</option>
+              <option>Resiliencia</option>
+              <option>Salud</option>
+              <option>Seguridad alimentaria</option>
+              <option>Seguridad vial</option>
+              <option>Trabajo digno</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="form-group"> 
+              <label type="text">Año de convocatoria</label>
+              <br>
+              <input type="text" value="<%= data.announcement_year %>" style="background-color: whitesmoke" class="form_control rounded text-center" name="announcement_year" id="datepicker" width="430" required/>
+          <script>
+            $('#datepicker').datepicker({
+                uiLibrary: 'bootstrap4',
+                viewMode: "years",
+                format: 'yyyy',
+                minViewMode: "years",
+                width: 430
+            });
+          </script> 
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label type="text">Nombre del proyecto</label>
+        <input name="project_name" value="<%= data.project_name %>" type="text" placeholder="Ingresa aquí el nombre del proyecto" class="form-control rounded" required>
+      </div>
+
+      <div class="form-group">
+        <label type="text">Objetivo del proyecto</label>
+        <input name="project_objective" value="<%= data.project_objective %>" type="text" placeholder="Ingresa aquí el objetivo del proyecto" class="form-control rounded" required>
+      </div>
+
+      <div class="form-group">
+        <label type="text">Tipo de población</label>
+        <select type="text" id="my-select" name="population_type" title="<%= data.population_type %>" class="selectpicker form-control rounded" multiple required> 
+          <option disabled>Selecciona una o más opciones</option>
+          <option>Primera infancia (0-5 años)</option>
+          <option>Infancia (6-11 años)</option>
+          <option>Adolescencia (12-18 años)</option>
+          <option>Adultez (27-59 años)</option>
+          <option>Persona mayor (60 años o más)</option>
+          <option>Organizaciones de la Sociedad Civil</option>
+        </select> 
+      </div>
+        
+      <div class="row">
+
+        <div class="col">  
+        <div class="form-group">
+          <label type="text">Beneficiarios</label>
+          <input name="male_beneficiaries" value="<%= data.male_beneficiaries %>" type="number" placeholder="Ingresa aquí el número de beneficiarios del proyecto" class="form-control rounded" required>
+        </div>
+      </div>
+
+       <div class="col">
+        <div class="form-group">
+          <label type="text">Beneficiarias</label>
+          <input name="female_beneficiaries" value="<%= data.female_beneficiaries %>" type="number" placeholder="Ingresa aquí el número de beneficiarias del proyecto" class="form-control rounded" required>
+        </div>
+      </div> 
+      
+  </div>  
+
+  <div class="form-group">
+    <label type="text">Instituciones beneficiadas</label>
+    <input name="org_beneficiaries" type="number" value="<%= data.org_beneficiaries %>" placeholder="Ingresa aquí el número de Instituciones beneficiadas del proyecto" class="form-control rounded" required>
+  </div>
+
+  <div class="form-group">
+    <label for="seeAnotherFieldGroup" type="text">Tipo de proyecto</label>
+    <select name="project_type" value="<%= data.project_type %>" id="seeAnotherFieldGroup" class="form-control rounded" required>
+      <option disabled selected>Selecciona una opción</option>
+      <option value="Postulante">Postulante</option>
+      <option value="Seleccionado">Seleccionado</option>
+    </select> 
+  </div>
+
+  <div class="form-group" id="otherFieldGroupDiv">
+  <div class="row">
+    <div class="col">
+    <div class="form-group">
+      <label for="otherField1" type="text">Fecha de inicio</label>
+      <input id="otherField1" name="start_date" value="<%= data.start_date %>" width="415" class="form-control rounded"/>
+    <script>
+      $('#otherField1').datepicker({
+          uiLibrary: 'bootstrap4',
+          format: 'dd/mm/yyyy',
+          width: 415,
+      });
+    </script>
+    </div>
+  </div>
+    
+    <div class="col">
+    <div class="form-group">
+      <label for="otherField2" type="text">Fecha de término</label>
+      <input id="otherField2" name="end_date" width="415" value="<%= data.end_date %>" class="form-control rounded"/>
+    <script>
+      $('#otherField2').datepicker({
+          uiLibrary: 'bootstrap4',
+          format: 'dd/mm/yyyy',
+          width: 415
+      });
+    </script>
+    </div>
+  </div>
+  </div>
+      
+      <div class="form-group">
+        <label for="otherField3" type="text">¿De quién son los recursos?</label>
+        <select name="resources" value="<%= data.resources %>" id="otherField3" class="form-control rounded">
+          <option disabled selected>Selecciona una opción</option>
+          <option value="Propios">Propios</option>
+          <option value="Aliado Financiero">Aliado Financiero</option>
+        </select> 
+        </div>
+      
+      <div class="form-group" id="otherFieldDiv">
+        <label for="otherField" type="text">¿Quién fue el aliado financiero?</label>
+        <select type="text" name="ally_name" value="<%= data.ally_name %>" placeholder="Aliado" class="form-control rounded" id="otherField">
+          <option disabled selected>Selecciona una opción</option>
+          <% console.log(data); %>
+          <% if (data.orgs) { %>
+          <% for(var i=0; i < data.orgs.length; i++){ %>
+            <option value="<%= data.orgs[i].org_name %>"> <%= data.orgs[i].org_name %></option>
+           <% } %>
+           <% } %>
+        </select>
+      </div> 
+      
+      <div class="form-group">
+        <label for="otherField4" type="text">Logros</label>
+        <input id="otherField4" name="achievments" value="<%= data.achievments %>" type="text" placeholder="Ingresa aquí los logros del proyecto" maxlength="100" class="form-control rounded">
+      </div>
+
+
+    <div class="row">
+      <div class="col">
+      <div class="form-group">
+        <label for="otherField5" type="text">Estado de incidencia</label>
+        <select id="otherField5" name="application_state" title="<%= data.application_state %>" class="selectpicker form-control rounded" multiple>
+          <option disabled>Selecciona una o más opciones</option>    
+          <option>Aguascalientes</option>
+          <option>Baja California</option>
+          <option>Baja California Sur</option>
+          <option>Campeche</option>
+          <option>Chiapas</option>
+          <option>Chihuahua</option>
+          <option>Ciudad de México</option>
+          <option>Coahuila</option>
+          <option>Colima</option>
+          <option>Durango</option>
+          <option>Estado de México</option> 
+          <option>Guanajuato</option> 
+          <option>Guerrero</option> 
+          <option>Hidalgo</option> 
+          <option>Jalisco</option> 
+          <option>Michoacán</option> 
+          <option>Morelos</option> 
+          <option>Nayarit</option> 
+          <option>Nuevo León</option> 
+          <option>Oaxaca</option> 
+          <option>Puebla</option> 
+          <option>Querétaro</option> 
+          <option>Quintana Roo</option> 
+          <option>San Luis Potosí</option> 
+          <option>Sinaloa</option> 
+          <option>Sonora</option> 
+          <option>Tabasco</option> 
+          <option>Tamaulipas</option> 
+          <option>Tlaxcala</option> 
+          <option>Veracruz</option> 
+          <option>Yucatán</option> 
+          <option>Zacatecas</option>   
+          <option>Todos los estados</option>
+        </select>
+      </div>
+      </div>
+
+      <div class="col">
+      <div class="form-group">
+        <label for="otherField6" type="text">Municipio o Alcaldía</label>
+        <input id="otherField6" name="municipality" value="<%= data.municipality %>" type="text" placeholder="Ingresa aquí el municipio o alcaldía de incidencia del proyecto" maxlength="50" class="form-control rounded">
+      </div>
+      </div>
+      </div>
+
+      <div class="form-group">
+        <label for="otherField7" type="text">Donativo otorgado</label> 
+        <input id="otherField7" name="donative" value="<%= data.donative%>" type="number" placeholder="Ingresa aquí el donativo otorgado al proyecto" class="form-control rounded">
+      </div>
+
+      <div class="form-group">
+        <div class="custom-control custom-switch">
+          <input type="checkbox" class="custom-control-input" id="check2" value="1" onchange="javascript:showContent2()">
+          <label class="custom-control-label" for="check2">Agregar más donativos</label>
+        </div>
+      </div>
+
+      <div id="content2" style="display: none;">
+
+        <div class="form-group">
+          <label for="otherField8" type="text">Donativo otorgado 2</label>
+          <input id="otherField8" name="donative2" type="number" value="<%= data.donative2%>" placeholder="Ingresa aquí el donativo otorgado al proyecto" class="form-control rounded">
+        </div>
+        
+        <div class="form-group">
+          <label for="otherField9" type="text">Donativo otorgado 3</label> 
+          <input id="otherField9" name="donative3" type="number" value="<%= data.donative3%>" placeholder="Ingresa aquí el donativo otorgado al proyecto" class="form-control rounded">
+        </div>
+
+        </div>
+
+
+        <div class="form-group">
+          <label for="otherField10" type="text">Formato de formación</label>
+          <select name="formation_format" id="otherField10" value="<%= data.formation_format %>" class="form-control rounded">
+            <option disabled selected>Selecciona una opción</option>
+            <option value="Diplomado">Diplomado</option>
+            <option value="Curso">Curso</option>
+            <option value="Taller">Taller</option>
+            <option value="Webinar">Webinar</option>
+            <option>Sin formación</option>
+          </select>
+        </div>
+
+        
+  <div class="form-group" id="otherFieldGroupDiv2"> 
+
+      <div class="row">
+        <div class="col">  
+      <div class="form-group">
+        <label for="otherField1" type="text">Tema de formación</label>
+        <select name="formation_theme" value="<%= data.formation_theme %>" id="otherField1" class="form-control rounded">
+          <option disabled selected>Selecciona una opción</option>
+          <option>Modelo de intervención</option>
+          <option>Gobernanza</option>
+          <option>Movilización de recursos</option>
+          <option>Monitoreo y evaluación</option>
+          <option>Marco legal y fiscal</option>
+          <option>Creación de alianzas</option>
+          <option>Gestión del talento humano</option>
+          <option>Comunicación y mecadotecnia social</option>
+          <option>Liderazgo</option>
+          <option>Diplomado</option>
+        </select>
+        </div>
+      </div>
+
+        <div class="col"> 
+        <div class="form-group">
+          <label for="otherField2" type="text">No. de sesiones Formación</label>
+          <input id="otherField2" name="num_sessions" value="<%= data.num_sessions %>" type="number" placeholder="Ingresa aquí el número de sesiones de formación" class="form-control rounded">
+        </div>    
+        </div>
+        </div>
+      </div>  
+
+      <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="otherField11" type="text">Tema <br> de fortalecimento</label>
+          <select name="fort_theme" value="<%= data.fort_theme %>" id="otherField11" class="form-control rounded">
+            <option disabled selected>Selecciona una opción</option>
+            <option>Alianzas y vinculación</option>
+            <option>Asesoría legal y fiscal</option>
+            <option>Comunicación externa (Marketing social)</option>
+            <option>Comunicación interna</option>
+            <option>Diagnóstico de Madurez Institucional en Línea</option>
+            <option>Diagnóstico de Madurez Institucional Presencial</option>
+            <option>Estructura organizacional y administración</option>
+            <option>Fortalecimiento Equipo Operativo</option>    
+            <option>Modelo de Intervención</option>
+            <option>Monitoreo y Evaluación de proyectos</option>
+            <option>Órgano de Gobierno</option>
+            <option>Planeación estratégica</option>
+            <option>Sostenibilidad financiera</option>
+            <option>Teoría de cambio</option>
+            <option>Sin fortalecimiento</option>
+          </select>
+        </div>
+      </div>
+
+       <div class="col">
+          <div class="form-group">
+            <label for="otherField12" type="text">No. de sesiones Fortalecimento</label>
+            <input id="otherField12" name="num_sessions_fort" value="<%= data.num_sessions_fort %>" type="number" placeholder="Ingresa aquí el número de sesiones de fortalecimento" class="form-control rounded">
+          </div> 
+        </div>
+      </div>
+
+    </div><!--Cierre de seeAnotherFieldGroup-->
+
+        
+        <div class="form-group">
+          <label type="text">Comentarios</label>
+          <input name="comments" type="text" value="<%= data.comments %>" placeholder="Máximo 300 caracteres" maxlength="300" class="form-control rounded"> 
+        </div>
+
+        <div class="container">
+          <button type="submit" class="btn btn-info rounded">
+            Actualizar
+          </button>
+            
+          <a href="/invParticipation" class="btn btn-danger rounded">
+            Cancelar
+          </a>
+        </div>
+        
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/_footer'); -%>
