@@ -55,7 +55,7 @@ controller.save = (req, res) => {
   const data = req.body;
   data.population_type = `|${data.population_type.join(",")}|`;
   data.application_state = `|${data.application_state.join(",")}|`;
-  
+
   console.log(req.body);
   req.getConnection((err, conn) => {
     conn.query('INSERT INTO invsoc_participation set ?', data, (err, participations) => {
