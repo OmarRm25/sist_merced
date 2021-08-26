@@ -160,7 +160,7 @@
 
         <div class="form-group">
           <label type="text">¿Quién fue el aliado financiero?</label>
-          <select type="text" name="ally_name" value="<%= data.ally_name %>" placeholder="Aliado" class="form-control rounded">
+          <select type="text" name="ally_name" value="<%= data.ally_name %>" placeholder="Aliado" class="form-control rounded" required>
             <option disabled selected>Selecciona una opción</option>
             <% console.log(data); %>
             <% if (data.orgs) { %>

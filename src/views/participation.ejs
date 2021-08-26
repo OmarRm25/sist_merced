@@ -199,7 +199,7 @@
             
             <div class="form-group">
               <label for="otherField" type="text">¿Quién fue el aliado financiero?</label>
-              <select type="text" name="ally_name" placeholder="Aliado" class="form-control rounded" >
+              <select type="text" name="ally_name" placeholder="Aliado" class="form-control rounded" required>
                 <option disabled selected>Selecciona una opción</option>
                 <% console.log(data); %>
                 <% if (data.orgs) { %>
@@ -222,7 +222,7 @@
 
             <div class="form-group">
               <label type="text">Tipo de población</label>
-              <select type="text" id="my-select" name="population_type" title="Nada seleccionado" class="selectpicker form-control rounded" multiple required> 
+              <select type="text" id="my-select" name="population_type" title="Nada seleccionado" class="selectpicker form-control rounded" multiple="multiple" required> 
                 <option disabled>Selecciona una o más opciones</option>
                 <option>Primera infancia (0-5 años)</option>
                 <option>Infancia (6-12 años)</option>
@@ -234,19 +234,20 @@
               </select> 
             </div>  
 
+
             <div class="row">
 
             <div class="col">  
             <div class="form-group">
               <label type="text">Beneficiarios</label>
-              <input name="male_beneficiaries" type="number" placeholder="Ingresa aquí el número de beneficiarios del proyecto" class="form-control rounded" required>
+              <input name="male_beneficiaries" type="number" value="0" placeholder="Ingresa aquí el número de beneficiarios del proyecto" class="form-control rounded" required>
             </div>
           </div>
 
            <div class="col">
             <div class="form-group">
               <label type="text">Beneficiarias</label>
-              <input name="female_beneficiaries" type="number" placeholder="Ingresa aquí el número de beneficiarias del proyecto" class="form-control rounded" required>
+              <input name="female_beneficiaries" type="number" value="0" placeholder="Ingresa aquí el número de beneficiarias del proyecto" class="form-control rounded" required>
             </div>
           </div> 
           
@@ -254,7 +255,7 @@
 
       <div class="form-group">
         <label type="text">Instituciones beneficiadas</label>
-        <input name="org_beneficiaries" type="number" placeholder="Ingresa aquí el número de Instituciones beneficiadas del proyecto" class="form-control rounded" required>
+        <input name="org_beneficiaries" type="number" value="0" placeholder="Ingresa aquí el número de Instituciones beneficiadas del proyecto" class="form-control rounded" required>
       </div> 
               
             <div class="row">
@@ -356,7 +357,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-info rounded">Guardar</button>
+        <button type="submit" id="submit" class="btn btn-info rounded">Guardar</button>
         <button type="button" class="btn btn-danger rounded" data-dismiss="modal">Cancelar</button>
       </div>
     </form>
