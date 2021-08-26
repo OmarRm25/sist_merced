@@ -53,8 +53,15 @@ controller.list = (req, res) => {
 
 controller.save = (req, res) => {
   const data = req.body;
-  data.population_type = `|${data.population_type.join(",")}|`;
-  data.application_state = `|${data.application_state.join(",")}|`;
+
+  if(typeof data.population_type != "string"){
+  data.population_type = `|${data.population_type.join()}|`;
+  }
+
+  if(typeof data.application_state != "string"){
+  data.application_state = `|${data.application_state.join()}|`;
+  } 
+
   console.log(req.body);
   req.getConnection((err, conn) => {
     conn.query('INSERT INTO fort_participation set ?', data, (err, participations) => {
@@ -105,8 +112,12 @@ controller.update = (req, res) => {
   const { id_part } = req.params;
   const newParticipation = req.body;
 
+  if(typeof newParticipation.population_type != "string"){
   newParticipation.population_type = `|${newParticipation.population_type.join(",")}|`;
+  }
+  if(typeof newParticipation.application_state != "string"){
   newParticipation.application_state = `|${newParticipation.application_state.join(",")}|`;
+  }
 
   req.getConnection((err, conn) => {
 

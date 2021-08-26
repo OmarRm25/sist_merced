@@ -170,14 +170,14 @@
               <div class="col">  
               <div class="form-group">
                 <label type="text">Beneficiarios</label>
-                <input name="male_beneficiaries" type="number" placeholder="Ingresa aquí el número de beneficiarios del proyecto" class="form-control rounded" required>
+                <input name="male_beneficiaries" type="number" value="0" placeholder="Ingresa aquí el número de beneficiarios del proyecto" class="form-control rounded" required>
               </div>
             </div>
   
              <div class="col">
               <div class="form-group">
                 <label type="text">Beneficiarias</label>
-                <input name="female_beneficiaries" type="number" placeholder="Ingresa aquí el número de beneficiarias del proyecto" class="form-control rounded" required>
+                <input name="female_beneficiaries" type="number" value="0" placeholder="Ingresa aquí el número de beneficiarias del proyecto" class="form-control rounded" required>
               </div>
             </div> 
             
@@ -185,7 +185,7 @@
 
         <div class="form-group">
           <label type="text">Instituciones beneficiadas</label>
-          <input name="org_beneficiaries" type="number" placeholder="Ingresa aquí el número de Instituciones beneficiadas del proyecto" class="form-control rounded" required>
+          <input name="org_beneficiaries" type="number" value="0" placeholder="Ingresa aquí el número de Instituciones beneficiadas del proyecto" class="form-control rounded" required>
         </div>
 
         <div class="form-group">
@@ -196,6 +196,8 @@
             <option value="Seleccionado">Seleccionado</option>
           </select> 
         </div>
+
+        
 
         <div class="form-group" id="otherFieldGroupDiv">
         <div class="row">
@@ -261,7 +263,8 @@
             <div class="form-group">
               <label for="otherField5" type="text">Estado de incidencia</label>
               <select id="otherField5" name="application_state" title="Nada seleccionado" class="selectpicker form-control rounded" multiple>
-                <option disabled>Selecciona una o más opciones</option>    
+                <option disabled>Selecciona una o más opciones</option>
+                <option selected>No aplica</option>    
                 <option>Aguascalientes</option>
                 <option>Baja California</option>
                 <option>Baja California Sur</option>
