@@ -61,7 +61,10 @@ controller.save = (req, res) => {
   if(typeof data.application_state != "string"){
   data.application_state = `|${data.application_state.join(",")}|`;
   }
-  
+
+  if(typeof data.fort_theme != "string"){
+  data.fort_theme = `|${data.fort_theme.join(",")}|`;  
+  }
 
   console.log(req.body);
   req.getConnection((err, conn) => {
@@ -117,6 +120,10 @@ controller.update = (req, res) => {
 
   if(typeof newParticipation.application_state != "string"){
   newParticipation.application_state = `|${newParticipation.application_state.join(",")}|`;
+  }
+
+  if(typeof newParticipation.fort_theme != "string"){
+  newParticipation.fort_theme = `|${newParticipation.fort_theme.join(",")}|`;
   }
 
   req.getConnection((err, conn) => {

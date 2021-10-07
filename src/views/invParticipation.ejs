@@ -23,7 +23,7 @@
         <form action="/invParticipation/add" method="post">
             <div class="form-group">
                 <label type="text">Organización</label>
-                <select type="text" name="id_organization" placeholder="participante" class="form-control rounded" required>
+                <select type="text" name="id_organization" placeholder="participante" class="form-control rounded selPic" data-live-search="true" required>
                   <option disabled selected>Selecciona una opción</option>
                   <% console.log(data); %>
                   <% if (data.orgs) { %>
@@ -36,7 +36,7 @@
 
               <div class="form-group">
                 <label type="text">Programa</label>
-                <select type="text" name="id_program" class="form-control rounded" required>
+                <select type="text" name="id_program" class="form-control rounded selPic" data-live-search="true" required>
                   <option disabled selected>Selecciona una opción</option>
                   <% console.log(data); %>
                   <% if (data.programs) { %>
@@ -49,7 +49,7 @@
 
               <div class="form-group">
                 <label type="text">Asesor</label>
-                <select type="text" name="id_consultor" class="form-control rounded" required>
+                <select type="text" name="id_consultor" class="form-control rounded selPic" data-live-search="true" required>
                   <option disabled selected>Selecciona una opción</option>
                   <% console.log(data); %>
                   <% if (data.consultor) { %>
@@ -71,7 +71,7 @@
 
               <div class="form-group">
                 <label type="text">Asesor 2</label>
-                <select type="text" name="consultor2" placeholder="consultor" class="form-control rounded">
+                <select type="text" name="consultor2" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
                   <option>No aplica</option>
                   <% console.log(data); %>
                   <% if (data.consultor) { %>
@@ -84,7 +84,7 @@
 
               <div class="form-group">
                 <label type="text">Asesor 3</label>
-                <select type="text" name="consultor3" placeholder="consultor" class="form-control rounded">
+                <select type="text" name="consultor3" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
                   <option>No aplica</option>
                   <% console.log(data); %>
                   <% if (data.consultor) { %>
@@ -241,7 +241,7 @@
             
             <div class="form-group" id="otherFieldDiv">
               <label for="otherField" type="text">¿Quién fue el aliado financiero?</label>
-              <select type="text" name="ally_name" placeholder="Aliado" class="form-control rounded" id="otherField">
+              <select type="text" name="ally_name" placeholder="Aliado" class="form-control rounded selPic" data-live-search="true" id="otherField">
                 <option disabled selected>Selecciona una opción</option>
                 <% console.log(data); %>
                 <% if (data.orgs) { %>
@@ -384,8 +384,9 @@
                 <div class="col">
               <div class="form-group">
                 <label for="otherField11" type="text">Tema <br> de fortalecimento</label>
-                <select name="fort_theme" id="otherField11" class="form-control rounded">
-                  <option disabled selected>Selecciona una opción</option>
+                <select name="fort_theme" id="otherField11" title="Nada seleccionado" class="form-control rounded selPic" multiple>
+                  <option disabled>Selecciona una o más opciones</option>
+                  <option selected>No aplica</option> 
                   <option>Alianzas y vinculación</option>
                   <option>Asesoría legal y fiscal</option>
                   <option>Comunicación externa (Marketing social)</option>
@@ -414,6 +415,18 @@
                 </div>
             
           </div><!--Cierre de seeAnotherFieldGroup-->
+
+          <div class="form-group">
+            <label type="text">Fecha de actualización</label>
+            <input name="update_date" id="datepicker3" width="415" value="N/A" class="form-control rounded" required/>
+          <script>
+            $('#datepicker3').datepicker({
+                uiLibrary: 'bootstrap4',
+                format: 'dd/mm/yyyy',
+                width: 415,
+            });
+          </script>
+          </div>
           
             <div class="form-group">
               <label type="text">Comentarios</label>
@@ -467,6 +480,7 @@
             <th># de sesiones formación</th>
             <th>Tema de fortalecimento</th>
             <th># de sesiones fortalecimento</th>
+            <th>Fecha de actualización</th>
             <th>Comentarios</th>
             <td>Acciones</td>
           </tr>
@@ -505,6 +519,7 @@
                 <td><%= data.data[i].num_sessions %></td> 
                 <td><%= data.data[i].fort_theme %></td> 
                 <td><%= data.data[i].num_sessions_fort %></td> 
+                <td><%= data.data[i].update_date %></td>
                 <td><%= data.data[i].comments %></td>
                 
                 <td>
@@ -525,7 +540,7 @@
             
               </tr>
 
-      <!--Delete modal window
+      <!--Delete modal window-->
  <div class="modal" id="eliminar<%= data.data[i].id_part %>">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -542,7 +557,7 @@
     </div>
   </div>
 </div>
-End of delete modal window-->
+<!--End of delete modal window-->
 
             <% } %>
           <% } %>

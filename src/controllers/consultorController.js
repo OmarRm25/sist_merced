@@ -15,12 +15,17 @@ controller.list = (req, res) => {
   
   controller.save = (req, res) => {
     const data = req.body;
-    console.log(req.body)
+    
+    if(typeof data.prof_speciality != "string"){
+      data.prof_speciality = `|${data.prof_speciality.join(",")}|`;
+      }
+
     req.getConnection((err, conn) => {
       conn.query('INSERT INTO consultor set ?', data, (err, consultors) => {
         if(err){
             console.log(err);
-            res.json(err);
+            res.send("<script>alert('Error en el registro o RFC duplicado'); window.location.href = '/consultor'; </script>");
+            
         }else{    
         console.log(consultors)
         res.redirect('/consultor');
@@ -43,12 +48,24 @@ controller.list = (req, res) => {
   controller.update = (req, res) => {
     const { id_consultor } = req.params;
     const newConsultor = req.body;
+
+    if(typeof newConsultor.prof_speciality != "string"){
+      newConsultor.prof_speciality = `|${newConsultor.prof_speciality.join(",")}|`;
+      }
+
     req.getConnection((err, conn) => {
   
     conn.query('UPDATE consultor set ? where id_consultor = ?', [newConsultor, id_consultor], (err, rows) => {
+      if(err){
+        console.log(err);
+        res.send("<script>alert('Error en la actualización o RFC duplicado'); window.location.href = '/consultor'; </script>");
+        
+    }else{  
       res.redirect('/consultor');
-    });
-    });
+    }
+
+    })
+    })
   };
 
   controller.cancel = (res) => {

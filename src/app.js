@@ -3,12 +3,46 @@ const express = require('express'),
       path = require('path'),
       morgan = require('morgan'),
       mysql = require('mysql'),
+      passport = require('passport'),
+      flash = require('connect-flash'),
       myConnection = require('express-myconnection');
 
+      const { Strategy } = require('passport-local');
+      const cookieParser = require('cookie-parser');
+      require('./controllers/passport')(passport);
+      
 const app = express();
 
+// settings
+app.set('port', process.env.PORT || 3001);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+// middlewares
+app.use(morgan('dev'));
+app.use(cookieParser());
+app.use(express.urlencoded({extended: true}))
+
+app.use(myConnection(mysql, {
+  host: '',
+  user: 'merced',
+  password: '123456',
+  port: 3306,
+  database: 'Merced_DB'
+}, 'single'));
+
+app.use(session({
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
 // importing routes
-const signinRoutes = require('./routes/signin');
+require('./routes/signin')(app, passport);
 const dashboardRoutes = require('./routes/dashboard');
 const programRoutes = require('./routes/program');
 const organizationRoutes = require('./routes/organization');
@@ -18,29 +52,9 @@ const participationRoutes = require('./routes/participation');
 const invParticipationRoutes = require('./routes/invParticipation');
 const consultorRoutes = require('./routes/consultor');
 
-// settings
-app.set('port', process.env.PORT || 3001);
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-
-// middlewares
-app.use(morgan('dev'));
-app.use(myConnection(mysql, {
-  host: '',
-  user: 'merced',
-  password: '123456',
-  port: 3306,
-  database: 'Merced_DB'
-}, 'single'));
-app.use(session({
-  secret: 'secret',
-  resave: true,
-  saveUninitialized: true
-}));
-app.use(express.urlencoded({extended: false}));
 
 // routes
-app.use('/', signinRoutes);
+
 app.use('/dashboard', dashboardRoutes);
 app.use('/program', programRoutes);
 app.use('/organization', organizationRoutes);
