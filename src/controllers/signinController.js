@@ -38,7 +38,7 @@ controller.home = (req, res) => {
   } else {
     res.redirect("/");
   }
-};
+}; 
 
 //session killer
 controller.die = (req, res) => {
@@ -50,5 +50,6 @@ controller.die = (req, res) => {
       }
     });
   };
+
 
 module.exports = controller;

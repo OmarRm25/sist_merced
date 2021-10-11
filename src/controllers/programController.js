@@ -1,31 +1,34 @@
 const controller = {};
 
 controller.list = (req, res) => {
-  let info = {};
-  req.getConnection((err, conn) => {
-    conn.query('SELECT * FROM program', (err, programs) => {
-     if (err) {
-      res.json(err);
-     }else{
-     info.data = programs
-    }
-    });
-  });
-  req.getConnection((err, conn) => {
-    conn.query('SELECT * FROM organization', (err, allies) =>{
-      if (err) {
+  if (req.session.loggedin) {
+    let info = {};
+    req.getConnection((err, conn) => {
+      conn.query('SELECT * FROM program', (err, programs) => {
+       if (err) {
         res.json(err);
        }else{
-       info.allies = allies;
-       info.data.forEach((p) => {
-         p.org_name = p.id_organization != undefined ? allies[p.id_organization -1].org_name : null;
-       });
-       res.render('program', {data : info});
-       }
+       info.data = programs
+      }
+      });
     });
-    
-  });
-};
+    req.getConnection((err, conn) => {
+      conn.query('SELECT * FROM organization', (err, allies) =>{
+        if (err) {
+          res.json(err);
+         }else{
+         info.allies = allies;
+         info.data.forEach((p) => {
+           p.org_name = p.id_organization != undefined ? allies[p.id_organization -1].org_name : null;
+         });
+         res.render('program', {data : info});
+         }
+      });
+      
+    })  } else {
+    res.redirect("/");
+  }
+}; 
 
 controller.save = (req, res) => {
   const data = req.body;
@@ -62,6 +65,8 @@ controller.update = (req, res) => {
   conn.query('UPDATE program set ? where id_program = ?', [newProgram, id_program], (err, rows) => {
     if(err){
       console.log(err);
+      res.send("<script>alert('Error en la actualización o Clave de programa duplicada'); window.location.href = '/program'; </script>");
+
     }else{
     res.redirect('/program');
     }
@@ -74,13 +79,20 @@ controller.cancel = (res) => {
 }
 
 controller.delete = (req, res) => {
-  const { id_program } = req.params;
+  email = req.session.email;
+  
+  if(email == 'v.cardin@fundacionmerced.org.mx'){
+    const { id_program } = req.params;
   req.getConnection((err, conn) => {
     conn.query('DELETE FROM program WHERE id_program = ?', [id_program] , (err, rows) => {
       console.log(rows);
+
       res.redirect('/program');
     });
-  });
+  })
+  } else{
+    res.send("<script>alert('No cuenta con permiso para eliminar este registro'); window.location.href = '/program'; </script>");
+  } 
 }
 
 module.exports = controller;

@@ -35,7 +35,7 @@
 
             <div class="form-group">
               <label type="text">Consultor 2</label>
-              <select type="text" name="consultor2" value="<%= data.consultor2 %>" placeholder="consultor" class="form-control rounded">
+              <select type="text" name="consultor2" value="<%= data.consultor2 %>" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
                 <option>No aplica</option>
                 <% console.log(data); %>
                 <% if (data.consultor) { %>
@@ -48,7 +48,7 @@
   
             <div class="form-group">
               <label type="text">Consultor 3</label>
-              <select type="text" name="consultor3" value="<%= data.consultor3 %>" placeholder="consultor" class="form-control rounded">
+              <select type="text" name="consultor3" value="<%= data.consultor3 %>" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
                 <option>No aplica</option>
                 <% console.log(data); %>
                 <% if (data.consultor) { %>
@@ -61,7 +61,7 @@
   
             <div class="form-group">
               <label type="text">Consultor 4</label>
-              <select type="text" name="consultor4" value="<%= data.consultor4 %>" placeholder="consultor" class="form-control rounded">
+              <select type="text" name="consultor4" value="<%= data.consultor4 %>" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
                 <option>No aplica</option>
                 <% console.log(data); %>
                 <% if (data.consultor) { %>
@@ -83,7 +83,7 @@
 
           <div class="form-group">
             <label type="text">Consultor 5</label>
-            <select type="text" name="consultor5" value="<%= data.consultor5 %>" placeholder="consultor" class="form-control rounded">
+            <select type="text" name="consultor5" value="<%= data.consultor5 %>" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
               <option>No aplica</option>
               <% console.log(data); %>
               <% if (data.consultor) { %>
@@ -96,7 +96,7 @@
 
           <div class="form-group">
             <label type="text">Consultor 6</label>
-            <select type="text" name="consultor6" value="<%= data.consultor6 %>" placeholder="consultor" class="form-control rounded">
+            <select type="text" name="consultor6" value="<%= data.consultor6 %>" placeholder="consultor" class="form-control roundedselPic" data-live-search="true">
               <option>No aplica</option>
               <% console.log(data); %>
               <% if (data.consultor) { %>
@@ -109,7 +109,7 @@
 
           <div class="form-group">
             <label type="text">Consultor 7</label>
-            <select type="text" name="consultor7" value="<%= data.consultor7 %>" placeholder="consultor" class="form-control rounded">
+            <select type="text" name="consultor7" value="<%= data.consultor7 %>" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
               <option>No aplica</option>
               <% console.log(data); %>
               <% if (data.consultor) { %>
@@ -122,7 +122,7 @@
 
           <div class="form-group">
             <label type="text">Consultor 8</label>
-            <select type="text" name="consultor8" value="<%= data.consultor8 %>" placeholder="consultor" class="form-control rounded">
+            <select type="text" name="consultor8" value="<%= data.consultor8 %>" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
               <option>No aplica</option>
               <% console.log(data); %>
               <% if (data.consultor) { %>
@@ -160,7 +160,7 @@
 
         <div class="form-group">
           <label type="text">¿Quién fue el aliado financiero?</label>
-          <select type="text" name="ally_name" value="<%= data.ally_name %>" placeholder="Aliado" class="form-control rounded" required>
+          <select type="text" name="ally_name" value="<%= data.ally_name %>" placeholder="Aliado" class="form-control rounded selPic" data-live-search="true" required>
             <option disabled selected>Selecciona una opción</option>
             <% console.log(data); %>
             <% if (data.orgs) { %>
@@ -310,6 +310,18 @@
           <div class="form-group">
             <label type="text">Recursos invertidos</label>
             <input name="resources_invested" type="number" value="<%= data.resources_invested %>"  placeholder="Ingresa aquí los recursos invertidos en el proyecto" class="form-control rounded" required>
+          </div>
+
+          <div class="form-group">
+            <label type="text">Fecha de actualización</label>
+            <input name="update_date" id="datepicker3" width="415" value="<%= data.update_date %>" class="form-control rounded" required/>
+          <script>
+            $('#datepicker3').datepicker({
+                uiLibrary: 'bootstrap4',
+                format: 'dd/mm/yyyy',
+                width: 415,
+            });
+          </script>
           </div>
 
           <div class="form-group">

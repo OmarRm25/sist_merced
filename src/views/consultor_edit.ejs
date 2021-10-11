@@ -18,6 +18,40 @@
               </div>
 
               <div class="form-group">
+                <label for="prof_speciality">Especialidad profesional</label>
+                <select name="prof_speciality" id="prof_speciality" value="<%= data.prof_speciality %>" title="Nada seleccionado" class="form-control rounded selPic" multiple required>
+                  <option>Administración y finanzas para OSC</option>
+                  <option>Comunicación externa e interna</option>
+                  <option>Consititución legal y trámite de donatarias autorizadas</option>
+                  <option>Desarrollo de indicadores</option>
+                  <option>Desarrollo de proyecto institucional</option>
+                  <option>Desarrollo de proyectos sociales con enfoque de marco lógico</option>
+                  <option>Design thinking y co-creación</option>
+                  <option>Economía circular</option>
+                  <option>Estructura organizacional</option>
+                  <option>Estructura programática</option>
+                  <option>Gestión del Talento Humano</option>
+                  <option>Gobernanza-Órgano de Gobierno</option>
+                  <option>Herramientas digitales para la gestión de OSC</option>
+                  <option>Innovación y emprendimiento social</option>
+                  <option>Liderazgo</option>
+                  <option>Liderazgo colaborativo</option>
+                  <option>Marco legal y fiscal para OSC</option>
+                  <option>Mercadotecnia social</option>
+                  <option>Modelo de intervención</option>
+                  <option>Modelos de negocio en economía social</option>
+                  <option>Movilización de recursos</option>
+                  <option>Pensamiento sistémico</option>
+                  <option>Planeación estratégica</option>
+                  <option>Planeación operativa anual</option>
+                  <option>Responsabilidad social</option>
+                  <option>Sistemas de evaluación y monitoreo</option>
+                  <option>Teoría de cambio</option>
+                  <option>Voluntariado</option>
+                </select>
+              </div>
+
+              <div class="form-group">
                 <label type="text">Teléfono</label>
                 <input type="text" name="phone" value="<%= data.phone %>" placeholder="Ingresa aquí el teléfono del consultor" class="form-control rounded" minlength="10" maxlength="10" required>
               </div>
@@ -35,6 +69,10 @@
                <div class="form-group">
                     <label type="text">Código postal</label>
                     <input type="text" name="postal_code" value="<%= data.postal_code %>" placeholder="Ingresa el código postal del consultor" maxlength="5" minlength="5" class="form-control rounded" required> 
+               </div>
+
+               <div class="form-group">
+                <input type="text" name="register" value="<%= data.register %>" class="form-control rounded" hidden> 
                </div>
   
             <button type="submit" class="btn btn-info rounded">

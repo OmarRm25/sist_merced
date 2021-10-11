@@ -1,8 +1,12 @@
 const controller = {};
 
-controller.home = (req, res) =>{
- res.render('dashboard');
-}
+controller.home = (req, res) => {
+    if (req.session.loggedin) {
+        res.render('dashboard');
+        } else {
+      res.redirect("/");
+    }
+  }; 
 
 controller.program = (req, res) => {
     res.redirect('/program');

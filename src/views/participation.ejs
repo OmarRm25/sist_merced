@@ -24,7 +24,7 @@
         <form action="/participation/add" method="post">
             <div class="form-group">
                 <label type="text">Organización</label>
-                <select type="text" name="id_organization" placeholder="participante" class="form-control rounded" required>
+                <select type="text" name="id_organization" placeholder="participante" class="form-control rounded selPic" data-live-search="true" required>
                   <option disabled selected>Selecciona una opción</option>
                   <% console.log(data); %>
                   <% if (data.orgs) { %>
@@ -37,7 +37,7 @@
 
               <div class="form-group">
                 <label type="text">Programa</label>
-                <select type="text" name="id_program" class="form-control rounded" required>
+                <select type="text" name="id_program" class="form-control rounded selPic" data-live-search="true" required>
                   <option disabled selected>Selecciona una opción</option>
                   <% console.log(data); %>
                   <% if (data.programs) { %>
@@ -50,7 +50,7 @@
 
               <div class="form-group">
                 <label type="text">Consultor</label>
-                <select type="text" name="id_consultor" class="form-control rounded" required>
+                <select type="text" name="id_consultor" class="form-control rounded selPic" data-live-search="true" required>
                   <option disabled selected>Selecciona una opción</option>
                   <% console.log(data); %>
                   <% if (data.consultor) { %>
@@ -72,7 +72,7 @@
 
               <div class="form-group">
                 <label type="text">Consultor 2</label>
-                <select type="text" name="consultor2" placeholder="consultor" class="form-control rounded">
+                <select type="text" name="consultor2" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
                   <option>No aplica</option>
                   <% console.log(data); %>
                   <% if (data.consultor) { %>
@@ -85,7 +85,7 @@
 
               <div class="form-group">
                 <label type="text">Consultor 3</label>
-                <select type="text" name="consultor3" placeholder="consultor" class="form-control rounded">
+                <select type="text" name="consultor3" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
                   <option>No aplica</option>
                   <% console.log(data); %>
                   <% if (data.consultor) { %>
@@ -98,7 +98,7 @@
 
               <div class="form-group">
                 <label type="text">Consultor 4</label>
-                <select type="text" name="consultor4" placeholder="consultor" class="form-control rounded">
+                <select type="text" name="consultor4" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
                   <option>No aplica</option>
                   <% console.log(data); %>
                   <% if (data.consultor) { %>
@@ -120,7 +120,7 @@
 
               <div class="form-group">
                 <label type="text">Consultor 5</label>
-                <select type="text" name="consultor5" placeholder="consultor" class="form-control rounded">
+                <select type="text" name="consultor5" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
                   <option>No aplica</option>
                   <% console.log(data); %>
                   <% if (data.consultor) { %>
@@ -133,7 +133,7 @@
 
               <div class="form-group">
                 <label type="text">Consultor 6</label>
-                <select type="text" name="consultor6" placeholder="consultor" class="form-control rounded">
+                <select type="text" name="consultor6" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
                   <option>No aplica</option>
                   <% console.log(data); %>
                   <% if (data.consultor) { %>
@@ -146,7 +146,7 @@
 
               <div class="form-group">
                 <label type="text">Consultor 7</label>
-                <select type="text" name="consultor7" placeholder="consultor" class="form-control rounded">
+                <select type="text" name="consultor7" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
                   <option>No aplica</option>
                   <% console.log(data); %>
                   <% if (data.consultor) { %>
@@ -159,7 +159,7 @@
 
               <div class="form-group">
                 <label type="text">Consultor 8</label>
-                <select type="text" name="consultor8" placeholder="consultor" class="form-control rounded">
+                <select type="text" name="consultor8" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
                   <option>No aplica</option>
                   <% console.log(data); %>
                   <% if (data.consultor) { %>
@@ -199,7 +199,7 @@
             
             <div class="form-group">
               <label for="otherField" type="text">¿Quién fue el aliado financiero?</label>
-              <select type="text" name="ally_name" placeholder="Aliado" class="form-control rounded" required>
+              <select type="text" name="ally_name" placeholder="Aliado" class="form-control rounded selPic" data-live-search="true" required>
                 <option disabled selected>Selecciona una opción</option>
                 <% console.log(data); %>
                 <% if (data.orgs) { %>
@@ -351,6 +351,18 @@
               </div>
 
               <div class="form-group">
+                <label type="text">Fecha de actualización</label>
+                <input name="update_date" id="datepicker3" width="415" value="N/A" class="form-control rounded" required/>
+              <script>
+                $('#datepicker3').datepicker({
+                    uiLibrary: 'bootstrap4',
+                    format: 'dd/mm/yyyy',
+                    width: 415,
+                });
+              </script>
+              </div>
+
+              <div class="form-group">
                 <label type="text">Comentarios</label>
                 <input name="comments" type="text" placeholder="Máximo 300 caracteres" maxlength="300" class="form-control rounded"> 
               </div>
@@ -397,6 +409,7 @@
             <th>Estado de incidencia</th>
             <th>Municipio/Alcaldía</th>
             <th>Recursos invertidos</th>
+            <th>Fecha de actualización</th>
             <th>Comentarios</th>
             <td>Acciones</td>
           </tr>
@@ -430,6 +443,7 @@
                 <td><%= data.data[i].application_state %></td>
                 <td><%= data.data[i].municipality %></td>
                 <td><%= data.data[i].resources_invested %></td>
+                <td><%= data.data[i].update_date %></td>
                 <td><%= data.data[i].comments %></td>
                 
                 <td>
@@ -440,17 +454,17 @@
                     </svg>
                   </a>
                 <br /> <br /> 
-                  <!--<button class="btn-sm btn-danger rounded" data-toggle="modal" data-target="#eliminar<%= data.data[i].id_part %>">
+                  <button class="btn-sm btn-danger rounded" data-toggle="modal" data-target="#eliminar<%= data.data[i].id_part %>">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                       <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                       <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                     </svg>
-                  </button>-->
+                  </button>
                 </td>
             
               </tr>
 
-      <!--Delete modal window
+      <!--Delete modal window-->
  <div class="modal" id="eliminar<%= data.data[i].id_part %>">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -467,7 +481,7 @@
     </div>
   </div>
 </div>
-End of delete modal window-->
+<!--End of delete modal window-->
 
             <% } %>
           <% } %>

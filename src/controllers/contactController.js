@@ -1,7 +1,8 @@
 const controller = {};
 
 controller.list = (req, res) => {
-  let info = {};
+  if (req.session.loggedin) {
+    let info = {};
   req.getConnection((err, conn) => {
     conn.query('SELECT * FROM contact', (err, contacts) => {
      if (err) {
@@ -23,10 +24,12 @@ controller.list = (req, res) => {
        res.render('contact', {data : info});
        }
     });
-    
+  })
+  } else {
+    res.redirect("/");
+  }
+}; 
 
-  });
-};
 
 controller.save = (req, res) => {
   const data = req.body;
@@ -76,13 +79,20 @@ controller.cancel = (res) => {
 }
 
 controller.delete = (req, res) => {
+    var email = req.session.email;
+
+    if(email == 'vcardin@fundacionmerced.org.mx'){
+
   const { id_contact } = req.params;
   req.getConnection((err, conn) => {
     conn.query('DELETE FROM contact WHERE id_contact = ?', id_contact, (err, rows) => {
       console.log(rows);
       res.redirect('/contact');
     });
-  });
+  })
+}else{
+  res.send("<script>alert('No cuenta con permiso para eliminar este registro'); window.location.href = '/contact'; </script>");
+}
 }
 
 module.exports = controller;

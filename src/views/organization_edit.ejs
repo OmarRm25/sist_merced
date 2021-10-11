@@ -8,29 +8,29 @@
   
           <form action="/organization/update/<%= data.id_organization %>" method="POST">
             <div class="form-group">
-              <label type="text">Organización</label>
+              <label type="text">Razón social</label>
               <input type="text" name="org_name" value="<%= data.org_name %>" placeholder="Ingresa aquí el nombre de la Organización" class="form-control rounded" autofocus required>
             </div>
 
             <div class="form-group">
-              <label type="text">Área de intervención prioritaria</label>
-              <select name="intervention_area" value="<%= data.intervention_area %>" class="form-control rounded" required>
+              <label for="areaIntervencion" type="text">Área de intervención prioritaria</label>
+              <select name="intervention_area" id="areaIntervencion" value="<%= data.intervention_area %>" class="form-control rounded" required>
                 <option>Asistencia social</option>
-                    <option>Derechos humanos</option>
-                    <option>Desarrollo comunitario</option>
-                    <option>Desarrollo social</option>
-                    <option>Educación</option>
-                    <option>Medio Ambiente</option>
-                    <option>Agua, saneamiento e higiene</option>
-                    <option>Salud</option>
-                    <option>Seguridad Vial</option>
-                    <option>Otra</option>
+                    <option value="Derechos humanos">Derechos humanos</option>
+                    <option value="Desarrollo comunitario">Desarrollo comunitario</option>
+                    <option value="Desarrollo social">Desarrollo social</option>
+                    <option value="Educación">Educación</option>
+                    <option value="Medio Ambiente">Medio Ambiente</option>
+                    <option value="Agua, saneamiento e higiene">Agua, saneamiento e higiene</option>
+                    <option value="Salud">Salud</option>
+                    <option value="Seguridad Vial">Seguridad Vial</option>
+                    <option value="Otra">Otra</option>
               </select>  
             </div>
 
-            <div class="form-group">
-              <label type="text">En caso de elegir otra, especifique</label>
-              <input type="text" name="other" value="<%= data.other %>" class="form-control rounded">
+            <div class="form-group" id="otherFieldDiv">
+              <label for="otherField" type="text">En caso de elegir otra, especifique</label>
+              <input type="text" name="other" id="otherField" value="<%= data.other %>" class="form-control rounded">
             </div>  
 
             <div class="form-group">
@@ -73,7 +73,8 @@
                       <option>Tlaxcala</option> 
                       <option>Veracruz</option> 
                       <option>Yucatán</option> 
-                      <option>Zacatecas</option>   
+                      <option>Zacatecas</option>  
+                      <option>Internacional</option> 
                 </select>
               </div>   
               
@@ -104,6 +105,10 @@
             <div class="form-group">
               <label type="text">Sitio web</label>
               <input type="text" name="website" value="<%= data.website %>" placeholder="Ingresa aquí el sitio web de la organización (opcional)" class="form-control rounded"> 
+             </div>
+
+             <div class="form-group">
+              <input type="text" name="register" value="<%= data.register %>" class="form-control rounded" hidden> 
              </div>
   
             <button type="submit" class="btn btn-info rounded">

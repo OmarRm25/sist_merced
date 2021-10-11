@@ -27,7 +27,7 @@
           <div class="form-group">
             <div class="custom-control custom-switch">
               <input type="checkbox" class="custom-control-input" id="check" value="1" onchange="javascript:showContent()">
-              <label class="custom-control-label" for="check">Agregar más asesore</label>
+              <label class="custom-control-label" for="check">Agregar más asesores</label>
             </div>
           </div>
 
@@ -35,7 +35,7 @@
 
           <div class="form-group">
             <label type="text">Asesor 2</label>
-            <select type="text" name="consultor2" value="<%= data.consultor2 %>" placeholder="consultor" class="form-control rounded">
+            <select type="text" name="consultor2" value="<%= data.consultor2 %>" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
               <option>No aplica</option>
               <% console.log(data); %>
               <% if (data.consultor) { %>
@@ -48,7 +48,7 @@
 
           <div class="form-group">
             <label type="text">Asesor 3</label>
-            <select type="text" name="consultor3" value="<%= data.consultor3 %>" placeholder="consultor" class="form-control rounded">
+            <select type="text" name="consultor3" value="<%= data.consultor3 %>" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
               <option>No aplica</option>
               <% console.log(data); %>
               <% if (data.consultor) { %>
@@ -202,7 +202,7 @@
       
       <div class="form-group" id="otherFieldDiv">
         <label for="otherField" type="text">¿Quién fue el aliado financiero?</label>
-        <select type="text" name="ally_name" value="<%= data.ally_name %>" placeholder="Aliado" class="form-control rounded" id="otherField">
+        <select type="text" name="ally_name" value="<%= data.ally_name %>" placeholder="Aliado" class="form-control rounded selPic" data-live-search="true" id="otherField">
           <option disabled selected>Selecciona una opción</option>
           <% console.log(data); %>
           <% if (data.orgs) { %>
@@ -346,8 +346,9 @@
       <div class="col">
         <div class="form-group">
           <label for="otherField11" type="text">Tema <br> de fortalecimento</label>
-          <select name="fort_theme" value="<%= data.fort_theme %>" id="otherField11" class="form-control rounded">
-            <option disabled selected>Selecciona una opción</option>
+          <select name="fort_theme" value="<%= data.fort_theme %>" title="Nada seleccionado" id="otherField11" class="form-control rounded selPic" multiple>
+            <option disabled>Selecciona una o más opciones</option> 
+            <option selected>No aplica</option>            
             <option>Alianzas y vinculación</option>
             <option>Asesoría legal y fiscal</option>
             <option>Comunicación externa (Marketing social)</option>
@@ -377,7 +378,18 @@
 
     </div><!--Cierre de seeAnotherFieldGroup-->
 
-        
+        <div class="form-group">
+          <label type="text">Fecha de actualización</label>
+          <input name="update_date" id="datepicker3" width="415" value="<%= data.update_date %>" class="form-control rounded" required/>
+        <script>
+          $('#datepicker3').datepicker({
+              uiLibrary: 'bootstrap4',
+              format: 'dd/mm/yyyy',
+              width: 415,
+          });
+        </script>
+        </div>
+    
         <div class="form-group">
           <label type="text">Comentarios</label>
           <input name="comments" type="text" value="<%= data.comments %>" placeholder="Máximo 300 caracteres" maxlength="300" class="form-control rounded"> 
