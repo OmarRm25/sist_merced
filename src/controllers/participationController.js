@@ -1,55 +1,59 @@
 const controller = {};
 
 controller.list = (req, res) => {
-  let info = {};
-  req.getConnection((err, conn) => {
-    conn.query('SELECT * FROM fort_participation', (err, participations) => {
-     if (err) {
-      res.json(err);
-     }else{
-     info.data = participations
-    }
-    });
-  });
-  req.getConnection((err, conn) => {
-    conn.query('SELECT * FROM organization', (err, orgs) =>{
-      if (err) {
-        res.json(err);
-       }else{
-       info.orgs = orgs;
-       info.data.forEach((p) => {
-         p.org_name = p.id_organization != undefined ? orgs[p.id_organization -1].org_name : null;
-       });
-       }
-    });
-  });
-  req.getConnection((err, conn) => {
-    conn.query('SELECT * FROM consultor', (err, consultor) =>{
-      if (err) {
-        res.json(err);
-       }else{
-       info.consultor = consultor;
-       info.data.forEach((p) => {
-         p.full_name = p.id_consultor != undefined ? consultor[p.id_consultor -1].full_name : null;
-       });
-       }
-    });
-  });
+  if (req.session.loggedin) {
+    let info = {};
     req.getConnection((err, conn) => {
-        conn.query('SELECT * FROM program', (err, programs) =>{
-          if (err) {
-            res.json(err);
-           }else{
-           info.programs = programs;
-           info.data.forEach((p) => {
-             p.program_code = p.id_program != undefined ? programs[p.id_program -1].program_code : null;
-           });
-           res.render('participation', {data : info});
-           }
-        });
-        
+      conn.query('SELECT * FROM fort_participation', (err, participations) => {
+       if (err) {
+        res.json(err);
+       }else{
+       info.data = participations
+      }
       });
-}
+    });
+    req.getConnection((err, conn) => {
+      conn.query('SELECT * FROM organization', (err, orgs) =>{
+        if (err) {
+          res.json(err);
+         }else{
+         info.orgs = orgs;
+         info.data.forEach((p) => {
+           p.org_name = p.id_organization != undefined ? orgs[p.id_organization -1].org_name : null;
+         });
+         }
+      });
+    });
+    req.getConnection((err, conn) => {
+      conn.query('SELECT * FROM consultor', (err, consultor) =>{
+        if (err) {
+          res.json(err);
+         }else{
+         info.consultor = consultor;
+         info.data.forEach((p) => {
+           p.full_name = p.id_consultor != undefined ? consultor[p.id_consultor -1].full_name : null;
+         });
+         }
+      });
+    });
+      req.getConnection((err, conn) => {
+          conn.query('SELECT * FROM program', (err, programs) =>{
+            if (err) {
+              res.json(err);
+             }else{
+             info.programs = programs;
+             info.data.forEach((p) => {
+               p.program_code = p.id_program != undefined ? programs[p.id_program -1].program_code : null;
+             });
+             res.render('participation', {data : info});
+             }
+          });
+          
+        })
+        } else {
+    res.redirect("/");
+  }
+};
 
 controller.save = (req, res) => {
   const data = req.body;
@@ -136,13 +140,18 @@ controller.cancel = (res) => {
 }
 
 controller.delete = (req, res) => {
-  const { id_part } = req.params;
-  req.getConnection((err, conn) => {
-    conn.query('DELETE FROM fort_participation WHERE id_part = ?', [id_part] , (err, rows) => {
-      console.log(rows);
-      res.redirect('/participation');
-    });
-  });
+  var email = req.session.email;
+  if(email == 'v.cardin@fundacionmerced.org.mx'){
+    const { id_part } = req.params;
+    req.getConnection((err, conn) => {
+      conn.query('DELETE FROM fort_participation WHERE id_part = ?', [id_part] , (err, rows) => {
+        console.log(rows);
+        res.redirect('/participation');
+      });
+    })
+  }else{
+    res.send("<script>alert('No cuenta con permiso para eliminar este registro'); window.location.href = '/participation'; </script>");
+  }
 }
 
 module.exports = controller;

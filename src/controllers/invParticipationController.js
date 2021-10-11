@@ -1,7 +1,8 @@
 const controller = {};
 
 controller.list = (req, res) => {
-  let info = {};
+  if (req.session.loggedin) {
+    let info = {};
   req.getConnection((err, conn) => {
     conn.query('SELECT * FROM invsoc_participation', (err, invParticipations) => {
      if (err) {
@@ -48,8 +49,11 @@ controller.list = (req, res) => {
            }
         });
         
-      });
-}
+      })
+  } else {
+    res.redirect("/");
+  }
+}; 
 
 controller.save = (req, res) => {
   const data = req.body;
@@ -143,13 +147,21 @@ controller.cancel = (res) => {
 }
 
 controller.delete = (req, res) => {
-  const { id_partIS } = req.params;
-  req.getConnection((err, conn) => {
-    conn.query('DELETE FROM invsoc_participation WHERE id_partIS = ?', [id_partIS] , (err, rows) => {
-      console.log(rows);
-      res.redirect('/invParticipation');
-    });
-  });
+  var email = req.session.email;
+
+  if(email == 'v.cardin@fundacionmerded.org.mx'){
+    const { id_partIS } = req.params;
+    req.getConnection((err, conn) => {
+      conn.query('DELETE FROM invsoc_participation WHERE id_partIS = ?', [id_partIS] , (err, rows) => {
+        console.log(rows);
+        res.redirect('/invParticipation');
+      });
+    })
+  }else {
+    res.send("<script>alert('No cuenta con permiso para eliminar este registro'); window.location.href = '/invParticipation'; </script>");
+  }
+
+ 
 }
 
 module.exports = controller;

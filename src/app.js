@@ -3,13 +3,10 @@ const express = require('express'),
       path = require('path'),
       morgan = require('morgan'),
       mysql = require('mysql'),
-      passport = require('passport'),
-      flash = require('connect-flash'),
-      myConnection = require('express-myconnection');
+      myConnection = require('express-myconnection'),
+      cookieParser = require('cookie-parser');
+      
 
-      const { Strategy } = require('passport-local');
-      const cookieParser = require('cookie-parser');
-      require('./controllers/passport')(passport);
       
 const app = express();
 
@@ -20,29 +17,30 @@ app.set('view engine', 'ejs');
 
 // middlewares
 app.use(morgan('dev'));
-app.use(cookieParser());
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({extended: false}))
 
 app.use(myConnection(mysql, {
-  host: '',
+  host: 'localhost',
   user: 'merced',
   password: '123456',
   port: 3306,
   database: 'Merced_DB'
 }, 'single'));
 
+app.use(cookieParser());
 app.use(session({
   secret: 'secret',
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: true,
+  cookie:{maxAge:120000}
 }));
 
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
+app.use(function(req, res, next){
+  next();
+})
 
 // importing routes
-require('./routes/signin')(app, passport);
+const signinRoutes = require('./routes/signin');
 const dashboardRoutes = require('./routes/dashboard');
 const programRoutes = require('./routes/program');
 const organizationRoutes = require('./routes/organization');
@@ -54,7 +52,7 @@ const consultorRoutes = require('./routes/consultor');
 
 
 // routes
-
+app.use('/', signinRoutes);
 app.use('/dashboard', dashboardRoutes);
 app.use('/program', programRoutes);
 app.use('/organization', organizationRoutes);

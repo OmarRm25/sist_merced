@@ -1,15 +1,22 @@
 const controller = {};
 
 controller.list = (req, res) => {
-    req.getConnection((err, conn) => {
-      conn.query('SELECT * FROM organization', (err, organizations) => {
-       if (err) {
-        res.send("<script>alert('No es posible cargar la información por el momento, favor de verificar su conexión'); window.location.href = '/organization'; </script>");       }
-       res.render('organization', {
-          data: organizations
-       });
-      });
-    });
+  const email = req.session.email;
+    if (req.session.loggedin) {
+      req.getConnection((err, conn) => {
+        conn.query('SELECT * FROM organization', (err, organizations) => {
+         if (err) {
+          res.send("<script>alert('No es posible cargar la información por el momento, favor de verificar su conexión'); window.location.href = '/organization'; </script>");       
+        }
+         res.render('organization', {
+            data: organizations,
+            email
+         });
+        });
+      })
+    } else {
+      res.redirect("/");
+    }
   };
   
   controller.save = (req, res) => {
@@ -64,17 +71,20 @@ controller.list = (req, res) => {
   }
   
   controller.delete = (req, res) => {
-    const { id_organization } = req.params;
-    req.getConnection((err, conn) => {
-      conn.query('DELETE FROM organization WHERE id_organization = ?', id_organization, (err, rows) => {
-        if (err){
-          res.send("<script>alert('No fue posible eliminar el registro, favor de intentar de nuevo'); window.location.href = '/organization'; </script>");
-        }else{
-        console.log(rows);
-        res.redirect('/organization');
-        }
-      });
-    });
+    email = req.session.email;
+
+    if(email == 'v.cardin@fundacionmerced.org.mx'){
+      const { id_organization } = req.params;
+      req.getConnection((err, conn) => {
+        conn.query('DELETE FROM organization WHERE id_organization = ?', id_organization, (err, rows) => {
+          console.log(rows);
+          res.redirect('/organization'); 
+        });
+      })
+    }else{
+      res.send("<script>alert('No cuenta con permiso para eliminar este registro'); window.location.href = '/organization'; </script>");
+    }
+    
   }
   
   module.exports = controller;

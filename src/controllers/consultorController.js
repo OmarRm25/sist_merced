@@ -1,18 +1,24 @@
 const controller = {};
 
 controller.list = (req, res) => {
-    req.getConnection((err, conn) => {
-      conn.query('SELECT * FROM consultor', (err, consultors) => {
-       if (err) {
-        res.json(err);
-       }
-       res.render('consultor', {
-          data: consultors
-       });
-      });
-    });
-  };
-  
+  var email = req.session.email;
+    if (req.session.loggedin) {
+      req.getConnection((err, conn) => {
+        conn.query('SELECT * FROM consultor', (err, consultors) => {
+         if (err) {
+          res.json(err);
+         }
+         res.render('consultor', {
+            data: consultors,
+            email
+         });
+        });
+      })
+    } else {
+      res.redirect("/");
+    }
+  }; 
+
   controller.save = (req, res) => {
     const data = req.body;
     
@@ -73,17 +79,21 @@ controller.list = (req, res) => {
   }
   
   controller.delete = (req, res) => {
-    const { id_consultor } = req.params;
+    email = req.session.email;
+
+    if(email == 'v.cardin@fundacionmerced.org.mx'){
+      const { id_consultor } = req.params;
     req.getConnection((err, conn) => {
       conn.query('DELETE FROM consultor WHERE id_consultor = ?', id_consultor, (err, rows) => {
-        if (err){
-            res.json(err);
-        }else{
         console.log(rows);
-        res.redirect('/consultor');
-        }
+        res.redirect('/consultor'); 
       });
-    });
+    })
+    }else {
+
+    }
+    res.send("<script>alert('No cuenta con permiso para eliminar este registro'); window.location.href = '/consultor'; </script>");
+
   }
   
   module.exports = controller;

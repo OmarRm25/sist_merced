@@ -114,12 +114,16 @@
 
                  <div class="form-group">
                   <label type="text">Código postal</label>
-                  <input type="text" name="postal_code" placeholder="Ingresa aquí el código postal" class="form-control rounded" required> 
+                  <input type="text" name="postal_code" placeholder="Ingresa aquí el código postal" class="form-control rounded" maxlength="5" required> 
                  </div>
 
                  <div class="form-group">
                   <label type="text">Sitio web</label>
                   <input type="text" name="website" placeholder="Ingresa aquí el sitio web de la organización (opcional)" class="form-control rounded"> 
+                 </div>
+
+                 <div class="form-group">
+                  <input type="text" name="register" value="<%= email %>" class="form-control rounded" hidden> 
                  </div>
 
           <div class="modal-footer">
@@ -150,6 +154,7 @@
                 <th>Dirección</th>
                 <th>Código postal</th>
                 <th>Sitio web</th>
+                <th>Registra</th>
                 <td>Acciones</td>
               </tr>
             </thead>
@@ -167,6 +172,7 @@
                     <td><%= data[i].address %></td>
                     <td><%= data[i].postal_code %></td>
                     <td><%= data[i].website %></td>
+                    <td><%= data[i].register %></td>
                     
                     <td>
                       <br>

@@ -84,6 +84,10 @@
                   <input type="text" name="postal_code" placeholder="Ingresa el código postal del consultor" maxlength="5" minlength="5" class="form-control rounded" required>
                  </div>
 
+                 <div class="form-group">
+                  <input type="text" name="register" value="<%= email %>" class="form-control rounded" hidden> 
+                 </div>
+
           <div class="modal-footer">
             <button type="submit" class="btn btn-info rounded">Guardar</button>
             <button type="button" class="btn btn-danger rounded" data-dismiss="modal">Cancelar</button>
@@ -110,6 +114,7 @@
                 <th>Teléfono 2</th>
                 <th>Correo Electrónico</th>
                 <th>Código postal</th>
+                <th>Registra</th>
                 <td>Acciones</td>
               </tr>
             </thead>
@@ -125,6 +130,7 @@
                     <td><%= data[i].phone2 %></td>
                     <td><%= data[i].email %></td>
                     <td><%= data[i].postal_code %></td>
+                    <td><%= data[i].register %></td>
                     
                     <td>
                       <br>
@@ -135,34 +141,34 @@
                         </svg>
                       </a>
                     <br /> <br /> 
-                     <!-- <button class="btn-sm btn-danger rounded" data-toggle="modal" data-target="#eliminar">
+                     <button class="btn-sm btn-danger rounded" data-toggle="modal" data-target="#eliminar<%= data[i].id_consultor %>">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                           <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                           <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                         </svg>
-                      </button>-->
+                      </button>
                     </td>
                 
                   </tr>
     
-          <!--Delete modal window
-     <div class="modal" id="eliminar">
+          <!--Delete modal window-->
+     <div class="modal" id="eliminar<%= data[i].id_consultor %>">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Eliminar Organización</h5>
+            <h5 class="modal-title">Eliminar Consultor</h5>
           </div>
           <div class="modal-body">
-            <p>¿Realmente deseas eliminar esta organización?</p>
+            <p>¿Realmente deseas eliminar este consultor?</p>
           </div>
           <div class="modal-footer">
-            <a href="organization/delete/<%= data[i].id_organization %>" class="btn btn-danger rounded">Eliminar</a>
+            <a href="consultor/delete/<%= data[i].id_consultor %>" class="btn btn-danger rounded">Eliminar</a>
             <button type="button" class="btn btn-secondary rounded" data-dismiss="modal">Cancelar</button>
           </div>
         </div>
       </div>
     </div>
-    End of delete modal window-->
+    <!--End of delete modal window-->
     
                 <% } %>
               <% } %>
