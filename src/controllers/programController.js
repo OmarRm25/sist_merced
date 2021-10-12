@@ -1,6 +1,8 @@
 const controller = {};
 
 controller.list = (req, res) => {
+  const email = req.session.email;
+
   if (req.session.loggedin) {
     let info = {};
     req.getConnection((err, conn) => {
@@ -9,6 +11,7 @@ controller.list = (req, res) => {
         res.json(err);
        }else{
        info.data = programs
+       info.email = email
       }
       });
     });
@@ -32,14 +35,11 @@ controller.list = (req, res) => {
 
 controller.save = (req, res) => {
   const data = req.body;
-  console.log(req.body);
   req.getConnection((err, conn) => {
     conn.query('INSERT INTO program set ?', data, (err, programs) => {
       if(err){
-        console.log(err);
         res.json(err);
       }else{
-      console.log(programs)
       res.redirect('/program');
       }
     });
@@ -64,7 +64,6 @@ controller.update = (req, res) => {
 
   conn.query('UPDATE program set ? where id_program = ?', [newProgram, id_program], (err, rows) => {
     if(err){
-      console.log(err);
       res.send("<script>alert('Error en la actualización o Clave de programa duplicada'); window.location.href = '/program'; </script>");
 
     }else{
@@ -85,8 +84,6 @@ controller.delete = (req, res) => {
     const { id_program } = req.params;
   req.getConnection((err, conn) => {
     conn.query('DELETE FROM program WHERE id_program = ?', [id_program] , (err, rows) => {
-      console.log(rows);
-
       res.redirect('/program');
     });
   })

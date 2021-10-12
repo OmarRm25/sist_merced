@@ -1,6 +1,7 @@
 const controller = {};
 
 controller.list = (req, res) => {
+  const email = req.session.email;
   if (req.session.loggedin) {
     let info = {};
   req.getConnection((err, conn) => {
@@ -9,6 +10,7 @@ controller.list = (req, res) => {
       res.json(err);
      }else{
      info.data = contacts
+     info.email = email
     }
     });
   });
@@ -33,14 +35,12 @@ controller.list = (req, res) => {
 
 controller.save = (req, res) => {
   const data = req.body;
-  console.log(req.body);
+  
   req.getConnection((err, conn) => {
     conn.query('INSERT INTO contact set ?', data, (err, contacts) => {
       if(err){
-        console.log(err);
         res.json(err);
       }else{
-      console.log(contacts)
       res.redirect('/contact');
       }
     });
@@ -65,7 +65,6 @@ controller.update = (req, res) => {
 
   conn.query('UPDATE contact set ? where id_contact = ?', [newContact, id_contact], (err, rows) => {
     if(err){
-      console.log(err);
       res.json(err);
     }else{
     res.redirect('/contact');
@@ -86,7 +85,6 @@ controller.delete = (req, res) => {
   const { id_contact } = req.params;
   req.getConnection((err, conn) => {
     conn.query('DELETE FROM contact WHERE id_contact = ?', id_contact, (err, rows) => {
-      console.log(rows);
       res.redirect('/contact');
     });
   })

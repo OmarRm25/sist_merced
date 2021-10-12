@@ -1,6 +1,7 @@
 const controller = {};
 
 controller.list = (req, res) => {
+  const email = req.session.email;
   if (req.session.loggedin) {
     let info = {};
   req.getConnection((err, conn) => {
@@ -9,6 +10,7 @@ controller.list = (req, res) => {
       res.json(err);
      }else{
      info.data = admFiles
+     info.email = email
     }
     });
   });
@@ -35,14 +37,11 @@ controller.list = (req, res) => {
 
 controller.save = (req, res) => {
   const data = req.body;
-  console.log(req.body);
   req.getConnection((err, conn) => {
     conn.query('INSERT INTO admon_file set ?', data, (err, programs) => {
       if(err){
-        console.log(err);
         res.json(err);
       }else{
-      console.log(programs)
       res.redirect('/admon');
       }
     });
@@ -86,7 +85,6 @@ controller.delete = (req, res) => {
     const { id_admon } = req.params;
   req.getConnection((err, conn) => {
     conn.query('DELETE FROM admon_file WHERE id_admon = ?', [id_admon] , (err, rows) => {
-      console.log(rows);
       res.redirect('/admon');
     });
   })

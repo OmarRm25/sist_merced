@@ -9,22 +9,22 @@
           <form action="/organization/update/<%= data.id_organization %>" method="POST">
             <div class="form-group">
               <label type="text">Razón social</label>
-              <input type="text" name="org_name" value="<%= data.org_name %>" placeholder="Ingresa aquí el nombre de la Organización" class="form-control rounded" autofocus required>
+              <input type="text" name="org_name" value="<%= data.org_name %>" placeholder="Ingresa aquí el nombre de la Organización" maxlength="150" class="form-control rounded" autofocus required>
             </div>
 
             <div class="form-group">
               <label for="areaIntervencion" type="text">Área de intervención prioritaria</label>
-              <select name="intervention_area" id="areaIntervencion" value="<%= data.intervention_area %>" class="form-control rounded" required>
-                <option>Asistencia social</option>
-                    <option value="Derechos humanos">Derechos humanos</option>
-                    <option value="Desarrollo comunitario">Desarrollo comunitario</option>
-                    <option value="Desarrollo social">Desarrollo social</option>
-                    <option value="Educación">Educación</option>
-                    <option value="Medio Ambiente">Medio Ambiente</option>
-                    <option value="Agua, saneamiento e higiene">Agua, saneamiento e higiene</option>
-                    <option value="Salud">Salud</option>
-                    <option value="Seguridad Vial">Seguridad Vial</option>
-                    <option value="Otra">Otra</option>
+              <select name="intervention_area" id="areaIntervencion" class="form-control rounded" required>
+                <option disabled>Selecciona una opción</option>
+                <% const interVal = ["Asistencia social","Derechos humanos","Desarrollo comunitario","Desarrollo social","Educación","Medio Ambiente","Agua","saneamiento e higiene","Salud","Seguridad Vial","Otra"] %>
+              
+                <% for(var i=0; i < interVal.length; i++){ %>
+                  <% if(data.intervention_area == interVal[i]){ %>
+                    <option value="<%= interVal[i] %>" selected><%= interVal[i] %></option>
+                <%  }else{ %>
+                  <option value="<%= interVal[i] %>"><%= interVal[i] %></option>
+                  <% } %> 
+                 <% } %> 
               </select>  
             </div>
 
@@ -41,40 +41,16 @@
               <div class="form-group">
                 <label type="text">Entidad Federativa</label>
                 <select name="state" value="<%=data.state %>" class="form-control rounded" required>
-                      <option disabled selected>Selecciona una opción</option>
-                      <option>Aguascalientes</option>
-                      <option>Baja California</option>
-                      <option>Baja California Sur</option>
-                      <option>Campeche</option>
-                      <option>Chiapas</option>
-                      <option>Chihuahua</option>
-                      <option>Ciudad de México</option>
-                      <option>Coahuila</option>
-                      <option>Colima</option>
-                      <option>Durango</option>
-                      <option>Estado de México</option> 
-                      <option>Guanajuato</option> 
-                      <option>Guerrero</option> 
-                      <option>Hidalgo</option> 
-                      <option>Jalisco</option> 
-                      <option>Michoacán</option> 
-                      <option>Morelos</option> 
-                      <option>Nayarit</option> 
-                      <option>Nuevo León</option> 
-                      <option>Oaxaca</option> 
-                      <option>Puebla</option> 
-                      <option>Querétaro</option> 
-                      <option>Quintana Roo</option> 
-                      <option>San Luis Potosí</option> 
-                      <option>Sinaloa</option> 
-                      <option>Sonora</option> 
-                      <option>Tabasco</option> 
-                      <option>Tamaulipas</option> 
-                      <option>Tlaxcala</option> 
-                      <option>Veracruz</option> 
-                      <option>Yucatán</option> 
-                      <option>Zacatecas</option>  
-                      <option>Internacional</option> 
+                      <option disabled>Selecciona una opción</option>
+                      <% const edoVal = ["Aguascalientes","Baja California","Baja California Sur","Campeche","Chiapas","Chihuahua","Ciudad de México","Coahuila","Colima","Durango","Estado de México","Guanajuato","Guerrero","Hidalgo","Jalisco","Michoacán","Morelos","Nayarit","Nuevo León","Oaxaca","Puebla","Querétaro","Quintana Roo","San Luis Potosí","Sinaloa","Sonora","Tabasco","Tamaulipas","Tlaxcala","Veracruz","Yucatán","Zacatecas","Internacional"] %>
+              
+                      <% for(var i=0; i < edoVal.length; i++){ %>
+                        <% if(data.state == edoVal[i]){ %>
+                          <option value="<%= edoVal[i] %>" selected><%= edoVal[i] %></option>
+                      <%  }else{ %>
+                        <option value="<%= edoVal[i] %>"><%= edoVal[i] %></option>
+                        <% } %> 
+                        <% } %>  
                 </select>
               </div>   
               
@@ -86,9 +62,16 @@
             <div class="form-group">
                 <label type="text">¿Se encuentra en lista negra?</label>
                 <select name="blacklist" value="<%= data.blacklist %>" class="form-control rounded" required>
-                  <option disabled selected>Selecciona una opción</option>
-                  <option>No</option>
-                  <option>Sí</option>
+                  <option disabled>Selecciona una opción</option>
+                  <% const blackVal = ["No","Sí"] %>
+              
+                    <% for(var i=0; i < blackVal.length; i++){ %>
+                      <% if(data.blacklist == blackVal[i]){ %>
+                        <option value="<%= blackVal[i] %>" selected><%= blackVal[i] %></option>
+                    <%  }else{ %>
+                      <option value="<%= blackVal[i] %>"><%= blackVal[i] %></option>
+                      <% } %> 
+                      <% } %> 
                 </select>
             </div>
 
@@ -108,7 +91,8 @@
              </div>
 
              <div class="form-group">
-              <input type="text" name="register" value="<%= data.register %>" class="form-control rounded" hidden> 
+              <label type="text"></label>
+              <input type="text" name="register" value="<%= data.register %>" class="form-control rounded" readonly> 
              </div>
   
             <button type="submit" class="btn btn-info rounded">

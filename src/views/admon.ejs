@@ -135,7 +135,11 @@
               });
             </script>
             </div>
-
+            
+            <div class="form-group">
+              <label type="text">Registra</label>
+              <input type="text" name="register" value="<%= data.email %>" class="form-control rounded" readonly> 
+             </div>
             
       </div>
       <div class="modal-footer">
@@ -166,6 +170,7 @@
             <th>Identificación oficial</th>
             <th>Poder legal</th>
             <th>Fecha de actualización</th>
+            <th>Registra</th>
             <td>Acciones</td>
           </tr>
         </thead>
@@ -185,6 +190,7 @@
                 <td><%= data.data[i].official_id %></td>
                 <td><%= data.data[i].legal_power %></td>
                 <td><%= data.data[i].update_date %></td>
+                <td><%= data.data[i].register %></td>
                 <td>
                   <a href="admon/update/<%= data.data[i].id_admon %>" class="btn-sm btn-info rounded">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">

@@ -1,6 +1,7 @@
 const controller = {};
 
 controller.list = (req, res) => {
+  const email = req.session.email;
   if (req.session.loggedin) {
     let info = {};
   req.getConnection((err, conn) => {
@@ -9,6 +10,7 @@ controller.list = (req, res) => {
       res.json(err);
      }else{
      info.data = invParticipations
+     info.email = email
     }
     });
   });
@@ -70,7 +72,6 @@ controller.save = (req, res) => {
   data.fort_theme = `|${data.fort_theme.join(",")}|`;  
   }
 
-  console.log(req.body);
   req.getConnection((err, conn) => {
     conn.query('INSERT INTO invsoc_participation set ?', data, (err, participations) => {
       if(err){
@@ -88,7 +89,6 @@ controller.edit = (req, res) => {
   req.getConnection((err, conn) => {
     conn.query("SELECT * FROM invsoc_participation WHERE id_partIS = ?", id_partIS, (err, rows) => {
       info = rows[0];
-      console.log(rows);
     });
   });
   req.getConnection((err, conn) => {
@@ -153,7 +153,6 @@ controller.delete = (req, res) => {
     const { id_partIS } = req.params;
     req.getConnection((err, conn) => {
       conn.query('DELETE FROM invsoc_participation WHERE id_partIS = ?', [id_partIS] , (err, rows) => {
-        console.log(rows);
         res.redirect('/invParticipation');
       });
     })
