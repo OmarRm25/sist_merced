@@ -16,91 +16,145 @@
               </div>
               <div class="form-group">
                 <label type="text">Acta constitutiva</label>
-                <select name="constitutive_act" value="<%= data.constitutive_act %>" class="form-control rounded" required>
-                  <option disabled selected>Selecciona una opción</option>
-                  <option>No aplica</option>
-                  <option>Sí</option>
-                  <option>No</option>
+                <select name="constitutive_act"  class="form-control rounded" required>
+                  <option disabled>Selecciona una opción</option>
+                  <% const admonVal1 = ["No aplica","Sí","No"] %>
+          
+                  <% for(var i=0; i < admonVal1.length; i++){ %>
+                    <% if(data.constitutive_act == admonVal1[i]){ %>
+                      <option value="<%= admonVal1[i] %>" selected><%= admonVal1[i] %></option>
+                  <%  }else{ %>
+                    <option value="<%= admonVal1[i] %>"><%= admonVal1[i] %></option>
+                    <% } %> 
+                    <% } %> 
                   
                   </select>
               </div>
               <div class="form-group">
                   <label type="text">Constancia de situación fiscal</label>
-                  <select name="fiscal_constance" value="<%= data.fiscal_constance %>" class="form-control rounded" required>
-                    <option disabled selected>Selecciona una opción</option>
-                    <option>No aplica</option>
-                    <option>Sí</option>
-                    <option>No</option>
+                  <select name="fiscal_constance"  class="form-control rounded" required>
+                    <option disabled>Selecciona una opción</option>
+                    <% const admonVal2 = ["No aplica","Sí","No"] %>
+            
+                    <% for(var i=0; i < admonVal2.length; i++){ %>
+                      <% if(data.fiscal_constance == admonVal2[i]){ %>
+                        <option value="<%= admonVal2[i] %>" selected><%= admonVal2[i] %></option>
+                    <%  }else{ %>
+                      <option value="<%= admonVal2[i] %>"><%= admonVal2[i] %></option>
+                      <% } %> 
+                      <% } %> 
                     </select>
                 </div>
               
                 <div class="form-group">
                   <label type="text">Opinión de cumplimiento</label>
-                  <select name="compliance_opinion" value="<%=data.compliance_opinion %>" class="form-control rounded" required>
-                    <option disabled selected>Selecciona una opción</option>
-                    <option>No aplica</option>
-                    <option>Sí</option>
-                    <option>No</option>
+                  <select name="compliance_opinion"  class="form-control rounded" required>
+                    <option disabled>Selecciona una opción</option>
+                    <% const admonVal3 = ["No aplica","Sí","No"] %>
+            
+                    <% for(var i=0; i < admonVal3.length; i++){ %>
+                      <% if(data.compliance_opinion == admonVal3[i]){ %>
+                        <option value="<%= admonVal3[i] %>" selected><%= admonVal3[i] %></option>
+                    <%  }else{ %>
+                      <option value="<%= admonVal3[i] %>"><%= admonVal3[i] %></option>
+                      <% } %> 
+                      <% } %> 
                     
                     </select>
                 </div>
                 <div class="form-group">
                   <label type="text">CURP</label>
-                  <select name="curp" value="<%= data.curp %>" class="form-control rounded" required>
-                      <option disabled selected>Selecciona una opción</option>
-                      <option>No aplica</option>
-                      <option>Sí</option>
-                      <option>No</option>
+                  <select name="curp"  class="form-control rounded" required>
+                    <option disabled>Selecciona una opción</option>
+                    <% const admonVal4 = ["No aplica","Sí","No"] %>
+            
+                    <% for(var i=0; i < admonVal4.length; i++){ %>
+                      <% if(data.curp == admonVal4[i]){ %>
+                        <option value="<%= admonVal4[i] %>" selected><%= admonVal4[i] %></option>
+                    <%  }else{ %>
+                      <option value="<%= admonVal4[i] %>"><%= admonVal4[i] %></option>
+                      <% } %> 
+                      <% } %> 
                     
                     </select>
                 </div>
                 <div class="form-group">
                   <label type="text">RFC</label>
-                  <select name="rfc" value="<%= data.rfc %>" class="form-control rounded" required>
-                      <option disabled selected>Selecciona una opción</option>
-                      <option>No aplica</option>
-                      <option>Sí</option>
-                      <option>No</option>
+                  <select name="rfc" class="form-control rounded" required>
+                    <option disabled>Selecciona una opción</option>
+                    <% const admonVal5 = ["No aplica","Sí","No"] %>
+            
+                    <% for(var i=0; i < admonVal5.length; i++){ %>
+                      <% if(data.rfc == admonVal5[i]){ %>
+                        <option value="<%= admonVal5[i] %>" selected><%= admonVal5[i] %></option>
+                    <%  }else{ %>
+                      <option value="<%= admonVal5[i] %>"><%= admonVal5[i] %></option>
+                      <% } %> 
+                      <% } %> 
                     
                     </select>
                 </div>
                 <div class="form-group">
                   <label type="text">Comprobante de domicilio</label>
-                  <select name="address_voucher" value="<%= data.address_voucher %>" class="form-control rounded" required>
-                      <option disabled selected>Selecciona una opción</option>
-                      <option>No aplica</option>
-                      <option>Sí</option>
-                      <option>No</option>
+                  <select name="address_voucher"  class="form-control rounded" required>
+                    <option disabled>Selecciona una opción</option>
+                    <% const admonVal6 = ["No aplica","Sí","No"] %>
+            
+                    <% for(var i=0; i < admonVal6.length; i++){ %>
+                      <% if(data.address_voucher == admonVal6[i]){ %>
+                        <option value="<%= admonVal6[i] %>" selected><%= admonVal6[i] %></option>
+                    <%  }else{ %>
+                      <option value="<%= admonVal6[i] %>"><%= admonVal6[i] %></option>
+                      <% } %> 
+                      <% } %> 
                     
                     </select>
                 </div>
                 <div class="form-group">
                   <label type="text">Cáratula de estado de cuenta</label>
-                  <select name="account_status" value="<%= data.account_status %>" class="form-control rounded" required>
-                      <option disabled selected>Selecciona una opción</option>
-                      <option>No aplica</option>
-                      <option>Sí</option>
-                      <option>No</option>
+                  <select name="account_status" class="form-control rounded" required>
+                    <option disabled>Selecciona una opción</option>
+                    <% const admonVal7 = ["No aplica","Sí","No"] %>
+            
+                    <% for(var i=0; i < admonVal7.length; i++){ %>
+                      <% if(data.account_status == admonVal7[i]){ %>
+                        <option value="<%= admonVal7[i] %>" selected><%= admonVal7[i] %></option>
+                    <%  }else{ %>
+                      <option value="<%= admonVal7[i] %>"><%= admonVal7[i] %></option>
+                      <% } %> 
+                      <% } %> 
                     
                     </select>
                 </div>
                 <div class="form-group">
                   <label type="text">Identificación oficial</label>
-                  <select name="official_id" value="<%= data.official_id %>" class="form-control rounded" required>
-                      <option disabled selected>Selecciona una opción</option>
-                      <option>No aplica</option>
-                      <option>Sí</option>
-                      <option>No</option>
+                  <select name="official_id" class="form-control rounded" required>
+                    <option disabled>Selecciona una opción</option>
+                    <% const admonVal8 = ["No aplica","Sí","No"] %>
+            
+                    <% for(var i=0; i < admonVal8.length; i++){ %>
+                      <% if(data.official_id == admonVal8[i]){ %>
+                        <option value="<%= admonVal8[i] %>" selected><%= admonVal8[i] %></option>
+                    <%  }else{ %>
+                      <option value="<%= admonVal8[i] %>"><%= admonVal8[i] %></option>
+                      <% } %> 
+                      <% } %> 
                     </select>
                 </div>
 
                 <div class="form-group">
                   <label type="text">Poder legal</label>
-                  <select name="legal_power" value="<%= data.legal_power %>" class="form-control rounded" required>
-                      <option disabled selected>Selecciona una opción</option>
-                      <option>No aplica</option>
-                      <option>Sí</option>
-                      <option>No</option>
+                  <select name="legal_power" class="form-control rounded" required>
+                      <option disabled>Selecciona una opción</option>
+                      <% const admonVal9 = ["No aplica","Sí","No"] %>
+              
+                      <% for(var i=0; i < admonVal9.length; i++){ %>
+                        <% if(data.legal_power == admonVal9[i]){ %>
+                          <option value="<%= admonVal9[i] %>" selected><%= admonVal9[i] %></option>
+                      <%  }else{ %>
+                        <option value="<%= admonVal9[i] %>"><%= admonVal9[i] %></option>
+                        <% } %> 
+                        <% } %> 
                     
                     </select>
                 </div>
@@ -115,6 +169,11 @@
                 });
               </script>
               </div>
+
+              <div class="form-group">
+                <label type="text">Registra</label>
+                <input type="text" name="register" value="<%= data.register %>" class="form-control rounded" readonly> 
+               </div>
           
 
           <button type="submit" class="btn btn-info rounded">

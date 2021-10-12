@@ -19,7 +19,7 @@
 
               <div class="form-group">
                 <label for="prof_speciality">Especialidad profesional</label>
-                <select name="prof_speciality" id="prof_speciality" value="<%= data.prof_speciality %>" title="Nada seleccionado" class="form-control rounded selPic" multiple required>
+                <select name="prof_speciality" id="prof_speciality" title="<%= data.prof_speciality %>" class="form-control rounded selPic" multiple required>
                   <option>Administración y finanzas para OSC</option>
                   <option>Comunicación externa e interna</option>
                   <option>Consititución legal y trámite de donatarias autorizadas</option>
@@ -72,7 +72,8 @@
                </div>
 
                <div class="form-group">
-                <input type="text" name="register" value="<%= data.register %>" class="form-control rounded" hidden> 
+                <label type="text">Registra</label>
+                <input type="text" name="register" value="<%= data.register %>" class="form-control rounded" readonly> 
                </div>
   
             <button type="submit" class="btn btn-info rounded">

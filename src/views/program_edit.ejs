@@ -24,21 +24,33 @@
               <div class="row">
               <div class="form-group col">
                 <label type="text">Línea estratégica</label>
-                <select name="strategy_line" value="<%= data.strategy_line %>" placeholder="Línea estratégica" class="form-control rounded" required>
-                  <option disabled selected>Selecciona una opción</option>
-                  <option>Formación</option>
-                  <option>Fortalecimiento</option>
-                  <option>Inversión Social</option>
+                <select name="strategy_line" placeholder="Línea estratégica" class="form-control rounded" required>
+                  <option disabled>Selecciona una opción</option>
+                  <% const staVal = ["Formación","Fortalecimiento","Inversión Social"] %>
+              
+                  <% for(var i=0; i < staVal.length; i++){ %>
+                    <% if(data.strategy_line == staVal[i]){ %>
+                      <option value="<%= staVal[i] %>" selected><%= staVal[i] %></option>
+                  <%  }else{ %>
+                    <option value="<%= staVal[i] %>"><%= staVal[i] %></option>
+                    <% } %> 
+                   <% } %> 
+
                 </select>           
                  </div>
                  
                  <div class="form-group col">
                   <label type="text">Línea estratégica secundaria</label>
-                  <select name="strategy_line2" value="<%= data.strategy_line2 %>" placeholder="Línea estratégica" class="form-control rounded">
-                  <option>No aplica</option>
-                  <option>Formación</option>
-                  <option>Fortalecimiento</option>
-                  <option>Inversión Social</option>
+                  <select name="strategy_line2" placeholder="Línea estratégica" class="form-control rounded">
+                    <% const staVal2 = ["Formación","Fortalecimiento","Inversión Social","No aplica"] %>
+              
+                    <% for(var i=0; i < staVal2.length; i++){ %>
+                      <% if(data.strategy_line2 == staVal2[i]){ %>
+                        <option value="<%= staVal2[i] %>" selected><%= staVal2[i] %></option>
+                    <%  }else{ %>
+                      <option value="<%= staVal2[i] %>"><%= staVal2[i] %></option>
+                      <% } %> 
+                     <% } %> 
                     </select>           
                    </div> 
                   </div>  
@@ -46,26 +58,39 @@
           <div class="form-group">
             <label type="text">Cuenta Bancaria de ingresos</label>
             <select name="in_account" value="<%= data.in_account %>" placeholder="Cuenta de ingresos" class="form-control rounded" required>
-              <option disabled selected>Selecciona una opción</option>
-              <option>FMBANORTE0384</option>
-              <option>FMBANORTE8355</option>  
-              <option>FMBANORTE8891</option>
-              <option>FMBANORTE8903</option>
-              <option>FMBBVA6048</option>
-              <option>FMBNMX9071</option>
-              <option>FMSANT4991</option>
+              <option disabled>Selecciona una opción</option>
+              <% const accVal = ["FMBANORTE0384","FMBANORTE8355","FMBANORTE8891","FMBANORTE8903","FMBBVA6048","FMBNMX9071","FMSANT4991"] %>
+              
+                  <% for(var i=0; i < accVal.length; i++){ %>
+                    <% if(data.in_account == accVal[i]){ %>
+                      <option value="<%= accVal[i] %>" selected><%= accVal[i] %></option>
+                  <%  }else{ %>
+                    <option value="<%= accVal[i] %>"><%= accVal[i] %></option>
+                    <% } %> 
+                   <% } %>
             </select>  
             </div>
           
           <div class="form-group">
             <label type="text">Estatus</label>
               <select name="status" value="<%= data.status %>" placeholder="Estatus" class="form-control rounded" required>
-                <option disabled selected>Selecciona una opción</option>
-                <option>Activo</option>
-                <option>Finalizado</option>
-                <option>Cancelado</option>
+                <option disabled>Selecciona una opción</option>
+                <% const statVal = ["Activo","Finalizado","Cancelado"] %>
+              
+                  <% for(var i=0; i < statVal.length; i++){ %>
+                    <% if(data.in_account == statVal[i]){ %>
+                      <option value="<%= statVal[i] %>" selected><%= statVal[i] %></option>
+                  <%  }else{ %>
+                    <option value="<%= statVal[i] %>"><%= statVal[i] %></option>
+                    <% } %> 
+                   <% } %>
               </select>
           </div>
+
+          <div class="form-group">
+            <label type="text">Registra</label>
+            <input type="text" name="register" value="<%= data.register %>" class="form-control rounded" readonly> 
+           </div>
           
 
           <button type="submit" class="btn btn-info rounded">

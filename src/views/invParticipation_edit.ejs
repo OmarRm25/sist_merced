@@ -35,12 +35,15 @@
 
           <div class="form-group">
             <label type="text">Asesor 2</label>
-            <select type="text" name="consultor2" value="<%= data.consultor2 %>" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
+            <select type="text" name="consultor2" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
               <option>No aplica</option>
-              <% console.log(data); %>
               <% if (data.consultor) { %>
               <% for(var i=0; i < data.consultor.length; i++){ %>
+                <% if(data.consultor2 == data.consultor[i].full_name){ %>
+                  <option value="<%= data.consultor[i].full_name %>" selected><%= data.consultor[i].full_name %></option>
+              <%  }else{ %>
                 <option value="<%= data.consultor[i].full_name %>"><%= data.consultor[i].full_name %></option>
+                <% } %> 
                <% } %>
                <% } %>
             </select>              
@@ -50,12 +53,15 @@
             <label type="text">Asesor 3</label>
             <select type="text" name="consultor3" value="<%= data.consultor3 %>" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
               <option>No aplica</option>
-              <% console.log(data); %>
               <% if (data.consultor) { %>
-              <% for(var i=0; i < data.consultor.length; i++){ %>
-                <option value="<%= data.consultor[i].full_name %>"> <%= data.consultor[i].full_name %></option>
-               <% } %>
-               <% } %>
+                <% for(var i=0; i < data.consultor.length; i++){ %>
+                  <% if(data.consultor3 == data.consultor[i].full_name){ %>
+                    <option value="<%= data.consultor[i].full_name %>" selected><%= data.consultor[i].full_name %></option>
+                <%  }else{ %>
+                  <option value="<%= data.consultor[i].full_name %>"><%= data.consultor[i].full_name %></option>
+                  <% } %> 
+                 <% } %>
+                 <% } %>
             </select>              
           </div>
           </div>
@@ -64,24 +70,17 @@
             <div class="col">
           <div class="form-group">
             <label type="text">Tema</label>
-            <select type="text" name="theme" value="<%= data.theme %>" aria-placeholder="Selecciona una opción" class="form-control rounded" required> 
-              <option disabled selected>Selecciona una opción</option>
-              <option>Agua, saneamiento e higiene</option>
-              <option>Cultura</option>
-              <option>Educación</option>
-              <option>Emprendimiento social</option>
-              <option>Identidad cultural</option>
-              <option>Igualdad de género</option>
-              <option>Institucionalidad</option>
-              <option>Juventudes</option>
-              <option>Medio ambiente</option>
-              <option>Participación ciudadana</option>
-              <option>Proyectos productivos</option>
-              <option>Resiliencia</option>
-              <option>Salud</option>
-              <option>Seguridad alimentaria</option>
-              <option>Seguridad vial</option>
-              <option>Trabajo digno</option>
+            <select type="text" name="theme" aria-placeholder="Selecciona una opción" class="form-control rounded" required> 
+              <option disabled>Selecciona una opción</option>
+              <% const themeVal = ["Agua, saneamiento e higiene","Cultura","Educación","Emprendimiento social","Identidad cultural","Igualdad de género","Institucionalidad","Juventudes","Medio ambiente","Participación ciudadana","Proyectos productivos","Resiliencia","Salud","Seguridad alimentaria","Seguridad vial","Trabajo digno"] %>
+              
+              <% for(var i=0; i < themeVal.length; i++){ %>
+                <% if(data.theme == themeVal[i]){ %>
+                  <option value="<%= themeVal[i] %>" selected><%= themeVal[i] %></option>
+              <%  }else{ %>
+                <option value="<%= themeVal[i] %>"><%= themeVal[i] %></option>
+                <% } %> 
+               <% } %>              
             </select>
           </div>
         </div>
@@ -106,12 +105,12 @@
 
       <div class="form-group">
         <label type="text">Nombre del proyecto</label>
-        <input name="project_name" value="<%= data.project_name %>" type="text" placeholder="Ingresa aquí el nombre del proyecto" class="form-control rounded" required>
+        <input name="project_name" value="<%= data.project_name %>" type="text" placeholder="Ingresa aquí el nombre del proyecto" maxlength="300" class="form-control rounded" required>
       </div>
 
       <div class="form-group">
         <label type="text">Objetivo del proyecto</label>
-        <input name="project_objective" value="<%= data.project_objective %>" type="text" placeholder="Ingresa aquí el objetivo del proyecto" class="form-control rounded" required>
+        <input name="project_objective" value="<%= data.project_objective %>" type="text" placeholder="Ingresa aquí el objetivo del proyecto" maxlength="1000" class="form-control rounded" required>
       </div>
 
       <div class="form-group">
@@ -153,10 +152,17 @@
 
   <div class="form-group">
     <label for="seeAnotherFieldGroup" type="text">Tipo de proyecto</label>
-    <select name="project_type" value="<%= data.project_type %>" id="seeAnotherFieldGroup" class="form-control rounded" required>
-      <option disabled selected>Selecciona una opción</option>
-      <option value="Postulante">Postulante</option>
-      <option value="Seleccionado">Seleccionado</option>
+    <select name="project_type" id="seeAnotherFieldGroup" class="form-control rounded" required>
+      <option disabled>Selecciona una opción</option>
+      <% const typeVal = ["Postulante","Seleccionado"] %>
+              
+      <% for(var i=0; i < typeVal.length; i++){ %>
+        <% if(data.project_type == typeVal[i]){ %>
+          <option value="<%= typeVal[i] %>" selected><%= typeVal[i] %></option>
+      <%  }else{ %>
+        <option value="<%= typeVal[i] %>"><%= typeVal[i] %></option>
+        <% } %> 
+       <% } %>  
     </select> 
   </div>
 
@@ -193,10 +199,18 @@
       
       <div class="form-group">
         <label for="otherField3" type="text">¿De quién son los recursos?</label>
-        <select name="resources" value="<%= data.resources %>" id="otherField3" class="form-control rounded">
+        <select name="resources" id="otherField3" class="form-control rounded">
           <option disabled selected>Selecciona una opción</option>
-          <option value="Propios">Propios</option>
-          <option value="Aliado Financiero">Aliado Financiero</option>
+          <% const resourcesVal = ["Propios","Aliado Financiero"] %>
+              
+      <% for(var i=0; i < resourcesVal.length; i++){ %>
+        <% if(data.resources == resourcesVal[i]){ %>
+          <option value="<%= resourcesVal[i] %>" selected><%= resourcesVal[i] %></option>
+      <%  }else{ %>
+        <option value="<%= resourcesVal[i] %>"><%= resourcesVal[i] %></option>
+        <% } %> 
+       <% } %>  
+
         </select> 
         </div>
       
@@ -204,18 +218,21 @@
         <label for="otherField" type="text">¿Quién fue el aliado financiero?</label>
         <select type="text" name="ally_name" value="<%= data.ally_name %>" placeholder="Aliado" class="form-control rounded selPic" data-live-search="true" id="otherField">
           <option disabled selected>Selecciona una opción</option>
-          <% console.log(data); %>
           <% if (data.orgs) { %>
-          <% for(var i=0; i < data.orgs.length; i++){ %>
-            <option value="<%= data.orgs[i].org_name %>"> <%= data.orgs[i].org_name %></option>
-           <% } %>
-           <% } %>
+           <% for(var i=0; i < data.orgs.length; i++){ %>
+              <% if(data.ally_name == data.orgs[i].org_name){ %>
+                <option value="<%= data.orgs[i].org_name %>" selected><%= data.orgs[i].org_name %></option>
+            <%  }else{ %>
+              <option value="<%= data.orgs[i].org_name %>"><%= data.orgs[i].org_name %></option>
+              <% } %> 
+             <% } %>
+             <% } %>
         </select>
       </div> 
       
       <div class="form-group">
         <label for="otherField4" type="text">Logros</label>
-        <input id="otherField4" name="achievments" value="<%= data.achievments %>" type="text" placeholder="Ingresa aquí los logros del proyecto" maxlength="100" class="form-control rounded">
+        <input id="otherField4" name="achievments" value="<%= data.achievments %>" type="text" placeholder="Ingresa aquí los logros del proyecto" maxlength="300" class="form-control rounded">
       </div>
 
 
@@ -273,7 +290,7 @@
 
       <div class="form-group">
         <label for="otherField7" type="text">Donativo otorgado</label> 
-        <input id="otherField7" name="donative" value="<%= data.donative%>" type="number" placeholder="Ingresa aquí el donativo otorgado al proyecto" class="form-control rounded">
+        <input id="otherField7" name="donative" value="<%= data.donative%>" type="number" placeholder="Ingresa aquí el donativo otorgado al proyecto" maxlength="10" class="form-control rounded">
       </div>
 
       <div class="form-group">
@@ -287,12 +304,12 @@
 
         <div class="form-group">
           <label for="otherField8" type="text">Donativo otorgado 2</label>
-          <input id="otherField8" name="donative2" type="number" value="<%= data.donative2%>" placeholder="Ingresa aquí el donativo otorgado al proyecto" class="form-control rounded">
+          <input id="otherField8" name="donative2" type="number" value="<%= data.donative2%>" placeholder="Ingresa aquí el donativo otorgado al proyecto" maxlength="10" class="form-control rounded">
         </div>
         
         <div class="form-group">
           <label for="otherField9" type="text">Donativo otorgado 3</label> 
-          <input id="otherField9" name="donative3" type="number" value="<%= data.donative3%>" placeholder="Ingresa aquí el donativo otorgado al proyecto" class="form-control rounded">
+          <input id="otherField9" name="donative3" type="number" value="<%= data.donative3%>" placeholder="Ingresa aquí el donativo otorgado al proyecto" maxlength="10" class="form-control rounded">
         </div>
 
         </div>
@@ -300,13 +317,18 @@
 
         <div class="form-group">
           <label for="otherField10" type="text">Formato de formación</label>
-          <select name="formation_format" id="otherField10" value="<%= data.formation_format %>" class="form-control rounded">
+          <select name="formation_format" id="otherField10" class="form-control rounded">
             <option disabled selected>Selecciona una opción</option>
-            <option value="Diplomado">Diplomado</option>
-            <option value="Curso">Curso</option>
-            <option value="Taller">Taller</option>
-            <option value="Webinar">Webinar</option>
-            <option>Sin formación</option>
+            <% const FormVal = ["Diplomado","Curso","Taller","Webinar","Sin formación"] %>
+              
+            <% for(var i=0; i < FormVal.length; i++){ %>
+              <% if(data.formation_format == FormVal[i]){ %>
+                <option value="<%= FormVal[i] %>" selected><%= FormVal[i] %></option>
+            <%  }else{ %>
+              <option value="<%= FormVal[i] %>"><%= FormVal[i] %></option>
+              <% } %> 
+             <% } %>  
+
           </select>
         </div>
 
@@ -317,18 +339,20 @@
         <div class="col">  
       <div class="form-group">
         <label for="otherField1" type="text">Tema de formación</label>
-        <select name="formation_theme" value="<%= data.formation_theme %>" id="otherField1" class="form-control rounded">
+        <select name="formation_theme" id="otherField1" class="form-control rounded">
           <option disabled selected>Selecciona una opción</option>
-          <option>Modelo de intervención</option>
-          <option>Gobernanza</option>
-          <option>Movilización de recursos</option>
-          <option>Monitoreo y evaluación</option>
-          <option>Marco legal y fiscal</option>
-          <option>Creación de alianzas</option>
-          <option>Gestión del talento humano</option>
-          <option>Comunicación y mecadotecnia social</option>
-          <option>Liderazgo</option>
-          <option>Diplomado</option>
+          <% const forThVal = ["Modelo de intervención","Gobernanza","Movilización de recursos","Monitoreo y evaluación","Marco legal y fiscal","Creación de alianzas","Gestión del talento humano","Comunicación y mecadotecnia social","Liderazgo","Diplomado"] %>
+              
+          <% for(var i=0; i < forThVal.length; i++){ %>
+            <% if(data.formation_theme == forThVal[i]){ %>
+              <option value="<%= forThVal[i] %>" selected><%= forThVal[i] %></option>
+          <%  }else{ %>
+            <option value="<%= forThVal[i] %>"><%= forThVal[i] %></option>
+            <% } %> 
+           <% } %>  
+
+
+         
         </select>
         </div>
       </div>
@@ -346,7 +370,7 @@
       <div class="col">
         <div class="form-group">
           <label for="otherField11" type="text">Tema <br> de fortalecimento</label>
-          <select name="fort_theme" value="<%= data.fort_theme %>" title="Nada seleccionado" id="otherField11" class="form-control rounded selPic" multiple>
+          <select name="fort_theme" title="<%= data.fort_theme %>" title="Nada seleccionado" id="otherField11" class="form-control rounded selPic" multiple>
             <option disabled>Selecciona una o más opciones</option> 
             <option selected>No aplica</option>            
             <option>Alianzas y vinculación</option>
@@ -392,8 +416,13 @@
     
         <div class="form-group">
           <label type="text">Comentarios</label>
-          <input name="comments" type="text" value="<%= data.comments %>" placeholder="Máximo 300 caracteres" maxlength="300" class="form-control rounded"> 
+          <input name="comments" type="text" value="<%= data.comments %>" placeholder="Máximo 1000 caracteres" maxlength="1000" class="form-control rounded"> 
         </div>
+
+        <div class="form-group">
+          <label type="text">Registra</label>
+          <input type="text" name="register" value="<%= data.register %>" class="form-control rounded" readonly> 
+         </div>
 
         <div class="container">
           <button type="submit" class="btn btn-info rounded">

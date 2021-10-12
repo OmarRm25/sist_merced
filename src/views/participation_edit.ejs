@@ -35,40 +35,49 @@
 
             <div class="form-group">
               <label type="text">Consultor 2</label>
-              <select type="text" name="consultor2" value="<%= data.consultor2 %>" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
+              <select type="text" name="consultor2" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
                 <option>No aplica</option>
-                <% console.log(data); %>
                 <% if (data.consultor) { %>
-                <% for(var i=0; i < data.consultor.length; i++){ %>
-                  <option value="<%= data.consultor[i].full_name %>"><%= data.consultor[i].full_name %></option>
-                 <% } %>
-                 <% } %>
+                  <% for(var i=0; i < data.consultor.length; i++){ %>
+                    <% if(data.consultor2 == data.consultor[i].full_name){ %>
+                      <option value="<%= data.consultor[i].full_name %>" selected><%= data.consultor[i].full_name %></option>
+                  <%  }else{ %>
+                    <option value="<%= data.consultor[i].full_name %>"><%= data.consultor[i].full_name %></option>
+                    <% } %> 
+                   <% } %>
+                   <% } %>
               </select>              
             </div>
   
             <div class="form-group">
               <label type="text">Consultor 3</label>
-              <select type="text" name="consultor3" value="<%= data.consultor3 %>" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
+              <select type="text" name="consultor3" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
                 <option>No aplica</option>
-                <% console.log(data); %>
                 <% if (data.consultor) { %>
-                <% for(var i=0; i < data.consultor.length; i++){ %>
-                  <option value="<%= data.consultor[i].full_name %>"> <%= data.consultor[i].full_name %></option>
-                 <% } %>
-                 <% } %>
+                  <% for(var i=0; i < data.consultor.length; i++){ %>
+                    <% if(data.consultor3 == data.consultor[i].full_name){ %>
+                      <option value="<%= data.consultor[i].full_name %>" selected><%= data.consultor[i].full_name %></option>
+                  <%  }else{ %>
+                    <option value="<%= data.consultor[i].full_name %>"><%= data.consultor[i].full_name %></option>
+                    <% } %> 
+                   <% } %>
+                   <% } %>
               </select>              
             </div>
   
             <div class="form-group">
               <label type="text">Consultor 4</label>
-              <select type="text" name="consultor4" value="<%= data.consultor4 %>" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
+              <select type="text" name="consultor4" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
                 <option>No aplica</option>
-                <% console.log(data); %>
                 <% if (data.consultor) { %>
-                <% for(var i=0; i < data.consultor.length; i++){ %>
-                  <option value="<%= data.consultor[i].full_name %>"> <%= data.consultor[i].full_name %></option>
-                 <% } %>
-                 <% } %>
+                  <% for(var i=0; i < data.consultor.length; i++){ %>
+                    <% if(data.consultor4 == data.consultor[i].full_name){ %>
+                      <option value="<%= data.consultor[i].full_name %>" selected><%= data.consultor[i].full_name %></option>
+                  <%  }else{ %>
+                    <option value="<%= data.consultor[i].full_name %>"><%= data.consultor[i].full_name %></option>
+                    <% } %> 
+                   <% } %>
+                   <% } %>
               </select>              
             </div>
   
@@ -83,53 +92,65 @@
 
           <div class="form-group">
             <label type="text">Consultor 5</label>
-            <select type="text" name="consultor5" value="<%= data.consultor5 %>" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
+            <select type="text" name="consultor5" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
               <option>No aplica</option>
-              <% console.log(data); %>
               <% if (data.consultor) { %>
-              <% for(var i=0; i < data.consultor.length; i++){ %>
-                <option value="<%= data.consultor[i].full_name %>"> <%= data.consultor[i].full_name %></option>
-               <% } %>
-               <% } %>
+                <% for(var i=0; i < data.consultor.length; i++){ %>
+                  <% if(data.consultor5 == data.consultor[i].full_name){ %>
+                    <option value="<%= data.consultor[i].full_name %>" selected><%= data.consultor[i].full_name %></option>
+                <%  }else{ %>
+                  <option value="<%= data.consultor[i].full_name %>"><%= data.consultor[i].full_name %></option>
+                  <% } %> 
+                 <% } %>
+                 <% } %>
             </select>              
           </div>
 
           <div class="form-group">
             <label type="text">Consultor 6</label>
-            <select type="text" name="consultor6" value="<%= data.consultor6 %>" placeholder="consultor" class="form-control roundedselPic" data-live-search="true">
+            <select type="text" name="consultor6" placeholder="consultor" class="form-control roundedselPic" data-live-search="true">
               <option>No aplica</option>
-              <% console.log(data); %>
               <% if (data.consultor) { %>
-              <% for(var i=0; i < data.consultor.length; i++){ %>
-                <option value="<%= data.consultor[i].full_name %>"> <%= data.consultor[i].full_name %></option>
-               <% } %>
-               <% } %>
+                <% for(var i=0; i < data.consultor.length; i++){ %>
+                  <% if(data.consultor6 == data.consultor[i].full_name){ %>
+                    <option value="<%= data.consultor[i].full_name %>" selected><%= data.consultor[i].full_name %></option>
+                <%  }else{ %>
+                  <option value="<%= data.consultor[i].full_name %>"><%= data.consultor[i].full_name %></option>
+                  <% } %> 
+                 <% } %>
+                 <% } %>
             </select>              
           </div>
 
           <div class="form-group">
             <label type="text">Consultor 7</label>
-            <select type="text" name="consultor7" value="<%= data.consultor7 %>" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
+            <select type="text" name="consultor7" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
               <option>No aplica</option>
-              <% console.log(data); %>
               <% if (data.consultor) { %>
-              <% for(var i=0; i < data.consultor.length; i++){ %>
-                <option value="<%= data.consultor[i].full_name %>"> <%= data.consultor[i].full_name %></option>
-               <% } %>
-               <% } %>
+                <% for(var i=0; i < data.consultor.length; i++){ %>
+                  <% if(data.consultor7 == data.consultor[i].full_name){ %>
+                    <option value="<%= data.consultor[i].full_name %>" selected><%= data.consultor[i].full_name %></option>
+                <%  }else{ %>
+                  <option value="<%= data.consultor[i].full_name %>"><%= data.consultor[i].full_name %></option>
+                  <% } %> 
+                 <% } %>
+                 <% } %>
             </select>              
           </div>
 
           <div class="form-group">
             <label type="text">Consultor 8</label>
-            <select type="text" name="consultor8" value="<%= data.consultor8 %>" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
+            <select type="text" name="consultor8" placeholder="consultor" class="form-control rounded selPic" data-live-search="true">
               <option>No aplica</option>
-              <% console.log(data); %>
               <% if (data.consultor) { %>
-              <% for(var i=0; i < data.consultor.length; i++){ %>
-                <option value="<%= data.consultor[i].full_name %>"> <%= data.consultor[i].full_name %></option>
-               <% } %>
-               <% } %>
+                <% for(var i=0; i < data.consultor.length; i++){ %>
+                  <% if(data.consultor8 == data.consultor[i].full_name){ %>
+                    <option value="<%= data.consultor[i].full_name %>" selected><%= data.consultor[i].full_name %></option>
+                <%  }else{ %>
+                  <option value="<%= data.consultor[i].full_name %>"><%= data.consultor[i].full_name %></option>
+                  <% } %> 
+                 <% } %>
+                 <% } %>
             </select>              
           </div>
           </div>
@@ -138,48 +159,46 @@
         <div class="form-group">
           <label type="text">Tema</label>
           <select type="text" name="theme" value="<%= data.theme %>" class="form-control rounded" required>
-            <option disabled selected>Selecciona una opción</option>
-            <option>No aplica</option>
-            <option>Alianzas y vinculación</option>
-            <option>Asesoría legal y fiscal</option>
-            <option>Comunicación externa (Marketing social)</option>
-            <option>Comunicación interna</option>
-            <option>Diagnóstico de Madurez Institucional en Línea</option>
-            <option>Diagnóstico de Madurez Institucional Presencial</option>
-            <option>Estructura organizacional y administración</option>
-            <option>Fortalecimiento Equipo Operativo</option>   
-            <option>Fortalecimiento Institucional</option>   
-            <option>Modelo de Intervención</option>
-            <option>Monitoreo y Evaluación de proyectos</option>
-            <option>Órgano de Gobierno</option>
-            <option>Planeación estratégica</option>
-            <option>Sostenibilidad financiera</option>
-            <option>Teoría de cambio</option>
+            <option disabled>Selecciona una opción</option>
+            <% const themeVal = ["No aplica","Alianzas y vinculación","Asesoría legal y fiscal","Comunicación externa (Marketing social)","Comunicación interna","Diagnóstico de Madurez Institucional en Línea","Diagnóstico de Madurez Institucional Presencial","Estructura organizacional y administración","Fortalecimiento Equipo Operativo","Fortalecimiento Institucional","Modelo de Intervención","Monitoreo y Evaluación de proyectos","Órgano de Gobierno","Planeación estratégica","Sostenibilidad financiera","Teoría de cambio"] %>
+              
+              <% for(var i=0; i < themeVal.length; i++){ %>
+                <% if(data.theme == themeVal[i]){ %>
+                  <option value="<%= themeVal[i] %>" selected><%= themeVal[i] %></option>
+              <%  }else{ %>
+                <option value="<%= themeVal[i] %>"><%= themeVal[i] %></option>
+                <% } %> 
+               <% } %>     
+
+
+            
           </select>
         </div>
 
         <div class="form-group">
           <label type="text">¿Quién fue el aliado financiero?</label>
           <select type="text" name="ally_name" value="<%= data.ally_name %>" placeholder="Aliado" class="form-control rounded selPic" data-live-search="true" required>
-            <option disabled selected>Selecciona una opción</option>
-            <% console.log(data); %>
+            <option disabled>Selecciona una opción</option>
             <% if (data.orgs) { %>
-            <% for(var i=0; i < data.orgs.length; i++){ %>
-              <% console.log(data.orgs[i].org_name) %>
-              <option value="<%= data.orgs[i].org_name %>"> <%= data.orgs[i].org_name %></option>
-             <% } %>
-             <% } %>
+              <% for(var i=0; i < data.orgs.length; i++){ %>
+                 <% if(data.ally_name == data.orgs[i].org_name){ %>
+                   <option value="<%= data.orgs[i].org_name %>" selected><%= data.orgs[i].org_name %></option>
+               <%  }else{ %>
+                 <option value="<%= data.orgs[i].org_name %>"><%= data.orgs[i].org_name %></option>
+                 <% } %> 
+                <% } %>
+                <% } %>
           </select>
         </div>  
         
         <div class="form-group">
           <label type="text">Nombre del proyecto</label>
-          <input name="project_name" type="text" value="<%= data.project_name %>"  placeholder="Ingresa aquí el nombre del proyecto" class="form-control rounded" required>
+          <input name="project_name" type="text" value="<%= data.project_name %>"  placeholder="Ingresa aquí el nombre del proyecto" maxlength="300" class="form-control rounded" required>
         </div>
 
         <div class="form-group">
           <label type="text">Objetivo del proyecto</label>
-          <input name="project_objective" type="text" value="<%= data.project_objective %>"  placeholder="Ingresa aquí el objetivo del proyecto" class="form-control rounded" required>
+          <input name="project_objective" type="text" value="<%= data.project_objective %>"  placeholder="Ingresa aquí el objetivo del proyecto" class="form-control rounded" maxlength="1000" required>
         </div>
 
         <div class="form-group">
@@ -252,7 +271,7 @@
 
           <div class="form-group">
             <label type="text">Logros</label>
-            <input name="achievments" type="text" value="<%= data.achievments %>" placeholder="Ingresa aquí los logros del proyecto" maxlength="100" class="form-control rounded" required>
+            <input name="achievments" type="text" value="<%= data.achievments %>" placeholder="Ingresa aquí los logros del proyecto" maxlength="300" class="form-control rounded" required>
           </div>
 
 
@@ -326,8 +345,13 @@
 
           <div class="form-group">
             <label type="text">Comentarios</label>
-            <input name="comments" type="text" value="<%= data.comments %>"  placeholder="Máximo 300 caracteres" maxlength="300" class="form-control rounded"> 
+            <input name="comments" type="text" value="<%= data.comments %>"  placeholder="Máximo 1000 caracteres" maxlength="1000" class="form-control rounded"> 
           </div>
+
+          <div class="form-group">
+            <label type="text">Registra</label>
+            <input type="text" name="register" value="<%= data.register %>" class="form-control rounded" readonly> 
+           </div>
 
           <button type="submit" class="btn btn-info rounded">
             Actualizar

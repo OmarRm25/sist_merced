@@ -21,16 +21,13 @@ controller.list = (req, res) => {
   
   controller.save = (req, res) => {
     const data = req.body;
-    console.log(req.body)
     req.getConnection((err, conn) => {
       conn.query('INSERT INTO organization set ?', data, (err, organizations) => {
 
        if(err){
-            console.log(err);
             res.send("<script>alert('Error en el registro o RFC duplicado'); window.location.href = '/organization'; </script>");
 
         }else{    
-        console.log(organizations)
         res.redirect('/organization');
         }
       });
@@ -55,7 +52,6 @@ controller.list = (req, res) => {
   
     conn.query('UPDATE organization set ? where id_organization = ?', [newOrganization, id_organization], (err, rows) => {
       if(err){
-        console.log(err);
         res.send("<script>alert('Error en la actualización o RFC duplicado'); window.location.href = '/organization'; </script>");
         
     }else{  
@@ -77,7 +73,6 @@ controller.list = (req, res) => {
       const { id_organization } = req.params;
       req.getConnection((err, conn) => {
         conn.query('DELETE FROM organization WHERE id_organization = ?', id_organization, (err, rows) => {
-          console.log(rows);
           res.redirect('/organization'); 
         });
       })

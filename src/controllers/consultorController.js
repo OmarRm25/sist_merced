@@ -1,7 +1,7 @@
 const controller = {};
 
 controller.list = (req, res) => {
-  var email = req.session.email;
+  const email = req.session.email;
     if (req.session.loggedin) {
       req.getConnection((err, conn) => {
         conn.query('SELECT * FROM consultor', (err, consultors) => {
@@ -29,11 +29,10 @@ controller.list = (req, res) => {
     req.getConnection((err, conn) => {
       conn.query('INSERT INTO consultor set ?', data, (err, consultors) => {
         if(err){
-            console.log(err);
             res.send("<script>alert('Error en el registro o RFC duplicado'); window.location.href = '/consultor'; </script>");
             
         }else{    
-        console.log(consultors)
+       
         res.redirect('/consultor');
         }
       });
@@ -63,7 +62,7 @@ controller.list = (req, res) => {
   
     conn.query('UPDATE consultor set ? where id_consultor = ?', [newConsultor, id_consultor], (err, rows) => {
       if(err){
-        console.log(err);
+        
         res.send("<script>alert('Error en la actualización o RFC duplicado'); window.location.href = '/consultor'; </script>");
         
     }else{  
@@ -85,7 +84,7 @@ controller.list = (req, res) => {
       const { id_consultor } = req.params;
     req.getConnection((err, conn) => {
       conn.query('DELETE FROM consultor WHERE id_consultor = ?', id_consultor, (err, rows) => {
-        console.log(rows);
+    
         res.redirect('/consultor'); 
       });
     })

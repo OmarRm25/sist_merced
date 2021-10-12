@@ -1,6 +1,7 @@
 const controller = {};
 
 controller.list = (req, res) => {
+  const email = req.session.email;
   if (req.session.loggedin) {
     let info = {};
     req.getConnection((err, conn) => {
@@ -9,6 +10,7 @@ controller.list = (req, res) => {
         res.json(err);
        }else{
        info.data = participations
+       info.email = email
       }
       });
     });
@@ -66,14 +68,11 @@ controller.save = (req, res) => {
   data.application_state = `|${data.application_state.join()}|`;
   } 
 
-  console.log(req.body);
   req.getConnection((err, conn) => {
     conn.query('INSERT INTO fort_participation set ?', data, (err, participations) => {
       if(err){
-        console.log(err);
         res.json(err);
       }else{
-      console.log(participations)
       res.redirect('/participation');
       }
     });
@@ -86,7 +85,6 @@ controller.edit = (req, res) => {
   req.getConnection((err, conn) => {
     conn.query("SELECT * FROM fort_participation WHERE id_part = ?", id_part, (err, rows) => {
       info = rows[0];
-      console.log(rows);
     });
   });
   req.getConnection((err, conn) => {
@@ -145,7 +143,6 @@ controller.delete = (req, res) => {
     const { id_part } = req.params;
     req.getConnection((err, conn) => {
       conn.query('DELETE FROM fort_participation WHERE id_part = ?', [id_part] , (err, rows) => {
-        console.log(rows);
         res.redirect('/participation');
       });
     })

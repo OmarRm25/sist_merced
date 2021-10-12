@@ -32,7 +32,7 @@ app.use(session({
   secret: 'secret',
   resave: true,
   saveUninitialized: true,
-  cookie:{maxAge:120000}
+  cookie:{maxAge:7200000}
 }));
 
 app.use(function(req, res, next){

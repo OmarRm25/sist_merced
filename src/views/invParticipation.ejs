@@ -143,12 +143,12 @@
 
             <div class="form-group">
               <label type="text">Nombre del proyecto</label>
-              <input name="project_name" type="text" placeholder="Ingresa aquí el nombre del proyecto" class="form-control rounded" required>
+              <input name="project_name" type="text" placeholder="Ingresa aquí el nombre del proyecto" class="form-control rounded" maxlength="300" required>
             </div>
 
             <div class="form-group">
               <label type="text">Objetivo del proyecto</label>
-              <input name="project_objective" type="text" placeholder="Ingresa aquí el objetivo del proyecto" class="form-control rounded" required>
+              <input name="project_objective" type="text" placeholder="Ingresa aquí el objetivo del proyecto" class="form-control rounded" maxlength="1000" required>
             </div>
 
             <div class="form-group">
@@ -254,7 +254,7 @@
             
             <div class="form-group">
               <label for="otherField4" type="text">Logros</label>
-              <input id="otherField4" name="achievments" type="text" placeholder="Ingresa aquí los logros del proyecto" maxlength="100" class="form-control rounded">
+              <input id="otherField4" name="achievments" type="text" placeholder="Ingresa aquí los logros del proyecto" maxlength="300" class="form-control rounded">
             </div>
 
 
@@ -312,7 +312,7 @@
 
             <div class="form-group">
               <label for="otherField7" type="text">Donativo otorgado</label> <!--cambiar por donativo otorgado tanto en código como en BD-->
-              <input id="otherField7" name="donative" type="number" placeholder="Ingresa aquí el donativo otorgado al proyecto" class="form-control rounded">
+              <input id="otherField7" name="donative" type="number" placeholder="Ingresa aquí el donativo otorgado al proyecto" maxlength="10" class="form-control rounded">
             </div>
 
             <div class="form-group">
@@ -326,12 +326,12 @@
 
               <div class="form-group">
                 <label for="otherField8" type="text">Donativo otorgado 2</label> <!--cambiar por donativo otorgado tanto en código como en BD-->
-                <input id="otherField8" name="donative2" type="number" placeholder="Ingresa aquí el donativo otorgado al proyecto" class="form-control rounded">
+                <input id="otherField8" name="donative2" type="number" placeholder="Ingresa aquí el donativo otorgado al proyecto" maxlength="10" class="form-control rounded">
               </div>
               
               <div class="form-group">
                 <label for="otherField9" type="text">Donativo otorgado 3</label> <!--cambiar por donativo otorgado tanto en código como en BD-->
-                <input id="otherField9" name="donative3" type="number" placeholder="Ingresa aquí el donativo otorgado al proyecto" class="form-control rounded">
+                <input id="otherField9" name="donative3" type="number" placeholder="Ingresa aquí el donativo otorgado al proyecto" maxlength="10" class="form-control rounded">
               </div>
 
               </div>
@@ -430,8 +430,13 @@
           
             <div class="form-group">
               <label type="text">Comentarios</label>
-              <input name="comments" type="text" placeholder="Máximo 300 caracteres" maxlength="300" class="form-control rounded"> 
+              <input name="comments" type="text" placeholder="Máximo 1000 caracteres" maxlength="1000" class="form-control rounded"> 
             </div>
+
+            <div class="form-group">
+              <label type="text">Registra</label>
+              <input type="text" name="register" value="<%= data.email %>" class="form-control rounded" readonly> 
+             </div>
             
       </div>
       <div class="modal-footer">
@@ -482,6 +487,7 @@
             <th># de sesiones fortalecimento</th>
             <th>Fecha de actualización</th>
             <th>Comentarios</th>
+            <th>Registra</th>
             <td>Acciones</td>
           </tr>
         </thead>
@@ -521,6 +527,7 @@
                 <td><%= data.data[i].num_sessions_fort %></td> 
                 <td><%= data.data[i].update_date %></td>
                 <td><%= data.data[i].comments %></td>
+                <td><%= data.data[i].register %></td>
                 
                 <td>
                   <a href="invParticipation/update/<%= data.data[i].id_partIS %>" class="btn-sm btn-info rounded">

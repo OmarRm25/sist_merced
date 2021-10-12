@@ -11,14 +11,11 @@ controller.auth = (req, res) => {
   var email = req.body.email;
   var password = req.body.password;
 
-  console.log(email);
-
   req.getConnection((err, conn) => {
     conn.query(
       "SELECT * from employee WHERE email = ? && password = ?",
       [email, password],
       (err, results) => {
-        console.log(err);
         if (results.length > 0) {
           req.session.loggedin = true;
           req.session.email = email;
