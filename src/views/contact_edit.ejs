@@ -45,7 +45,19 @@
 
           <div class="form-group">
             <label type="text">Organización a la que pertenece</label>
-            <input type="text" name="id_organization" value="<%= data.id_organization %>" class="form-control rounded" disabled>
+            <select type="text" name="id_organization" class="form-control rounded selPic" data-live-search="true">
+              <option disabled selected>Selecciona una opción</option>
+              <% if (data.orgs) { %>
+                <% for(var i=0; i < data.orgs.length; i++){ %>
+                   <% if(data.id_organization == data.orgs[i].id_organization){ %>
+                     <option value="<%= data.orgs[i].id_organization %>" selected><%= data.orgs[i].org_name %></option>
+                 <%  }else{ %>
+                   <option value="<%= data.orgs[i].id_organization %>"><%= data.orgs[i].org_name %></option>
+                   <% } %> 
+                  <% } %>
+                  <% } %>
+            </select>
+
           </div>
 
           <div class="form-group">

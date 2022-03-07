@@ -10,6 +10,7 @@
 <script>
     $(document).ready(function(){
         var table = $('#table').DataTable({
+           lengthMenu: [[10 , 20 , 50 , 100 , -1],[10 , 20 , 50 , 100 , "Todos"]],
            orderCellsTop: true,
            fixedHeader: true,
            responsive: true,
@@ -26,7 +27,8 @@
                    previous: "Anterior",
                    next: "Siguiente"
                          }   
-               }
+               },
+         
            
         });
     
@@ -69,10 +71,31 @@
       }
     }
 
+    //switches for allies inv soc
+    function showContent3() {
+      element = document.getElementById("content3");
+      check3 = document.getElementById("check3");
+      if (check3.checked) {
+        element.style.display = "block";
+      } else {
+        element.style.display = "none";
+      }
+    }
+
+    function showContent4() {
+      element = document.getElementById("content4");
+      check4 = document.getElementById("check4");
+      if (check4.checked) {
+        element.style.display = "block";
+      } else {
+        element.style.display = "none";
+      }
+    }
+
     //show hidden fields
 
     $("#areaIntervencion").change(function() {
-  if ($(this).val() == "Otra") {
+  if ($(this).val() == "OTRA") {
     $('#otherFieldDiv').show();
     $('#otherField').attr('required', '');
     $('#otherField').attr('data-error', 'Este campo es requerido.');
@@ -85,8 +108,22 @@
 $("#areaIntervencion").trigger("change");  
 
 
+$("#tema").change(function() {
+  if ($(this).val() == "OTRO") {
+    $('#otherFieldDivT').show();
+    $('#otherFieldT').attr('required', '');
+    $('#otherFieldT').attr('data-error', 'Este campo es requerido.');
+  } else {
+    $('#otherFieldDivT').hide();
+    $('#otherFieldT').removeAttr('required');
+    $('#otherFieldT').removeAttr('data-error');
+  }
+});
+$("#tema").trigger("change"); 
+
+
     $("#otherField3").change(function () {
-  if ($(this).val() == "Aliado Financiero") {
+  if ($(this).val() == "ALIADO FINANCIERO") {
     $("#otherFieldDiv").show();
     $("#otherField").attr("required", "");
     $("#otherField").attr("data-error", "Este campo es requerido.");
@@ -99,7 +136,7 @@ $("#areaIntervencion").trigger("change");
 $("#otherField3").trigger("change");
 
 $("#seeAnotherFieldGroup").change(function() {
-  if ($(this).val() == "Seleccionado") {
+  if ($(this).val() == "SELECCIONADO") {
     $('#otherFieldGroupDiv').show();
     $('#otherField1').attr('required', '');
     $('#otherField1').attr('data-error', 'Este campo es requerido.');
@@ -117,8 +154,8 @@ $("#seeAnotherFieldGroup").trigger("change");
 
 
 $("#otherField10").change(function() {
-  if ($(this).val() == "Diplomado" || $(this).val() == "Curso" || $(this).val() == "Taller" 
-  || $(this).val() == "Webinar" ) {
+  if ($(this).val() == "DIPLOMADO" || $(this).val() == "CURSO" || $(this).val() == "TALLER" 
+  || $(this).val() == "WEBINAR" ) {
     $('#otherFieldGroupDiv2').show();
     $('#otherField1').attr('required', '');
     $('#otherField1').attr('data-error', 'Este campo es requerido.');
@@ -155,6 +192,97 @@ $(function () {
 });
 
 $.fn.selectpicker.Constructor.BootstrapVersion = '4';
+
+//exportar organizaciones
+$(".exportExcelOrg").click(function(){
+	$(".tableOrg").table2excel({
+		exclude: ".noExl",
+		name: "Organizaciones",
+		filename: "Organizaciones.xls",
+		fileext: ".xls",
+    exclude_img: true,
+    exclude_links: true,
+    exclude_inputs: true
+	});	
+});
+
+//exportar programas
+$(".exportExcelProg").click(function(){
+	$(".tableProg").table2excel({
+		exclude: ".noExl",
+		name: "Programas",
+		filename: "Programas.xls",
+		fileext: ".xls",
+    exclude_img: true,
+    exclude_links: true,
+    exclude_inputs: true
+	});	
+});
+
+//exportar Fortalecimiento
+$(".exportExcelFort").click(function(){
+	$(".tableFort").table2excel({
+		exclude: ".noExl",
+		name: "Fortalecimiento",
+		filename: "Fortalecimiento.xls",
+		fileext: ".xls",
+    exclude_img: true,
+    exclude_links: true,
+    exclude_inputs: true
+	});	
+});
+
+//exportar Inversión social
+$(".exportExcelInvSoc").click(function(){
+	$(".tableInvSoc").table2excel({
+		exclude: ".noExl",
+		name: "Inversión social",
+		filename: "Inversión social.xls",
+		fileext: ".xls",
+    exclude_img: true,
+    exclude_links: true,
+    exclude_inputs: true
+	});	
+});
+
+//exportar Contactos
+$(".exportExcelCont").click(function(){
+	$(".tableCont").table2excel({
+		exclude: ".noExl",
+		name: "Contactos",
+		filename: "Contactos.xls",
+		fileext: ".xls",
+    exclude_img: true,
+    exclude_links: true,
+    exclude_inputs: true
+	});	
+});
+
+//exportar Consultores
+$(".exportExcelCons").click(function(){
+	$(".tableCons").table2excel({
+		exclude: ".noExl",
+		name: "Consultores",
+		filename: "Consultores.xls",
+		fileext: ".xls",
+    exclude_img: true,
+    exclude_links: true,
+    exclude_inputs: true
+	});	
+});
+
+//exportar expediente
+$(".exportExcelAdmon").click(function(){
+	$(".tableAdmon").table2excel({
+		exclude: ".noExl",
+		name: "Expediente",
+		filename: "Expediente.xls",
+		fileext: ".xls",
+    exclude_img: true,
+    exclude_links: true,
+    exclude_inputs: true
+	});	
+});
 
 </script>
 

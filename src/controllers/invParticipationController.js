@@ -15,7 +15,7 @@ controller.list = (req, res) => {
     });
   });
   req.getConnection((err, conn) => {
-    conn.query('SELECT * FROM organization', (err, orgs) =>{
+    conn.query('SELECT id_organization, org_name FROM organization', (err, orgs) =>{
       if (err) {
         res.json(err);
        }else{
@@ -27,7 +27,7 @@ controller.list = (req, res) => {
     });
   });
   req.getConnection((err, conn) => {
-    conn.query('SELECT * FROM consultor', (err, consultor) =>{
+    conn.query('SELECT id_consultor, full_name FROM consultor', (err, consultor) =>{
       if (err) {
         res.json(err);
        }else{
@@ -98,6 +98,16 @@ controller.edit = (req, res) => {
        }else{
        info.orgs = orgs;
        info.org_name = info.id_organization != undefined ? orgs[info.id_organization -1].org_name : null;
+       }
+    });
+  });
+  req.getConnection((err, conn) => {
+    conn.query('SELECT * FROM program', (err, programs) =>{
+      if (err) {
+        res.json(err);
+       }else{
+       info.programs = programs;
+       info.program_code = info.id_program != undefined ? programs[info.id_program -1].program_code : null;
        }
     });
   });

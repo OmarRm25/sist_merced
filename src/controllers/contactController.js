@@ -15,7 +15,7 @@ controller.list = (req, res) => {
     });
   });
   req.getConnection((err, conn) => {
-    conn.query('SELECT * FROM organization ORDER BY org_name ASC', (err, orgs) =>{
+    conn.query('SELECT id_organization, org_name FROM organization', (err, orgs) =>{
       if (err) {
         res.json(err);
        }else{
@@ -49,12 +49,22 @@ controller.save = (req, res) => {
 
 controller.edit = (req, res) => {
   const { id_contact } = req.params;
+  let info = {};
   req.getConnection((err, conn) => {
     conn.query("SELECT * FROM contact WHERE id_contact = ?", id_contact, (err, rows) => {
-      res.render('contact_edit', {
-        data: rows[0]
-      })
+      info = rows [0];
     });
+  });
+  req.getConnection((err, conn) => {
+    conn.query('SELECT * FROM organization', (err, orgs) =>{
+      if (err) {
+        res.json(err);
+       }else{
+       info.orgs = orgs;
+       info.org_name = info.id_organization != undefined ? orgs[info.id_organization -1].org_name : null;
+       res.render('contact_edit', {data:info});
+       } 
+      });
   });
 };
 

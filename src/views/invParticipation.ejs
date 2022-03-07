@@ -6,8 +6,22 @@
 
 <br />
 <!--Modal window trigger button -->
-<button type="button" class="btn btn-success margin-left-3 rounded" data-toggle="modal" data-target="#agregar" >Agregar participación</button>
-<br /><br />
+<div class="row">
+  <div class="col">
+  <button type="button" class="btn btn-info margin-left-3 rounded" data-toggle="modal" data-target="#agregar" >
+      Agregar Participación
+  </button>
+  </div>
+
+  <div class="col text-right">
+    <button type="button" class="btn btn-success margin-left-3 rounded exportExcelInvSoc" style="background-color: darkgreen; border-color: darkgreen;">
+      <img src="/img/spreadsheet.png" width="15px"/>
+    Exportar a Excel
+    </button>
+  </div>
+  </div>
+
+  <br /><br />
 
 <!--Insert Modal window-->
 <div class="modal fade" role="dialog"  id="agregar">
@@ -51,6 +65,7 @@
                 <label type="text">Asesor</label>
                 <select type="text" name="id_consultor" class="form-control rounded selPic" data-live-search="true" required>
                   <option disabled selected>Selecciona una opción</option>
+                  <option>No aplica</option>
                   <% console.log(data); %>
                   <% if (data.consultor) { %>
                   <% for(var i=0; i < data.consultor.length; i++){ %>
@@ -103,22 +118,22 @@
               <label type="text">Tema</label>
               <select type="text" name="theme"  aria-placeholder="Selecciona una opción" class="form-control rounded" required> 
                 <option disabled selected>Selecciona una opción</option>
-                <option>Agua, saneamiento e higiene</option>
-                <option>Cultura</option>
-                <option>Educación</option>
-                <option>Emprendimiento social</option>
-                <option>Identidad cultural</option>
-                <option>Igualdad de género</option>
-                <option>Institucionalidad</option>
-                <option>Juventudes</option>
-                <option>Medio ambiente</option>
-                <option>Participación ciudadana</option>
-                <option>Proyectos productivos</option>
-                <option>Resiliencia</option>
-                <option>Salud</option>
-                <option>Seguridad alimentaria</option>
-                <option>Seguridad vial</option>
-                <option>Trabajo digno</option>
+                <option>AGUA, SANEAMIENTO E HIGIENE</option>
+                <option>CULTURA</option>
+                <option>EDUCACIÓN</option>
+                <option>EMPRENDIMIENTO SOCIAL</option>
+                <option>IDENTIDAD CULTURAL</option>
+                <option>IGUALDAD DE GÉNERO</option>
+                <option>INSTITUCIONALIDAD</option>
+                <option>JUVENTUDES</option>
+                <option>MEDIO AMBIENTE</option>
+                <option>PARTICIPACIÓN CIUDADANA</option>
+                <option>PROYECTOS PRODUCTIVOS</option>
+                <option>RESILIENCIA</option>
+                <option>SALUD</option>
+                <option>SEGURIDAD ALIMENTARIA</option>
+                <option>SEGURIDAD VIAL</option>
+                <option>TRABAJO DIGNO</option>
               </select>
             </div>
           </div>
@@ -155,13 +170,13 @@
               <label type="text">Tipo de población</label>
               <select id="my-select" name="population_type" title="Nada seleccionado" class="selectpicker form-control rounded" multiple required> 
                 <option disabled>Selecciona una o más opciones</option>
-                <option>Primera infancia (0-5 años)</option>
-                <option>Infancia (6-12 años)</option>
-                <option>Adolescencia (13-18 años)</option>
-                <option>Juventud (19-29 años)</option>
-                <option>Adultez (30-59 años)</option>
-                <option>Persona mayor (60 años o más)</option>
-                <option>Organizaciones de la Sociedad Civil</option>
+                <option>PRIMERA INFANCIA (0-5 AÑOS)</option>
+                <option>INFANCIA (6-12 AÑOS)</option>
+                <option>ADOLESCENCIA (13-18 AÑOS)</option>
+                <option>JUVENTUD (19-29 AÑOS)</option>
+                <option>ADULTEZ (30-59 AÑOS)</option>
+                <option>PERSONA MAYOR (60 AÑOS O MÁS)</option>
+                <option>ORGANIZACIONES DE LA SOCIEDAD CIVIL</option>
               </select> 
             </div>
              
@@ -192,8 +207,8 @@
           <label for="seeAnotherFieldGroup" type="text">Tipo de proyecto</label>
           <select name="project_type" id="seeAnotherFieldGroup" class="form-control rounded" required>
             <option disabled selected>Selecciona una opción</option>
-            <option value="Postulante">Postulante</option>
-            <option value="Seleccionado">Seleccionado</option>
+            <option value="POSTULANTE">POSTULANTE</option>
+            <option value="SELECCIONADO">SELECCIONADO</option>
           </select> 
         </div>
 
@@ -234,8 +249,8 @@
               <label for="otherField3" type="text">¿De quién son los recursos?</label>
               <select name="resources" id="otherField3" class="form-control rounded">
                 <option disabled selected>Selecciona una opción</option>
-                <option value="Propios">Propios</option>
-                <option value="Aliado Financiero">Aliado Financiero</option>
+                <option value="PROPIOS">PROPIOS</option>
+                <option value="ALIADO FINANCIERO">ALIADO FINANCIERO</option>
               </select> 
               </div>
             
@@ -250,7 +265,89 @@
                  <% } %>
                  <% } %>
               </select>
-            </div> 
+           
+              
+
+            <div class="form-group">
+              <div class="custom-control custom-switch">
+                <br>
+                <input type="checkbox" class="custom-control-input" id="check3" value="1" onchange="javascript:showContent3()">
+                <label class="custom-control-label" for="check3">Agregar más aliados</label>
+              </div>
+            </div>
+
+            <div id="content3" style="display: none;">
+
+            <div class="form-group">
+              <label type="text">Aliado 2</label>
+              <select type="text" name="ally_name2" class="form-control rounded selPic" data-live-search="true">
+                <option disabled selected>Selecciona una opción</option>
+                <% console.log(data); %>
+                <% if (data.orgs) { %>
+                <% for(var i=0; i < data.orgs.length; i++){ %>
+                  <option value="<%= data.orgs[i].org_name %>"> <%= data.orgs[i].org_name %></option>
+                 <% } %>
+                 <% } %>
+              </select>              
+            </div>
+
+            <div class="form-group">
+              <label type="text">Aliado 3</label>
+              <select type="text" name="ally_name3" class="form-control rounded selPic" data-live-search="true">
+                <option disabled selected>Selecciona una opción</option>
+                <% console.log(data); %>
+                <% if (data.orgs) { %>
+                <% for(var i=0; i < data.orgs.length; i++){ %>
+                  <option value="<%= data.orgs[i].org_name %>"> <%= data.orgs[i].org_name %></option>
+                 <% } %>
+                 <% } %>
+              </select>                
+            </div>
+
+            <div class="form-group">
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="check4" value="1" onchange="javascript:showContent4()">
+                <label class="custom-control-label" for="check4">Agregar más aliados</label>
+              </div>
+            </div>
+
+            <div id="content4" style="display: none;">
+
+            <div class="form-group">
+              <label type="text">Aliado 4</label>
+              <select type="text" name="ally_name4" class="form-control rounded selPic" data-live-search="true">
+                <option disabled selected>Selecciona una opción</option>
+                <% console.log(data); %>
+                <% if (data.orgs) { %>
+                <% for(var i=0; i < data.orgs.length; i++){ %>
+                  <option value="<%= data.orgs[i].org_name %>"> <%= data.orgs[i].org_name %></option>
+                 <% } %>
+                 <% } %>
+              </select>                
+            </div>
+
+            
+
+            <div class="form-group">
+              <label type="text">Aliado 5</label>
+              <select type="text" name="ally_name5" class="form-control rounded selPic" data-live-search="true">
+                <option disabled selected>Selecciona una opción</option>
+                <% console.log(data); %>
+                <% if (data.orgs) { %>
+                <% for(var i=0; i < data.orgs.length; i++){ %>
+                  <option value="<%= data.orgs[i].org_name %>"> <%= data.orgs[i].org_name %></option>
+                 <% } %>
+                 <% } %>
+              </select>           
+            </div>
+
+            
+            </div> <!--cierre del switch agregar más consultores 2-->
+          </div> <!--cierre del switch agregar más consultores 1-->
+
+
+        </div>
+
             
             <div class="form-group">
               <label for="otherField4" type="text">Logros</label>
@@ -264,40 +361,40 @@
               <label for="otherField5" type="text">Estado de incidencia</label>
               <select id="otherField5" name="application_state" title="Nada seleccionado" class="selectpicker form-control rounded" multiple>
                 <option disabled>Selecciona una o más opciones</option>
-                <option selected>No aplica</option>    
-                <option>Aguascalientes</option>
-                <option>Baja California</option>
-                <option>Baja California Sur</option>
-                <option>Campeche</option>
-                <option>Chiapas</option>
-                <option>Chihuahua</option>
-                <option>Ciudad de México</option>
-                <option>Coahuila</option>
-                <option>Colima</option>
-                <option>Durango</option>
-                <option>Estado de México</option> 
-                <option>Guanajuato</option> 
-                <option>Guerrero</option> 
-                <option>Hidalgo</option> 
-                <option>Jalisco</option> 
-                <option>Michoacán</option> 
-                <option>Morelos</option> 
-                <option>Nayarit</option> 
-                <option>Nuevo León</option> 
-                <option>Oaxaca</option> 
-                <option>Puebla</option> 
-                <option>Querétaro</option> 
-                <option>Quintana Roo</option> 
-                <option>San Luis Potosí</option> 
-                <option>Sinaloa</option> 
-                <option>Sonora</option> 
-                <option>Tabasco</option> 
-                <option>Tamaulipas</option> 
-                <option>Tlaxcala</option> 
-                <option>Veracruz</option> 
-                <option>Yucatán</option> 
-                <option>Zacatecas</option>   
-                <option>Todos los estados</option>
+                <option selected>NO APLICA</option>    
+                <option>AGUASCALIENTES</option>
+                <option>BAJA CALIFORNIA</option>
+                <option>BAJA CALIFORNIA SUR</option>
+                <option>CAMPECHE</option>
+                <option>CHIAPAS</option>
+                <option>CHIHUAHUA</option>
+                <option>CIUDAD DE MÉXICO</option>
+                <option>COAHUILA</option>
+                <option>COLIMA</option>
+                <option>DURANGO</option>
+                <option>ESTADO DE MÉXICO</option> 
+                <option>GUANAJUATO</option> 
+                <option>GUERRERO</option> 
+                <option>HIDALGO</option> 
+                <option>JALISCO</option> 
+                <option>MICHOACÁN</option> 
+                <option>MORELOS</option> 
+                <option>NAYARIT</option> 
+                <option>NUEVO LEÓN</option> 
+                <option>OAXACA</option> 
+                <option>PUEBLA</option> 
+                <option>QUERÉTARO</option> 
+                <option>QUINTANA ROO</option> 
+                <option>SAN LUIS POTOSÍ</option> 
+                <option>SINALOA</option> 
+                <option>SONORA</option> 
+                <option>TABASCO</option> 
+                <option>TAMAULIPAS</option> 
+                <option>TLAXCALA</option> 
+                <option>VERACRUZ</option> 
+                <option>YUCATÁN</option> 
+                <option>ZACATECAS</option>   
+                <option>TODOS LOS ESTADOS</option>
               </select>
             </div>
             </div>
@@ -340,43 +437,35 @@
                 <label for="otherField10" type="text">Formato de formación</label>
                 <select name="formation_format" id="otherField10" class="form-control rounded">
                   <option disabled selected>Selecciona una opción</option>
-                  <option value="Diplomado">Diplomado</option>
-                  <option value="Curso">Curso</option>
-                  <option value="Taller">Taller</option>
-                  <option value="Webinar">Webinar</option>
-                  <option>Sin formación</option>
+                  <option value="DIPLOMADO">DIPLOMADO</option>
+                  <option value="CURSO">CURSO</option>
+                  <option value="TALLER">TALLER</option>
+                  <option value="WEBINAR">WEBINAR</option>
+                  <option>SIN FORMACIÓN</option>
                 </select>
               </div>
 
               
         <div class="form-group" id="otherFieldGroupDiv2">    
-          <div class="row">  
-              <div class="col">
+        
+              
             <div class="form-group">
               <label for="otherField1" type="text">Tema de formación</label>
               <select name="formation_theme" id="otherField1" class="form-control rounded">
                 <option disabled selected>Selecciona una opción</option>
-                <option>Modelo de intervención</option>
-                <option>Gobernanza</option>
-                <option>Movilización de recursos</option>
-                <option>Monitoreo y evaluación</option>
-                <option>Marco legal y fiscal</option>
-                <option>Creación de alianzas</option>
-                <option>Gestión del talento humano</option>
-                <option>Comunicación y mecadotecnia social</option>
-                <option>Liderazgo</option>
-                <option>Diplomado</option>
+                <option>MODELO DE INTERVENCIÓN</option>
+                <option>GOBERNANZA</option>
+                <option>MOVILIZACIÓN DE RECURSOS</option>
+                <option>MONITOREO Y EVALUACIÓN</option>
+                <option>MARCO LEGAL Y FISCAL</option>
+                <option>CREACIÓN DE ALIANZAS</option>
+                <option>GESTIÓN DEL TALENTO HUMANO</option>
+                <option>COMUNICACIÓN Y MECADOTECNIA SOCIAL</option>
+                <option>LIDERAZGO</option>
+                <option>DIPLOMADO</option>
               </select>
               </div>
-              </div>
-
-              <div class="col">
-              <div class="form-group">
-                <label for="otherField2" type="text">No. de sesiones Formación</label>
-                <input id="otherField2" name="num_sessions" type="number" value="0" placeholder="Ingresa aquí el número de sesiones de formación" class="form-control rounded">
-              </div> 
-              </div> 
-              </div>  
+       
         </div>
         
         
@@ -386,22 +475,22 @@
                 <label for="otherField11" type="text">Tema <br> de fortalecimento</label>
                 <select name="fort_theme" id="otherField11" title="Nada seleccionado" class="form-control rounded selPic" multiple>
                   <option disabled>Selecciona una o más opciones</option>
-                  <option selected>No aplica</option> 
-                  <option>Alianzas y vinculación</option>
-                  <option>Asesoría legal y fiscal</option>
-                  <option>Comunicación externa (Marketing social)</option>
-                  <option>Comunicación interna</option>
-                  <option>Diagnóstico de Madurez Institucional en Línea</option>
-                  <option>Diagnóstico de Madurez Institucional Presencial</option>
-                  <option>Estructura organizacional y administración</option>
-                  <option>Fortalecimiento Equipo Operativo</option>    
-                  <option>Modelo de Intervención</option>
-                  <option>Monitoreo y Evaluación de proyectos</option>
-                  <option>Órgano de Gobierno</option>
-                  <option>Planeación estratégica</option>
-                  <option>Sostenibilidad financiera</option>
-                  <option>Teoría de cambio</option>
-                  <option>Sin fortalecimiento</option>
+                  <option selected>NO APLICA</option> 
+                  <option>ALIANZAS Y VINCULACIÓN</option>
+                  <option>ASESORÍA LEGAL Y FISCAL</option>
+                  <option>COMUNICACIÓN EXTERNA (MARKETING SOCIAL)</option>
+                  <option>COMUNICACIÓN INTERNA</option>
+                  <option>DIAGNÓSTICO DE MADUREZ INSTITUCIONAL EN LÍNEA</option>
+                  <option>DIAGNÓSTICO DE MADUREZ INSTITUCIONAL PRESENCIAL</option>
+                  <option>ESTRUCTURA ORGANIZACIONAL Y ADMINISTRACIÓN</option>
+                  <option>FORTALECIMIENTO EQUIPO OPERATIVO</option>    
+                  <option>MODELO DE INTERVENCIÓN</option>
+                  <option>MONITOREO Y EVALUACIÓN DE PROYECTOS</option>
+                  <option>ÓRGANO DE GOBIERNO</option>
+                  <option>PLANEACIÓN ESTRATÉGICA</option>
+                  <option>SOSTENIBILIDAD FINANCIERA</option>
+                  <option>TEORÍA DE CAMBIO</option>
+                  <option>SIN FORTALECIMIENTO</option>
                 </select>
               </div>
               </div>
@@ -452,7 +541,7 @@
 
 <!--Body Table-->
   <div class="table-responsive">
-      <table id="table" class="table table-sm table-active table-striped table-hover">
+      <table id="table" class="table table-sm table-active table-striped table-hover tableInvSoc">
         <thead>
           <tr class="text-center">
             <th>#</th>
@@ -474,6 +563,10 @@
             <th>Fecha de término</th>
             <th>¿De quién son los recursos?</th>
             <th>Aliado Financiero</th>
+            <th>Aliado Financiero 2</th>
+            <th>Aliado Financiero 3</th>
+            <th>Aliado Financiero 4</th>
+            <th>Aliado Financiero 5</th>
             <th>Logros</th>
             <th>Entidad de incidencia</th>
             <th>Municipio/Alcaldía</th>
@@ -482,7 +575,6 @@
             <th>Donativo otorgado 3</th>
             <th>Formato de formación</th>
             <th>Tema de formación</th>
-            <th># de sesiones formación</th>
             <th>Tema de fortalecimento</th>
             <th># de sesiones fortalecimento</th>
             <th>Fecha de actualización</th>
@@ -514,6 +606,10 @@
                 <td><%= data.data[i].end_date %></td>
                 <td><%= data.data[i].resources %></td>
                 <td><%= data.data[i].ally_name %></td> 
+                <td><%= data.data[i].ally_name2 %></td> 
+                <td><%= data.data[i].ally_name3 %></td> 
+                <td><%= data.data[i].ally_name4 %></td> 
+                <td><%= data.data[i].ally_name5 %></td> 
                 <td><%= data.data[i].achievments %></td> 
                 <td><%= data.data[i].application_state %></td> 
                 <td><%= data.data[i].municipality %></td> 
@@ -522,7 +618,6 @@
                 <td><%= data.data[i].donative3 %></td> 
                 <td><%= data.data[i].formation_format %></td>
                 <td><%= data.data[i].formation_theme %></td> 
-                <td><%= data.data[i].num_sessions %></td> 
                 <td><%= data.data[i].fort_theme %></td> 
                 <td><%= data.data[i].num_sessions_fort %></td> 
                 <td><%= data.data[i].update_date %></td>

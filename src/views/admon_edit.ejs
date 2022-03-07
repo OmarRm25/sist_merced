@@ -12,13 +12,25 @@
         <form action="/admon/update/<%= data.id_admon %>" method="POST">
             <div class="form-group">
                 <label type="text">Nombre</label>
-                <input type="text" value="<%= data.id_organization %>" class="form-control rounded" disabled>
+                <select type="text" name="id_organization" class="form-control rounded selPic" data-live-search="true">
+                  <option disabled selected>Selecciona una opción</option>
+                  <% if (data.orgs) { %>
+                    <% for(var i=0; i < data.orgs.length; i++){ %>
+                       <% if(data.id_organization == data.orgs[i].id_organization){ %>
+                         <option value="<%= data.orgs[i].id_organization %>" selected><%= data.orgs[i].org_name %></option>
+                     <%  }else{ %>
+                       <option value="<%= data.orgs[i].id_organization %>"><%= data.orgs[i].org_name %></option>
+                       <% } %> 
+                      <% } %>
+                      <% } %>
+                </select>              
               </div>
+              
               <div class="form-group">
                 <label type="text">Acta constitutiva</label>
                 <select name="constitutive_act"  class="form-control rounded" required>
                   <option disabled>Selecciona una opción</option>
-                  <% const admonVal1 = ["No aplica","Sí","No"] %>
+                  <% const admonVal1 = ["NO APLICA","SÍ","NO"] %>
           
                   <% for(var i=0; i < admonVal1.length; i++){ %>
                     <% if(data.constitutive_act == admonVal1[i]){ %>
@@ -34,7 +46,7 @@
                   <label type="text">Constancia de situación fiscal</label>
                   <select name="fiscal_constance"  class="form-control rounded" required>
                     <option disabled>Selecciona una opción</option>
-                    <% const admonVal2 = ["No aplica","Sí","No"] %>
+                    <% const admonVal2 = ["NO APLICA","SÍ","NO"] %>
             
                     <% for(var i=0; i < admonVal2.length; i++){ %>
                       <% if(data.fiscal_constance == admonVal2[i]){ %>
@@ -50,7 +62,7 @@
                   <label type="text">Opinión de cumplimiento</label>
                   <select name="compliance_opinion"  class="form-control rounded" required>
                     <option disabled>Selecciona una opción</option>
-                    <% const admonVal3 = ["No aplica","Sí","No"] %>
+                    <% const admonVal3 = ["NO APLICA","SÍ","NO"] %>
             
                     <% for(var i=0; i < admonVal3.length; i++){ %>
                       <% if(data.compliance_opinion == admonVal3[i]){ %>
@@ -66,7 +78,7 @@
                   <label type="text">CURP</label>
                   <select name="curp"  class="form-control rounded" required>
                     <option disabled>Selecciona una opción</option>
-                    <% const admonVal4 = ["No aplica","Sí","No"] %>
+                    <% const admonVal4 = ["NO APLICA","SÍ","NO"] %>
             
                     <% for(var i=0; i < admonVal4.length; i++){ %>
                       <% if(data.curp == admonVal4[i]){ %>
@@ -82,7 +94,7 @@
                   <label type="text">RFC</label>
                   <select name="rfc" class="form-control rounded" required>
                     <option disabled>Selecciona una opción</option>
-                    <% const admonVal5 = ["No aplica","Sí","No"] %>
+                    <% const admonVal5 = ["NO APLICA","SÍ","NO"] %>
             
                     <% for(var i=0; i < admonVal5.length; i++){ %>
                       <% if(data.rfc == admonVal5[i]){ %>
@@ -98,7 +110,7 @@
                   <label type="text">Comprobante de domicilio</label>
                   <select name="address_voucher"  class="form-control rounded" required>
                     <option disabled>Selecciona una opción</option>
-                    <% const admonVal6 = ["No aplica","Sí","No"] %>
+                    <% const admonVal6 = ["NO APLICA","SÍ","NO"] %>
             
                     <% for(var i=0; i < admonVal6.length; i++){ %>
                       <% if(data.address_voucher == admonVal6[i]){ %>
@@ -114,7 +126,7 @@
                   <label type="text">Cáratula de estado de cuenta</label>
                   <select name="account_status" class="form-control rounded" required>
                     <option disabled>Selecciona una opción</option>
-                    <% const admonVal7 = ["No aplica","Sí","No"] %>
+                    <% const admonVal7 = ["NO APLICA","SÍ","NO"] %>
             
                     <% for(var i=0; i < admonVal7.length; i++){ %>
                       <% if(data.account_status == admonVal7[i]){ %>
@@ -130,7 +142,7 @@
                   <label type="text">Identificación oficial</label>
                   <select name="official_id" class="form-control rounded" required>
                     <option disabled>Selecciona una opción</option>
-                    <% const admonVal8 = ["No aplica","Sí","No"] %>
+                    <% const admonVal8 = ["NO APLICA","SÍ","NO"] %>
             
                     <% for(var i=0; i < admonVal8.length; i++){ %>
                       <% if(data.official_id == admonVal8[i]){ %>
@@ -146,7 +158,7 @@
                   <label type="text">Poder legal</label>
                   <select name="legal_power" class="form-control rounded" required>
                       <option disabled>Selecciona una opción</option>
-                      <% const admonVal9 = ["No aplica","Sí","No"] %>
+                      <% const admonVal9 = ["NO APLICA","SÍ","NO"] %>
               
                       <% for(var i=0; i < admonVal9.length; i++){ %>
                         <% if(data.legal_power == admonVal9[i]){ %>

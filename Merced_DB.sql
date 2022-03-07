@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Oct 30, 2021 at 01:17 AM
--- Server version: 5.7.31
--- PHP Version: 7.3.21
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 07-03-2022 a las 01:44:25
+-- Versión del servidor: 10.4.16-MariaDB
+-- Versión de PHP: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,127 +18,118 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `merced_db`
+-- Base de datos: `merced_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admon_file`
+-- Estructura de tabla para la tabla `admon_file`
 --
 
-DROP TABLE IF EXISTS `admon_file`;
-CREATE TABLE IF NOT EXISTS `admon_file` (
-  `id_admon` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `admon_file` (
+  `id_admon` int(10) UNSIGNED NOT NULL,
   `id_organization` int(10) UNSIGNED NOT NULL,
   `constitutive_act` varchar(10) NOT NULL,
   `fiscal_constance` varchar(10) NOT NULL,
   `compliance_opinion` varchar(10) NOT NULL,
   `curp` varchar(10) NOT NULL,
-  `rfc` varchar(14) NOT NULL,
+  `rfc` varchar(10) NOT NULL,
   `address_voucher` varchar(10) NOT NULL,
   `account_status` varchar(10) NOT NULL,
   `official_id` varchar(10) NOT NULL,
   `legal_power` varchar(10) NOT NULL,
   `update_date` varchar(10) NOT NULL,
-  `register` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_admon`),
-  UNIQUE KEY `id_finantial_ally_UNIQUE` (`id_admon`),
-  KEY `fk_admon_file_organization1_idx` (`id_organization`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `admon_file`
---
-
-INSERT INTO `admon_file` (`id_admon`, `id_organization`, `constitutive_act`, `fiscal_constance`, `compliance_opinion`, `curp`, `rfc`, `address_voucher`, `account_status`, `official_id`, `legal_power`, `update_date`, `register`) VALUES
-(1, 2, 'Sí', 'Sí', 'Sí', 'No aplica', 'Sí', 'Sí', 'No', 'Sí', 'Sí', '22/08/2021', ''),
-(2, 1, 'No aplica', 'No aplica', 'No aplica', 'No aplica', 'Sí', 'No aplica', 'Sí', 'No aplica', 'Sí', '11/10/2021', ''),
-(3, 1, 'Sí', 'No aplica', 'No aplica', 'Sí', 'No aplica', 'No aplica', 'No aplica', 'No aplica', 'Sí', '13/10/2021', 'h.rementeria@fundacionmerced.org.mx');
+  `register` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `consultor`
+-- Estructura de tabla para la tabla `consultor`
 --
 
-DROP TABLE IF EXISTS `consultor`;
-CREATE TABLE IF NOT EXISTS `consultor` (
-  `id_consultor` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `full_name` varchar(45) NOT NULL,
+CREATE TABLE `consultor` (
+  `id_consultor` int(10) UNSIGNED NOT NULL,
+  `full_name` varchar(100) NOT NULL,
   `rfc` varchar(13) NOT NULL,
   `prof_speciality` varchar(1000) NOT NULL,
   `phone` varchar(10) NOT NULL,
-  `phone2` varchar(10) DEFAULT NULL,
+  `phone2` varchar(10) NOT NULL,
   `email` varchar(45) NOT NULL,
   `postal_code` tinytext NOT NULL,
-  `register` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_consultor`),
-  UNIQUE KEY `id_consultor_UNIQUE` (`id_consultor`),
-  UNIQUE KEY `rfc` (`rfc`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+  `register` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `consultor`
+-- Volcado de datos para la tabla `consultor`
 --
 
 INSERT INTO `consultor` (`id_consultor`, `full_name`, `rfc`, `prof_speciality`, `phone`, `phone2`, `email`, `postal_code`, `register`) VALUES
-(1, 'Héctor Omar Rementería Morales', 'XXX000000XX1', '', '5534399941', '5534399941', 'orastaroth67@gmail.com', '57180', ''),
-(2, 'John Doe', 'HEMD930603UP8', 'Consititución legal y trámite de donatarias autorizadas', '5512345678', '', 'correofalso@tumail.com', '57000', ''),
-(3, 'Dulce Hernández', 'FMI1234565T6', '|Administración y finanzas para OSC,Consititución legal y trámite de donatarias autorizadas|', '5534468513', '', 'dulcehmor@gmail.com', '57180', ''),
-(4, 'test', 'RFC1234567R0', 'Innovación y emprendimiento social', '1234566777', '', 'h.rementeria@fundacionmerced.org.mx', '12345', 'h.rementeria@fundacionmerced.org.mx'),
-(5, 'test', 'test123456789', 'Desarrollo de indicadores', '3435345345', '', 'cdsdadccdcsc@sdsdasd', '12345', 'h.rementeria@fundacionmerced.org.mx');
+(1, 'ANA MARIA LEON MIRAVALLES', 'LEMA720603CU4', '', '5554053128', '', 'amaria.leon@gmail.com', '1900', ''),
+(2, 'ARELI AGUILAR SANCHEZ', 'AUSA890922A77', '', '5554044525', '', 'areli.aguilar.sa@gmail.com', '6400', ''),
+(3, 'MARIA ASTRID CARRILLO ABREGO', 'CAAA820330FB8', '', '5539145246', '', 'carrilloastrid@gmail.com', '3000', ''),
+(4, 'AMBIENTE ACUAVITA (JOSE ERNESTO BERMEJO JIMENEZ)', 'AAC140708BE5', '', '5549098018', '', 'jose.ernesto.bermejo@coeoconsultores.com', '4100', ''),
+(5, 'MARIA FERNANDA GUILLEN RODRIGUEZ', 'GURF770427177', '', '5537225797', '', 'maferguillen@gmail.com', '54030', ''),
+(6, 'FELICIDAD MAGDALENA LEON HERNANDEZ', 'LEHF730221NH7', '', '5541775257', '', 'magdalena.leon@fundacionmerced.org.mx', '14310', ''),
+(7, 'MARISOL ESTELA MONROY VAZQUEZ', 'MOVM8202082X0', '', '5549024160', '', 'm.monroy@fundacionmerced.org.mx', '2080', ''),
+(8, 'COSIPE, S.C. (JOSE MANUEL MALVIDO-CARLOS PIÑA)', 'COS1112137L3', '', '5551076091', '', 'jmalvido@modumconsultores.mx', '11910', ''),
+(9, 'ANDREA TAPIA ALVAREZ', 'TAAA770515TY2', '', '5554020511', '', 'andrea.tapia.alvarez@gmail.com', '3900', ''),
+(10, 'JULIAN POSSO CUELLAR', 'POCJ771221SRA', '', '5554593245', '', 'JULIANPOSSO@GMAIL.COM', '2080', ''),
+(11, 'CARLOS GABRIEL CHAVEZ BECKER', 'CABC780913647', '', '5527285418', '', 'c.chavez@correo.ler.uam.mx', '14260', ''),
+(12, 'CÍCLICA CONSULTORÍA (RENATA RUELAS ROMO Y REG', 'RURR7709013E2', '', '5520788152', '', 'ciclicaconsultoria@gmail.com', '3300', ''),
+(13, 'JAIME JAVIER LOPEZ MEJIA', 'LOMJ570614GH9', '', '5518486000', '', 'jaimelopezmejia@hotmail.com', '11400', ''),
+(14, 'ASOCIACION ALTER INT DE LA PENINSULA DE YUCAT', 'AAI140816CX9', '', '9851034263', '', 'raulchucho@hotmail.com', '97780', ''),
+(15, 'COLECTIVO DE DISEÃ‘O RUPTIVO (CRISTINA YOSHIDA', 'YOFC840426NV7', '', '3311433456', '', 'cristina@disenodisruptivo.com', '44648', ''),
+(16, 'RODRIGO BUSTAMANTE IGARTUA', 'BUIR810309HT5', '|DESARROLLO DE PROYECTO INSTITUCIONAL,MODELO DE INTERVENCIÓN|', '5534989980', '', 'rod.busigar@gmail.com', '1780', 'e.estrada@fundacionmerced.org.mx'),
+(17, 'LORENZO GOMEZ MORÍN', 'GOFL571120HDF', 'MODELO DE INTERVENCIÓN', '5554025920', '', 'lorenzo.gomezmorin@gmail.com', '22820', 's.palestino@fundacionmerced.org.mx'),
+(18, 'FEDERICO GERMAN ARELLANO ORTIZ', 'FME930525J6A', 'INNOVACIÓN Y EMPRENDIMIENTO SOCIAL', '4424670717', '', 'fede@tpbg.org', '76165', 's.palestino@fundacionmerced.org.mx'),
+(19, 'LETICIA MARTINEZ GIL - FUNDACION ZICARO', 'FZI0507304B7', 'LIDERAZGO', '5531261518', '', 'leticia@zicaro.org', '2099', 's.palestino@fundacionmerced.org.mx'),
+(20, 'NATHALIE SEGUIN TOVAR', 'SETN721024A66', 'MODELO DE INTERVENCIÓN', '5511288747', '', 'fanmexnathalie@gmail.com', '11560', 's.palestino@fundacionmerced.org.mx'),
+(21, 'PEDAZO POR PEDAZO UN MUNDO MEJOR PHILANTROPIE', 'PPU170606ML6', 'ECONOMÍA CIRCULAR', '1612159150', '', 'martha.marquez@philanthropiece.org', '22600', 's.palestino@fundacionmerced.org.mx'),
+(22, 'LAURA MENDOZA MARTINEZ', 'MEML7003064X9', 'MOVILIZACIÓN DE RECURSOS', '5554701398', '', 'lafer27consultor@gmail.com', '4250', 'r.trejo@fundacionmerced.org.mx'),
+(23, 'LUCIA DEL CARMEN REBOLLO ARANA', 'REAL820306S92', '|GESTIÓN DEL TALENTO HUMANO,LIDERAZGO|', '5543430358', '', 'l.rebollo@fundacionmerced.org.mx', '1760', 'r.trejo@fundacionmerced.org.mx'),
+(24, 'MAPY VILLALOBOS DIAZ', 'VIDM890706AU1', 'COMUNICACIÓN EXTERNA E INTERNA', '5517471326', '', 'mapy.villalobos@gmail.com', '42830', 'r.trejo@fundacionmerced.org.mx'),
+(25, 'SANDRA SÃNCHEZ SERRANO', 'SASS871008F88', '|DESARROLLO DE PROYECTO INSTITUCIONAL,GESTIÓN DEL TALENTO HUMANO,MODELOS DE NEGOCIO EN ECONOMÃ­A SOCIAL,PLANEACIÓN OPERATIVA ANUAL|', '56 1522 33', '', 'sandra.sanchez.serrano@gmail.com', '11230', 'd.hernandez@fundacionmerced.org.mx'),
+(26, 'ENFORCEMENT CAPITAL, S.C (PAULINA CAMARENA)', 'ECA190328737', 'MOVILIZACIÓN DE RECURSOS', '5533152743', '', 'bpaulinacamarena@gmail.com', '14410', 'r.trejo@fundacionmerced.org.mx'),
+(27, 'CO-INCIDE INCIDENCIA SOCIAL Y EVALUACION(CITLALI TUERO)', 'CIS200605PA2', 'MODELO DE INTERVENCIÓN', '5522710584', '', 'citlalituero@gmail.com', '11800', 'r.trejo@fundacionmerced.org.mx');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contact`
+-- Estructura de tabla para la tabla `contact`
 --
 
-DROP TABLE IF EXISTS `contact`;
-CREATE TABLE IF NOT EXISTS `contact` (
-  `id_contact` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `contact` (
+  `id_contact` int(10) UNSIGNED NOT NULL,
   `first_name` varchar(45) NOT NULL,
-  `middle_name` varchar(10) NOT NULL,
+  `middle_name` varchar(45) NOT NULL,
   `last_name` varchar(45) NOT NULL,
   `position` varchar(45) NOT NULL,
   `phone_number` varchar(10) NOT NULL,
-  `phone_number2` varchar(10) DEFAULT NULL,
+  `phone_number2` varchar(10) NOT NULL,
   `email` varchar(45) NOT NULL,
   `id_organization` int(10) UNSIGNED NOT NULL,
-  `register` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_contact`),
-  KEY `fk_contact_organization1_idx` (`id_organization`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `contact`
---
-
-INSERT INTO `contact` (`id_contact`, `first_name`, `middle_name`, `last_name`, `position`, `phone_number`, `phone_number2`, `email`, `id_organization`, `register`) VALUES
-(1, 'Héctor Omar', 'Rementería', 'Morales', 'Programador', '5534399941', '', 'orastaroth67@gmail.com', 1, ''),
-(2, 'test', 'test', 'test', 'test', '1234567890', '', 'test@test', 2, 'h.rementeria@fundacionmerced.org.mx');
+  `register` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `employee`
+-- Estructura de tabla para la tabla `employee`
 --
 
-DROP TABLE IF EXISTS `employee`;
-CREATE TABLE IF NOT EXISTS `employee` (
-  `id_employee` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `employee` (
+  `id_employee` int(10) UNSIGNED NOT NULL,
   `employee_name` varchar(45) NOT NULL,
   `middle_name` varchar(45) NOT NULL,
   `last_name` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
-  PRIMARY KEY (`id_employee`),
-  UNIQUE KEY `id_leader_UNIQUE` (`id_employee`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+  `password` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `employee`
+-- Volcado de datos para la tabla `employee`
 --
 
 INSERT INTO `employee` (`id_employee`, `employee_name`, `middle_name`, `last_name`, `email`, `password`) VALUES
@@ -152,126 +143,171 @@ INSERT INTO `employee` (`id_employee`, `employee_name`, `middle_name`, `last_nam
 (8, 'DULCE DANIELA', 'GAYTÁN', 'ARELLANO', 'daniela.gaytan@fundacionmerced.org.mx', 'dgaytan456#'),
 (9, 'KARLA', 'JIMENEZ', 'ARZAMENDI', 'k.jimenez@fundacionmerced.org.mx', 'kjimenez789#'),
 (10, 'VERÓNICA GUADALUPE', 'BARRIENTOS', 'ANAYA', 'v.barrientos@fundacionmerced.org.mx', 'vbarrientos123$'),
-(11, 'Héctor Omar', 'Rementería', 'Morales', 'h.rementeria@fundacionmerced.org.mx', '12345678');
+(11, 'SOPORTE', 'SOPORTE', 'SOPORTE', 'h.rementeria@fundacionmerced.org.mx', '@SoporteFM');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fort_participation`
+-- Estructura de tabla para la tabla `fort_participation`
 --
 
-DROP TABLE IF EXISTS `fort_participation`;
-CREATE TABLE IF NOT EXISTS `fort_participation` (
-  `id_part` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `fort_participation` (
+  `id_part` int(10) UNSIGNED NOT NULL,
   `id_organization` int(10) UNSIGNED NOT NULL,
   `id_program` int(10) UNSIGNED NOT NULL,
   `id_consultor` int(10) UNSIGNED NOT NULL,
-  `consultor2` varchar(45) NOT NULL,
-  `consultor3` varchar(45) NOT NULL,
-  `consultor4` varchar(45) NOT NULL,
-  `consultor5` varchar(45) NOT NULL,
-  `consultor6` varchar(45) NOT NULL,
-  `consultor7` varchar(45) NOT NULL,
-  `consultor8` varchar(45) NOT NULL,
+  `consultor2` varchar(150) NOT NULL,
+  `consultor3` varchar(150) NOT NULL,
+  `consultor4` varchar(150) NOT NULL,
+  `consultor5` varchar(150) NOT NULL,
+  `consultor6` varchar(150) NOT NULL,
+  `consultor7` varchar(150) NOT NULL,
+  `consultor8` varchar(150) NOT NULL,
   `theme` varchar(45) NOT NULL,
-  `ally_name` varchar(45) NOT NULL,
+  `other` varchar(45) NOT NULL,
+  `ally_name` varchar(150) NOT NULL,
+  `ally_name2` varchar(150) NOT NULL,
+  `ally_name3` varchar(150) NOT NULL,
+  `ally_name4` varchar(150) NOT NULL,
+  `ally_name5` varchar(150) NOT NULL,
   `project_name` varchar(300) NOT NULL,
   `project_objective` varchar(1000) NOT NULL,
-  `male_beneficiaries` int(11) NOT NULL,
-  `female_beneficiaries` int(11) NOT NULL,
-  `org_beneficiaries` int(10) NOT NULL,
-  `population_type` varchar(400) NOT NULL,
+  `male_beneficiaries` int(11) UNSIGNED NOT NULL,
+  `female_beneficiaries` int(11) UNSIGNED NOT NULL,
+  `org_beneficiaries` int(11) UNSIGNED NOT NULL,
+  `population_type` varchar(450) NOT NULL,
   `start_date` varchar(10) NOT NULL,
-  `end_date` varchar(10) DEFAULT NULL,
+  `end_date` varchar(10) NOT NULL,
   `achievments` varchar(300) NOT NULL,
   `application_state` varchar(2000) NOT NULL,
   `municipality` varchar(50) NOT NULL,
-  `resources_invested` varchar(10) DEFAULT NULL,
+  `resources_invested` varchar(10) NOT NULL,
   `update_date` varchar(10) NOT NULL,
   `comments` varchar(1000) NOT NULL,
-  `register` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_part`,`id_organization`),
-  KEY `fk_program_has_organization_organization1_idx` (`id_organization`),
-  KEY `fk_program_organization_program1_idx` (`id_program`),
-  KEY `fk_program_organization_consultor1_idx` (`id_consultor`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+  `register` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `fort_participation`
+-- Volcado de datos para la tabla `fort_participation`
 --
 
-INSERT INTO `fort_participation` (`id_part`, `id_organization`, `id_program`, `id_consultor`, `consultor2`, `consultor3`, `consultor4`, `consultor5`, `consultor6`, `consultor7`, `consultor8`, `theme`, `ally_name`, `project_name`, `project_objective`, `male_beneficiaries`, `female_beneficiaries`, `org_beneficiaries`, `population_type`, `start_date`, `end_date`, `achievments`, `application_state`, `municipality`, `resources_invested`, `update_date`, `comments`, `register`) VALUES
-(4, 2, 1, 1, 'No aplica', 'No aplica', 'No aplica', 'No aplica', 'No aplica', 'No aplica', 'No aplica', 'Órgano de Gobierno', 'Lluvia para todos A.C.', 'Programa de fortalecimiento de rigor institucional', 'perros de la calle', 123, 123, 123, '|Infancia (6-12 años),Adolescencia (13-18 años)|', '08/08/2021', '24/08/2021', 'Agua limpia para la comunidad', '|Chihuahua,Durango|', 'Tlacotenco', '1233', '', '', ''),
-(10, 1, 1, 3, 'No aplica', 'No aplica', 'No aplica', 'No aplica', 'No aplica', 'No aplica', 'No aplica', 'Asesoría legal y fiscal', 'Fundación Merced', 'test', 'sdfadsfasdfsadf', 12, 12, 0, 'Adultez (30-59 años)', '12/10/2021', '13/10/2021', 'test', 'Baja California Sur', 'test', '1234', '12/10/2021', '', 'h.rementeria@fundacionmerced.org.mx');
+INSERT INTO `fort_participation` (`id_part`, `id_organization`, `id_program`, `id_consultor`, `consultor2`, `consultor3`, `consultor4`, `consultor5`, `consultor6`, `consultor7`, `consultor8`, `theme`, `other`, `ally_name`, `ally_name2`, `ally_name3`, `ally_name4`, `ally_name5`, `project_name`, `project_objective`, `male_beneficiaries`, `female_beneficiaries`, `org_beneficiaries`, `population_type`, `start_date`, `end_date`, `achievments`, `application_state`, `municipality`, `resources_invested`, `update_date`, `comments`, `register`) VALUES
+(1, 21, 14, 4, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'ASESORÍA LEGAL Y FISCAL', '', 'FUNDACIÓN GRISI AC', '', '', '', '', 'ACOMPAÑAMIENTO FISCAL', 'ASESORAR DE MANERA PUNTUAL PARA LA TOMA DE DECISIONES EN LA OPERACION DE LA FUNDACION GRISI Y SU RELACION CORPORATIVA Y FISCAL CON LAS DEMAS ENTIDADES DEL GRUPO CORPORATIVO AL QUE PERTENECEN', 0, 0, 1, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '07/12/2020', '30/11/2021', 'EL PROYECTO SIGUE ACTIVO', 'CIUDAD DE MÉXICO', 'BENITO JUÁREZ', '81200', '', 'EL PROYECTO TERMINA EN EL MES DE NOVIEMBRE', ''),
+(2, 21, 15, 8, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', '', 'FUNDACIÓN GRISI AC', '', '', '', '', 'CONSULTORÍA MODELO DE INVERSIÓN SOCIAL', 'GENERAR CONDICIONES PARA EL DESARROLLO DE UN MODELO DE INVERSION SOCIAL QUE INTEGRE COMPONENTES DE PENSAMIENTO ESTRATEGICO, ORIENTACION PARA RESULTADOS DE DESARROLLO Y POSICIONAMIENTO PUBLICO PARA FUNDACION GRISI', 0, 0, 1, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '01/03/2021', '30/06/2021', 'SE DESAARROLLARON INSTRUMENTOS DE INDICADORES, PARA DEFINIR COMO SE APOYARA A OTRAS ORGANIZACIONES', 'CIUDAD DE MÉXICO', 'BENITO JUÁREZ', '79000', '', 'LAS ACTIVIDADES SE LLEVARON A CABO EN TIEMPO Y FORMA', ''),
+(3, 14, 7, 6, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'DIAGNÓSTICO DE MADUREZ INSTITUCIONAL EN LÍNEA', '', 'FUNDACIÓN CMR AC', '', '', '', '', 'CONSULTORÍA ESPECIAL', 'REALIZAR UN DIAGNOSTICO DE MADUREZ INSTITUCIONAL EN LINEA A 4 ORGANIZACIONES, MEDIANTE LA PLATAFORMA QUE FUNDACION MERCED TIENE PARA ESTO, ASI COMO CON EL ANALISIS E INTERPRETACION DE LA INFORMACION POR PARTE DE UNA PERSONA CONSULTORA, PARA DETECTAR FORTALEZAS Y AREAS DE OPORTUNIDAD DE LAS ORGANIZACIONES', 0, 0, 5, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '01/06/2018', '14/01/2019', '4 DIAGNOSTICOS DE MADUREZ INSTITUCIONAL CONCLUIDOS Y 1 TALLER DE FORTALECIMIENTO GRUPAL REALIZADO', '|CHIAPAS,CIUDAD DE MÉXICO,OAXACA,SINALOA|', 'NO APLICA', '152000', '', '', ''),
+(4, 3, 21, 5, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'MODELO DE INTERVENCIÓN', '', 'CRUZ ROJA  MEXICANA IAP', '', '', '', '', 'AMPLIACIÓN AL PROCESO DE FORTALECIMIENTO DE CRUZ ROJA MEXICANA Y FORTALECIMIENTO A DELEGACIONES ', '1. SISTEMATIZAR EL MODELO DE INTERVENCION INSTITUCIONAL CON UN ENFOQUE DE GESTION CON BASE A RESULTADOS. 2. ALINEAR LA INTERVENCION DE LA ORGANIZACION CON LA ESTRATEGIA 2020 DE LA FEDERACION INTERNACIONAL DE SOCIEDADES DE LA CRUZ ROJA Y DE LA MEDIA LUNA ROJA 3. TRANSFERIR E INTEGRAR EL MODELO DE INTERVENCION', 0, 0, 1, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '01/11/2015', '30/01/2021', 'UN DOCUMENTO DE ALINEACION ESTRATEGICA 2020. TEORIA DE CAMBIO INSTITUCIONAL DE LA LINEA ESTRATEGICA.', 'CIUDAD DE MÉXICO', 'MIGUEL HIDALGO', '1436204', '', 'LAS  4 DELEGACIONES ESTATALES Y LOCALES CON LAS QUE SE TRABAJO FUERON NUEVO LEON/ MONTERREY, PUEBLA/CIUDAD DE PUEBLA, COLIMA/ CIUDAD DE COLIMA Y SINALOA/ MAZATLAN. AUNQUE LAS ACTIVIDADES FUERON EN SEDE NACIONAL UBICADA EN CDMX Y VIA VIRTUAL.', ''),
+(5, 16, 8, 4, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'ASESORÍA LEGAL Y FISCAL', '', 'ASOCIACIÓN DE ENLACE CULTURAL DE MÉXICO AC (A', '', '', '', '', 'CONSULTORÍA ESPECIAL ASOME', 'ASESORIA LEGAL Y FISCAL PARA LA CONSTITUCION LEGAL Y OBTENCION DE CALIDAD DE DONATARIA AUTORIZADA', 0, 0, 1, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '14/12/2018', '04/03/2020', 'SE CONCLUYO LA ELABORACION DE LOS ESTATUTOS DE LA ORGANIZACION PARA SU PROTOCOLIZACION', 'CIUDAD DE MÉXICO', 'CUAUHTÉMOC', '32500', '', 'LA CASILLA DE LOGROS TIENE LIMITE DE CARACTERES Y NO PERMITE ESCRIBIR TODO', ''),
+(6, 17, 9, 1, 'ANDREA TAPIA ÁLVAREZ', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'MODELO DE INTERVENCIÓN', '', 'FUNDACIÓN LORENA ALEJANDRA GALLARDO IAP', '', '', '', '', 'CONSULTORÍA ESPECIAL FLAG', 'REALIZAR UN DIAGNOSTICO DE MADUREZ INSTITUCIONAL EN LINEA Y ACTUALIZAR EL MODELO DE INTERVENCION', 0, 0, 1, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '13/05/2019', '26/05/2020', 'SE REALIZO UN DIAGNOSTICO Y SE ACTUALIZO EL MODELO DE INTERVENCION', 'CIUDAD DE MÉXICO', 'MIGUEL HIDALGO', '54907', '', '', ''),
+(7, 18, 10, 4, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'ASESORÍA LEGAL Y FISCAL', '', 'FUNDACIÓN MÁS VIDA', '', '', '', '', 'CONSULTORÍA ESPECIAL MÁS VIDA', 'ASESORIA LEGAL Y FISCAL PARA LA CONSTITUCION LEGAL Y OBTENCION DE CALIDAD DE DONATARIA AUTORIZADA', 0, 0, 1, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '08/01/2019', '30/04/2020', 'SE CONCLUYO LA ELABORACION DE LOS ESTATUTOS DE LA ORGANIZACION PARA SU PROTOCOLIZACION', 'CIUDAD DE MÉXICO', 'MIGUEL HIDALGO', '32500', '', 'SE CONTINUA EN ESPERA DE RESPUESTA DEL SAT PARA AGENDAR UNA CITA Y PODER CONTINUAR CON LOS TRAMITES CORRESPONDIENTES.', ''),
+(8, 13, 12, 4, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'ASESORÍA LEGAL Y FISCAL', '', 'FUNDACIÓN MEDICINA FETAL MÉXICO AC', '', '', '', '', 'CONSULTORÍA ESPECIAL MEDICINA FETAL', 'ASESORIA LEGAL Y FISCAL PARA LA CONSTITUCION LEGAL Y OBTENCION DE CALIDAD DE DONATARIA AUTORIZADA', 0, 0, 1, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '18/10/2019', '21/04/2020', 'SE CONCLUYO LA ELABORACION DE LOS ESTATUTOS DE LA ORGANIZACION PARA SU PROTOCOLIZACION', 'QUERÉTARO', 'SANTIAGO DE QUERÉTARO', '32500', '', '', ''),
+(9, 19, 11, 4, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'ASESORÍA LEGAL Y FISCAL', '', 'PQC STEM AC (PEQUEÑOS CIENTÍFICOS MEXICANOS)', '', '', '', '', 'CONSULTORÍA ESPECIAL PEQUEÑOS CIENTÍFICOS', 'ASESORIA LEGAL Y FISCAL PARA LA CONSTITUCION LEGAL Y OBTENCION DE CALIDAD DE DONATARIA AUTORIZADA', 0, 0, 1, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '07/10/2019', '13/11/2020', 'SE CONCLUYO LA ELABORACION DE LOS ESTATUTOS DE LA ORGANIZACION PARA SU PROTOCOLIZACION', 'CIUDAD DE MÉXICO', 'NO APLICA', '32500', '', 'LA AUTORIDAD TARDA EN DAR RESPUESTA, POR LO TANTO SE RETIRA LA SOLICITUD PARA SER DONATARIA AUTORIZADA, PORQUE INICIO LA CONTINGENCIA POR LA PANDEMIA POR COVID-19', ''),
+(10, 22, 16, 5, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', '', 'MARIPOSAS MUJERES CAMBIANDO EL MUNDO AC', '', '', '', '', ' ASESORÍA EN LA ELABORACIÓN DE UN DIAGNÓSTICO', 'ACOMPAÑAMIENTO Y ASESORIA EN EL LEVANTAMIENTO DIAGNOSTICO QUE MARIPOSAS MUJERES CAMBIANDO EL MUNDO AC LLEVARA A CABO EN ATZITZINTLA, TEXMALAQUILLA Y SAN JOSE XACXAMAYO, COMUNIDADES DEL ESTADO DE PUEBLA, Y EN SANTA MARIA LAS CUEVAS DEL ESTADO DE TLAXCALA', 0, 0, 1, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '05/04/2021', '01/09/2021', 'SE ASESORO EN LA ELABORACION DE UN DIAGNOSTICO', '|PUEBLA,TLAXCALA|', 'ATZITZINTLA, TEXMALAQUILLA Y SAN JOSÉ XACXAMAYO, ', '6000', '', '', ''),
+(11, 47, 22, 6, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', '', 'LAZOS I.A.P.', '', '', '', '', 'CONSULTORÍA ESPECIAL LAZOS', 'EVALUAR EL MODELO EDUCATIVO PROPIEDAD DE LAZOS', 0, 0, 1, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '14/01/2019', '30/09/2019', 'SE CONCLUYO LA EVALUACION DEL PROGRAMA EDUCATIVO PROPIEDAD DE LAZOS IAP', '|CIUDAD DE MÉXICO,ESTADO DE MÉXICO|', 'N/A', '878000', '', '', ''),
+(12, 61, 24, 3, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', '', 'FIDEICOMISO POR LOS NIÑOS DE MÉXICO, SANTANDE', '', '', '', '', 'ACOMPAÑAMIENTO CONVOCATORIA TRIANUAL', 'QUE LA OSC CONOZCA LOS ELEMENTOS FUNDAMENTALES DE LA EVALUACION DE RESULTADOS CON EL FIN DE FUNDAMENTAR EL MODELO DE ATENCION CON EL QUE SE TRABAJO Y QUE PUEDE SER REFERENTE DE ATENCION PARA OTRAS ORGANIZACIONES DE LA SOCIEDAD CIVIL', 0, 0, 1, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '01/02/2021', '17/12/2021', 'EN DESARROLLO', 'CIUDAD DE MÉXICO', 'BENITO JUÁREZ', '50000', '', '', ''),
+(13, 31, 26, 1, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'SOSTENIBILIDAD FINANCIERA', '', 'FUNDACIÓN MOISÉS ITZKOWICH AC', '', '', '', '', 'PROGRAMA DE FORTALECIMIENTO DE RIGOR INSTITUCIONAL ', 'ACOMPAÑAR A 10 ORGANIZACIONES ', 0, 0, 1, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '12/10/2021', 'N/A', 'DESOLLO DE PLAN DE PROCURACION DE FONDOS ', 'CIUDAD DE MÉXICO', 'ÁLVARO OBREGÓN', '700000', '', 'FORTALECIMIENTO GRUPAL ', ''),
+(14, 61, 25, 15, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'TEORÍA DE CAMBIO', '', 'FIDEICOMISO POR LOS NIÑOS DE MÉXICO, SANTANDE', '', '', '', '', 'ACOMPAÑAMIENTO CONVOCATORIA TRIANUAL. CÍRCULOS DE APRENDIZAJE ', '1. DESARROLLAR COMPETENCIAS EN 2 ORGANIZACIONES EN TEMA DE TEORIA DE CAMBIO Y EN LA CONSTRUCCION DE MATRIZ DE MONITOREO DE INDICADORES CLAVE PARA LA MEDICION Y EVALUACION DEL IMPACTO SOCIAL 2.  ASESORIA A 2 ORGANIZACIONES SOCIALES EN SU PROCESO DE DESARROLLO DE UNA TEORIA DEL CAMBIO.', 0, 0, 2, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '04/02/2019', '11/12/2019', 'UN DOCUMENTO DE TEORIA DE CAMBIO Y CONSTRUCCION DE INDICADORES', 'CIUDAD DE MÉXICO', 'BENITO JUÁREZ', '100000', '', '', ''),
+(15, 86, 7, 6, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'DIAGNÓSTICO DE MADUREZ INSTITUCIONAL EN LÍNEA', '', 'FUNDACIÓN CMR AC', '', '', '', '', 'CONSULTORÍA ESPECIAL', 'LLEVAR A CABO PROCESOS DE FORTALECIMIENTO, LIDERAZGO E INSTITUCIONALIZACION', 0, 0, 1, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '07/05/2018', '29/03/2019', 'DIAGNOSTICO DE MADUREZ INSTITUCIONAL CONCLUIDO Y 1 TALLER DE FORTALECIMIENTO GRUPAL REALIZADO', 'CIUDAD DE MÉXICO', 'ÁLVARO OBREGÓN', '38000', 'N/A', '', 'e.estrada@fundacionmerced.org.mx'),
+(16, 87, 7, 6, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'DIAGNÓSTICO DE MADUREZ INSTITUCIONAL EN LÍNEA', '', 'FUNDACIÓN CMR AC', '', '', '', '', 'CONSULTORÍA ESPECIAL', 'LLEVAR A CABO PROCESOS DE FORTALECIMIENTO, LIDERAZGO E INSTITUCIONALIZACION', 0, 0, 1, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '07/05/2018', '29/03/2019', 'DIAGNOSTICO DE MADUREZ INSTITUCIONAL CONCLUIDO Y 1 TALLER DE FORTALECIMIENTO GRUPAL REALIZADO', 'CIUDAD DE MÉXICO', 'CUAJIMALPA', '38000', 'N/A', '', 'e.estrada@fundacionmerced.org.mx'),
+(17, 88, 7, 6, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'DIAGNÓSTICO DE MADUREZ INSTITUCIONAL EN LÍNEA', '', 'FUNDACIÓN CMR AC', '', '', '', '', 'CONSULTORÍA ESPECIAL', 'LLEVAR A CABO PROCESOS DE FORTALECIMIENTO, LIDERAZGO E INSTITUCIONALIZACION', 0, 0, 1, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', 'N/A', 'N/A', 'DIAGNOSTICO DE MADUREZ INSTITUCIONAL CONCLUIDO Y 1 TALLER DE FORTALECIMIENTO GRUPAL REALIZADO', 'CHIAPAS', 'SAN CRISTÓBAL DE LAS CASAS', '38000', 'N/A', '', 'e.estrada@fundacionmerced.org.mx'),
+(18, 67, 26, 1, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'MODELO DE INTERVENCIÓN', '', 'FUNDACIÓN MOISÉS ITZKOWICH AC', '', '', '', '', 'PROGRAMA DE FORTALECIMIENTO DE RIGOR INSTITUCIONAL ', 'ACOMPAÑAR A 11 ORGANIZACIONES EN SU PROCESOS DE FORTALECIMIENTO INSTITUCIONAL ', 0, 0, 11, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '15/12/2020', '30/06/2021', 'DESARROLLO DEL MODELO DE INTERVENCION SOCIAL DE LA ORGANIZACION ', 'CIUDAD DE MÉXICO', 'CUAUHTÉMOC', '700000', '15/12/2021', '', 'r.trejo@fundacionmerced.org.mx'),
+(19, 60, 26, 1, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'MODELO DE INTERVENCIÓN', '', 'FUNDACIÓN MOISÉS ITZKOWICH AC', '', '', '', '', 'PROGRAMA DE FORTALECIMIENTO DE RIGOR INSTITUCIONAL ', 'ACOMPAÑAR A 11 ORGANIZACIONES EN SU PROCESOS DE FORTALECIMIENTO INSTITUCIONAL ', 0, 0, 11, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '15/12/2020', '30/06/2021', 'DESARROLLO DEL MODELO DE INTERVENCION SOCIAL DE LA ORGANIZACION ', 'CIUDAD DE MÉXICO', 'CUAUHTÉMOC', '700000', '15/12/2021', 'CORREGIR EL NOMBRE DE LA OSC DEBE DECIR FUNDACION DE APOYO A LA JUVENTUD', 'r.trejo@fundacionmerced.org.mx'),
+(20, 49, 26, 8, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'MODELO DE INTERVENCIÓN', '', 'FUNDACIÓN MOISÉS ITZKOWICH AC', '', '', '', '', 'PROGRAMA DE FORTALECIMIENTO DE RIGOR INSTITUCIONAL ', 'ACOMPAÑAR A 11 ORGANIZACIONES EN SU PROCESOS DE FORTALECIMIENTO INSTITUCIONAL ', 0, 0, 11, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '15/12/2020', '30/06/2021', 'DESARROLLO DEL MODELO DE INTERVENCION SOCIAL DE LA ORGANIZACION ', 'HIDALGO', 'PACHUCA', '700000', '15/12/2021', '', 'r.trejo@fundacionmerced.org.mx'),
+(21, 31, 26, 22, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'SOSTENIBILIDAD FINANCIERA', '', 'FUNDACIÓN MOISÉS ITZKOWICH AC', '', '', '', '', 'PROGRAMA DE FORTALECIMIENTO DE RIGOR INSTITUCIONAL ', 'ACOMPAÑAR A 11 ORGANIZACIONES EN SU PROCESOS DE FORTALECIMIENTO INSTITUCIONAL ', 0, 0, 11, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '15/12/2020', '30/06/2021', 'DESARROLLO DEL PLAN DE PROCURACION DE FONDOS  DE LA ORGANIZACION ', 'CIUDAD DE MÉXICO', 'CUAUHTÉMOC', '700000', '15/12/2021', '', 'r.trejo@fundacionmerced.org.mx'),
+(22, 29, 26, 23, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'OTRO', 'DESARROLLO Y GESTIÓN DEL TALENTO ', 'FUNDACIÓN MOISÉS ITZKOWICH AC', '', '', '', '', 'PROGRAMA DE FORTALECIMIENTO DE RIGOR INSTITUCIONAL ', 'ACOMPAÑAR A 11 ORGANIZACIONES EN SU PROCESOS DE FORTALECIMIENTO INSTITUCIONAL ', 0, 0, 11, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '15/12/2020', '30/06/2021', 'DESAROLLO DE PERFILES Y DESCRIPCION DE PUESTOS,  LA ORGANIZACION ', 'CIUDAD DE MÉXICO', 'CUAUHTÉMOC', '700000', '15/12/2021', '', 'r.trejo@fundacionmerced.org.mx'),
+(23, 64, 26, 6, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'MODELO DE INTERVENCIÓN', '', 'FUNDACIÓN MOISÉS ITZKOWICH AC', '', '', '', '', 'PROGRAMA DE FORTALECIMIENTO DE RIGOR INSTITUCIONAL ', 'ACOMPAÑAR A 11 ORGANIZACIONES EN SU PROCESOS DE FORTALECIMIENTO INSTITUCIONAL ', 0, 0, 11, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '15/12/2020', '30/06/2021', 'DESARROLLO DEL MODELO DE INTERVENCION SOCIAL DE LA ORGANIZACION ', 'CIUDAD DE MÉXICO', 'CUAUHTÉMOC', '700000', 'N/A', '', 'r.trejo@fundacionmerced.org.mx'),
+(24, 76, 26, 6, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'MODELO DE INTERVENCIÓN', '', 'FUNDACIÓN MOISÉS ITZKOWICH AC', '', '', '', '', 'PROGRAMA DE FORTALECIMIENTO DE RIGOR INSTITUCIONAL ', 'ACOMPAÑAR A 11 ORGANIZACIONES EN SU PROCESOS DE FORTALECIMIENTO INSTITUCIONAL ', 0, 0, 11, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '15/12/2020', '30/06/2021', 'DESARROLLO DEL MODELO DE INTERVENCION SOCIAL DE LA ORGANIZACION ', 'CIUDAD DE MÉXICO', 'CUAUHTÉMOC', '700000', '15/12/2021', '', 'r.trejo@fundacionmerced.org.mx'),
+(25, 87, 26, 24, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'COMUNICACIÓN EXTERNA (MARKETING SOCIAL)', '', 'FUNDACIÓN MOISÉS ITZKOWICH AC', '', '', '', '', 'PROGRAMA DE FORTALECIMIENTO DE RIGOR INSTITUCIONAL ', 'ACOMPAÑAR A 11 ORGANIZACIONES EN SU PROCESOS DE FORTALECIMIENTO INSTITUCIONAL ', 0, 0, 11, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '15/12/2020', '30/06/2021', 'DESOLLO DEL PLAN DE COMUNICACION SOCIAL DE LA ORGANIZACION ', 'CIUDAD DE MÉXICO', 'CUAUHTÉMOC', '700000', '15/12/2021', '', 'r.trejo@fundacionmerced.org.mx'),
+(26, 75, 26, 12, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'MONITOREO Y EVALUACIÓN DE PROYECTOS', '', 'FUNDACIÓN MOISÉS ITZKOWICH AC', '', '', '', '', 'PROGRAMA DE FORTALECIMIENTO DE RIGOR INSTITUCIONAL ', 'ACOMPAÑAR A 11 ORGANIZACIONES EN SU PROCESOS DE FORTALECIMIENTO INSTITUCIONAL ', 0, 0, 11, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '15/12/2020', '30/06/2021', 'DESAROLLO DE PLAN DE MONITOREO Y EVALUACION DE UNO DE LOS PROGRAMAS A ESCALA DE LA ORGANIZACION ', 'CIUDAD DE MÉXICO', 'CUAUHTÉMOC', '700000', 'N/A', '', 'r.trejo@fundacionmerced.org.mx'),
+(27, 68, 26, 16, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'MODELO DE INTERVENCIÓN', '', 'FUNDACIÓN MOISÉS ITZKOWICH AC', '', '', '', '', 'PROGRAMA DE FORTALECIMIENTO DE RIGOR INSTITUCIONAL ', 'ACOMPAÑAR A 11 ORGANIZACIONES EN SU PROCESOS DE FORTALECIMIENTO INSTITUCIONAL ', 0, 0, 11, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '15/12/2020', '30/06/2021', 'FORTALECIMIENTO DEL MODELO DE INTERVENCION SOCIAL DE LA ORGANIZACION ', 'CIUDAD DE MÉXICO', 'CUAUHTÉMOC', '700000', '15/12/2021', '', 'r.trejo@fundacionmerced.org.mx'),
+(28, 117, 43, 1, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'PLANEACIÓN ESTRATÉGICA', '', 'FUNDACIÓN MOISÉS ITZKOWICH AC', '', '', '', '', 'PROGRAMA DE FORTALECIMIENTO DE RIGOR INSTITUCIONAL ', 'ACOMPAÑAR A 10 ORGANIZACIONES EN SU PROCESOS DE FORTALECIMIENTO INSTITUCIONAL ', 0, 0, 10, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '15/07/2021', '30/01/2022', 'DESOLLO DE LA PLANEACION ESTRATEGICA DE LA ORGANIZACION ', 'CIUDAD DE MÉXICO', 'CUAUHTÉMOC', '700000', '15/12/2021', '', 'r.trejo@fundacionmerced.org.mx'),
+(29, 119, 43, 26, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'SOSTENIBILIDAD FINANCIERA', '', 'FUNDACIÓN MOISÉS ITZKOWICH AC', '', '', '', '', 'PROGRAMA DE FORTALECIMIENTO DE RIGOR INSTITUCIONAL ', 'ACOMPAÑAR A 10 ORGANIZACIONES EN SU PROCESOS DE FORTALECIMIENTO INSTITUCIONAL ', 0, 0, 1, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '01/08/2021', '30/09/2022', 'DESOLLO DEL PLAN DE PROCURACION DE FONDOS  DE LA ORGANIZACION ', 'CIUDAD DE MÉXICO', 'CUAUHTÉMOC', '700000', '16/02/2022', 'EL NOMBRE DE LA ORGANIZACION  (EL MONTO EN RECURSOS CORRESPONDE AL DONATIVO POR LA IMPLEMENTACION DE TODO EL PROGRAMA)', 'r.trejo@fundacionmerced.org.mx'),
+(30, 29, 26, 23, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'OTRO', 'GESTIÓN DEL TALENTO HUMANO', 'FUNDACIÓN MOISÉS ITZKOWICH AC', '', '', '', '', 'PROGRAMA DE FORTALECIMIENTO DE RIGOR INSTITUCIONAL ', 'ACOMPAÑAR A 11 ORGANIZACIONES EN SU PROCESOS DE FORTALECIMIENTO INSTITUCIONAL ', 0, 0, 0, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '16/12/2020', '31/08/2021', 'DESOLLO DE PERFILES Y DESCRIPCION DE PUESTOS,  LA ORGANIZACION ', 'CIUDAD DE MÉXICO', 'CUAUHTÉMOC', '700000', '23/02/2022', '', 'r.trejo@fundacionmerced.org.mx'),
+(31, 117, 43, 1, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'PLANEACIÓN ESTRATÉGICA', '', 'FUNDACIÓN MOISÉS ITZKOWICH AC', '', '', '', '', 'PROGRAMA DE FORTALECIMIENTO DE RIGOR INSTITUCIONAL 2', 'GENERAR CAPACIDADES EN  LAS  ORGANIZACIONES,  FORTALECER  SUS ESTRUCTURAS OPERATIVAS PARA MEJORAR SUS INTERVENCIONES, MEJORAR SUS ENFOQUES DE INTERVENCION Y BRINDAR ELEMENTOS DE SOLUCION A LAS BRECHAS ORGANIZACIONALES DE CADA OSC; ', 0, 0, 1, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '01/06/2021', '30/09/2022', 'SE DESARROLLO LA PLANEACION ESTRATEGICA DE LA ORGANIZACION CON LA PARTICIPACION ACTIVA DE PERSONAL OPERATIVO Y DE CONSEJO ', 'CIUDAD DE MÉXICO', 'ÁLVARO OBREGÓN', '700000', '24/02/2022', 'NA', 'r.trejo@fundacionmerced.org.mx'),
+(32, 118, 43, 27, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'MODELO DE INTERVENCIÓN', '', 'FUNDACIÓN MOISÉS ITZKOWICH AC', '', '', '', '', 'PROGRAMA DE FORTALECIMIENTO DE RIGOR INSTITUCIONAL 2', 'GENERAR CAPACIDADES EN  LAS  ORGANIZACIONES,  FORTALECER  SUS ESTRUCTURAS OPERATIVAS PARA MEJORAR SUS INTERVENCIONES, MEJORAR SUS ENFOQUES DE INTERVENCION Y BRINDAR ELEMENTOS DE SOLUCION A LAS BRECHAS ORGANIZACIONALES DE CADA OSC; ', 0, 0, 10, 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', '01/06/2021', '30/09/2022', 'SE DESARROLLO EL MODELO DE INTERVENCION DE LA ORGANIZACION ', 'OAXACA', ' PRIMERO DE MAYO', '700000', '24/02/2022', 'NA', 'r.trejo@fundacionmerced.org.mx');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `invsoc_participation`
+-- Estructura de tabla para la tabla `invsoc_participation`
 --
 
-DROP TABLE IF EXISTS `invsoc_participation`;
-CREATE TABLE IF NOT EXISTS `invsoc_participation` (
-  `id_partIS` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `invsoc_participation` (
+  `id_partIS` int(10) UNSIGNED NOT NULL,
   `id_organization` int(10) UNSIGNED NOT NULL,
   `id_program` int(10) UNSIGNED NOT NULL,
   `id_consultor` int(10) UNSIGNED NOT NULL,
-  `consultor2` varchar(45) DEFAULT NULL,
-  `consultor3` varchar(45) DEFAULT NULL,
+  `consultor2` varchar(150) NOT NULL,
+  `consultor3` varchar(150) NOT NULL,
   `theme` varchar(45) NOT NULL,
   `announcement_year` varchar(4) NOT NULL,
   `project_name` varchar(300) NOT NULL,
-  `project_objective` varchar(1009) NOT NULL,
-  `population_type` varchar(400) DEFAULT NULL,
+  `project_objective` varchar(1000) NOT NULL,
+  `population_type` varchar(450) NOT NULL,
   `male_beneficiaries` int(10) UNSIGNED NOT NULL,
   `female_beneficiaries` int(10) UNSIGNED NOT NULL,
-  `org_beneficiaries` int(10) NOT NULL,
+  `org_beneficiaries` int(10) UNSIGNED NOT NULL,
   `project_type` varchar(12) NOT NULL,
   `start_date` varchar(10) DEFAULT NULL,
   `end_date` varchar(10) DEFAULT NULL,
   `resources` varchar(20) DEFAULT NULL,
-  `ally_name` varchar(45) DEFAULT NULL,
+  `ally_name` varchar(150) DEFAULT NULL,
+  `ally_name2` varchar(150) DEFAULT NULL,
+  `ally_name3` varchar(150) DEFAULT NULL,
+  `ally_name4` varchar(150) DEFAULT NULL,
+  `ally_name5` varchar(150) DEFAULT NULL,
   `achievments` varchar(300) DEFAULT NULL,
   `application_state` varchar(2000) DEFAULT NULL,
   `municipality` varchar(50) DEFAULT NULL,
   `donative` varchar(10) DEFAULT NULL,
   `donative2` varchar(10) DEFAULT NULL,
   `donative3` varchar(10) DEFAULT NULL,
-  `formation_format` text,
+  `formation_format` tinytext DEFAULT NULL,
   `formation_theme` varchar(45) DEFAULT NULL,
-  `num_sessions` int(11) DEFAULT NULL,
   `fort_theme` varchar(45) DEFAULT NULL,
   `num_sessions_fort` int(11) DEFAULT NULL,
-  `update_date` varchar(10) NOT NULL,
+  `update_date` varchar(10) DEFAULT NULL,
   `comments` varchar(1000) DEFAULT NULL,
-  `register` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_partIS`,`id_consultor`,`id_program`,`id_organization`),
-  UNIQUE KEY `id_partIS_UNIQUE` (`id_partIS`),
-  KEY `fk_table1_program1_idx` (`id_program`),
-  KEY `fk_table1_organization1_idx` (`id_organization`),
-  KEY `fk_invsoc_participation_consultor1_idx` (`id_consultor`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+  `register` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `invsoc_participation`
+-- Volcado de datos para la tabla `invsoc_participation`
 --
 
-INSERT INTO `invsoc_participation` (`id_partIS`, `id_organization`, `id_program`, `id_consultor`, `consultor2`, `consultor3`, `theme`, `announcement_year`, `project_name`, `project_objective`, `population_type`, `male_beneficiaries`, `female_beneficiaries`, `org_beneficiaries`, `project_type`, `start_date`, `end_date`, `resources`, `ally_name`, `achievments`, `application_state`, `municipality`, `donative`, `donative2`, `donative3`, `formation_format`, `formation_theme`, `num_sessions`, `fort_theme`, `num_sessions_fort`, `update_date`, `comments`, `register`) VALUES
-(1, 1, 1, 2, 'No aplica', 'No aplica', 'Institucionalidad', '2021', 'Programa de fortalecimiento de rigor institucional', 'Contribuir al desarrollo de la comunidad a través de un sistema de saneamiento descentralizado para asegurar el acceso al agua', '|Primera infancia (0-5 años),Infancia (6-12 años),Adolescencia (13-18 años)|', 123, 123, 0, 'Seleccionado', '17/08/2021', '19/08/2021', 'Aliado Financiero', 'Lluvia para todos A.C.', '10 organizaciones fortalecidas', '|Ciudad de México,Estado de México,Guerrero|', 'Álvaro Obregón', '1234567', '', '', 'Diplomado', 'Marco legal y fiscal', 123, 'Sin fortalecimiento', 0, '', '', ''),
-(2, 2, 1, 1, 'No aplica', 'No aplica', 'Seguridad alimentaria', '2019', 'Programa de fortalecimiento de rigor institucional', 'qewrwerq', 'Adolescencia (13-18 años)', 0, 0, 0, 'Seleccionado', '22/08/2021', '30/08/2021', 'Propios', NULL, 'Agua limpia para la comunidad', '|Chihuahua,Colima|', 'Tlacotenco', '56799786', '', '', 'Sin formación', NULL, 0, 'Sin fortalecimiento', 0, '', '', ''),
-(3, 1, 1, 1, 'No aplica', 'No aplica', 'Proyectos productivos', '2021', 'sdfsdfsjkdfl|', 'Impulsar el desarrollo de ecotecnologías para el cuidado del agua', 'Primera infancia (0-5 años)', 0, 0, 0, 'Postulante', '', '', NULL, NULL, '', 'No aplica', '', '', '', '', NULL, NULL, 0, NULL, 0, '', '', ''),
-(4, 2, 1, 3, 'No aplica', 'No aplica', 'Participación ciudadana', '2023', 'test', 'test', 'Adolescencia (13-18 años)', 0, 0, 0, 'Postulante', '', '', NULL, NULL, '', 'No aplica', '', '', '', '', NULL, NULL, 0, 'No aplica', 0, '12/10/2021', '', 'h.rementeria@fundacionmerced.org.mx'),
-(5, 2, 1, 1, 'Dulce Hernández', 'No aplica', 'Participación ciudadana', '2025', 'test', 'test', 'Infancia (6-12 años)', 1222, 1222, 12212, 'Postulante', '', '', NULL, NULL, '', 'No aplica', '', '', '', '', NULL, NULL, 0, 'No aplica', 0, '12/10/2021', '', 'h.rementeria@fundacionmerced.org.mx');
+INSERT INTO `invsoc_participation` (`id_partIS`, `id_organization`, `id_program`, `id_consultor`, `consultor2`, `consultor3`, `theme`, `announcement_year`, `project_name`, `project_objective`, `population_type`, `male_beneficiaries`, `female_beneficiaries`, `org_beneficiaries`, `project_type`, `start_date`, `end_date`, `resources`, `ally_name`, `ally_name2`, `ally_name3`, `ally_name4`, `ally_name5`, `achievments`, `application_state`, `municipality`, `donative`, `donative2`, `donative3`, `formation_format`, `formation_theme`, `fort_theme`, `num_sessions_fort`, `update_date`, `comments`, `register`) VALUES
+(1, 6, 6, 1, 'NO APLICA', 'NO APLICA', 'EDUCACIÓN', '2019', 'GRUPOS DE AHORRO COMUNITARIOS', 'TRANSFERIR LA METODOLOGÍA DE LOS GRUPOS DE AHORRRO COMUNITARIOEN ZONAS RURALES CON EXCLUSIÓNFINANCIERA Y/O REZAGO SOCIAL EN  BAJA CALIFORNIA SUR PARA GENERAR CAPACIDAD LOCAL QUE PERMITA LA SOSTENIBILIDAD, EL AUMENTO DE COBERTURA Y LA DIFUSIÓN DE LA EXPERIENCIA EN EL MEDIANO PLAZO. ', '|JUVENTUD (19-29 AÑOS),ADULTEZ (30-59 AÑOS),PERSONA MAYOR (60 AÑOS O MÁS)|', 32, 23, 0, 'SELECCIONADO', '01/11/2019', '03/10/2022', 'PROPIOS', '', '', '', '', '', 'DE LOS 10 GRUPOS PROYECTADOS, SE LOGRARON CONFORMAR 6 TODOS ELLOS EN ZONAS RURALES DE LOS MUNICIPIOS', 'BAJA CALIFORNIA SUR', 'COMONDU, MULEGÉ, LA PAZ', '180000', '140000', '100000', 'DIPLOMADO', 'GOBERNANZA', 'ÓRGANO DE GOBIERNO', 0, '', 'FORTALECIMIENTO INCLUYE: PLANEACION ESTRATEGICA Y EQUIPO OPERATIVO', ''),
+(2, 50, 5, 9, 'ANA MARÍA LEÓN MIRAVALLES', 'NO APLICA', 'AGUA, SANEAMIENTO E HIGIENE', '2018', 'PROGRAMA DE FORMACION EMPRESARIAL', 'IMPULSAR LA MOVILIDAD SOCIAL DE 1080 EMPRENDEDORES(RAS) CON MICRONEGOCIOS A TRAVÉS DE LA OFERTA INTEGRAL QUE TIENE FUNDACION PROMOVER', 'ADULTEZ (30-59 AÑOS)', 625, 744, 0, 'SELECCIONADO', '03/12/2018', '01/12/2021', 'PROPIOS', '', '', '', '', '', '3 TALLERES MEJORA TU NEGOCIO IMPARTIDOS, 7 CONFERENCIAS DE EDUCACION CONTINUA IMPARTIDAS, 3 CURSOS A', 'NUEVO LEÓN', 'MONTERREY', '180000', '140000', '100000', 'TALLER', 'MARCO LEGAL Y FISCAL', '|NO APLICA,ÓRGANO DE GOBIERNO,PLANEACIÓN ES', 4, '12/11/2021', 'FORMACION INCLUYE: INOVACION SOCIAL CON 4 HORAS', ''),
+(3, 51, 5, 1, 'ANDREA TAPIA ÁLVAREZ', 'NO APLICA', 'MEDIO AMBIENTE', '2018', 'RED DE ECOESCUELAS PARQUE NACIONAL LAGUNAS DE CHACAHUA', 'CONFORMAR UNA RED INTERESCOLAR DE 6 COMUNIDADES DEL PARQUE NACIONAL LAGUNAS DE CHACAHUA, QUE INTERCAMBIEN EXPERIENCIAS Y DESARROLLEN PROYECTOS COLECTIVOS E INNOVADORES QUE FOMENTEN EL CUIDADO DEL MEDIO AMBIENTE, LA CIUDADANÍA, LA EDUCACIÓN PARA LA PAZ Y LA INNOVACIÓN.', '|INFANCIA (6-12 AÑOS),ADOLESCENCIA (13-18 AÑOS),ADULTEZ (30-59 AÑOS)|', 56, 85, 0, 'SELECCIONADO', '21/03/2017', '01/12/2021', 'PROPIOS', '', '', '', '', '', 'INVOLUCRAR A LA COMUNIDAD EDUCATIVA EN EL DISEÑO Y CONSTRUCCION COLABORATIVA DEL TALLER DE COCINA DE', 'OAXACA', 'PARQUE NACIONAL LAGUNAS DE CHACAHUA', '180000', '140000', '100000', 'DIPLOMADO', 'MARCO LEGAL Y FISCAL', 'NO APLICA', 0, '01/12/2021', 'FORTALECIMIENTO INCLUYE: MODELO DE INTERVENCIÓN, GOBERNANZA Y PLANEACIÓN ESTRATEGICA', ''),
+(4, 52, 4, 1, 'NO APLICA', 'NO APLICA', 'CULTURA', '2017', 'BARRO APROBADO: POR UN AMBIENTE LIMPIO DE PLOMO EN EL SECTOR ALFARERO DE MICHOACAN Y PUEBLA ', 'REDUCIR LA EXPOSICIÓN AL PLOMO DE LAS COMUNIDADES ALFARERAS DE SANTA FE DE LA LAGUNA, MICHOACAN Y DEL BARRIO DE LA LUZ DE PUEBLA, A TRAVÉS DE MEDICIONES DE NIVELES DE PLOMO EN SANGRE, REMEDIACIÓN Y LIMPIEZA DE VIVIENDAS Y TALLERES FAMILIARES Y CAPACITACIONES EN USO DE ESMALTES LIBRES DE PLOMO PARA A', '|PRIMERA INFANCIA (0-5 AÑOS),INFANCIA (6-12 AÑOS),ADULTEZ (30-59 AÑOS)|', 126, 132, 0, 'SELECCIONADO', '01/07/2018', '01/07/2021', 'PROPIOS', '', '', '', '', '', 'SE ENTREGARON LOS PRIMEROS PLANOS EN SEPTIEMBRE, AUN FALTA ENTREGARLOS A MÁS ALFAREROS Y HACERLOS DI', '|MICHOACÁN,PUEBLA|', 'SANTA FE LAGUNA, MICHOACÁN Y BARIIO DE LA LUZ', '180000', '140000', '100000', 'SIN FORMACIÓN', '', '', 0, '', '', ''),
+(5, 38, 4, 1, 'NO APLICA', 'NO APLICA', 'IGUALDAD DE GÉNERO', '2017', 'NIÑAS Y MUJERES EN UNA COMUNIDAD SEGURA ', 'CONTRIBUIR A LA PREVENCION DEL ABUSO SEXUAL CONTRA NIÑAS Y MUJERES JOVENES EN MALINALCO', '|INFANCIA (6-12 AÑOS),ADOLESCENCIA (13-18 AÑOS),JUVENTUD (19-29 AÑOS),PERSONA MAYOR (60 AÑOS O MÁS)|', 40, 104, 0, 'SELECCIONADO', '01/08/2018', '30/07/2021', 'PROPIOS', '', '', '', '', '', 'UN PROTOCOLO DE ATENCIÓN ESPECIALIZADA DISEÑADO. AVALADO POR UNA ORGANIZACIÓN EXPERTA. EXISTENCIA DE', 'ESTADO DE MÉXICO', 'MALINALCO', '180000', '140000', '100000', 'DIPLOMADO', 'COMUNICACIÓN Y MECADOTECNIA SOCIAL', 'NO APLICA', 0, '01/12/2021', 'FORTALECIMIENTO INCLUYE: TEORIA DEL CAMBIO', ''),
+(6, 53, 6, 1, 'NO APLICA', 'NO APLICA', 'EDUCACIÓN', '2019', 'CREANDO OPCIONES DE DESARROLLO PARA ADOLESCENTES Y JOVENES FORTALECIENDO SUS HABILIDADES PARA LA VIDA IMPULSANDO SU PARTICIPACIÓN SOCIAL COMUNITARIA', 'GENERAR OPCIONES DE DESARROLLO HUMANO Y ECONOMICO PARA JOVENES IMPULSANDO SU PARTICIPACIÓN SOCIAL COMUNITARIA', '|INFANCIA (6-12 AÑOS),ADOLESCENCIA (13-18 AÑOS),ADULTEZ (30-59 AÑOS)|', 75, 75, 0, 'SELECCIONADO', '01/11/2019', '01/10/2022', 'PROPIOS', '', '', '', '', '', 'SE ACORDO IMPULSAR LA CONVOCATORIA CON AUTORIDADES COMUNITARIAS PARA LA PARTICIPACIÓN DE JOVENES ', 'NO APLICA', 'XOCHIMILCO', '180000', '140000', '', 'DIPLOMADO', 'DIPLOMADO', 'NO APLICA', 0, '01/12/2021', '', ''),
+(7, 62, 29, 1, 'NO APLICA', 'NO APLICA', 'MEDIO AMBIENTE', '2018', 'CAMBIENTAL, DESARROLLO DE HABILIDADES PARA UNA CIUDADANIA CON ESTILOS DE VIDA SOSTENIBLES ', 'FOMENTAR HABILIDADES PARA ESTILOS DE VIDA SOSTENIBLES EN LA CIUDADANIA QUE CONLLEVEN ENTENDIMIENTO DEL ENTORNO NATURA, UNA INTERACCION RESPONSABLE CON LA BIODIVERSIDAD, GENERANDO CADENAS DE VALOR QUE IMPACTEN POSITIVAMENTE EN EL ENTORNO ECONOMICO Y SOCIAL CON PRACTICAS CONCRETAS EN LA VIDA COTIDIANA', '|PRIMERA INFANCIA (0-5 AÑOS),INFANCIA (6-12 AÑOS),ADOLESCENCIA (13-18 AÑOS),ADULTEZ (30-59 AÑOS)|', 2177, 3091, 0, 'SELECCIONADO', '01/09/2019', '31/01/2021', 'ALIADO FINANCIERO', 'TOYOTA  MOTOR SALES DE MÉXICO S DE RL DE CV', '', '', '', '', '64 COMPOSTEROS INSTALADOS, 67 FAMILIAS PRODUCIENDO ALIMENTOS, 22900 KG DE RESIDUOS NO VERTIDOS EN BA', 'NUEVO LEÓN', 'NUEVO LEON, JUAREZ, ESCOBEDO', '350000', '350000', '', 'SIN FORMACIÓN', '', 'SIN FORTALECIMIENTO', 0, '', '', ''),
+(8, 3, 29, 1, 'NO APLICA', 'NO APLICA', 'SEGURIDAD VIAL', '2018', 'CIUDAD SEGURA, PROGRAMA PARA EL FOMENTO DE LA CULTURA VIAL', 'REDUCIR EL NUMERO DE MUERTOS Y LESIONES CAUSADAS POR ACCIDENTES DE TRANSITO, PROMOVIENDO UNA CULTURA DE EDUCACION VIAL EN ZONAS PERIURBANAS DE TUXTLA GUTIERREZ Y CHIAPA DE CORZO, CHIAPAS', '|PRIMERA INFANCIA (0-5 AÑOS),INFANCIA (6-12 AÑOS),ADOLESCENCIA (13-18 AÑOS),ADULTEZ (30-59 AÑOS)|', 2155, 1829, 0, 'SELECCIONADO', '01/09/2018', '31/01/2021', 'ALIADO FINANCIERO', 'TOYOTA  MOTOR SALES DE MÉXICO S DE RL DE CV', '', '', '', '', 'META ALCANZADA EL PRIMER AÑO, 24 CAPACITACIONES FORMACION IMPARTIDAS, 52 CIRCUITOS, , 19 PLATICAS IM', 'CHIAPAS', 'TUXTLA GUTIERREZ Y CHIAPA DE CORZO', '350000', '350000', '', 'SIN FORMACIÓN', '', 'SIN FORTALECIMIENTO', 0, '', '', ''),
+(9, 60, 29, 1, 'NO APLICA', 'NO APLICA', 'EDUCACIÓN', '2018', 'PARTICIPACION JUVENIL Y DESARROLLO DE HABILIDADES SOCIOEMOCIONALES', 'FACILITAR UNA TRANSICION EXITOSA DE LA ADOLESCENCIA A LA ADULTEZ AL PROMOVER LA PARTICIPACION PROTAGONICA DE 100 ADOLESCENTES EN EL DESARROLLO DE HABILIDADES SOCIOEMOCIONALES DE ESTUDIANTES DE SECUNDARIA EN LA CIUDAD DE CANCUN, QUINTANA ROO', 'ADOLESCENCIA (13-18 AÑOS)', 50, 50, 0, 'SELECCIONADO', '18/08/2018', '31/01/2021', 'ALIADO FINANCIERO', 'TOYOTA  MOTOR SALES DE MÉXICO S DE RL DE CV', '', '', '', '', '50 JOVENES INVOLUCRADOS EN LA ELABORACION DE PROYECTOS SOCIALES, 4 PROYECTOS PARA LA PROMOCION DE HA', 'QUINTANA ROO', 'BENITO JUAREZ ', '350000', '350000', '', 'SIN FORMACIÓN', '', 'SIN FORTALECIMIENTO', 0, '', '', ''),
+(10, 63, 28, 1, 'NO APLICA', 'NO APLICA', 'EDUCACIÓN', '2019', 'ESTRATEGIAS DE PARTICIPACION SOCIAL EN EDUCACION PARA EL MEJORAMIENTO DE CONTEXTOS ESCOLARES Y EL FORTALECIMIENTO DE LOS APRENDIZAJES EN ESCUELA PUBLICAS DEL NIVEL BASICO', 'IMPLEMENTAR UN MODELO DE INTERVENCION ESCOLAR PARTICIPATIVO Y DE CORRESPONSABILIDAD EN EDUCACION, DESARROLLO FAMILIAR, SALUD Y MEDIO AMBIENTE, EN 10 ESCUELA PUBLICAS DE NIVEL BASICO EN CONTEXTOS SOCIOECONOMICOS VULNERABLES DEL MUNICIPIO DE ZACATLAN, PUEBLA PARA INTEGRAR Y FORTALECER LA COMUNIDAD EDU', '|INFANCIA (6-12 AÑOS),ADOLESCENCIA (13-18 AÑOS)|', 1540, 1790, 0, 'SELECCIONADO', '11/01/2019', '28/02/2022', 'ALIADO FINANCIERO', 'TOYOTA  MOTOR SALES DE MÉXICO S DE RL DE CV', '', '', '', '', '155 MOCHILAS VIAJERAS PRESTADAS, 243 VIDEOS COMPARTIDOS, 58 INFOGRAFIAS REALIZADAS, 56 DOCENTES ATEN', 'PUEBLA', 'POXCUATZINGO, CUAUTILULCO, CUACUILA', '350000', '350000', '', 'SIN FORMACIÓN', '', 'SIN FORTALECIMIENTO', 0, '', '', ''),
+(11, 65, 28, 1, 'NO APLICA', 'NO APLICA', 'MEDIO AMBIENTE', '2019', 'RECICLAJE INCLUSIVO EN HUAJUAPAN DE LEON: GESTION PARTICIPATIVA E INCLUYENTE DE LOS RESIDUOS EN SUR DE MEXICO COMO ESTRATEGIA DE MEJORAMIENTO AMBIENTAL, COMUNITARIO Y DESARROLLO DE SECTORES ALTAMENTE VULNERABLES EN OAXACA.', 'MEJORAR LA GESTION DE RESIDUOS SOLIDOS URBANOS EN EL MUNICIPIO DE HUAJUAPAN DE LEON, OAXACA, A TRAVES DE LA INCLUSION DE RECICLADORES-PEPENADORES, EL AUMENTO EN LA EFICIENCIA DEL RECICLAJE Y LA VINCULACION INSTITUCIONAL, CON EL FIN DE MEJORAR LA SUSTENTABIBLIDAD AMBIENTAL, LA CALIDAD DE VIDA Y LOS I', 'ADULTEZ (30-59 AÑOS)', 23, 28, 0, 'SELECCIONADO', '30/11/2019', '31/01/2022', 'ALIADO FINANCIERO', 'TOYOTA  MOTOR SALES DE MÉXICO S DE RL DE CV', '', '', '', '', 'CAPACITACION DE RECICLADORES EN TEMAS DE COOPERATIVISMO Y ECONOMIA CIRCULAR. CERTIFIACION OTORGADA P', 'OAXACA', 'HUAJUAPAN DE LEON', '350000', '350000', '', 'SIN FORMACIÓN', '', 'SIN FORTALECIMIENTO', 0, '', '', ''),
+(12, 66, 28, 1, 'NO APLICA', 'NO APLICA', 'MEDIO AMBIENTE', '2019', 'RESTAURACION Y CONSERVACION DE LA RESERVA DE LA BIOSFERA ISLA GUADALUPE A TRAVES DE LA REFORESTACION AMBIENTAL Y MANEJO DE RESIDUOS SOLIDOS, PARA LA SUSTENTABILIDAD, EL MEJORAMIENTO DE LA CALIDAD DE VIDA, EL FOMENTO DE IDENTIDAD Y SENTIDO DE PERTENENCIA EN LA COMUNIDAD INSULAR.', 'MEJORAR LA CALIDAD DE VIDA DE LA COMUNIDAD DE LA ISLA GUADALUPE, POR MEDIO DE LA RESTAURACION Y EMBELLECIMIENTO DEL ESPACIO COMUNITARIO HABITADO, ASI COMO IMPULSAR EL MANEJO SUSTENTABLE POR MEDIO DEL DESARROLLO DE CAPACIDADES TEORICAS Y OPERATIVAS DE LOS MIEMBROS DE LA COMUNIDAD EN CUANTO A REFOREST', '|PRIMERA INFANCIA (0-5 AÑOS),INFANCIA (6-12 AÑOS),ADOLESCENCIA (13-18 AÑOS),ADULTEZ (30-59 AÑOS)|', 50, 50, 0, 'SELECCIONADO', '01/10/2019', '01/10/2021', 'ALIADO FINANCIERO', 'TOYOTA  MOTOR SALES DE MÉXICO S DE RL DE CV', '', '', '', '', 'COMPRA Y TRANSPORTE DE MATERIALES A PARTIR DE OBTENCION DEL PERMISO, CONSTRUCCION DEL VIVERO E INVER', '|BAJA CALIFORNIA,OAXACA|', 'ISLA GUADALUPE', '350000', '350000', '', 'SIN FORMACIÓN', '', 'SIN FORTALECIMIENTO', 0, '', '', ''),
+(13, 69, 27, 1, 'NO APLICA', 'NO APLICA', 'EDUCACIÓN', '2020', 'APP CARISMA, BAILA, VIBRA E INVENTA', 'DESARROLLAR UNA HERRAMIENTA DIGITAL QUE APORTE AL DESARROLLO HUMANO Y CONCIENCIA INTEGRAL DE LAS INFANCIAS A TRAVES DE CONTENIDOS LUDICOS DONDE EL MOTOR PRINCIPAL SEAN LA MUSICA Y LA DANZA, CONTRARRESTADO LOS EFECTOS NEGATIVOS DEL SEDENTARISMO QUE PROMUEVE EL CONFINAMIENTO. ', '|INFANCIA (6-12 AÑOS),ADOLESCENCIA (13-18 AÑOS),ADULTEZ (30-59 AÑOS)|', 0, 0, 0, 'SELECCIONADO', '01/01/2021', '01/12/2022', 'ALIADO FINANCIERO', 'TOYOTA  MOTOR SALES DE MÉXICO S DE RL DE CV', '', '', '', '', 'UNA APLICACION INTERACTIVA DESARROLLADA AL 100% ', 'BAJA CALIFORNIA', 'TIJUANA', '250000', '250000', '', 'SIN FORMACIÓN', '', 'SIN FORTALECIMIENTO', 0, '', '', ''),
+(14, 71, 27, 1, 'NO APLICA', 'NO APLICA', 'MEDIO AMBIENTE', '2020', 'PROGRAMA COMUNITARIO DE REHABILITACION Y REFORESTACION DEL HUMEDAL DE XOCHIMILCO: SISTEMA DE CHINAMPAS Y CANALES', 'REHABILITAR EL SISTEMA LACUSTRE DE XOCHIMILCO MEDIANTE UN PROGRAMA CON REFORESTACIONES COMUNITARIAS, VOLUNTARIADO CORPORATIVO, CAPACITACIONES Y RECUPERACION DE ESPACION NATURALES, PARA OFRECER OPORTUNIDADES DE MEJORA ECONOMICA Y PRODUCTIVA A LAS PERSONAS DE COMUNIDAD', '|ADOLESCENCIA (13-18 AÑOS),ADULTEZ (30-59 AÑOS)|', 20, 30, 0, 'SELECCIONADO', '10/12/2020', '11/12/2022', 'ALIADO FINANCIERO', 'TOYOTA  MOTOR SALES DE MÉXICO S DE RL DE CV', '', '', '', '', 'HASTA 10 JORNADAS DE LIMPIEZA Y REHABILITACION DE CHINAMPAS Y CANALES 5KM LIMPIOS', 'CIUDAD DE MÉXICO', 'XOCHIMILCO', '250000', '250000', '', 'SIN FORMACIÓN', '', 'SIN FORTALECIMIENTO', 0, '', '', ''),
+(15, 70, 27, 1, 'NO APLICA', 'NO APLICA', 'SEGURIDAD VIAL', '2020', 'RUTA P: PASOS SEGUROS PARA VALLE DE PUEBLA ', 'PROMOVER LA MOVILIDAD SEGURA, SOSTENIBLE Y ACCESIBLE EN LAS UNIDADES HABITACIONALES QUE CONFORMAN EL AREA DE \"LOS PUEBLAS\"', '|PRIMERA INFANCIA (0-5 AÑOS),INFANCIA (6-12 AÑOS),ADOLESCENCIA (13-18 AÑOS),ADULTEZ (30-59 AÑOS)|', 666, 1258, 0, 'SELECCIONADO', '01/12/2020', '01/12/2022', 'ALIADO FINANCIERO', 'TOYOTA  MOTOR SALES DE MÉXICO S DE RL DE CV', '', '', '', '', 'CONTEO DE USUARIOS, PEATONES, CICLISTAS Y TRANSPORTE, FICHAS DE LEVANTAMIENTO ', 'BAJA CALIFORNIA', 'MEXICALI', '250000', '250000', '', 'SIN FORMACIÓN', '', 'SIN FORTALECIMIENTO', 0, '', '', ''),
+(16, 20, 1, 1, 'NO APLICA', 'NO APLICA', 'INSTITUCIONALIDAD', '2019', 'NO APLICA', 'NO APLICA ', '|INFANCIA (6-12 AÑOS),ADOLESCENCIA (13-18 AÑOS),JUVENTUD (19-29 AÑOS),ADULTEZ (30-59 AÑOS)|', 0, 0, 0, 'SELECCIONADO', '22/10/2021', '22/10/2021', 'PROPIOS', '', '', '', '', '', '', 'NO APLICA', '', '100000', '100000', '100000', 'DIPLOMADO', 'MODELO DE INTERVENCIÓN', 'PLANEACIÓN ESTRATÉGICA', 0, '22/10/2021', 'FORTALECIMIENTO INCLUYE: PLANEACIÓN ESTRATEGIA Y MOVILIZACIÓN DE RECURSOS', 'K.VILCHIS@FUNDACIONMERCED.ORG.MX'),
+(17, 55, 3, 1, 'NO APLICA', 'NO APLICA', 'EDUCACIÓN', '2021', 'NO APLICA', 'NO APLICA', 'INFANCIA (6-12 AÑOS)', 291, 263, 0, 'SELECCIONADO', '22/10/2021', '29/12/2023', 'PROPIOS', '', '', '', '', '', 'NA', 'ESTADO DE MÉXICO', 'IXTAPALUCA', '100000', '100000', '100000', 'DIPLOMADO', 'DIPLOMADO', 'PLANEACIÓN ESTRATÉGICA', 0, '14/02/2022', '', 'K.VILCHIS@FUNDACIONMERCED.ORG.MX'),
+(18, 54, 3, 1, 'NO APLICA', 'NO APLICA', 'EDUCACIÓN', '2021', 'NO APLICA', 'NO APLICA', '|INFANCIA (6-12 AÑOS),ADOLESCENCIA (13-18 AÑOS),JUVENTUD (19-29 AÑOS),ADULTEZ (30-59 AÑOS),PERSONA MAYOR (60 AÑOS O MÁS)|', 95, 959, 0, 'SELECCIONADO', '22/10/2021', '31/12/2023', 'PROPIOS', '', '', '', '', '', 'NA', 'NO APLICA', 'VER COMENTARIOS', '100000', '100000', '100000', 'DIPLOMADO', 'DIPLOMADO', '|DIAGNÓSTICO DE MADUREZ INSTITUCIONAL EN LÍNE', 0, 'N/A', 'MUNICIPIOS: VILLA VICTORIA (EDOMEX) TZICATLACOYAN Y TECALI DE HERRERA (PUEBLA)  CIUDAD DE OAXACA  TEPIC Y STA. MARIA DEL ORO (NAYARIT)', 'K.VILCHIS@FUNDACIONMERCED.ORG.MX'),
+(19, 56, 2, 1, 'NO APLICA', 'NO APLICA', 'SEGURIDAD ALIMENTARIA', '2020', 'NO APLICA', 'NO APLICA', '|PRIMERA INFANCIA (0-5 AÑOS),INFANCIA (6-12 AÑOS),ADOLESCENCIA (13-18 AÑOS),JUVENTUD (19-29 AÑOS),ADULTEZ (30-59 AÑOS),PERSONA MAYOR (60 AÑOS O MÁS)|', 9846, 15412, 0, 'SELECCIONADO', '22/10/2020', '01/12/2022', 'PROPIOS', '', '', '', '', '', 'NA', 'CIUDAD DE MÉXICO', 'IZTACALCO', '200000', '200000', '200000', 'DIPLOMADO', 'DIPLOMADO', '|FORTALECIMIENTO EQUIPO OPERATIVO,ÓRGANO DE G', 0, 'N/A', '', 'K.VILCHIS@FUNDACIONMERCED.ORG.MX'),
+(20, 57, 1, 9, 'ANA MARÍA LEÓN MIRAVALLES', 'NO APLICA', 'INSTITUCIONALIDAD', '2019', 'NO APLICA', 'NO APLICA', '|ADOLESCENCIA (13-18 AÑOS),JUVENTUD (19-29 AÑOS),ADULTEZ (30-59 AÑOS)|', 562, 840, 0, 'SELECCIONADO', '22/10/2021', '22/10/2021', 'PROPIOS', '', '', '', '', '', '', 'ESTADO DE MÉXICO', '', '100000', '100000', '100000', 'DIPLOMADO', 'MODELO DE INTERVENCIÓN', '|FORTALECIMIENTO EQUIPO OPERATIVO,PLANEACIÓN', 0, 'N/A', '', 'K.VILCHIS@FUNDACIONMERCED.ORG.MX'),
+(21, 41, 32, 1, 'NO APLICA', 'NO APLICA', 'INSTITUCIONALIDAD', '2021', 'NO APLICA ', 'NO APLICA', '|PRIMERA INFANCIA (0-5 AÑOS),INFANCIA (6-12 AÑOS),ADOLESCENCIA (13-18 AÑOS),JUVENTUD (19-29 AÑOS)|', 0, 0, 0, 'SELECCIONADO', '01/05/2021', '01/11/2021', 'PROPIOS', '', '', '', '', '', 'APAC CUMPLE 55 AÑOS DE TRAYECTORIA Y RECIBIR EL PREMIO RAZÓN DE SER INSTITUCIONALIDAD CONSTITUYE UN RECONOCIMIENTO A SU LABOR. ', '|NO APLICA,CIUDAD DE MÉXICO|', 'CUAUHTÉMOC', '400000', '', '', 'SIN FORMACIÓN', '', 'NO APLICA', 0, 'N/A', '', 'S.PALESTINO@FUNDACIONMERCED.ORG.MX'),
+(22, 3, 8, 10, 'NO APLICA', 'NO APLICA', 'EDUCACIÓN', '2020', 'PREMIO RAZÓN DE SER', 'EL PREMIO RAZÓN DE SER RECONOCE LA TRAYECTORIA Y OTORGA UN RECONOCIMIENTO A LA LABOR SOCIAL EN MÉXICO', 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', 0, 0, 4, 'SELECCIONADO', '01/02/2018', '15/12/2018', 'ALIADO FINANCIERO', 'FUNDACIÓN DE AGENTES ADUANALES PARA LA ASISTENCIA INFANTIL', '', '', '', '', 'POR PRIMER AÑO SE DESARROLLÓ LA CATEGORÍA SOCIAL EN EL AMBITO DE MIGRACIÓN Y SE OTORGÓ UN RECONOCIMIENTO POR 300000 PESOS A LA ORGANIZACIÓN SELECCIONADA EN LA CATEGORÍA, SUMANDO UN NUEVO ALIADO FINANCIERO Y ESTRATÉGICO AL PROYECTO', 'NO APLICA', 'GUADALAJARA', '300000', '', '', 'SIN FORMACIÓN', '', 'NO APLICA', 0, '16/12/2021', 'ELIMINAR ESTE REGISTRO, LO HICE DE PRUEBA', 'R.TREJO@FUNDACIONMERCED.ORG.MX'),
+(23, 31, 42, 1, 'NO APLICA', 'NO APLICA', 'EMPRENDIMIENTO SOCIAL', '2018', 'PREMIO RAZÓN DE SER', 'EL PREMIO RAZÓN DE SER RECONOCE LA TRAYECTORIA Y OTORGA UN RECONOCIMIENTO A LA LABOR SOCIAL EN MÉXICO', 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', 0, 0, 4, 'SELECCIONADO', '01/02/2018', '15/12/2018', 'PROPIOS', '', '', '', '', '', 'SE OTORGÓ UN PREMIO POR 350MIL PESOS EN LA CATEGORÍA DE INSTITUCIONALIDAD', '|NO APLICA,ESTADO DE MÉXICO|', 'MIGUEL HIDALGO', '350000', '', '', 'SIN FORMACIÓN', '', 'NO APLICA', 0, '16/12/2021', '', 'R.TREJO@FUNDACIONMERCED.ORG.MX'),
+(24, 26, 19, 26, 'NO APLICA', 'NO APLICA', 'MEDIO AMBIENTE', '2021', 'PROYECTOS PRODUCTIVOS SOSTENIBLES EN LA RESERVA DE LA BIOSFERA DE LA MARIPOSA MONARCA', 'REDUCCIÓN DE LA VULNERABILIDAD SOCIAL Y AMBIENTAL PARA PREVENIR RIESGOS Y AUMENTAR LA RESILIENCIA EN LAS COMUNIDADES DE LA RESERVA DE LA BIOSFERA DE LA MARIPOSA MONARCA (RBMM), A TRAVÉS DEL DESARROLLO DE CAPACIDADES.', 'ORGANIZACIONES DE LA SOCIEDAD CIVIL', 0, 0, 1, 'SELECCIONADO', '30/07/2021', '17/12/2021', 'ALIADO FINANCIERO', 'GLOBALGIVING FOUNDATION INC', '', '', '', '', 'SE APOYO AL FORTALECIMIENTO DE LAS CAPACIDADES DE PERSONAS EN LA PRODUCCIÓN DE VERDURAS ORGÁNICAS, ASÍ COMO EN LA CONSERVA DE VERDURAS Y LA EMPRESARIALIDAD RURAL', 'MICHOACÁN', 'ÁPORO Y ANGANGUEO', '90451', '', '', 'SIN FORMACIÓN', NULL, 'NO APLICA', 0, 'N/A', '', 'E.ESTRADA@FUNDACIONMERCED.ORG.MX');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `organization`
+-- Estructura de tabla para la tabla `organization`
 --
 
-DROP TABLE IF EXISTS `organization`;
-CREATE TABLE IF NOT EXISTS `organization` (
-  `id_organization` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `organization` (
+  `id_organization` int(10) UNSIGNED NOT NULL,
   `org_name` varchar(150) NOT NULL,
   `intervention_area` varchar(45) NOT NULL,
   `other` varchar(50) NOT NULL,
@@ -281,96 +317,383 @@ CREATE TABLE IF NOT EXISTS `organization` (
   `blacklist` varchar(2) NOT NULL,
   `address` varchar(100) NOT NULL,
   `postal_code` tinytext NOT NULL,
-  `website` varchar(45) DEFAULT NULL,
-  `register` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_organization`),
-  UNIQUE KEY `id_organizacion_UNIQUE` (`id_organization`),
-  UNIQUE KEY `rfc` (`rfc`),
-  UNIQUE KEY `rfc_2` (`rfc`),
-  UNIQUE KEY `rfc_3` (`rfc`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+  `website` varchar(45) NOT NULL,
+  `register` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `organization`
+-- Volcado de datos para la tabla `organization`
 --
 
 INSERT INTO `organization` (`id_organization`, `org_name`, `intervention_area`, `other`, `rfc`, `state`, `municipality`, `blacklist`, `address`, `postal_code`, `website`, `register`) VALUES
-(1, 'Fundación Merced', 'Desarrollo social', '', 'XXX000000XXX', 'Ciudad de México', 'Cuauhtémoc', 'No', 'Cedro 214, Santa María la Rivera', '00000', 'www.fundacionmerced.com.mx', ''),
-(2, 'Lluvia para todos A.C.', 'Agua, saneamiento e higiene', '', 'XXX000000XX0', 'Chiapas', 'San Cristobal', 'No', 'Calle falsa 123', '23456', 'www.sitiofalso.com', ''),
-(3, 'test', 'Derechos humanos', '', 'RFC1234567R9', 'Morelos', 'TEST', 'No', 'TEST', '12345', '', ''),
-(4, 'test1', 'Desarrollo social', '', 'test123456789', 'Estado de México', 'test', 'No', 'test test', '12345', '', ''),
-(5, 'skldsjklflaflllsd', 'Desarrollo social', '', 'sdfsdafds1223', 'Michoacán', 'TEST', 'No', 'TEST', '12345', '', 'h.rementeria@fundacionmerced.org.mx');
+(1, 'FUNDACIÓN MERCED QUERÉTARO AC', 'ASISTENCIA SOCIAL', '', 'FMQ010314PL2', 'QUERÉTARO', 'QUERÉTARO', 'NO', 'CERRO DE LA ESTRELLA NO. 133, COLINAS DEL CIMATARIO', '76090', 'https://fundacionmerced.org/', ''),
+(2, 'HERMUN AC', 'ASISTENCIA SOCIAL', '', 'HER710320HA9', 'CIUDAD DE MÉXICO', 'CUAUHTÉMOC', 'NO', 'CEDRO 214, COL. SANTA MARÍA LA RIBERA', '6400', 'NO TIENE', ''),
+(3, 'CRUZ ROJA  MEXICANA IAP', 'ASISTENCIA SOCIAL', '', 'CRM6702109K6', 'CIUDAD DE MÉXICO', 'MIGUEL HIDALGO', 'NO', 'JUAN LUIS VIVES NO.200 INT 2, COL. LOS MORALES POLANCO', '11510', 'https://www.cruzrojamexicana.org.mx/', ''),
+(4, 'TOYOTA  MOTOR SALES DE MEXICO S DE RL DE CV', 'OTRA', 'SECTOR PRIVADO', 'TMS010508RX0', 'CIUDAD DE MÉXICO', 'MIGUEL HIDALGO', 'NO', 'PASEO DE TAMARINDOS NO.400, PISO 3, COL. BOSQUES DE LAS LOMAS', '5120', 'https://www.toyota.mx/', ''),
+(5, 'TOYOTA  FINANCIAL SERVICES MEXICO SA DE CV', 'OTRA', 'SECTOR PRIVADO', 'TFS011012M18A', 'CIUDAD DE MÉXICO', 'CUAJIMALPA DE MORELOS', 'NO', 'PASEO DE LOS TAMARINDOS 400-B, PISO 4, COL. BOSQUES DE LAS LOMAS', '5120', 'https://toyotacredito.com.mx/', ''),
+(6, 'PEDAZO POR PEDAZO UN MUNDO MEJOR PHILANTROPIECE AC', 'ASISTENCIA SOCIAL', 'PPU170606ML6', 'PPU170606ML6', 'BAJA CALIFORNIA SUR', 'COMONDU', 'NO', 'BENITO JUÁREZ, LOCAL 5, COLONIA CENTRO', '22600', 'philanthropieceac.org', ''),
+(7, 'FIDEICOMISO POR LOS NINOS DE MEXICO, SANTANDER ', 'OTRA', 'SECTOR PRIVADO', 'FND940701NY6', 'CIUDAD DE MÉXICO', 'ALVARO OBREGON', 'NO', 'PROLONGACION PASEO DE LA REFORMA, NO.500, LOMAS DE SANTA FE', '1219', 'https://servicios.santander.com.mx/fideicomis', ''),
+(8, 'FUNDACION GONZALO RIO ARRONTE IAP', 'OTRA', 'FORTALECIMIENTO INSTITUCIONAL', 'FGR0003285U0', 'CIUDAD DE MÉXICO', 'ALVARO OBREGON', 'NO', 'AV. BOULEVARD ADOLFO LOPEZ MATEOS NO. 2009, PISO 1, COL. LOS ALPES', '1010', 'https://fundaciongonzalorioarronte.org/', ''),
+(9, 'ROTOPLAS SA DE CV', 'OTRA', 'SECTOR PRIVADO', 'ROT7802026ZA', 'CIUDAD DE MÉXICO', 'MIGUEL HIDALGO', 'NO', 'PEDREGAL 24, PISO 19, LOMAS VIRREYES, MOLINO DEL REY', '1140', 'https://rotoplas.com.mx/', ''),
+(10, 'NACIONAL MONTE DE PIEDAD IAP', 'OTRA', 'FORTALECIMIENTO INSTITUCIONAL', ':NMP7502257ZA', 'CIUDAD DE MÉXICO', 'MIGUEL HIDALGO', 'NO', 'BOULEVARD MANUAL ÁVILA CAMACHO NO. 32 PISO 17', '11000', 'https://www.montepiedad.com.mx/', ''),
+(11, 'FUNDACIÓN MOISÉS ITZKOWICH AC', 'OTRA', 'FORTALECIMIENTO INSTITUCIONAL', 'FMI1810307X9', 'CIUDAD DE MÉXICO', 'MIGUEL HIDALGO', 'NO', 'AV PASEO DE LAS PALMAS NO.765-804, LOMAS DE CHAPULTEPEC', '1100', 'https://fundacionmi.org/', ''),
+(12, 'GLOBALGIVING FOUNDATION INC', 'ASISTENCIA SOCIAL', '', 'XEXX010101000', 'AGUASCALIENTES', 'NO APLICA', 'NO', '1 THOMAS NW, SUITE 800, WASINGTON DC, UNITED STATES', '20005', 'https://www.globalgiving.org/', ''),
+(13, 'FUNDACIÓN MEDICINA FETAL MÉXICO AC', 'SALUD', '', 'MFM1703063N6', 'QUERÉTARO', 'QUERÉTARO', 'NO', 'BLVD BERNARDO QUINTANA NO.4060, COL. SAN PABLO ', '76125', 'https://fundacionmfm.com/', ''),
+(14, 'FUNDACIÓN CMR AC', 'ASISTENCIA SOCIAL', '', 'FCM050829814', 'CIUDAD DE MÉXICO', 'CUAUHTÉMOC', 'NO', 'HAVRE 30, JUÁREZ', '6600', 'https://fundacioncmr.org/', ''),
+(15, 'QUÁLITAS COMPAÑÍA  DE SEGUROS SA DE CV', 'OTRA', 'SECTOR PRIVADO', 'QCS931209G49', 'CIUDAD DE MÉXICO', 'CUAJIMALPA', 'NO', 'JOSÉ MARÍA CASTORENA 426, ROSA TORRES', '5200', 'https://www.qualitas.com.mx/', ''),
+(16, 'ASOCIACION DE ENLACE CULTURAL DE MEXICO AC', 'ASISTENCIA SOCIAL', 'ATENCIÓN A PERSONAS MAYORES', 'AEC100618RB4', 'CIUDAD DE MÉXICO', 'CUAUHTÉMOC', 'NO', 'GUADALAJARA #9 COL. ROMA NORTE ALCALDIA CUAUHTÉMOC', '6700', 'https://www.adultomayorelvalordelaexperiencia', ''),
+(17, 'FUNDACIÓN LORENA ALEJANDRA GALLARDO IAP', 'ASISTENCIA SOCIAL', '', 'FLA840328UI2', 'CIUDAD DE MÉXICO', 'MIGUEL HIDALGO', 'NO', 'MONTE CÁUCASO NO. 915-302 COLONIA LOMAS DE CHAPULTEPEC ALCALDÍA MIGUEL HIDALGO', '11000', 'https://fundacionflag.org/', ''),
+(18, 'FUNDACION MAS VIDA', 'ASISTENCIA SOCIAL', ' ', 'LAGM830312KYA', 'CIUDAD DE MÉXICO', 'MIGUEL HIDALGO', 'NO', 'MIGUEL CERVANTES SAAVEDRA NO. 23 COLONIA GRANADA MIGUEL HIDALGO', '11520', 'No aplica', ''),
+(19, 'PQC STEM AC', 'ASISTENCIA SOCIAL', 'LA ORGANIZACIÓN SE ENCUENTRA EN SUSPENSIÓN DE ACTI', 'PST1911147Q4', 'CIUDAD DE MÉXICO', 'ÁLVARO OBREGÓN', 'NO', 'CERRADA DE AMARGURA NO. 22, SAN ÁNGEL,  ÁLVARO OBREGÓN, CIUDAD DE MÉXICO', '1000', 'N/A', ''),
+(20, 'GRUPO ALTÍA I.A.P', 'ASISTENCIA SOCIAL', '', 'GAI911030FM3', 'CIUDAD DE MÉXICO', 'IZTACALCO', 'NO', 'FRANCISCO I.MADERO 102-A, ENTRE PASCUAL OROZCO Y CHIMALPOPOCA, SAN MIGUEL IZTACALCO, IZTACALCO, C.P ', '8650', 'https://grupoaltia.org/', ''),
+(21, 'FUNDACIÓN GRISI AC', 'ASISTENCIA SOCIAL', '', 'FGR160816U25', 'CIUDAD DE MÉXICO', 'BENITO JUÁREZ', 'NO', 'AMORES 1746, DEL VALLE, BENITO JUÁREZ', '3100', 'https://www.fundaciongrisi.com/', ''),
+(22, 'MARIPOSAS MUJERES CAMBIANDO EL MUNDO AC', 'ASISTENCIA SOCIAL', '', 'MMC1907299R5', 'PUEBLA', 'PUEBLA DE ZARAGOZA', 'NO', '5 ORIENTE 612 COL. CENTRO, PUEBLA DE ZARAGOZA', '72000', 'https://es.mariposasmexico.org/about', ''),
+(23, 'GRUPO MÉXICO (OPERADORA DE MINAS DE NACOZARI SA', 'OTRA', 'MINERÍA', 'OMN140523KH1', 'CIUDAD DE MÉXICO', 'MIGUEL HIDALGO', 'NO', 'CAMPOS ELÍSEOS 400, OFNA. 1, 102, LOMAS DE CHAPULTEPEC, MIGUEL HIDALGO', '11000', 'https://www.gmexico.com/Pages/default.aspx', ''),
+(24, 'CASA HOGAR ESTRELLITAS DE VIDA AC', 'OTRA', 'ATENCIÓN A PERSONAS MAYORES', 'CHE151215VB3', 'MORELOS', 'NACOZARI DE GARCÍA', 'NO', 'LA CARIDAD S/N, NACOZARI DE GARCÍA', '84340', 'N/A', ''),
+(25, 'AVALOKITA A.C.', 'OTRA', 'PROMOCIÓN DEL ARTE Y LA CULTURA', 'LOAM850618VE9', 'MORELOS', 'CUERNAVACA', 'NO', 'GALEANA NO. 6-310 CUERNAVACA CENTRO, CUERNAVACA', '62000', 'https://avalokita.mx/', ''),
+(26, 'ALTERNARE AC', 'MEDIO AMBIENTE', '', 'ALT980225KD3', 'CIUDAD DE MÉXICO', 'BENITO JUÁREZ', 'NO', 'CARAVAGGIO 21 COLONIA NONOALCO MIXCOAC BENITO JUÁREZ', '3700', 'https://www.alternare.org/', ''),
+(27, 'IXIM AC', 'MEDIO AMBIENTE', '', 'IXI0012059N1', 'CIUDAD DE MÉXICO', 'ÁLVARO OBREGÓN', 'NO', 'MIGUEL ANGEL DE QUEVEDO 24, INT, 205, EX HACIENDA DE GUADALUPE CHIMALISTAC,ALC. ÁLVARO OBREGÓN, CIUD', '1050', 'https://www.iximac.org/', ''),
+(28, 'SIN FRONTERAS IAP', 'ASISTENCIA SOCIAL', '', 'SFI9601302Y8', 'CIUDAD DE MÉXICO', 'ÁLVARO OBREGÓN', 'NO', 'CARLOS DOLCI 96ALFONSO XIII', '1460', 'https://sinfronteras.org.mx/', ''),
+(29, 'JÓVENES CONSTRUCTORES DE LA COMUNIDAD A.C.', 'DESARROLLO SOCIAL', '', 'JCC060621UR2', 'CIUDAD DE MÉXICO', 'ÁLVARO OBREGÓN', 'NO', 'MINA PROVIDENCIA 17, COL. LOMAS DE SANTO DOMINGO', '1100', 'https://www.jovenesconstructores.org', ''),
+(30, 'PUERTA ABIERTA I.A.P.', 'EDUCACIÓN', '', 'PAB0409304Q8', 'QUERÉTARO', 'SANTIAGO DE QUERÉTARO ', 'NO', 'AV. SENDA ETERNA 224, MILENIO 3RA SECC', '76060', 'https://puerta-abierta.org/', ''),
+(31, 'PROEMPLEO D.F.', 'EDUCACIÓN', '', 'FPE950103928', 'CIUDAD DE MÉXICO', 'MIGUEL HIDALGO', 'NO', 'CALLE HERSCHEL 131, ANZURES, ', '11590', 'http://proempleo.org.mx/inicio/', ''),
+(32, 'DIGNIDAD Y JUSTICIA EN EL CAMINO AC', 'DERECHOS HUMANOS', '', 'DJC0907159CA', 'JALISCO', 'GUADALAJARA', 'NO', 'CALDERÓN DE LA BARCA 468A, BARRERA', '44150', 'https://fm4pasolibre.org/', ''),
+(33, 'TOYOTA FINANCIAL SERVICES MÉXICO (VERIFICAR)', 'OTRA', 'SERVICIOS FINANCIEROS Y CREDITICIOS PARA AUTOMÓVIL', 'TFS011012M18', 'CIUDAD DE MÉXICO', 'CUAJIMALPA DE MORELOS', 'NO', 'PASEO DE LOS TAMARINDOS 400-B PISO 4, COL. BOSQUES DE LAS LOMAS', '5120', 'https://toyotacredito.com.mx/', ''),
+(34, 'FUNDACION ADO AC', 'OTRA', 'DESARROLLO SOCIAL DE MUJERES ', 'FAD0603281D7', 'CIUDAD DE MÉXICO', 'VENUSTIANO CARRANZA', 'NO', 'CALZADA IGNACIO ZARAGOZA NO. 200 INT: EDIF. B PISO 2, COL. SIETE DE JULIO', '15390', 'https://www.fundacionado.org/', ''),
+(35, 'PROMOTORA SOCIAL MEXICO AC ', 'DESARROLLO SOCIAL', '', 'PSM980909CT4', 'CIUDAD DE MÉXICO', 'MIGUEL HIDALGO', 'NO', ' AV. DE LOS ALPES NO. 220, COL. LOMAS DE CHAPULTEPEC V SECCION', '11000', 'https://www.fundacionado.org/', ''),
+(36, 'CONSTRUYENDO ESPERANZAS AC', 'DESARROLLO COMUNITARIO', '', 'FME930525J6A,', 'MORELOS', 'MINERAL DE LA REFORMA', 'NO', 'DURAZNOS #119, FRACCIONAMIENTO LAS PERAS', '42184', 'https://www.construyendo.org.mx/', ''),
+(37, 'NUTRE A UN NIÑO AC', 'DESARROLLO SOCIAL', '', 'FME930525J6A.', 'CIUDAD DE MÉXICO', 'CUAJIMALPA', 'NO', 'AHUEHUETES 100-204 COL. SAN JOSÉ DE LOS CEDROS', '5200', 'https://www.nutreaunnino.org.mx/', ''),
+(38, 'IMAGINALGCO. LABORATORIO DE IMAGINACIÓN Y ACCIÓN SOCIAL AC', 'DESARROLLO COMUNITARIO', '', 'LIA170615E86 ', 'ESTADO DE MÉXICO', 'MALINALCO', 'NO', 'ROSAS BLANCAS S/N, SAN GUILLERMO, MALINALCO, C.P. 52440. ESTADO DE MEXICO', '52440', 'https://www.imaginalco.org/', ''),
+(39, 'ECOPIL ARTE CREA CONCIENCIA AC', 'MEDIO AMBIENTE', '', 'EAC1208295N8', 'ESTADO DE MÉXICO', 'APAXCO', 'NO', 'ADOLFO LÓPEZ MATEOS, ARBOLEDAS', '55667', 'https://www.ecopil.org/', ''),
+(40, 'FUNDACION COMUNITARIA MALINALCO AC', 'DESARROLLO COMUNITARIO', '', 'FCM0706283A1', 'ESTADO DE MÉXICO', 'MALINALCO', 'NO', 'INSURGENTES ESQ. CON MORELOS S/N, BARRIO SANTA MARÍA', '52440', 'https://fundacioncomunitariamalinalco.org/', ''),
+(41, 'APAC IAP ASOCIACION PRO PERSONAS CON PARALISIS CER', 'OTRA', 'DISCAPACIDAD ', 'AIA900517IM3', 'CIUDAD DE MÉXICO', 'CUAUHTÉMOC', 'NO', 'DR. FERNANDO ZÁRRAGA 27, COL. DOCTORES', '6720', 'https://apac.mx/', ''),
+(42, 'SARAR CAPACITACION AC', 'AGUA, SANEAMIENTO E HIGIENE', '', 'SCA840625MG2', 'MORELOS', 'TEPOZTLÁN', 'NO', 'CARRETERA FEDERAL TEPOZTLÁN- YAUTEPEC KM 3.5 SANTIAGO TEPETLAPA', '62520', 'https://www.sarar-t.org/index.php/contacto', ''),
+(43, 'UN GRANITO DE ARENA, A. C', 'ASISTENCIA SOCIAL', '', 'UGA970421TM3', 'CIUDAD DE MÉXICO', 'TLALPAN', 'NO', 'INSURGENTES SUR, 3956', '14000', 's/d', ''),
+(44, 'PROYECTO CRISAL AC', 'ASISTENCIA SOCIAL', '', 'FME930525J6A', 'YUCATÁN', 'MÉRIDA', 'NO', 'CALLE 29, NO. 192 X 12 Y 14, COL. GARCÍA GINERES', '97070', 'NO TIENE', ''),
+(45, 'FUNDACIÓN CON LOS NIÑOS Y FAMILIAS DEL CAMPO I.A.P', 'EDUCACIÓN', '', 'FNF970407G40', 'JALISCO', 'ESTIPAC', 'NO', 'CRES ESTIPAC, LA PAZ 8, COL.  JUAN GIL PRECIADO, JALISCO.  ', '45740', 'https://cresestipac.edu.mx/', ''),
+(46, 'COLECTIVO Y JUB TOMATE, A.C.', 'OTRA', 'DESARROLLO URBANO', 'CJT1607186G0', 'PUEBLA', '(EDITAR)', 'NO', '(EDITAR)', '0', 'https://colectivotomate.org', ''),
+(47, 'LAZOS I.A.P.', 'EDUCACIÓN', '', 'APL970131TQ5', 'CIUDAD DE MÉXICO', 'MIGUEL HIDALGO', 'NO', 'COPÉRNICO 51, COLONIA ANZURES', '11590', 'https://www.lazos.org.mx/', ''),
+(48, 'FUNDACIÓN CASA ALIANZA MEXICO IAP', 'DERECHOS HUMANOS', '', 'FCA880907JA0', 'CIUDAD DE MÉXICO', 'CUAUHTEMOC', 'NO', 'BAJA CALIFORNIA 196 404 ', '6760', 'https://casa-alianzamexico.org/', ''),
+(49, 'NUHUSEHE EDUCACION Y DESARROLLO AC', 'DESARROLLO COMUNITARIO', '', 'NED030821EN6', 'HIDALGO', 'CARDONAL', 'NO', 'IGNACIO ZARAGOZA 2 CENTROSANTUARIO', '42370', 'https://www.nuhusehe.org/', ''),
+(50, 'FUNDACION PROMOVER A,C.', 'DESARROLLO SOCIAL', '', 'FPR17082219DF', 'NUEVO LEÓN', 'SAN PEDRO GARZA GARCÍA', 'NO', 'RICARDO ZARGAIN ZOZAYA 333, SAN PEDRO GARZA GARCÍA, NUEVO LEÓN', '66267', 'www.promover.org.mx', ''),
+(51, 'FONDO OAXAQUEÑO PARA LA CONSERVACION DE LA NATURALEZA A.C.', 'MEDIO AMBIENTE', '', 'CNO171215KP4', 'OAXACA', 'SAN PEDRO MIXTEPEC', 'NO', 'PORVENIR 119, FRACC. COSTA CHICA,  SAN PEDRO MIXTEPEC,', '71984', 'WWW.FONDOOAX.ORG', ''),
+(52, 'PURE EARTH (INSTITUTO BLACKSMITH MÉXICO) A.C.', 'DESARROLLO COMUNITARIO', '', 'IBM150114MP0', 'CIUDAD DE MÉXICO', 'COYOACAN', 'NO', 'JURISPRUDENCIA 13, COPILCO UNIVERSIDAD, COYOACAN, C.P. 04360  OPERATIVO: CÓRDOBA 234, ROMA NORTE, CU', '4360', 'WWW.BARROAPROBADO.ORG', ''),
+(53, 'FUNDACION CULTURAL HIEDRA DE NABITO, A.C.', 'DESARROLLO SOCIAL', '', 'FCH180530AY7', 'CIUDAD DE MÉXICO', 'XOCHIMILCO', 'NO', 'GLADIOLAS 4, SAN FELIPE', '16770', 'N/A', ''),
+(54, 'PRO AYUDA A LA MUJER ORIGEN A.C.', 'DESARROLLO SOCIAL', '', 'PAM990907AP1', 'CIUDAD DE MÉXICO', 'MIGUEL HIDALGO', 'NO', 'JUAN O´DONOJÚ 221, LOMAS DE VIRREYES', '11000', 'WWW.ORIGENAC.ORG', ''),
+(55, 'SEDAC, SERVICIO, EDUCACIÓN Y DESARROLLO A LA COMUN', 'DESARROLLO SOCIAL', '', 'SED920306LS2 ', 'CIUDAD DE MÉXICO', 'LA MAGDALENA CONTRERAS', 'NO', 'OCOTEPEC 26, SAN JERÓNIMO ACULCO', '10400', 'WWW.SEDAC.ORG.MX', ''),
+(56, 'UNIDOS DISTRIBUIMOS Y TRANSFORMAMOS I.A.P.', 'ASISTENCIA SOCIAL', '', 'UDT160405QK0', 'CIUDAD DE MÉXICO', 'COYOACAN', 'NO', 'CDA. MONTSERRAT18 INT, 17, LOS REYES COYOACAN', '4330', 'WWW.123IAP.ORG.MX', ''),
+(57, 'FUNDACION INCLUYEME', 'DESARROLLO SOCIAL', '', 'FIN081001EZ9', 'ESTADO DE MÉXICO', 'NAUCALPAN DE JUÁREZ', 'NO', 'FUENTE DE VIRGILIO 22, C-04, LOMAS DE TECAMACHALCO, SECCIÓN FUENTES', '53950', 'WWW.INCLYEME.ORG', ''),
+(58, 'GRUPO ALTÍA I.A.P', 'ASISTENCIA SOCIAL', '', 'GAI911030FM3,', 'CIUDAD DE MÉXICO', 'IZTACALCO', 'NO', 'FRANCISCO I. MADERO 102 -A, SAN MIGUEL IZTACALCO', '8650', 'WWW.GRUPOALTIAIAP.ORG', ''),
+(59, 'CRUZ ROJA MEXICANA, DELEGACIÓN ESTATAL CHIAPAS', 'ASISTENCIA SOCIAL', '', 'CRM6702109K6.', 'CHIAPAS', 'TUXTLA GUTIÉRREZ', 'NO', 'LIBRAMIENTO NORTE ORIENTE 451, COLONIA ALABANIA BAJA', '29010', 'N/A', ''),
+(60, 'FAI, FUNDACION DE APOYO INFANTIL QUINTANA ROO, I.A.P.', 'DESARROLLO SOCIAL', '', 'FAI050209M81', 'QUINTANA ROO', 'BENITO JUÁREZ', 'NO', 'DZIUCHE 16, FRACCIONAMIENTO PALMICA', '77533', 'WWW.SAVETHECHILDREN.MX', ''),
+(61, 'CENYELIZTLI AC', 'OTRA', 'ATENCIÓN TERAPÉUTICA A NIÑAS, NIÑOS Y SUS FAMILIAS', 'CEN060424NS9', 'CIUDAD DE MÉXICO', 'BENITO JUÁREZ', 'NO', 'CALLE DE EMPRESA 136, EXTREMADURA INSURGENTES, CIUDAD DE MÉXICO, CDMX', '3740', 'https://www.cenyeliztli.org/', ''),
+(62, 'SOSAC, CONSTRUYENDO UNA SOCIEDAD SOSTENIBLE A.C.', 'MEDIO AMBIENTE', '', 'CUS150522NR7', 'NUEVO LEÓN', 'MONTERREY', 'NO', 'NIZA 3113 , NARVARTE', '64830', 'WWW.SOSAC.ORG', ''),
+(63, 'PROYECTO ROBERTO ALONSO ESPINOZA, FUNDACION AMPARO I.A.P.', 'ASISTENCIA SOCIAL', '', 'FAM880510MV6', 'PUEBLA', 'ZACATLAN DE LAS MANZANAS', 'NO', 'SAN JOSÉ COACUILA, S/N, CENTRO DE LA POBLACION', '73645', 'HTTPS://WWW.PROYECTOROBERTO.ORG.MX/', ''),
+(64, 'CO CREANDO LA INNOVACION Y SUSTENTABILIDAD SOCIAL ', 'OTRA', 'EMPRENDIMIENTO ', 'CIS160414170', 'CIUDAD DE MÉXICO', 'ALCALDÍA ÁLVARO OBREGÓN', 'NO', 'FRESNOS 34-101, COL. SAN CLEMENTE SUR, ', '1740', 'hola@yococreo.org', ''),
+(65, 'SIKANDA, SOLIDARIDAD INTERNACIONAL KANDA, A.C.', 'DESARROLLO SOCIAL', '', 'SIK090903JZ2 ', 'OAXACA', 'OAXACA DE JUÁREZ', 'NO', 'PRIVADA BARRIO NUEVO 117, LOMAS DE LA CASCADA', '68040', 'WWW.SIKANDA.ORG/ES/', ''),
+(66, 'GECI. GRUPO DE ECOLOGÍA Y CONSERVACION DE ISLAS, A.C.', 'MEDIO AMBIENTE', '', 'GEC981007RWA', 'BAJA CALIFORNIA', 'ENSENADA', 'NO', 'AVENIDA MOSCTEZUMA 836, ZONA CENTRO', '22800', 'WWW.ISLAS.ORG.MX', ''),
+(67, 'FUNDACIÓN ACTIVA A.C', 'ASISTENCIA SOCIAL', 'EMPRENDIMIENTO', 'FAC970815KR4 ', 'CIUDAD DE MÉXICO', 'CUAJIMALPA DE MORELOS ', 'NO', 'AV. LOMA DE LA PALMA NO. 200, LOMAS DE VISTA HERMOSA,', '5100', 'https://activa.org.mx/', ''),
+(68, 'FUNDACIÓN MITZ, A.C.', 'ASISTENCIA SOCIAL', '', 'FMI100526NPA ', 'CIUDAD DE MÉXICO', 'MIGUEL HIDALGO', 'NO', 'MADEREROS #1 COL LOMAS ALTAS', '11950', 'https://www.mitz.org.mx', ''),
+(69, 'FAMBC. FUNDACION DE ARTES MUSICALES DE BAJA CALIFORNIA, A', 'DESARROLLO COMUNITARIO', '', 'FAM090618A63', 'BAJA CALIFORNIA', 'TIJUANA', 'NO', 'PERIMETRAL MZA 26 LOTE 3B1, TERCERA ETAPA DEL RIO', '22540', 'WWW.CAM-BC.ORG', ''),
+(70, 'LABICI, LABORATORIO D EINVENCION PARA LA CIUDAD, A', 'SEGURIDAD VIAL', '', 'LIC1709182N6', 'BAJA CALIFORNIA', 'MEXICALI', 'NO', 'AV. ALVARO OBREGÓN 623 INT. 3, PRIMERA SECCIÓN', '21100', 'WWW.LABICI.ORG', ''),
+(71, 'MOJA, MOVIMIENTO DE JÓVENES POR EL AGUA, A.C.', 'MEDIO AMBIENTE', '', 'MJA121025D6A', 'CIUDAD DE MÉXICO', 'XOCHIMILCO', 'NO', 'VICENTE GUERRERO 5, SAN GREGORIO ATLAPULCO', '16600', 'WWW.MOJA.ONG', ''),
+(72, 'ENLACE CIUDADANO DE MUJERES INDIGENAS IN YOLOTL SA', 'DESARROLLO COMUNITARIO', '', 'ECM100626SH9', 'HIDALGO', 'ACAXOCHITLÁN', 'NO', 'DOMICIIO CONOCIDO BARRIO TLATEMPA, SANTA ANA TZACUALA', '43720', 'WWW.ENCIMUIN.COM', ''),
+(73, 'MANOS QUE CONSTRUYEN OAXACA, A.C.', 'DESARROLLO COMUNITARIO', '', 'MQR1803206HA', 'OAXACA', 'ASUNCIÓN IXTALTEPEC', 'NO', '20 DE NOVIEMBRE456, BIS HJX', '70140', 'WWW.UNAMANOPARAOAX.ORG', ''),
+(74, 'FUNDACION DE APOYO A LA JUVENTUD IAP', 'ASISTENCIA SOCIAL', '', 'FAJ980826728', 'CIUDAD DE MÉXICO', 'CUAUHTÉMOC', 'NO', 'AVENIDA MAZATLAN 33, COLONIA CONDESA,', '6721', 'https://apoyoalajuventud.org', ''),
+(75, 'FONDATION FORGE AC', 'EDUCACIÓN', '', 'FFO140404QH4', 'CIUDAD DE MÉXICO', 'BENITO JUÁREZ', 'NO', 'SACRAMENTO 210, INSURGENTES SAN BORJA', '3100', 'https://fondationforge.org', ''),
+(76, 'FUNDACIÓN SAPIENCIA, A.C.', 'ASISTENCIA SOCIAL', '', 'AAB030405V13 ', 'MORELOS', ' MAZATEPEC', 'NO', 'PRIV. EL BUEN SEÑOR NO. 6 COL. EL FLORIDO', '0', 'https://fundacionsapiencia.com/', ''),
+(77, 'FUNDACIÓN MARÍA ANA MIER DE ESCANDÓN I.A.P.', 'SALUD', '', ' FMA181021Q26', 'CIUDAD DE MÉXICO', 'MIGUEL HIDALGO', 'NO', 'GAVIOTA 33 COLONIA TACUBAYA', '11870', 'https://hospitalescandon.org/', ''),
+(78, 'FONDO PARA LA PAZ IAP', 'DESARROLLO COMUNITARIO', '', 'FPI940225PB4', 'CIUDAD DE MÉXICO', 'MIGUEL HIDALGO', 'NO', 'PABLO SANTO 16, LOMAS ALTAS.', '11950', 'www.fondoparalapaz.org', ''),
+(79, 'PUENTE A LA SALUD COMUNITARIA AC', 'DESARROLLO COMUNITARIO', '', 'PSC0409157I8', 'OAXACA', 'OAXACA DE JUÁREZ', 'NO', 'MAGNOLIAS 109, REFORMA, OAXACA DE JUÁREZ', '68050', 'https://puentemexico.org', ''),
+(80, 'NIÑOS TOTONACOS AC', 'DESARROLLO COMUNITARIO', '', 'NTO941011IA0', 'PUEBLA', 'HUEHUETLA', 'NO', 'SALIDA A VICENTE GUERRERO SN, CENTRO', '73470', 'http://ninostotonacos.com.mx/', ''),
+(81, 'GRUPO ECOLÓGICO SIERRA GORDA IAP', '', '', 'GES890512T11', 'QUERÉTARO', 'JALPAN DE SERRA', 'NO', 'AV LA PRESA SN, BARRIO EL PANTEÓN', '76340', 'www.sierragorda.net', ''),
+(82, 'SANTO DESIERTO DEL CARMEN AC', 'DESARROLLO COMUNITARIO', '', 'SDC060804QZ7', 'CIUDAD DE MÉXICO', 'BENITO JUÁREZ', 'NO', 'CERES 36, CRÉDITO CONSTRUCTOR', '3940', 'www.santodesiertodelcarmen.org', ''),
+(83, 'AYUDA Y SOLIDARIDAD CON LAS NIÑAS DE LA CALLE IAP', 'ASISTENCIA SOCIAL', '', 'ASN930729MI7', 'CIUDAD DE MÉXICO', 'CUAUHTÉMOC', 'NO', 'POPLE 60, SANTA MARÍA INSURGENTES', '6430', 'https://ayuda.org.mx/', ''),
+(84, 'VERTICE QUERÉTARO AC', 'EDUCACIÓN', '', 'VQU160413KW9', 'QUERÉTARO', 'SANTIAGO DE QUERÉTARO', 'NO', 'RIO AYUTLA 43, BARRIO LA PIEDAD', '76150', 'https://fundacionverticeqro.org/', ''),
+(85, 'SOCIEDAD MEXICANA PRO DERECHOS DE LA MUJER AC', 'OTRA', 'DESARROLLO SOCIAL DE MUJERES', 'MPD901211UR0', 'CIUDAD DE MÉXICO', 'BENITO JUÁREZ', 'NO', 'FRAGONARD 84, SAN JUAN', '3730', 'https://semillas.org.mx/', ''),
+(86, 'COMEDOR SANTA MARÍA AC', 'ASISTENCIA SOCIAL', '', 'CSM971003MX9', 'CIUDAD DE MÉXICO', 'ÁLVARO OBREGÓN', 'NO', 'CILANTRO S/N, TLAPECHICO', '1239', 'https://comedorsantamaria.org.mx/', 'e.estrada@fundacionmerced.org.mx'),
+(87, 'NUTRE A UN NIÑO AC', 'DESARROLLO SOCIAL', '', 'NUN020221EH6', 'CIUDAD DE MÉXICO', 'CUAJIMALPA', 'NO', 'AHUEHUETES 100 INTERIOR 203', '5240', 'https://www.nutreaunnino.org.mx/', 'e.estrada@fundacionmerced.org.mx'),
+(88, 'MUNDO UNITATIS', 'ASISTENCIA SOCIAL', '', 'MUN021018KH4', 'CHIAPAS', 'SAN CRISTÓBAL DE LAS CASAS', 'NO', 'DR. PACHECO LUNA 15, BARRIO DE SAN DIEGO', '29270', 'N/A', 'e.estrada@fundacionmerced.org.mx'),
+(89, 'PATRONATO CLUB DE NIÑOS Y NIÑAS DE SAN LUIS A.C.', 'DESARROLLO SOCIAL', '', 'PCN100513US2', 'SAN LUIS POTOSÍ', 'SOLEDAD DE GRACIANO SÁNCHEZ ', 'NO', 'JULIO R. CÓRDOVA NO. 99, LA VIRGEN', '78430', 'https://www.clubdeninosyninaslp.org/', 'e.estrada@fundacionmerced.org.mx'),
+(90, 'COMUNIDAD DE SINAÍ, IAP', 'OTRA', 'PREVENCIÓN Y ATENCIÓN A PERSONAS CON ADICCIONES', 'CSI010131FK1', 'SINALOA', 'CULIACÁN', 'NO', ' CARRETERA EL DORADO- LAS ARENITAS KM 2.5 EL DORADO', '80450', 'https://comunidadsinai.org.mx/', 'e.estrada@fundacionmerced.org.mx'),
+(91, 'FUNDACIÓN ANTONIO HAGHENBECK Y DE LA LAMA, I.A.P.', 'OTRA', 'PROMOCIÓN DEL ARTE Y LA CULTURA', 'FAH840221L34', 'CIUDAD DE MÉXICO', 'CUAUHTÉMOC', 'NO', ' GANTE 8-PISO 4, CENTRO HISTÓRICO', '6000', 'http://www.museoshaghenbeck.mx/', 'e.estrada@fundacionmerced.org.mx'),
+(92, 'FUNDACIÓN NACIONAL CENTRO INTERACTIVO ÁMBAR AC', 'OTRA', 'PREVENCIÓN Y ATENCIÓN A PERSONAS CON ADICCIONES', 'FNC111007453', 'BAJA CALIFORNIA', 'TIJUANA', 'NO', 'VÍA RÁPIDA OTE. 3, RÍO TIJUANA 3RA ETAPA', '22226', 'https://ambarcentrointeractivo.org/', 'e.estrada@fundacionmerced.org.mx'),
+(93, 'INSTITUTO MIA (MUSEO INTERACTIVO SOBRE LAS ADICCIONES)', 'OTRA', 'PREVENCIÓN Y ATENCIÓN A PERSONAS CON ADICCIONES', 'IMI100427H61', 'SINALOA', 'CULIACÁN', 'NO', 'AVE. RUPERTO L. PALIZA, 484 NTE., ÁNGEL FLORES,, COLONIA CENTRO', '80000', 'http://mia.culiacan.gob.mx/', 'e.estrada@fundacionmerced.org.mx'),
+(94, 'PROMOCIÓN Y ACCIÓN COMUNITARIA, I.A.P.', 'ASISTENCIA SOCIAL', '', 'PAC911028GZ6', 'CIUDAD DE MÉXICO', 'VENUSTIANO CARRANZA', 'NO', 'GRAL. L. BLANCO 32, REVOLUCIÓN', '15900', 'https://www.pacoiap.org/', 'e.estrada@fundacionmerced.org.mx'),
+(95, 'ESPERANZA DE LUZ IAP', 'OTRA', 'DISCAPACIDAD VISUAL', 'ELU130903RIA', 'SINALOA', 'LOS MOCHIS', 'NO', 'RODOLGO R LOAIZA 702, LOCAL FATIMA', '81220', 'http://www.esperanzadeliziap.com.mx/', 's.palestino@fundacionmerced.org.mx'),
+(96, 'UNIÓN PROVIDA AC', 'SALUD', '', 'UPV121001LU8', 'TAMAULIPAS', 'TAMPICO', 'NO', 'PRIVADA NANCHITAL 97, PETROLERA ', '89110', 'www.unionprovida.org', 's.palestino@fundacionmerced.org.mx'),
+(97, 'GRUPO ENCENDAMOS UNA LUZ AC', 'OTRA', 'DISCAPACIDAD VISUAL', 'GEL8710229A6', 'COAHUILA', 'TORREÓN', 'NO', 'DURAZNOS 248, LARDON DURAZNOS', '27200', 'http://www.grupoencendamosunaluz.com/', 's.palestino@fundacionmerced.org.mx'),
+(98, 'CENTRO FLAYMAR AC', 'EDUCACIÓN', '', 'CFL840828JL5', 'CIUDAD DE MÉXICO', 'AZCAPOTZALCO', 'NO', 'CALZADA AZCAPOTZALCO LA VILLA, SANTO TOMAS   ', '2040', 'https://www.centroflaymar.net/', 's.palestino@fundacionmerced.org.mx'),
+(99, 'HOGAR MARILLAC AC', 'OTRA', 'ADULTOS MAYORES', 'HMA7012178E5', 'ESTADO DE MÉXICO', 'NAUCALPAN', 'NO', 'NORTEAMERICA, 150, LAS AMERICAS', '53040', 'https://www.hogarmarillac.org.mx/', 's.palestino@fundacionmerced.org.mx'),
+(100, 'FUNDACION DE OBRAS SOCIALES DE SAN VICENTE IAP', 'OTRA', 'ADULTOS MAYORES', 'FOS921022PR3', 'CIUDAD DE MÉXICO', 'COYOACAN', 'NO', 'PRIMERA, CDA. PEDREGAL 31', '4000', 'https://fossvi.org.mx/', 's.palestino@fundacionmerced.org.mx'),
+(101, 'HOSPITALITO GUSTAVO GUERRERO AC', 'SALUD', '', 'HGG670728PW5', 'CIUDAD DE MÉXICO', 'VENUSTIANO CARRANZA ', 'NO', 'HERREROS 68, MORELOS', '15940', 'https://www.hospitalito.com.mx/', 's.palestino@fundacionmerced.org.mx'),
+(102, 'YOUTHBUILD MEXICO AC', 'EDUCACIÓN', '', 'YIM1312204D0', 'CIUDAD DE MÉXICO', 'COYOACAN', 'NO', 'MIGUEL G KRAMER 22,  ATLANTIDA', '4370', 'https://youthbuildmexico.org/', 's.palestino@fundacionmerced.org.mx'),
+(103, 'FUNDACION ANGELES DEL CORTEZ AC', 'OTRA', 'ADULTOS MAYORES', 'FAC151021II5', 'BAJA CALIFORNIA SUR', 'LA PAZ', 'NO', 'LANGOSTA 126, BALANDRA', '23075', 'NO TIENE', 's.palestino@fundacionmerced.org.mx'),
+(104, '1,2,3 POR MI Y PARQUE SACRAMENTO', 'DESARROLLO COMUNITARIO', '', 'MPS120222G22', 'CHIHUAHUA', 'CHIHUAHUA', 'NO', 'RIO AMUR 23701, RIBERAS DEL SACRAMENTO I Y II', '31184', 'NO TIENE', 's.palestino@fundacionmerced.org.mx'),
+(105, 'SUEÑOS Y ESPERANZAS AC', 'ASISTENCIA SOCIAL', '', 'SES051129CZ5', 'JALISCO', 'ZAPOPAN', 'SÍ', 'ROSARIO CASTELLANOS 6178, PASEOS UNIVERSIDAD ', '45016', 'https://www.suenosyesperanzas.org/', 's.palestino@fundacionmerced.org.mx'),
+(106, 'ASOCIACION MEXICANA DE DIABETES EN NUEVO LEON', 'SALUD', '', 'AMD890804C71', 'NUEVO LEÓN', 'MONTEREEY', 'NO', 'MODESTO ARREOLA PONIENTE, 1040, MONTERREY CENTRO', '64000', 'https://fmdiabetes.org/fmd/nuevo-leon/', 's.palestino@fundacionmerced.org.mx'),
+(107, 'ASOCIACION ORIZABA PROPONE AC', 'SALUD', '', 'AOP0005095JA', 'VERACRUZ', 'ORIZABA', 'NO', 'NORTE 40, AGRICOLA MOCTEZUMA', '94345', 'NO TIENE', 's.palestino@fundacionmerced.org.mx'),
+(108, 'PRO-ONCAVI AC', 'SALUD', '', 'PRO120207224', 'BAJA CALIFORNIA', 'TIJUANA', 'NO', 'PASEO VILLAMAR 10, VILLAMAR', '22516', 'https://prooncaviac.org/', 's.palestino@fundacionmerced.org.mx'),
+(109, 'CASA DE LAS MERCEDES IAP', 'ASISTENCIA SOCIAL', '', 'CME010813BJ4', 'CIUDAD DE MÉXICO', 'CUAUTÉMOC', 'NO', 'MIGUEL SCHULTZ NO. 18,  SAN RAFAEL', '6470', 'NO TIENE', 's.palestino@fundacionmerced.org.mx'),
+(110, 'ASHOKA MÉXICO, CENTROAMÉRICA Y EL CARIBE', 'OTRA', 'AGENTES DE CAMBIO', 'SIN DATO XXXX', 'CIUDAD DE MÉXICO', 'CUAUHTÉMOC', 'NO', 'RÍO HUDSON 25', '6500', 'https://www.ashoka.org/el/country/mexico', 's.palestino@fundacionmerced.org.mx'),
+(111, 'COMUNIDAD DE DESARROLLO INTEGRAL COPILCO AC', 'DESARROLLO COMUNITARIO', 'JUVENTUDES', 'CDI900625LF0', 'CIUDAD DE MÉXICO', 'COYOACAN', 'NO', 'DELFÍN MADRIGAL, PEDEGRAL SANTO DOMINGO', '4369', 'https://www.codic.com.mx/', 's.palestino@fundacionmerced.org.mx'),
+(112, 'ASOCIACIÓN PARA LEER, ESCUCHAR, ESCRIBIR Y RECREAR, A.C. ', 'EDUCACIÓN', '', 'ALE831107FQ8 ', 'CIUDAD DE MÉXICO', 'BENITO JUÁREZ', 'NO', 'GOYA 54, ', '3920', 'https://www.ibbymexico.org.mx/', 's.palestino@fundacionmerced.org.mx'),
+(113, 'COMUNIDAD AGROPECUARIA INDUSTRIAL EAS AC', 'DESARROLLO COMUNITARIO', '', 'COMUNIDAD AG', 'GUANAJUATO', 'APASEO EL GRANDE', 'NO', 'AUTOPISTA MÉXICO-QUERÉTARO KM 19.5', '38180', 'NO TIENE', 's.palestino@fundacionmerced.org.mx'),
+(114, 'FUNDACIÓN TARAHUMARA JOSÉ A LLAGUNO ABP', 'DESARROLLO COMUNITARIO', '', 'FTJ9211183T0', 'NUEVO LEÓN', 'MONTERREY', 'NO', '2 DE ABRIL 1985', '64700', 'https://www.tarahumara.org/portal/', 's.palestino@fundacionmerced.org.mx'),
+(115, 'FUNDACIÓN DE AGENTES ADUANALES PARA LA ASISTENCIA INFANTIL', 'DERECHOS HUMANOS', '', 'FA A 040609S2', 'CIUDAD DE MÉXICO', 'CUAUHTÉMOC', 'NO', 'LIV ERPOOL NO. 88, COL. JUA REZ , DEL CUA UHTEMOC, CIUDA D DE MEXICO', '6600', 'http://fundacioncaaarem.org.mx/', 'r.trejo@fundacionmerced.org.mx'),
+(116, 'FUNDA CION KA LUZ, A .C.', 'SEGURIDAD VIAL', '', 'FKA 030120I46', 'CIUDAD DE MÉXICO', 'CUAUHTÉMOC', 'NO', ' AV ENIDA  PASEO DE LA  REFORMA  NO. 365, ', '650', 'https://www.fundacionkaluz.org/', 'r.trejo@fundacionmerced.org.mx'),
+(117, 'CENTRO COMUNITARIO SANTA FE AC', 'DESARROLLO COMUNITARIO', '', 'CCS051019JJ2', 'CIUDAD DE MÉXICO', 'ALCALDÍA ÁLVARO OBREGÓN', 'NO', 'AV. DÍAZ ORDAZ S/N COL. JALALPA EL GRANDE ', '1377', 'https://www.ccsf.org.mx/', 'r.trejo@fundacionmerced.org.mx'),
+(118, 'COMUNIDAD Y AMBIENTE ADONAI AC', 'DESARROLLO COMUNITARIO', '', 'CAA100220M2A', 'OAXACA', 'OAXACA DE JUÁREZ', 'NO', '1RO. DE MAYO, MÁRTIRES DE CANANEA #6-MANZANA \"A, 7A ETAPA, INFONAVIT, OAXACA DE JUÁREZ, OAX.', '68020', 'https://www.comunaadonai.org/', 'r.trejo@fundacionmerced.org.mx'),
+(119, 'FUNDACION CIRUJANOS UNIDOS REALIZANDO ALTRUISMO AC', 'SALUD', '', 'FCU120309MJ1', 'ESTADO DE MÉXICO', 'HUIXQUILUCAN', 'NO', 'VIALIDAD DE LA BARRANCA CONSULTORIO 175, MANZANA 2, LOTE 1, COL. VALLE DE LAS PALMAS', '52787', 'https://www.fundacioncura.org/', 'r.trejo@fundacionmerced.org.mx'),
+(120, 'HOGARES PROVIDENCIA IAP', 'ASISTENCIA SOCIAL', '', 'HPR791129PV8', 'CIUDAD DE MÉXICO', ' BENITO JUÁREZ ', 'NO', 'MAYORAZGO DE LA HIGUERA NO. 8, COL. XOCO', '3330', 'https://hogaresprovidencia.org.mx/', 'r.trejo@fundacionmerced.org.mx'),
+(121, 'HOPE WORLDWIDE MEXICO I A P SIN TIPO DE SOCIEDAD', 'SALUD', '', 'HWM970812IK2', 'CIUDAD DE MÉXICO', 'IZTAPALAPA ', 'NO', 'ALBERTO MANUEL GONZÁLEZ 56, CONSTITUCIÓN DE 1917', '9260', 'https://www.hopemexico.org/', 'r.trejo@fundacionmerced.org.mx'),
+(122, 'LLUVIA PARA TODOS AC', 'MEDIO AMBIENTE', '', 'LTO100729KP7', 'CIUDAD DE MÉXICO', 'CUAUHTÉMOC', 'NO', 'ZACATECAS NO. 142-A COLONIA ROMA', '6700', 'https://islaurbana.org/', 'r.trejo@fundacionmerced.org.mx'),
+(123, 'OPERACION BENDICION MEXICO AC', 'DESARROLLO COMUNITARIO', '', 'OBM080725N89', 'CIUDAD DE MÉXICO', 'MIGUEL HIDALGO', 'NO', 'GOBERNADOR MELCHOR MUZQUIZ 15, SAN MIGUEL CHAPULTEPEC I SECC, MIGUEL HIDALGO', '11850', 'https://obmex.org/', 'r.trejo@fundacionmerced.org.mx'),
+(124, 'ASOCIACION DE ASISTENCIA PRIVADA OSE ,ORGANIZACION DE SERVICIO A ENFERMOS,INSTITUCION DE ASISTENCIA PRIVADA SINTIPO DE SOCIEDAD', 'SALUD', '', 'AAP6208224A5', 'CIUDAD DE MÉXICO', 'SAN MIGUEL CHAPULTEPEC', 'NO', 'GOB. TIBURCIO MONTIEL 81, SAN MIGUEL CHAPULTEPEC, ', '11850', 'https://ose.federacionfemenina.org/', 'r.trejo@fundacionmerced.org.mx'),
+(125, 'VISION Y ALMA COMUNITARIA AC', 'ASISTENCIA SOCIAL', '', 'VAC130510CX9', 'OAXACA', 'SAN PABLO ETLA', 'NO', 'CIRCUITO EX HACIENDA DEL ROSARIO CONDOMINIO 19 CASA 55 FRACCIONAMIENTO LA ESMERALDA, ', '68258', 'https://www.vyac.org/', 'r.trejo@fundacionmerced.org.mx'),
+(126, 'REINTEGRA ', 'DESARROLLO COMUNITARIO', '', 'CPC860619PC1', 'CIUDAD DE MÉXICO', 'CUAUHTEMOC', 'NO', 'HÉROES 59, ENTRE PEDRO MORENO Y VIOLETA, GUERRERO,', '6300', 'https://reintegra.org.mx/', 'k.vilchis@fundacionmerced.org.mx'),
+(127, 'FUNFAI. FUNDACION FAMILIAR INFANTIL A.C.', 'DESARROLLO COMUNITARIO', '', 'FFI890904SV4', 'CIUDAD DE MÉXICO', 'ALVARO OBREGON', 'NO', 'ALONSO CANO 71, ENTRE BENVENUTO CELLINI Y GIOTTO, ALFONSO XIII', '1460', 'www.funfai.org.mx', 'k.vilchis@fundacionmerced.org.mx'),
+(128, 'FUNDACION CECILIA A.C.', 'DESARROLLO SOCIAL', '', 'FCE171110JF8', 'MORELOS', 'TEMIXCO', 'NO', 'PLAZA DE LA GRUTA AZUL 3, BURGOS', '62584', 'https://WWW.FUNDACIONCECILIA,ORG/', 'k.vilchis@fundacionmerced.org.mx'),
+(129, 'INSPIRA. INSTITUTO PARA LA INTEGRIDAD RARÁMURI A.C.', 'DESARROLLO SOCIAL', '', 'FCE171110JF8.', 'CHIHUAHUA', 'GUADALUPE Y CALVO', 'NO', 'CONOCIDO, S/N, LOC. YERBITAS', '33496', 'https://inspiraac.org/', 'k.vilchis@fundacionmerced.org.mx'),
+(130, 'VIENTOS CULTURALES A.C.', 'DESARROLLO COMUNITARIO', '', 'VCU970905V89', 'CHIAPAS', 'TUXTLA GUTIÉRREZ', 'NO', 'PRIVADA COAHUILA, PROL. S/N, PLAN DE AYALA', '29020', 'HTTPS://VIENTOSCULTURALES.ORG/', 'k.vilchis@fundacionmerced.org.mx'),
+(131, 'PASO VERDE. PROYECTANDO UN AMBIENTE Y SOCIEDAD VERDE A.C.', 'MEDIO AMBIENTE', '', 'PUA1807184X8', 'CIUDAD DE MÉXICO', 'CUAUHTEMOC', 'NO', 'VICENTE BERISTAIN 63, VISTA ALEGRE', '6860', 'HTTPS://PASOVERDE.ORG', 'k.vilchis@fundacionmerced.org.mx'),
+(132, 'MOVAC. MOVIEMIENTO DE ACTIVACION CIUDADANA A.C.', 'SEGURIDAD VIAL', '', 'MAC110701DCA', 'NUEVO LEÓN', 'MONTERREY', 'NO', 'GUADALAJARA 920 B, MITRAS SUR', '64020', 'HTTP://MOVAC.MX/', 'k.vilchis@fundacionmerced.org.mx'),
+(133, 'FUNDACIÓN MEXICANA PARA LA SALUD A.C', 'SALUD', '', 'FMS8506228M3', 'CIUDAD DE MÉXICO', 'TLALPAN', 'NO', 'ANILLO PERIF. 4809, ARENAL TEPEPAN, TLALPAN,  CIUDAD DE MÉXICO, CDMX', '14610', 'https://funsalud.org.mx/', 'r.trejo@fundacionmerced.org.mx'),
+(134, 'FUNDACION TARAHUMARA JOSE A. LLAGUNO', 'ASISTENCIA SOCIAL', '', 'FTJ9211183T0.', 'NUEVO LEÓN', 'MONTERREY', 'NO', 'CALLE 2 DE ABRIL NÚMERO 1985 COLONIA ROMA', '64700', 'https://www.tarahumara.org ', 'd.hernandez@fundacionmerced.org.mx'),
+(135, 'FUNDACION SIERRA TARAHUMARA', 'ASISTENCIA SOCIAL', '', 'FST061107KQ2', 'CHIHUAHUA', 'GUACHOCHI', 'NO', 'CALLE CASCADA S/N', '33180', 'https://es-la.facebook.com/pages/category/Non', 'd.hernandez@fundacionmerced.org.mx'),
+(136, 'CARITAS DE CHIHUAHUA IBP', 'ASISTENCIA SOCIAL', '', 'CCI830921RN1', 'CHIHUAHUA', 'CHIHUAHUA', 'NO', 'MORELOS 405', '31000', 'http://www.caritaschihuahua.org/', 'd.hernandez@fundacionmerced.org.mx'),
+(137, 'BANCO DE ALIMENTOS DE HERMOSILLO IAP', 'ASISTENCIA SOCIAL', '', 'BAH9505108C3', 'SONORA', 'HERMOSILLO', 'NO', 'CALLE CABO SAN LUCAS NÚMERO 593 COLONIA FLORESTA VILLA ALMENDRAS', '83179', 'https://bahermosillo.org.mx', 'd.hernandez@fundacionmerced.org.mx');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `program`
+-- Estructura de tabla para la tabla `program`
 --
 
-DROP TABLE IF EXISTS `program`;
-CREATE TABLE IF NOT EXISTS `program` (
-  `id_program` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `program` (
+  `id_program` int(10) UNSIGNED NOT NULL,
   `program_code` varchar(45) NOT NULL,
   `program_name` varchar(100) NOT NULL,
-  `id_organization` int(10) UNSIGNED NOT NULL,
   `strategy_line` varchar(45) NOT NULL,
   `strategy_line2` varchar(45) NOT NULL,
-  `in_account` varchar(30) NOT NULL,
+  `in_account` varchar(45) NOT NULL,
   `status` varchar(30) NOT NULL,
-  `register` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_program`),
-  UNIQUE KEY `id_programa_UNIQUE` (`id_program`),
-  UNIQUE KEY `program_code` (`program_code`),
-  UNIQUE KEY `id_organization` (`id_organization`),
-  UNIQUE KEY `program_code_2` (`program_code`),
-  KEY `fk_program_organization1_idx` (`id_organization`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+  `register` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `program`
+-- Volcado de datos para la tabla `program`
 --
 
-INSERT INTO `program` (`id_program`, `program_code`, `program_name`, `id_organization`, `strategy_line`, `strategy_line2`, `in_account`, `status`, `register`) VALUES
-(1, '21FMI011', 'Rigor Institucional', 1, 'Fortalecimiento', 'No aplica', 'FMBANORTE8355', 'Activo', ''),
-(3, '12tst123', 'teest', 2, 'Formación', 'No aplica', 'FMBANORTE0384', 'Activo', '');
+INSERT INTO `program` (`id_program`, `program_code`, `program_name`, `strategy_line`, `strategy_line2`, `in_account`, `status`, `register`) VALUES
+(1, '19FINSTI', 'FONDO INSTITUCIONAL 2019', 'INVERSIÓN SOCIAL', 'FORTALECIMIENTO', 'FMBNMX9071', 'FINALIZADO', ''),
+(2, '20FINSTI', 'FONDO INSTITUCIONAL 2020', 'INVERSIÓN SOCIAL', 'FORTALECIMIENTO', 'FMBNMX9071', 'ACTIVO', ''),
+(3, '21FINSTI', 'FONDO INSTITUCIONAL 2021', 'INVERSIÓN SOCIAL', 'FORTALECIMIENTO', 'FMBNMX9071', 'ACTIVO', ''),
+(4, '17IDE001', 'IDEAS CONVOCATORIA 2017', 'INVERSIÓN SOCIAL', 'FORTALECIMIENTO', 'FMBNMX9071', 'FINALIZADO', ''),
+(5, '18IDE001', 'IDEAS CONVOCATORIA 2018', 'INVERSIÓN SOCIAL', 'FORTALECIMIENTO', 'FMBNMX9071', 'FINALIZADO', ''),
+(6, '19IDE001', 'IDEAS CONVOCATORIA 2019', 'INVERSIÓN SOCIAL', 'FORTALECIMIENTO', 'FMBNMX9071', 'ACTIVO', ''),
+(7, '19CMR002', 'CONSULTORIA ESPECIAL', 'FORTALECIMIENTO', 'NO APLICA', 'FMBNMX9071', 'ACTIVO', ''),
+(8, '19ASO004', 'CONSULTORIA ESPECIAL ASOME', 'FORTALECIMIENTO', 'NO APLICA', 'FMBNMX9071', 'ACTIVO', ''),
+(9, '19FLG005', 'CONSULTORIA ESPECIAL FLAG', 'FORTALECIMIENTO', 'NO APLICA', 'FMBNMX9071', 'ACTIVO', ''),
+(10, '19VID006', 'CONSULTORIA ESPECIAL MAS VIDA', 'FORTALECIMIENTO', 'NO APLICA', 'FMBNMX9071', 'ACTIVO', ''),
+(11, '19PEQ018', 'CONSULTORÍA ESPECIAL PEQUEÑOS CIENTÍFICOS', 'FORTALECIMIENTO', 'NO APLICA', 'FMBNMX9071', 'FINALIZADO', ''),
+(12, '19PEQ019', 'CONSULTORÍA ESPECIAL MEDICINA FETAL', 'FORTALECIMIENTO', 'NO APLICA', 'FMBNMX9071', 'FINALIZADO', ''),
+(13, '20GGI034', 'FORD-COVID 19 (COVID)', 'FORTALECIMIENTO', 'NO APLICA', 'FMBBVA6048', 'FINALIZADO', ''),
+(14, '21GRI010', 'ACOMPAÑAMIENTO FISCAL', 'FORTALECIMIENTO', 'NO APLICA', 'FMBANORTE8903', 'ACTIVO', ''),
+(15, '21GRI015', 'CONSULTORÍA MODELO DE INVERSIÓN SOCIAL', 'FORTALECIMIENTO', 'NO APLICA', 'FMBANORTE8903', 'FINALIZADO', ''),
+(16, '21MAR016', 'ASESORÍA EN LA ELABORACIÓN DE UN DIAGNÓSTICO', 'FORTALECIMIENTO', 'NO APLICA', 'FMBBVA6048', 'ACTIVO', ''),
+(17, '21GMX017', 'FORMACIÓN Y FORTALECIMIENTO DE INSTITUCIONES', 'FORTALECIMIENTO', 'NO APLICA', 'FMBBVA6048', 'ACTIVO', ''),
+(18, '21AVA024', 'CONSTITUCIÓN DE LA AC \"AVALOKITA\"', 'FORTALECIMIENTO', 'NO APLICA', 'FMBBVA6048', 'ACTIVO', ''),
+(19, '21GGI025', 'RESILIENCIA BIÓSFERA MARIPOSAS MONARCA CON AL', 'INVERSIÓN SOCIAL', 'NO APLICA', 'FMBNMX9071', 'ACTIVO', ''),
+(20, '21GGI026', 'PRODUCCIÓN CON ECOTECNOLOGÍAS CON IXIM', 'INVERSIÓN SOCIAL', 'NO APLICA', 'FMBNMX9071', 'ACTIVO', ''),
+(21, '18CRM010', 'FORTALECIMIENTO INSTITUCIONAL A CRUZ ROJA MEX', 'FORTALECIMIENTO', 'NO APLICA', 'FMBNMX9071', 'FINALIZADO', ''),
+(22, '18LAZ009', 'CONSULTORÍA ESPECIAL LAZOS', 'FORTALECIMIENTO', 'NO APLICA', 'FMBNMX9071', 'FINALIZADO', ''),
+(23, '20SAN024', 'ACOMPAÑAMIENTO CONVOCATORIA TRIANUAL', 'FORTALECIMIENTO', 'NO APLICA', 'FMBNMX9071', 'FINALIZADO', ''),
+(24, '21SAN012', 'ACOMPAÑAMIENTO CONVOCATORIA TRIANUAL', 'FORTALECIMIENTO', 'NO APLICA', 'FMSANT4991', 'ACTIVO', ''),
+(25, '19SAN008', 'ACOMPAÑAMIENTO CONVOCATORIA TRIANUAL SANTANDE', 'FORTALECIMIENTO', 'NO APLICA', 'FMSANT4991', 'FINALIZADO', ''),
+(26, '21FMI011', 'RIGOR INSTITUCIONAL', 'FORTALECIMIENTO', 'FORTALECIMIENTO', 'FMBBVA6048', 'ACTIVO', ''),
+(27, '20TMS010', 'CONDUCIENDO UN MEXICO MEJOR CON TOYOTA 2020', 'INVERSIÓN SOCIAL', 'NO APLICA', 'FMBANORTE8355', 'ACTIVO', ''),
+(28, '19TMS020', 'CONDUCIENDO UN MEXICO MEJOR CON TOYOTA 2019', 'INVERSIÓN SOCIAL', 'NO APLICA', 'FMBANORTE8355', 'ACTIVO', ''),
+(29, '18TMS002', 'CONDUCIENDO UN MEXICO MEJOR CON TOYOTA 2018', 'INVERSIÓN SOCIAL', 'NO APLICA', 'FMBANORTE8355', 'FINALIZADO', ''),
+(30, '19RDS001', 'PREMIO RAZÓN DE SER 2019', 'INVERSIÓN SOCIAL', 'NO APLICA', 'FMBNMX9071', 'FINALIZADO', 's.palestino@fundacionmerced.org.mx'),
+(31, '20RDS001', 'PREMIO RAZÓN DE SER 2020', 'INVERSIÓN SOCIAL', 'NO APLICA', 'FMBNMX9071', 'FINALIZADO', 's.palestino@fundacionmerced.org.mx'),
+(32, '21RDS001', 'PREMIO RAZÓN DE SER 2021', 'INVERSIÓN SOCIAL', 'NO APLICA', 'FMBNMX9071', 'ACTIVO', 's.palestino@fundacionmerced.org.mx'),
+(33, '19TFS024', 'RODAR PARA AYUDAR 2019', 'INVERSIÓN SOCIAL', 'NO APLICA', 'FMBNMX9071', 'ACTIVO', 's.palestino@fundacionmerced.org.mx'),
+(34, '20TFS009', 'RODAR PARA AYUDAR 2020', 'INVERSIÓN SOCIAL', 'NO APLICA', 'FMBNMX9071', 'FINALIZADO', 's.palestino@fundacionmerced.org.mx'),
+(35, '21TFS009', 'RODAR PARA AYUDAR 2021', 'INVERSIÓN SOCIAL', 'NO APLICA', 'FMBNMX9071', 'ACTIVO', 's.palestino@fundacionmerced.org.mx'),
+(36, '20TFS023', 'ABRIENDO LLAVES 2020', 'INVERSIÓN SOCIAL', 'NO APLICA', 'FMBNMX9071', 'ACTIVO', 's.palestino@fundacionmerced.org.mx'),
+(37, '21ROT014', 'A FLUIR 2020', 'INVERSIÓN SOCIAL', 'NO APLICA', 'FMBNMX9071', 'ACTIVO', 's.palestino@fundacionmerced.org.mx'),
+(38, 'FMUNGUIA', 'FONDO MUNGUÍA', 'INVERSIÓN SOCIAL', 'NO APLICA', 'FMBNMX9071', 'ACTIVO', 's.palestino@fundacionmerced.org.mx'),
+(39, '20TFS037', 'SEGURIDAD ALIMENTARIA COVID-19', 'INVERSIÓN SOCIAL', 'NO APLICA', 'FMBNMX9071', 'FINALIZADO', 's.palestino@fundacionmerced.org.mx'),
+(40, '20TFS038', 'DISMUNICIÓN DE INGRESOS, DESEMPLEO Y EDUCACIÓN', 'INVERSIÓN SOCIAL', 'NO APLICA', 'FMBNMX9071', 'ACTIVO', 's.palestino@fundacionmerced.org.mx'),
+(41, 'RDC2018', 'PREMIO RAZÓN DE SER', 'INVERSIÓN SOCIAL', 'INVERSIÓN SOCIAL', 'FMBBVA6048', 'FINALIZADO', 'r.trejo@fundacionmerced.org.mx'),
+(42, '18RDS012', 'PREMIO RAZÓN DE SER', 'INVERSIÓN SOCIAL', 'INVERSIÓN SOCIAL', 'FMBBVA6048', 'FINALIZADO', 'r.trejo@fundacionmerced.org.mx'),
+(43, '21FMI022', 'RIGOR INSTITUCIONAL', 'FORTALECIMIENTO', 'NO APLICA', 'FMBBVA6048', 'ACTIVO', 'r.trejo@fundacionmerced.org.mx'),
+(44, '21FMI022.', 'RIGOR INSTITUCIONAL', 'FORTALECIMIENTO', 'NO APLICA', 'FMBBVA1520', 'ACTIVO', 'r.trejo@fundacionmerced.org.mx'),
+(45, '18RDS012 A', 'PREMIO RAZÓN DE SER', 'INVERSIÓN SOCIAL', 'NO APLICA', 'FMBNMX9071', 'FINALIZADO', 'r.trejo@fundacionmerced.org.mx'),
+(46, '19NMP021', 'ACCIONA. PROGRAMA DE FORTALECIMIENTO DE CAPACIDADES ORGANIZACIONALES', 'FORTALECIMIENTO', 'NO APLICA', 'FMBNMX9071', 'FINALIZADO', 'd.hernandez@fundacionmerced.org.mx'),
+(47, '21IDE003', 'IDEAS CONVOCATORIA 2021', 'INVERSIÓN SOCIAL', 'FORTALECIMIENTO', 'FMBNMX9071', 'ACTIVO', 'k.vilchis@fundacionmerced.org.mx'),
+(48, '22IDE003', 'IDEAS CONVOCATORIA 2022', 'INVERSIÓN SOCIAL', 'FORTALECIMIENTO', 'FMBNMX9071', 'ACTIVO', 'k.vilchis@fundacionmerced.org.mx'),
+(49, '21TMS002', 'CONDUCIENDO UN MEXICO MEJOR CON TOYOTA 2021', 'INVERSIÓN SOCIAL', 'NO APLICA', 'FMBANORTE8355', 'ACTIVO', 'k.vilchis@fundacionmerced.org.mx'),
+(50, '18RDS012.', 'PREMIO RAZÓN DE SER 2018', 'INVERSIÓN SOCIAL', 'NO APLICA', 'FMBNMX9071', 'FINALIZADO', 'r.trejo@fundacionmerced.org.mx'),
+(51, '18RDS012,', 'PREMIO RAZÓN DE SER 2018', 'INVERSIÓN SOCIAL', 'INVERSIÓN SOCIAL', 'FMBNMX9071', 'FINALIZADO', 'r.trejo@fundacionmerced.org.mx'),
+(52, '21FMI022,', 'RIGOR INSTITUCIONAL', 'FORTALECIMIENTO', 'NO APLICA', 'FMBANORTE8903', 'ACTIVO', 'r.trejo@fundacionmerced.org.mx'),
+(53, '21GGI029', 'APOYO ALIMENTARIO PARA COMUNIDADES DE SONORA Y CHIHUAHUA', 'INVERSIÓN SOCIAL', 'NO APLICA', 'FMBNMX9071', 'FINALIZADO', 'd.hernandez@fundacionmerced.org.mx');
 
 --
--- Constraints for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Constraints for table `admon_file`
+-- Indices de la tabla `admon_file`
+--
+ALTER TABLE `admon_file`
+  ADD PRIMARY KEY (`id_admon`),
+  ADD UNIQUE KEY `id_admon_UNIQUE` (`id_admon`),
+  ADD KEY `fk_admon_file_organization1_idx` (`id_organization`);
+
+--
+-- Indices de la tabla `consultor`
+--
+ALTER TABLE `consultor`
+  ADD PRIMARY KEY (`id_consultor`),
+  ADD UNIQUE KEY `id_consultor_UNIQUE` (`id_consultor`),
+  ADD UNIQUE KEY `rfc_UNIQUE` (`rfc`);
+
+--
+-- Indices de la tabla `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id_contact`),
+  ADD UNIQUE KEY `id_contact_UNIQUE` (`id_contact`),
+  ADD KEY `fk_contact_organization_idx` (`id_organization`);
+
+--
+-- Indices de la tabla `employee`
+--
+ALTER TABLE `employee`
+  ADD PRIMARY KEY (`id_employee`),
+  ADD UNIQUE KEY `id_employee_UNIQUE` (`id_employee`);
+
+--
+-- Indices de la tabla `fort_participation`
+--
+ALTER TABLE `fort_participation`
+  ADD PRIMARY KEY (`id_part`),
+  ADD UNIQUE KEY `id_part_UNIQUE` (`id_part`),
+  ADD KEY `fk_fort_participation_organization1_idx` (`id_organization`),
+  ADD KEY `fk_fort_participation_program1_idx` (`id_program`),
+  ADD KEY `fk_fort_participation_consultor1_idx` (`id_consultor`);
+
+--
+-- Indices de la tabla `invsoc_participation`
+--
+ALTER TABLE `invsoc_participation`
+  ADD PRIMARY KEY (`id_partIS`),
+  ADD UNIQUE KEY `id_partIS_UNIQUE` (`id_partIS`),
+  ADD KEY `fk_invsoc_participation_organization1_idx` (`id_organization`),
+  ADD KEY `fk_invsoc_participation_program1_idx` (`id_program`),
+  ADD KEY `fk_invsoc_participation_consultor1_idx` (`id_consultor`);
+
+--
+-- Indices de la tabla `organization`
+--
+ALTER TABLE `organization`
+  ADD PRIMARY KEY (`id_organization`),
+  ADD UNIQUE KEY `id_organization_UNIQUE` (`id_organization`),
+  ADD UNIQUE KEY `rfc_UNIQUE` (`rfc`);
+
+--
+-- Indices de la tabla `program`
+--
+ALTER TABLE `program`
+  ADD PRIMARY KEY (`id_program`),
+  ADD UNIQUE KEY `id_program_UNIQUE` (`id_program`),
+  ADD UNIQUE KEY `program_code_UNIQUE` (`program_code`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `admon_file`
+--
+ALTER TABLE `admon_file`
+  MODIFY `id_admon` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `consultor`
+--
+ALTER TABLE `consultor`
+  MODIFY `id_consultor` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT de la tabla `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `id_contact` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `employee`
+--
+ALTER TABLE `employee`
+  MODIFY `id_employee` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT de la tabla `fort_participation`
+--
+ALTER TABLE `fort_participation`
+  MODIFY `id_part` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
+-- AUTO_INCREMENT de la tabla `invsoc_participation`
+--
+ALTER TABLE `invsoc_participation`
+  MODIFY `id_partIS` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT de la tabla `organization`
+--
+ALTER TABLE `organization`
+  MODIFY `id_organization` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
+
+--
+-- AUTO_INCREMENT de la tabla `program`
+--
+ALTER TABLE `program`
+  MODIFY `id_program` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `admon_file`
 --
 ALTER TABLE `admon_file`
   ADD CONSTRAINT `fk_admon_file_organization1` FOREIGN KEY (`id_organization`) REFERENCES `organization` (`id_organization`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `contact`
+-- Filtros para la tabla `contact`
 --
 ALTER TABLE `contact`
-  ADD CONSTRAINT `fk_contact_organization1` FOREIGN KEY (`id_organization`) REFERENCES `organization` (`id_organization`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_contact_organization` FOREIGN KEY (`id_organization`) REFERENCES `organization` (`id_organization`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `fort_participation`
+-- Filtros para la tabla `fort_participation`
 --
 ALTER TABLE `fort_participation`
-  ADD CONSTRAINT `fk_program_has_organization_organization1` FOREIGN KEY (`id_organization`) REFERENCES `organization` (`id_organization`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_program_organization_consultor1` FOREIGN KEY (`id_consultor`) REFERENCES `consultor` (`id_consultor`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_program_organization_program1` FOREIGN KEY (`id_program`) REFERENCES `program` (`id_program`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_fort_participation_consultor1` FOREIGN KEY (`id_consultor`) REFERENCES `consultor` (`id_consultor`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_fort_participation_organization1` FOREIGN KEY (`id_organization`) REFERENCES `organization` (`id_organization`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_fort_participation_program1` FOREIGN KEY (`id_program`) REFERENCES `program` (`id_program`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `invsoc_participation`
+-- Filtros para la tabla `invsoc_participation`
 --
 ALTER TABLE `invsoc_participation`
   ADD CONSTRAINT `fk_invsoc_participation_consultor1` FOREIGN KEY (`id_consultor`) REFERENCES `consultor` (`id_consultor`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_table1_organization1` FOREIGN KEY (`id_organization`) REFERENCES `organization` (`id_organization`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_table1_program1` FOREIGN KEY (`id_program`) REFERENCES `program` (`id_program`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `program`
---
-ALTER TABLE `program`
-  ADD CONSTRAINT `fk_program_organization1` FOREIGN KEY (`id_organization`) REFERENCES `organization` (`id_organization`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_invsoc_participation_organization1` FOREIGN KEY (`id_organization`) REFERENCES `organization` (`id_organization`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_invsoc_participation_program1` FOREIGN KEY (`id_program`) REFERENCES `program` (`id_program`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

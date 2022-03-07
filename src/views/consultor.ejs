@@ -3,9 +3,20 @@
 <div class="container">
     <br />
     <!--Modal window trigger button -->
-    <button type="button" class="btn btn-success margin-left-3 rounded" data-toggle="modal" data-target="#agregar" >
-        Agregar Consultor
-    </button>
+    <div class="row">
+      <div class="col">
+      <button type="button" class="btn btn-info margin-left-3 rounded" data-toggle="modal" data-target="#agregar" >
+          Agregar Consultor
+      </button>
+      </div>
+    
+      <div class="col text-right">
+        <button type="button" class="btn btn-success margin-left-3 rounded exportExcelCons" style="background-color: darkgreen; border-color: darkgreen;">
+          <img src="/img/spreadsheet.png" width="15px"/>
+        Exportar a Excel
+        </button>
+      </div>
+      </div>
     <br /><br />
     
     <!--Insert Modal window-->
@@ -33,34 +44,34 @@
                 <div class="form-group">
                   <label for="prof_speciality">Especialidad profesional</label>
                   <select name="prof_speciality" id="prof_speciality" title="Nada seleccionado" class="form-control rounded selPic" multiple required>
-                    <option>Administración y finanzas para OSC</option>
-                    <option>Comunicación externa e interna</option>
-                    <option>Consititución legal y trámite de donatarias autorizadas</option>
-                    <option>Desarrollo de indicadores</option>
-                    <option>Desarrollo de proyecto institucional</option>
-                    <option>Desarrollo de proyectos sociales con enfoque de marco lógico</option>
-                    <option>Design thinking y co-creación</option>
-                    <option>Economía circular</option>
-                    <option>Estructura organizacional</option>
-                    <option>Estructura programática</option>
-                    <option>Gestión del Talento Humano</option>
-                    <option>Gobernanza-Órgano de Gobierno</option>
-                    <option>Herramientas digitales para la gestión de OSC</option>
-                    <option>Innovación y emprendimiento social</option>
-                    <option>Liderazgo</option>
-                    <option>Liderazgo colaborativo</option>
-                    <option>Marco legal y fiscal para OSC</option>
-                    <option>Mercadotecnia social</option>
-                    <option>Modelo de intervención</option>
-                    <option>Modelos de negocio en economía social</option>
-                    <option>Movilización de recursos</option>
-                    <option>Pensamiento sistémico</option>
-                    <option>Planeación estratégica</option>
-                    <option>Planeación operativa anual</option>
-                    <option>Responsabilidad social</option>
-                    <option>Sistemas de evaluación y monitoreo</option>
-                    <option>Teoría de cambio</option>
-                    <option>Voluntariado</option>
+                    <option>ADMINISTRACIÓN Y FINANZAS PARA OSC</option>
+                    <option>COMUNICACIÓN EXTERNA E INTERNA</option>
+                    <option>CONSITITUCIÓN LEGAL Y TRÁMITE DE DONATARIAS AUTORIZADAS</option>
+                    <option>DESARROLLO DE INDICADORES</option>
+                    <option>DESARROLLO DE PROYECTO INSTITUCIONAL</option>
+                    <option>DESARROLLO DE PROYECTOS SOCIALES CON ENFOQUE DE MARCO LÓGICO</option>
+                    <option>DESIGN THINKING Y CO-CREACIÓN</option>
+                    <option>ECONOMÍA CIRCULAR</option>
+                    <option>ESTRUCTURA ORGANIZACIONAL</option>
+                    <option>ESTRUCTURA PROGRAMÁTICA</option>
+                    <option>GESTIÓN DEL TALENTO HUMANO</option>
+                    <option>GOBERNANZA-ÓRGANO DE GOBIERNO</option>
+                    <option>HERRAMIENTAS DIGITALES PARA LA GESTIÓN DE OSC</option>
+                    <option>INNOVACIÓN Y EMPRENDIMIENTO SOCIAL</option>
+                    <option>LIDERAZGO</option>
+                    <option>LIDERAZGO COLABORATIVO</option>
+                    <option>MARCO LEGAL Y FISCAL PARA OSC</option>
+                    <option>MERCADOTECNIA SOCIAL</option>
+                    <option>MODELO DE INTERVENCIÓN</option>
+                    <option>MODELOS DE NEGOCIO EN ECONOMÍA SOCIAL</option>
+                    <option>MOVILIZACIÓN DE RECURSOS</option>
+                    <option>PENSAMIENTO SISTÉMICO</option>
+                    <option>PLANEACIÓN ESTRATÉGICA</option>
+                    <option>PLANEACIÓN OPERATIVA ANUAL</option>
+                    <option>RESPONSABILIDAD SOCIAL</option>
+                    <option>SISTEMAS DE EVALUACIÓN Y MONITOREO</option>
+                    <option>TEORÍA DE CAMBIO</option>
+                    <option>VOLUNTARIADO</option>
                   </select>
                 </div>
                 
@@ -104,7 +115,7 @@
     <!--Body Table-->
     
       <div class="table-responsive">
-          <table id="table" class="table table-sm table-active table-striped table-hover">
+          <table id="table" class="table table-sm table-active table-striped table-hover tableCons">
             <thead>
               <tr class="text-center">
                 <th>#</th>

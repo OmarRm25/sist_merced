@@ -4,8 +4,20 @@
 
 <br />
 <!--Modal window trigger button -->
-<button type="button" class="btn btn-success margin-left-3 rounded" data-toggle="modal" data-target="#agregar" >Agregar contacto</button>
-<br /><br />
+<div class="row">
+  <div class="col">
+  <button type="button" class="btn btn-info margin-left-3 rounded" data-toggle="modal" data-target="#agregar" >
+      Agregar Contacto
+  </button>
+  </div>
+
+  <div class="col text-right">
+    <button type="button" class="btn btn-success margin-left-3 rounded exportExcelCont" style="background-color: darkgreen; border-color: darkgreen;">
+      <img src="/img/spreadsheet.png" width="15px"/>
+    Exportar a Excel
+    </button>
+  </div>
+  </div><br /><br />
 
 <!--Insert Modal window-->
 <div class="modal fade" role="dialog"  id="agregar">
@@ -89,7 +101,7 @@
 <!--Body Table-->
 
   <div class="table-responsive">
-      <table id="table" class="table table-sm table-active table-striped table-hover">
+      <table id="table" class="table table-sm table-active table-striped table-hover tableCont">
         <thead>
           <tr class="text-center">
             <th>#</th>

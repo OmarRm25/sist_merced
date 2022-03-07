@@ -84,15 +84,16 @@ controller.list = (req, res) => {
       const { id_consultor } = req.params;
     req.getConnection((err, conn) => {
       conn.query('DELETE FROM consultor WHERE id_consultor = ?', id_consultor, (err, rows) => {
-    
+        if(err){
+          res.send("<script>alert('No se puede eliminar. El registro está en uso en otra tabla'); window.location.href = '/consultor'; </script>");
+        }else{
         res.redirect('/consultor'); 
+        }
       });
     })
     }else {
-
-    }
     res.send("<script>alert('No cuenta con permiso para eliminar este registro'); window.location.href = '/consultor'; </script>");
-
+    }
   }
   
   module.exports = controller;
