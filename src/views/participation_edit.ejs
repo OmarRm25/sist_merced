@@ -12,16 +12,51 @@
         <form action="/participation/update/<%= data.id_part %>" method="POST">
           <div class="form-group">
             <label type="text">Organización</label>
-            <input type="text" name="id_organization" value="<%= data.id_organization %>" placeholder="Selecciona la Organización" class="form-control rounded" disabled>
+            <select type="text" name="id_organization" class="form-control rounded selPic" data-live-search="true">
+              <option disabled selected>Selecciona una opción</option>
+              <% if (data.orgs) { %>
+                <% for(var i=0; i < data.orgs.length; i++){ %>
+                   <% if(data.id_organization == data.orgs[i].id_organization){ %>
+                     <option value="<%= data.orgs[i].id_organization %>" selected><%= data.orgs[i].org_name %></option>
+                 <%  }else{ %>
+                   <option value="<%= data.orgs[i].id_organization %>"><%= data.orgs[i].org_name %></option>
+                   <% } %> 
+                  <% } %>
+                  <% } %>
+            </select>
+
           </div>
           <div class="form-group">
             <label type="text">Programa</label>
-            <input type="text" name="id_program" value="<%= data.id_program %>" placeholder="Selecciona el nombre del Programa" class="form-control rounded" disabled>
+            <select type="text" name="id_program" class="form-control rounded selPic" data-live-search="true">
+              <option disabled selected>Selecciona una opción</option>
+              <% if (data.programs) { %>
+                <% for(var i=0; i < data.programs.length; i++){ %>
+                   <% if(data.id_program == data.programs[i].id_program){ %>
+                     <option value="<%= data.programs[i].id_program %>" selected><%= data.programs[i].program_code %></option>
+                 <%  }else{ %>
+                   <option value="<%= data.programs[i].id_program %>"><%= data.programs[i].program_code %></option>
+                   <% } %> 
+                  <% } %>
+                  <% } %>
+            </select>
           </div>
 
           <div class="form-group">
-            <label type="text">Consultor</label>
-            <input type="text" name="id_consultor" value="<%= data.id_consultor %>" placeholder="consultor" class="form-control rounded" disabled>              
+            <label type="text">Consultor</label>            
+            <select type="text" name="id_consultor" class="form-control rounded selPic" data-live-search="true">
+              <option disabled selected>Selecciona una opción</option>
+              <% if (data.consultor) { %>
+                <% for(var i=0; i < data.consultor.length; i++){ %>
+                   <% if(data.id_consultor == data.consultor[i].id_consultor){ %>
+                     <option value="<%= data.consultor[i].id_consultor %>" selected><%= data.consultor[i].full_name %></option>
+                 <%  }else{ %>
+                   <option value="<%= data.consultor[i].id_consultor %>"><%= data.consultor[i].full_name %></option>
+                   <% } %> 
+                  <% } %>
+                  <% } %>
+            </select>
+            
           </div>
 
           <div class="form-group">
@@ -157,10 +192,10 @@
         </div>
 
         <div class="form-group">
-          <label type="text">Tema</label>
-          <select type="text" name="theme" value="<%= data.theme %>" class="form-control rounded" required>
+          <label for="tema" type="text">Tema</label>
+          <select id="tema" type="text" name="theme" value="<%= data.theme %>" class="form-control rounded" required>
             <option disabled>Selecciona una opción</option>
-            <% const themeVal = ["No aplica","Alianzas y vinculación","Asesoría legal y fiscal","Comunicación externa (Marketing social)","Comunicación interna","Diagnóstico de Madurez Institucional en Línea","Diagnóstico de Madurez Institucional Presencial","Estructura organizacional y administración","Fortalecimiento Equipo Operativo","Fortalecimiento Institucional","Modelo de Intervención","Monitoreo y Evaluación de proyectos","Órgano de Gobierno","Planeación estratégica","Sostenibilidad financiera","Teoría de cambio"] %>
+            <% const themeVal = ["NO APLICA","ALIANZAS Y VINCULACIÓN","ASESORÍA LEGAL Y FISCAL","COMUNICACIÓN EXTERNA (MARKETING SOCIAL)","COMUNICACIÓN INTERNA","DIAGNÓSTICO DE MADUREZ INSTITUCIONAL EN LÍNEA","DIAGNÓSTICO DE MADUREZ INSTITUCIONAL PRESENCIAL","ESTRUCTURA ORGANIZACIONAL Y ADMINISTRACIÓN","FORTALECIMIENTO EQUIPO OPERATIVO","FORTALECIMIENTO INSTITUCIONAL","MODELO DE INTERVENCIÓN","MONITOREO Y EVALUACIÓN DE PROYECTOS","ÓRGANO DE GOBIERNO","PLANEACIÓN ESTRATÉGICA","SOSTENIBILIDAD FINANCIERA","TEORÍA DE CAMBIO","OTRO"] %>
               
               <% for(var i=0; i < themeVal.length; i++){ %>
                 <% if(data.theme == themeVal[i]){ %>
@@ -169,27 +204,126 @@
                 <option value="<%= themeVal[i] %>"><%= themeVal[i] %></option>
                 <% } %> 
                <% } %>     
-
-
-            
+      
           </select>
         </div>
 
-        <div class="form-group">
-          <label type="text">¿Quién fue el aliado financiero?</label>
-          <select type="text" name="ally_name" value="<%= data.ally_name %>" placeholder="Aliado" class="form-control rounded selPic" data-live-search="true" required>
-            <option disabled>Selecciona una opción</option>
+        <div class="form-group" id="otherFieldDivT">
+          <label for="otherFieldT" type="text">En caso de elegir otro, especifique</label> 
+           <input id="otherFieldT" name="other" value="<%= data.other %>" type="text" class="form-control rounded" maxlength="45"> 
+
+        </div>
+
+
+
+        <div class="form-group" id="otherFieldDiv">
+          <label for="otherField" type="text">¿Quién fue el aliado financiero?</label>
+          <select type="text" name="ally_name" value="<%= data.ally_name %>" placeholder="Aliado" class="form-control rounded selPic" data-live-search="true" id="otherField">
+            <option disabled selected>Selecciona una opción</option>
             <% if (data.orgs) { %>
-              <% for(var i=0; i < data.orgs.length; i++){ %>
-                 <% if(data.ally_name == data.orgs[i].org_name){ %>
-                   <option value="<%= data.orgs[i].org_name %>" selected><%= data.orgs[i].org_name %></option>
-               <%  }else{ %>
-                 <option value="<%= data.orgs[i].org_name %>"><%= data.orgs[i].org_name %></option>
-                 <% } %> 
-                <% } %>
-                <% } %>
+             <% for(var i=0; i < data.orgs.length; i++){ %>
+                <% if(data.ally_name == data.orgs[i].org_name){ %>
+                  <option value="<%= data.orgs[i].org_name %>" selected><%= data.orgs[i].org_name %></option>
+              <%  }else{ %>
+                <option value="<%= data.orgs[i].org_name %>"><%= data.orgs[i].org_name %></option>
+                <% } %> 
+               <% } %>
+               <% } %>
           </select>
-        </div>  
+        
+  
+          <br>
+          <div class="form-group">
+            <div class="custom-control custom-switch">
+              <br>
+              <input type="checkbox" class="custom-control-input" id="check3" value="1" onchange="javascript:showContent3()">
+              <label class="custom-control-label" for="check3">Agregar más aliados</label>
+            </div>
+          </div>
+  
+          <div id="content3" style="display: none;">
+  
+          <div class="form-group">
+            <label type="text">Aliado 2</label>
+            <select type="text" name="ally_name2" class="form-control rounded selPic" data-live-search="true">
+              <option disabled selected>Selecciona una opción</option>
+              <% if (data.orgs) { %>
+                <% for(var i=0; i < data.orgs.length; i++){ %>
+                   <% if(data.ally_name2 == data.orgs[i].org_name){ %>
+                     <option value="<%= data.orgs[i].org_name %>" selected><%= data.orgs[i].org_name %></option>
+                 <%  }else{ %>
+                   <option value="<%= data.orgs[i].org_name %>"><%= data.orgs[i].org_name %></option>
+                   <% } %> 
+                  <% } %>
+                  <% } %>
+            </select>              
+          </div>
+  
+          <div class="form-group">
+            <label type="text">Aliado 3</label>
+            <select type="text" name="ally_name3" class="form-control rounded selPic" data-live-search="true">
+              <option disabled selected>Selecciona una opción</option>
+              <% if (data.orgs) { %>
+                <% for(var i=0; i < data.orgs.length; i++){ %>
+                   <% if(data.ally_name3 == data.orgs[i].org_name){ %>
+                     <option value="<%= data.orgs[i].org_name %>" selected><%= data.orgs[i].org_name %></option>
+                 <%  }else{ %>
+                   <option value="<%= data.orgs[i].org_name %>"><%= data.orgs[i].org_name %></option>
+                   <% } %> 
+                  <% } %>
+                  <% } %>
+            </select>                
+          </div>
+  
+          <div class="form-group">
+            <div class="custom-control custom-switch">
+              <input type="checkbox" class="custom-control-input" id="check4" value="1" onchange="javascript:showContent4()">
+              <label class="custom-control-label" for="check4">Agregar más aliados</label>
+            </div>
+          </div>
+  
+          <div id="content4" style="display: none;">
+  
+          <div class="form-group">
+            <label type="text">Aliado 4</label>
+            <select type="text" name="ally_name4" class="form-control rounded selPic" data-live-search="true">
+              <option disabled selected>Selecciona una opción</option>
+              <% if (data.orgs) { %>
+                <% for(var i=0; i < data.orgs.length; i++){ %>
+                   <% if(data.ally_name4 == data.orgs[i].org_name){ %>
+                     <option value="<%= data.orgs[i].org_name %>" selected><%= data.orgs[i].org_name %></option>
+                 <%  }else{ %>
+                   <option value="<%= data.orgs[i].org_name %>"><%= data.orgs[i].org_name %></option>
+                   <% } %> 
+                  <% } %>
+                  <% } %>
+            </select>                
+          </div>
+  
+          
+  
+          <div class="form-group">
+            <label type="text">Aliado 5</label>
+            <select type="text" name="ally_name5" class="form-control rounded selPic" data-live-search="true">
+              <option disabled selected>Selecciona una opción</option>
+              <% if (data.orgs) { %>
+                <% for(var i=0; i < data.orgs.length; i++){ %>
+                   <% if(data.ally_name5 == data.orgs[i].org_name){ %>
+                     <option value="<%= data.orgs[i].org_name %>" selected><%= data.orgs[i].org_name %></option>
+                 <%  }else{ %>
+                   <option value="<%= data.orgs[i].org_name %>"><%= data.orgs[i].org_name %></option>
+                   <% } %> 
+                  <% } %>
+                  <% } %>
+            </select>           
+          </div>
+  
+          
+          </div> <!--cierre del switch agregar más consultores 2-->
+        </div> <!--cierre del switch agregar más consultores 1-->
+  
+  
+      </div> 
         
         <div class="form-group">
           <label type="text">Nombre del proyecto</label>
@@ -205,13 +339,13 @@
           <label type="text">Tipo de población</label>
           <select id="my-select" type="text" name="population_type" title="<%= data.population_type %>"  class="selectpicker form-control rounded" multiple required> 
             <option disabled>Selecciona una opción</option>
-            <option>Primera infancia (0-5 años)</option>
-            <option>Infancia (6-12 años)</option>
-            <option>Adolescencia (13-18 años)</option>
-            <option>Juventud (19-29 años)</option>
-            <option>Adultez (30-59 años)</option>
-            <option>Persona mayor (60 años o más)</option>
-            <option>Organizaciones de la Sociedad Civil</option>
+            <option>PRIMERA INFANCIA (0-5 AÑOS)</option>
+            <option>INFANCIA (6-12 AÑOS)</option>
+            <option>ADOLESCENCIA (13-18 AÑOS)</option>
+            <option>JUVENTUD (19-29 AÑOS)</option>
+            <option>ADULTEZ (30-59 AÑOS)</option>
+            <option>PERSONA MAYOR (60 AÑOS O MÁS)</option>
+            <option>ORGANIZACIONES DE LA SOCIEDAD CIVIL</option>
           </select> 
         </div>  
 
@@ -281,39 +415,39 @@
             <label type="text">Estado de incidencia</label>
             <select id="otherField5" name="application_state" title="<%= data.application_state %>"  class="selectpicker form-control rounded" multiple required>
               <option disabled>Selecciona una o más opciones</option>    
-              <option>Aguascalientes</option>
-              <option>Baja California</option>
-              <option>Baja California Sur</option>
-              <option>Campeche</option>
-              <option>Chiapas</option>
-              <option>Chihuahua</option>
-              <option>Ciudad de México</option>
-              <option>Coahuila</option>
-              <option>Colima</option>
-              <option>Durango</option>
-              <option>Estado de México</option> 
-              <option>Guanajuato</option> 
-              <option>Guerrero</option> 
-              <option>Hidalgo</option> 
-              <option>Jalisco</option> 
-              <option>Michoacán</option> 
-              <option>Morelos</option> 
-              <option>Nayarit</option> 
-              <option>Nuevo León</option> 
-              <option>Oaxaca</option> 
-              <option>Puebla</option> 
-              <option>Querétaro</option> 
-              <option>Quintana Roo</option> 
-              <option>San Luis Potosí</option> 
-              <option>Sinaloa</option> 
-              <option>Sonora</option> 
-              <option>Tabasco</option> 
-              <option>Tamaulipas</option> 
-              <option>Tlaxcala</option> 
-              <option>Veracruz</option> 
-              <option>Yucatán</option> 
-              <option>Zacatecas</option>   
-              <option>Todos los estados</option>
+              <option>AGUASCALIENTES</option>
+              <option>BAJA CALIFORNIA</option>
+              <option>BAJA CALIFORNIA SUR</option>
+              <option>CAMPECHE</option>
+              <option>CHIAPAS</option>
+              <option>CHIHUAHUA</option>
+              <option>CIUDAD DE MÉXICO</option>
+              <option>COAHUILA</option>
+              <option>COLIMA</option>
+              <option>DURANGO</option>
+              <option>ESTADO DE MÉXICO</option> 
+              <option>GUANAJUATO</option> 
+              <option>GUERRERO</option> 
+              <option>HIDALGO</option> 
+              <option>JALISCO</option> 
+              <option>MICHOACÁN</option> 
+              <option>MORELOS</option> 
+              <option>NAYARIT</option> 
+              <option>NUEVO LEÓN</option> 
+              <option>OAXACA</option> 
+              <option>PUEBLA</option> 
+              <option>QUERÉTARO</option> 
+              <option>QUINTANA ROO</option> 
+              <option>SAN LUIS POTOSÍ</option> 
+              <option>SINALOA</option> 
+              <option>SONORA</option> 
+              <option>TABASCO</option> 
+              <option>TAMAULIPAS</option> 
+              <option>TLAXCALA</option> 
+              <option>VERACRUZ</option> 
+              <option>YUCATÁN</option> 
+              <option>ZACATECAS</option>   
+              <option>TODOS LOS ESTADOS</option>
             </select>
           </div>
           </div>

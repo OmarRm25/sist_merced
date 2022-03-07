@@ -7,8 +7,20 @@
 
 <br />
 <!--Modal window trigger button -->
-<button type="button" class="btn btn-success margin-left-3 rounded" data-toggle="modal" data-target="#agregar" >Agregar Expediente Administrativo</button>
-<br /><br />
+<div class="row">
+      <div class="col">
+      <button type="button" class="btn btn-info margin-left-3 rounded" data-toggle="modal" data-target="#agregar" >
+          Agregar Expediente Administrativo
+      </button>
+      </div>
+    
+      <div class="col text-right">
+        <button type="button" class="btn btn-success margin-left-3 rounded exportExcelAdmon" style="background-color: darkgreen; border-color: darkgreen;">
+          <img src="/img/spreadsheet.png" width="15px"/>
+        Exportar a Excel
+        </button>
+      </div>
+      </div><br /><br />
 
 <!--Insert Modal window-->
 <div class="modal fade" role="dialog"  id="agregar">
@@ -39,18 +51,18 @@
               <label type="text">Acta constitutiva</label>
               <select name="constitutive_act" class="form-control rounded" required>
                 <option disabled selected>Selecciona una opción</option>
-                <option>No aplica</option>
-                <option>Sí</option>
-                <option>No</option>
+                <option>NO APLICA</option>
+                <option>SÍ</option>
+                <option>NO</option>
                 </select>
             </div>
             <div class="form-group">
                 <label type="text">Constancia de situación fiscal</label>
                 <select name="fiscal_constance" class="form-control rounded" required>
                   <option disabled selected>Selecciona una opción</option>
-                  <option>No aplica</option>
-                  <option>Sí</option>
-                  <option>No</option>
+                  <option>NO APLICA</option>
+                  <option>SÍ</option>
+                  <option>NO</option>
                   </select>
               </div>
             
@@ -58,9 +70,9 @@
                 <label type="text">Opinión de cumplimiento</label>
                 <select name="compliance_opinion" class="form-control rounded" required>
                   <option disabled selected>Selecciona una opción</option>
-                  <option>No aplica</option>
-                  <option>Sí</option>
-                  <option>No</option>
+                  <option>NO APLICA</option>
+                  <option>SÍ</option>
+                  <option>NO</option>
                   
                   </select>
               </div>
@@ -68,9 +80,9 @@
                 <label type="text">CURP</label>
                 <select name="curp" class="form-control rounded" required>
                     <option disabled selected>Selecciona una opción</option>
-                    <option>No aplica</option>
-                    <option>Sí</option>
-                    <option>No</option>
+                    <option>NO APLICA</option>
+                    <option>SÍ</option>
+                    <option>NO</option>
                   
                   </select>
               </div>
@@ -78,9 +90,9 @@
                 <label type="text">RFC</label>
                 <select name="rfc" class="form-control rounded" required>
                     <option disabled selected>Selecciona una opción</option>
-                    <option>No aplica</option>
-                    <option>Sí</option>
-                    <option>No</option>
+                    <option>NO APLICA</option>
+                    <option>SÍ</option>
+                    <option>NO</option>
                   
                   </select>
               </div>
@@ -88,9 +100,9 @@
                 <label type="text">Comprobante de domicilio</label>
                 <select name="address_voucher" class="form-control rounded" required>
                     <option disabled selected>Selecciona una opción</option>
-                    <option>No aplica</option>
-                    <option>Sí</option>
-                    <option>No</option>
+                    <option>NO APLICA</option>
+                    <option>SÍ</option>
+                    <option>NO</option>
                   
                   </select>
               </div>
@@ -98,9 +110,9 @@
                 <label type="text">Cáratula de estado de cuenta</label>
                 <select name="account_status" class="form-control rounded" required>
                     <option disabled selected>Selecciona una opción</option>
-                    <option>No aplica</option>
-                    <option>Sí</option>
-                    <option>No</option>
+                    <option>NO APLICA</option>
+                    <option>SÍ</option>
+                    <option>NO</option>
                   
                   </select>
               </div>
@@ -108,9 +120,9 @@
                 <label type="text">Identificación oficial</label>
                 <select name="official_id" class="form-control rounded" required>
                     <option disabled selected>Selecciona una opción</option>
-                    <option>No aplica</option>
-                    <option>Sí</option>
-                    <option>No</option>
+                    <option>NO APLICA</option>
+                    <option>SÍ</option>
+                    <option>NO</option>
                   
                   </select>
               </div>
@@ -118,9 +130,9 @@
                 <label type="text">Poder legal</label>
                 <select name="legal_power" class="form-control rounded" required>
                     <option disabled selected>Selecciona una opción</option>
-                    <option>No aplica</option>
-                    <option>Sí</option>
-                    <option>No</option>
+                    <option>NO APLICA</option>
+                    <option>SÍ</option>
+                    <option>NO</option>
                   
                   </select>
               </div>
@@ -155,7 +167,7 @@
 
 <!--Body Table-->
   <div class="table-responsive">
-      <table id="table" class="table table-sm table-active table-striped table-hover">
+      <table id="table" class="table table-sm table-active table-striped table-hover tableAdmon">
         <thead>
           <tr class="text-center">
             <th>#</th>

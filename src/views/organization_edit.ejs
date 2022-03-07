@@ -16,7 +16,7 @@
               <label for="areaIntervencion" type="text">Área de intervención prioritaria</label>
               <select name="intervention_area" id="areaIntervencion" class="form-control rounded" required>
                 <option disabled>Selecciona una opción</option>
-                <% const interVal = ["Asistencia social","Derechos humanos","Desarrollo comunitario","Desarrollo social","Educación","Medio Ambiente","Agua","saneamiento e higiene","Salud","Seguridad Vial","Otra"] %>
+                <% const interVal = ["ASISTENCIA SOCIAL","DERECHOS HUMANOS","DESARROLLO COMUNITARIO","DESARROLLO SOCIAL","EDUCACIÓN","MEDIO AMBIENTE","AGUA","SANEAMIENTO E HIGIENE","SALUD","SEGURIDAD VIAL","OTRA"] %>
               
                 <% for(var i=0; i < interVal.length; i++){ %>
                   <% if(data.intervention_area == interVal[i]){ %>
@@ -42,7 +42,7 @@
                 <label type="text">Entidad Federativa</label>
                 <select name="state" value="<%=data.state %>" class="form-control rounded" required>
                       <option disabled>Selecciona una opción</option>
-                      <% const edoVal = ["Aguascalientes","Baja California","Baja California Sur","Campeche","Chiapas","Chihuahua","Ciudad de México","Coahuila","Colima","Durango","Estado de México","Guanajuato","Guerrero","Hidalgo","Jalisco","Michoacán","Morelos","Nayarit","Nuevo León","Oaxaca","Puebla","Querétaro","Quintana Roo","San Luis Potosí","Sinaloa","Sonora","Tabasco","Tamaulipas","Tlaxcala","Veracruz","Yucatán","Zacatecas","Internacional"] %>
+                      <% const edoVal = ["AGUASCALIENTES","BAJA CALIFORNIA","BAJA CALIFORNIA SUR","CAMPECHE","CHIAPAS","CHIHUAHUA","CIUDAD DE MÉXICO","COAHUILA","COLIMA","DURANGO","ESTADO DE MÉXICO","GUANAJUATO","GUERRERO","HIDALGO","JALISCO","MICHOACÁN","MORELOS","NAYARIT","NUEVO LEÓN","OAXACA","PUEBLA","QUERÉTARO","QUINTANA ROO","SAN LUIS POTOSÍ","SINALOA","SONORA","TABASCO","TAMAULIPAS","TLAXCALA","VERACRUZ","YUCATÁN","ZACATECAS","INTERNACIONAL"] %>
               
                       <% for(var i=0; i < edoVal.length; i++){ %>
                         <% if(data.state == edoVal[i]){ %>
@@ -63,7 +63,7 @@
                 <label type="text">¿Se encuentra en lista negra?</label>
                 <select name="blacklist" value="<%= data.blacklist %>" class="form-control rounded" required>
                   <option disabled>Selecciona una opción</option>
-                  <% const blackVal = ["No","Sí"] %>
+                  <% const blackVal = ["NO","SÍ"] %>
               
                     <% for(var i=0; i < blackVal.length; i++){ %>
                       <% if(data.blacklist == blackVal[i]){ %>
@@ -91,7 +91,7 @@
              </div>
 
              <div class="form-group">
-              <label type="text"></label>
+              <label type="text">Registra</label>
               <input type="text" name="register" value="<%= data.register %>" class="form-control rounded" readonly> 
              </div>
   

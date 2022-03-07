@@ -15,8 +15,8 @@ controller.list = (req, res) => {
       }
       });
     });
-    req.getConnection((err, conn) => {
-      conn.query('SELECT * FROM organization', (err, allies) =>{
+   req.getConnection((err, conn) => {
+      conn.query('SELECT id_organization FROM organization', (err, allies) =>{
         if (err) {
           res.json(err);
          }else{
@@ -28,7 +28,8 @@ controller.list = (req, res) => {
          }
       });
       
-    })  } else {
+    }) 
+    } else {
     res.redirect("/");
   }
 }; 
@@ -38,7 +39,7 @@ controller.save = (req, res) => {
   req.getConnection((err, conn) => {
     conn.query('INSERT INTO program set ?', data, (err, programs) => {
       if(err){
-        res.json(err);
+        res.send("<script>alert('Error en el registro o Clave de programa duplicada'); window.location.href = '/program'; </script>");
       }else{
       res.redirect('/program');
       }
@@ -84,7 +85,11 @@ controller.delete = (req, res) => {
     const { id_program } = req.params;
   req.getConnection((err, conn) => {
     conn.query('DELETE FROM program WHERE id_program = ?', [id_program] , (err, rows) => {
+      if(err){
+        res.send("<script>alert('No se puede eliminar. El registro está en uso en otra tabla'); window.location.href = '/program'; </script>");
+      }else{
       res.redirect('/program');
+      }
     });
   })
   } else{
