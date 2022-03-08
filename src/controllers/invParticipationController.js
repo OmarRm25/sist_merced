@@ -159,7 +159,7 @@ controller.cancel = (res) => {
 controller.delete = (req, res) => {
   var email = req.session.email;
 
-  if(email == 'v.cardin@fundacionmerded.org.mx'){
+  if(email == 'v.cardin@fundacionmerced.org.mx'){
     const { id_partIS } = req.params;
     req.getConnection((err, conn) => {
       conn.query('DELETE FROM invsoc_participation WHERE id_partIS = ?', [id_partIS] , (err, rows) => {
