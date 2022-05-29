@@ -72,7 +72,7 @@ controller.list = (req, res) => {
     if(email == 'v.cardin@fundacionmerced.org.mx'){
       const { id_organization } = req.params;
       req.getConnection((err, conn) => {
-        conn.query('DELETE FROM organization WHERE id_organization = ?', id_organization, (err, rows) => {
+        conn.query('DELETE FROM organization WHERE id_organization = ?', [id_organization], (err, rows) => {
           if(err){
             res.send("<script>alert('No se puede eliminar. El registro está en uso en otra tabla'); window.location.href = '/organization'; </script>");
           }else{

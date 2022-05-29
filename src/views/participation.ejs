@@ -483,6 +483,9 @@
     </div>
   </div>
 </div>
+
+</div>
+
 <!--End of insert modal window-->
 
 <!--Body Table-->
@@ -509,19 +512,19 @@
             <th>Aliado Financiero 4</th>
             <th>Aliado Financiero 5</th>
             <th>Nombre de proyecto</th>
-            <th>Objetivo</th>
+            <th width="1000px">Objetivo</th>
             <th>Tipo de población</th>
             <th>Beneficiarios</th>
             <th>Beneficiarias</th>
             <th>Instituciones beneficiadas</th>
             <th>Fecha de inicio</th>
             <th>Fecha de término</th>
-            <th>Logros</th>
+            <th width="1000px">Logros</th>
             <th>Estado de incidencia</th>
             <th>Municipio/Alcaldía</th>
             <th>Recursos invertidos</th>
             <th>Fecha de actualización</th>
-            <th>Comentarios</th>
+            <th width="1000px">Comentarios</th>
             <th>Registra</th>
             <td>Acciones</td>
           </tr>
@@ -549,19 +552,19 @@
                 <td><%= data.data[i].ally_name4 %></td> 
                 <td><%= data.data[i].ally_name5 %></td> 
                 <td><%= data.data[i].project_name %></td>
-                <td><%= data.data[i].project_objective %></td>
+                <td width="1000px"><%= data.data[i].project_objective %></td>
                 <td><%= data.data[i].population_type %></td>
                 <td><%= data.data[i].male_beneficiaries %></td>
                 <td><%= data.data[i].female_beneficiaries %></td>
                 <td><%= data.data[i].org_beneficiaries %></td>
                 <td><%= data.data[i].start_date %></td>
                 <td><%= data.data[i].end_date %></td>
-                <td><%= data.data[i].achievments %></td>
+                <td width="1000px"><%= data.data[i].achievments %></td>
                 <td><%= data.data[i].application_state %></td>
                 <td><%= data.data[i].municipality %></td>
                 <td><%= data.data[i].resources_invested %></td>
                 <td><%= data.data[i].update_date %></td>
-                <td><%= data.data[i].comments %></td>
+                <td width="1000px"><%= data.data[i].comments %></td>
                 <td><%= data.data[i].register %></td>
                 
                 <td>
@@ -607,7 +610,7 @@
       </table>
     </div>
   
-</div> 
+
 
 
 <%- include('partials/_footer'); -%>
