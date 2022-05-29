@@ -149,12 +149,13 @@
       </div>
     </div>
     </div>
+
+  </div>    
     <!--End of insert modal window-->
     
     <!--Body Table-->
-    
-      <div class="table-responsive">
-          <table id="table" class="table table-sm table-active table-striped table-hover tableOrg">
+   <div class="table-responsive"> 
+          <table id="table" class="table table-active table-striped table-hover tableOrg">
             <thead>
               <tr class="text-center">
                 <th>#</th>
@@ -165,7 +166,7 @@
                 <th>Entidad Federativa</th>
                 <th>Municipio</th>
                 <th>¿Lista negra?</th>
-                <th>Dirección</th>
+                <th width="600px">Dirección</th>
                 <th>Código postal</th>
                 <th>Sitio web</th>
                 <th>Registra</th>
@@ -184,7 +185,7 @@
                     <td><%= data[i].state %></td>
                     <td><%= data[i].municipality %></td>
                     <td><%= data[i].blacklist %></td>
-                    <td><%= data[i].address %></td>
+                    <td width="600px"><%= data[i].address %></td>
                     <td><%= data[i].postal_code %></td>
                     <td><%= data[i].website %></td>
                     <td><%= data[i].register %></td>
@@ -231,10 +232,9 @@
               <% } %>
             </tbody>
           </table>
-        </div>
-    
-      
      
-    </div> 
+        </div>
+     
+    
 
 <%- include('partials/_footer'); -%>
